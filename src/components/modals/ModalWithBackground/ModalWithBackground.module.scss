@@ -31,5 +31,14 @@
   border: none;
   width: 45px;
   height: 45px;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:before {
+    content: '';
+    width: 11px;
+    height: 11px;
+    background: center/cover no-repeat url("../../../assets/img/close.svg");
+  }
 }

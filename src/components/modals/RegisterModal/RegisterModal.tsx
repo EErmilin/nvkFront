@@ -3,16 +3,22 @@ import ReactInputMask from 'react-input-mask';
 import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
 import { useFormik } from "formik";
 import { object, string } from "yup";
-import classes from './AuthModal.module.scss';
+import classes from './RegisterModal.module.scss';
 import { NavLink } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { GET_SMS_CODE } from '../../../gql/mutation/auth/GetSmsCode';
+import { checkUserByPhone } from '../../../gql/mutation/auth/CheckUserByPhone';
+import Input from '../../UI/areas/Input/Input';
 
 
-const AuthModal = ({ closeModal, btnCancelClick  }: any) => {
+const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal }: any) => {
+
+    const [getSmsCode, error] = useMutation(GET_SMS_CODE)
+    const [checkUser] = useMutation(checkUserByPhone)
 
     /** Начальные значения */
     const initialValues = {
         phone: '',
-        password: "",
     };
 
     /** Схема валидации */
@@ -30,7 +36,6 @@ const AuthModal = ({ closeModal, btnCancelClick  }: any) => {
     const {
         values,
         handleChange,
-        handleSubmit,
         touched,
     } = useFormik({
         initialValues,
@@ -45,9 +50,19 @@ const AuthModal = ({ closeModal, btnCancelClick  }: any) => {
         handleChange({ target: { name: "phone", value: event.target.value } })
     }
 
-    const onChangePassword = (event: any) => {
-        handleChange({ target: { name: "password", value: event.target.value } })
+
+    const handleSubmit = (event: any) => {
+        checkUser({ variables: { phone: values.phone } })
+        getSmsCode({ variables: { phone: values.phone } })
+        event.preventDefault()
     }
+
+    const handleLogin = () => {
+        btnCancelClick()
+        setIsAuthModal(true)
+    }
+
+    const isPhoneValid = (values.phone.match(/\d/g)?.join('')[1] === '9' && (values.phone.match(/\d/g)?.join('')?.length == 11)) || !values.phone[4]
 
     return (
         <ModalWithBackground
@@ -57,46 +72,34 @@ const AuthModal = ({ closeModal, btnCancelClick  }: any) => {
         >
             <div className={classes.modal}>
                 <div className={classes.modal_header}>
-                    <h3>Вход</h3>
+                    <h3>Регистрация</h3>
                     <span className={classes.modal_header_btn_return}>Вернуться</span>
                 </div>
                 <form className={classes.modal_form}>
                     <p>С помощью телефона</p>
-                    <ReactInputMask
+                    <Input
                         name="phone"
                         placeholder='+7'
                         id="phone"
-                        className={classes.modal_input}
                         mask={"+7 (999) 999-99-99"}
                         value={values.phone}
-                        onChange={(event) => onChangePhone(event)}
+                        onChange={(event: any) => onChangePhone(event)}
                         required
+
                     />
-                    <ReactInputMask
-                        placeholder='Пароль'
-                        name="password"
-                        id="password"
-                        mask={''}
-                        type={'password'}
-                        value={values.password}
-                        className={classes.modal_input}
-                        onChange={(event) => onChangePassword(event)}
-                        required
-                    />
-                    <NavLink to="/" className={classes.modal_form_text_gray}>Забыли пароль?</NavLink>
                     <button
+                        onClick={handleSubmit}
                         className={classes.modal_form_btn}
-                    >Авторизоваться</button>
+                    >Получить SMS код</button>
                 </form>
 
             </div>
             <div className={classes.modal_form_link_wrp}>
-                <NavLink className={classes.modal_form_link} to="/">Регистрация</NavLink>
-                <NavLink className={classes.modal_form_link_gray} to="/">Пропустить </NavLink>
+                <div className={classes.modal_form_link} onClick={handleLogin}>Я уже зарегистрирован</div>
             </div>
         </ModalWithBackground>
     );
 };
 
-export default AuthModal;
+export default RegisterModal;
 

@@ -2,8 +2,11 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import './App.css';
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import AuthModal from './components/modals/AuthModal/AuthModal';
+import RegisterModal from './components/modals/RegisterModal/RegisterModal';
+import WrapperComponent from './components/Wrappers/WrapperComponent/WrapperComponent';
 import useToggleVisibility from './hooks/useToggleVisibility';
 import Main from './pages/Main/Main';
 import { getListRoute } from './routes/getListRoute';
@@ -11,25 +14,39 @@ import { routes } from './routes/routes';
 
 function App() {
 
-  /** Модалка Авторизации */
+  /** Модалка авторизации */
   const [isAuthModal, setIsAuthModal, closeIsAuthModal] = useToggleVisibility(true)
+
+  /** Модалка регистрации */
+  const [isRegisterModal, setIsRegisterModal, closeIsRegisterModal] = useToggleVisibility(false)
 
   const listRoutes = getListRoute(routes)
 
-  /** Модалка отправки кода */
-  const templateModalConfirmCode = isAuthModal && (
+  const templateAuthModal = isAuthModal && (
     <AuthModal
       closeModal={closeIsAuthModal}
-      btnCancelClick={setIsAuthModal}/>
+      btnCancelClick={setIsAuthModal}
+      setIsRegisterModal={setIsRegisterModal} />
+  )
+
+  const templateRegisterModal = isRegisterModal && (
+    <RegisterModal
+      closeModal={closeIsRegisterModal}
+      btnCancelClick={setIsRegisterModal}
+      setIsAuthModal={setIsAuthModal} />
   )
 
   return (
     <div className="App">
-      {templateModalConfirmCode}
+      {templateAuthModal}
+      {templateRegisterModal}
       <Header />
-      <Routes>
-        {listRoutes}
-      </Routes>
+      <WrapperComponent>
+        <Routes>
+          {listRoutes}
+        </Routes>
+      </WrapperComponent>
+      <Footer />
     </div>
   )
 }

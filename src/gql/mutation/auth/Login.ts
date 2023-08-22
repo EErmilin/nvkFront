@@ -1,7 +1,7 @@
 import {gql} from '@apollo/client';
 
 export const LOGIN = gql`
-  mutation LoginRequest($loginInput: LoginInput) {
+  mutation LoginRequest($loginInput: LoginInput!) {
     login(loginInput: $loginInput) {
       user {
         phoneVerified

@@ -22,7 +22,7 @@ const ModalWithBackground = ({
     const cls = [classes.Modal]
     if (className) cls.push(className)
 
-    const closeBtn = <button className={classes.closeBtn} onClick={(event) => btnCancelClick(event)}><span className={classes.icon}>X</span></button>
+    const closeBtn = <button className={classes.closeBtn} onClick={(event) => btnCancelClick(event)}></button>
 
     return (
         <DarkBackground

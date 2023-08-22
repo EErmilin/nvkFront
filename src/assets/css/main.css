@@ -66,7 +66,7 @@ header{
     display:block;
     width:32px;
     height:32px;
-    background:url("/assets/img/search-ico.svg") center center no-repeat;
+    background:url("../img/search-ico.svg") center center no-repeat;
 }
 .header-profile{
 
@@ -76,7 +76,7 @@ header{
     display:block;
     width:32px;
     height:32px;
-    background:url("/assets/img/profile-ico.svg") center center no-repeat;
+    background:url("../img/profile-ico.svg") center center no-repeat;
 }
 .slim-container{
     width:100%;
@@ -144,7 +144,7 @@ header{
 {
     width:50px;
     height:50px;
-    background:url("/assets/img/carousel-arrow.svg") center center no-repeat;
+    background:url("../img/carousel-arrow.svg") center center no-repeat;
     position:absolute;
     cursor:pointer;
 }
@@ -238,11 +238,11 @@ header{
     height: 50px;
     flex-shrink: 0;
     border-radius:50%;
-    background:url("/assets/img/Bookmark.svg") center center no-repeat;
+    background:url("../img/Bookmark.svg") center center no-repeat;
     cursor:pointer;
 }
 .feed-item .info-bookmark.filled{
-    background:var(--yellow-light, #FFEAC1) url("/assets/img/Bookmark_filled.svg") center center no-repeat;
+    background:var(--yellow-light, #FFEAC1) url("../img/Bookmark_filled.svg") center center no-repeat;
 }
 .feed-item .content-text{
     color: var(--black-text, #2F2F30);

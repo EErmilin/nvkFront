@@ -1,0 +1,123 @@
+.modal {
+  width: 100%;
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 5px;
+    justify-content: left;
+    align-items: flex-start;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #EFEFF0;
+
+
+    &_text_gray {
+      color: var(--grey-text, #BBB);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+
+    &>p {
+      color: var(--black, #0F0A07);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 140%;
+    }
+
+
+
+    &_btn {
+      display: flex;
+      width: 100%;
+      padding: 19px 45px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 15px;
+      background: var(--yellow, #F6A80B);
+      border: none;
+      color: white
+    }
+
+    &_link {
+      color: var(--yellow, #F6A80B);
+      text-decoration: none;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      &_gray {
+        color: #BBB;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; /* 22.4px */
+        text-decoration: none;
+      }
+
+      &_wrp {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        padding-top: 30px;
+      }
+    }
+  }
+
+
+
+
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 160%;
+    border-bottom: 1px solid #EFEFF0;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+
+    &_btn_return {
+      display: flex;
+      align-items: center;
+      color: var(--yellow, #F6A80B);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 140%;
+
+      &:before {
+        content: '';
+        width: 24px;
+        height: 24px;
+        margin-top: -4px;
+        margin-right: 10px;
+        background: center/cover no-repeat url("../../../assets/img/btnReturn.svg");
+      }
+    }
+  }
+
+  &_input {
+    display: flex;
+    width: calc(100% - 40px);
+    padding: 19px 20px;
+    align-items: flex-start;
+    border: none;
+    border-radius: 15px;
+    background: var(--2-grey, #F8F8F8) !important;
+  }
+
+}
+
+.closeBtn {
+  z-index: -5;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  outline: none;
+  border: none;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}

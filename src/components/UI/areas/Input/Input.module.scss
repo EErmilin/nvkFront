@@ -1,10 +1,10 @@
-
-
 .Input {
+  
   display: flex;
   width: 100%;
-
+  position: relative;
   .labelWrap {
+
     display: flex;
     width: 100%;
     color: var(--black, #0F0A07);
@@ -23,6 +23,21 @@
     padding: 19px 20px;
     align-items: flex-start;
     border: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+  }
+
+  input {
+    width: 100%;
+    border: none;
+
+    &:focus {
+      outline: none;
+          border: none;
+    }
+
   }
 
 
@@ -68,17 +83,13 @@
         margin: auto 0;
         width: 10px;
         height: 10px;
-
-        //background: url('../../../../assets/svg/input/close-invalid.svg') center/contain no-repeat;
       }
     }
   }
 
   &>span {
     display: inline-block;
-    margin-top: 4px;
-    font-size: 12px;
-    line-height: 1.2;
+
   }
 }
 
@@ -91,12 +102,14 @@
 
 .password {
   position: absolute;
-  content: ' ';
-  z-index: 1;
-  width: 16px;
-  height: 16px;
-  top: 10px;
-  right: 10px;
-  // background: center/cover no-repeat url("../../../../assets/svg/icons/eye-gray.svg");
+  display: flex;
   cursor: pointer;
+    width: 24px;
+    height: 24px;
+    top: 0;
+    bottom: 0;
+ right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: center/cover no-repeat url("../../../../assets/img/hide.svg");
 }

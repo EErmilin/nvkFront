@@ -7,6 +7,8 @@ import ErrorFallback from './ErrorBoundery/ErrorFallback';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ApolloProvider } from '@apollo/client';
 import { apolloClient } from './apolloClient';
+import { Provider } from 'react-redux';
+import { store } from './redux/persist';
 
 
 const root = ReactDOM.createRoot(
@@ -15,13 +17,15 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <ApolloProvider client={apolloClient}>
-      <Router>
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <App />
-        </ErrorBoundary>
-      </Router>
-    </ApolloProvider>
+    <Provider store={store}>
+      <ApolloProvider client={apolloClient}>
+        <Router>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <App />
+          </ErrorBoundary>
+        </Router>
+      </ApolloProvider>
+    </Provider>
   </React.StrictMode>
 );
 

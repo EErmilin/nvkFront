@@ -10,14 +10,18 @@ import { LOGIN } from '../../../gql/mutation/auth/Login';
 import { PROFILE } from '../../../gql/query/user/Profile';
 import { checkUserByPhone } from '../../../gql/mutation/auth/CheckUserByPhone';
 import Input from '../../UI/areas/Input/Input';
+import { useAppDispatch } from '../../../redux/hooks';
+import { setUser } from '../../../redux/slices/userSlice';
+import { setLogged, setToken } from '../../../redux/slices/authSlice';
 
 
 const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
 
     const navigate = useNavigate()
-    const { loading, error, data } = useQuery(PROFILE)
+    const { loading, error, } = useQuery(PROFILE)
     const [checkUser] = useMutation(checkUserByPhone)
     const [login] = useMutation(LOGIN)
+    const dispatcher = useAppDispatch()
 
     /** Начальные значения */
     const initialValues = {
@@ -50,11 +54,19 @@ const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
         },
     });
 
-    const handleSubmit = (event: any) => {
-        checkUser({ variables: { phone: values.phone } })
-        login({ variables: { loginInput: { phone: values.phone, password: values.password } } })
-        navigate('/')
-        event.preventDefault()
+    async function handleSubmit() {
+        let response;
+        response = await checkUser({ variables: { phone: values.phone } })
+        if (response.data.checkUserByPhone) {
+            response = await login({ variables: { loginInput: { phone: values.phone, password: values.password } } })
+            if (response.data) {
+                dispatcher(setUser(response.data.login.user))
+                dispatcher(setToken(response.data.login.accessToken))             
+                dispatcher(setLogged(true));
+                btnCancelClick()
+                navigate('/')
+            }
+        }
     }
 
     const handleRegister = () => {
@@ -105,16 +117,15 @@ const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
                         required
                     />
                     <NavLink to="/" className={classes.modal_form_text_gray}>Забыли пароль?</NavLink>
-                    <button
-                        onClick={handleSubmit}
-                        className={classes.modal_form_btn}
-                    >Авторизоваться</button>
                 </form>
-
+                <button
+                    onClick={handleSubmit}
+                    className={classes.modal_form_btn}
+                >Авторизоваться</button>
             </div>
             <div className={classes.modal_form_link_wrp}>
                 <div className={classes.modal_form_link} onClick={handleRegister}>Регистрация</div>
-                <div className={classes.modal_form_link_gray} onClick={btnCancelClick}>Пропустить </div>
+                <div className={classes.modal_form_link_gray} onClick={btnCancelClick}>Пропустить</div>
             </div>
         </ModalWithBackground>
     );

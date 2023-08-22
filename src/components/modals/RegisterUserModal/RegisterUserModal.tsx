@@ -3,26 +3,33 @@ import ReactInputMask from 'react-input-mask';
 import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
 import { useFormik } from "formik";
 import { object, string } from "yup";
-import classes from './RegisterModal.module.scss';
-import { NavLink } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { GET_SMS_CODE } from '../../../gql/mutation/auth/GetSmsCode';
+import classes from './RegisterUserModal.module.scss';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useMutation, useQuery } from '@apollo/client';
+import { LOGIN } from '../../../gql/mutation/auth/Login';
+import { PROFILE } from '../../../gql/query/user/Profile';
 import { checkUserByPhone } from '../../../gql/mutation/auth/CheckUserByPhone';
 import Input from '../../UI/areas/Input/Input';
-import { useAppDispatch } from '../../../redux/hooks';
-import { setUser } from '../../../redux/slices/userSlice';
+import { REGISTER } from '../../../gql/mutation/auth/Register';
+import { VALIDATE_SMS_CODE } from '../../../gql/mutation/auth/ValidateSmsCode';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 
 
-const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeModal }: any) => {
+const RegisterUserModal = ({ closeModal, btnCancelClick, setIsAuthModal }: any) => {
 
     const dispatcher = useAppDispatch()
 
-    const [getSmsCode, error] = useMutation(GET_SMS_CODE)
-    const [checkUser] = useMutation(checkUserByPhone)
+    const phone = useAppSelector(state => state.user.data?.phone);
+
+    const navigate = useNavigate()
+
+    const [sendCode] = useMutation(VALIDATE_SMS_CODE)
+
 
     /** Начальные значения */
     const initialValues = {
-        phone: '',
+        phone: phone,
+        code: "",
     };
 
     /** Схема валидации */
@@ -50,21 +57,11 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
         },
     });
 
-    const onChangePhone = (event: any) => {
-        handleChange({ target: { name: "phone", value: event.target.value } })
-    }
-
-
     async function handleSubmit() {
         let response;
-        response = await checkUser({ variables: { phone: values.phone } })
-        if (!response.data.checkUserByPhone) {
-            response = await getSmsCode({ variables: { phone: values.phone } })
-            if (response.data.getSmsCode) {
-                dispatcher(setUser({phone: values.phone}))
-              //  btnCancelClick()
-              //  setIsCodeModal(true)
-            }
+        response = await sendCode({ variables: { phone: values.phone } })
+        if (response.data.getSmsCode) {
+
         }
     }
 
@@ -73,7 +70,9 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
         setIsAuthModal(true)
     }
 
-    const isPhoneValid = (values.phone.match(/\d/g)?.join('')[1] === '9' && (values.phone.match(/\d/g)?.join('')?.length == 11)) || !values.phone[4]
+    const onChangeCode = (event: any) => {
+        handleChange({ target: { name: "code", value: event.target.value } })
+    }
 
     return (
         <ModalWithBackground
@@ -83,25 +82,31 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
         >
             <div className={classes.modal}>
                 <div className={classes.modal_header}>
-                    <h3>Регистрация</h3>
+                    <h3>Введите SMS код</h3>
                     <span className={classes.modal_header_btn_return}>Вернуться</span>
                 </div>
                 <form className={classes.modal_form}>
-                    <p>С помощью телефона</p>
                     <Input
-                        name="phone"
-                        placeholder='+7'
-                        id="phone"
-                        mask={"+7 (999) 999-99-99"}
-                        value={values.phone}
-                        onChange={(event: any) => onChangePhone(event)}
+                        label={`Код отправлен на номер +7 900 000-00-00`}
+                        name="code"
+                        placeholder=''
+                        id="code"
+                        className={classes.modal_input}
+                        mask={"999999"}
+                        value={values.code}
+                        onChange={(event: any) => onChangeCode(event)}
                         required
                     />
+                    <div className={classes.modal_form_link_gray} onClick={btnCancelClick}>Повторно запросить
+                        <span
+                            className={classes.modal_form_link_sms}
+                        > SMS код</span>
+                    </div>
                 </form>
                 <button
                     onClick={handleSubmit}
                     className={classes.modal_form_btn}
-                >Получить SMS код</button>
+                >Готово</button>
             </div>
             <div className={classes.modal_form_link_wrp}>
                 <div className={classes.modal_form_link} onClick={handleLogin}>Я уже зарегистрирован</div>
@@ -110,5 +115,5 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
     );
 };
 
-export default RegisterModal;
+export default RegisterUserModal;
 

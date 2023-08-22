@@ -11,6 +11,7 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 140%;
+    cursor: default;
 }
 .style__flexbox{
     display:flex;

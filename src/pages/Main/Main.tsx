@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react'
 import '../../assets/css/main.css';
-import Header from '../../components/Header/Header';
+
 
 
 function Main() {
-
-
-
 
     return (
         <div>

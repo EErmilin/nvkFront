@@ -1,20 +1,11 @@
-.DarkBackground {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 15;
+.wrapper {
+  border-radius: 20px;
+  background: var(--white, #FFF);
 
-  overflow: auto;
+  height: 800px;
+  flex-shrink: 0;
 
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-
-  width: 100vw;
-  height: calc(var(--vh, 1vh) * 100);
-
-  padding: 15px;
-
-  background-color: rgba(0, 0, 0, .4);
-  animation: toggleDarkBackground .2s ease-in;
+  @media(min-width: 992px) {
+    border-radius: 20px;
+  }
 }

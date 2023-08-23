@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import AuthModal from './components/modals/AuthModal/AuthModal';
 import ConfirmSmsCodeModal from './components/modals/ConfirmSmsCodeModal/ConfirmSmsCodeModal';
 import RegisterModal from './components/modals/RegisterModal/RegisterModal';
+import UserRegisterModal from './components/modals/UserRegisterModal/UserRegisterModal';
 import WrapperComponent from './components/Wrappers/WrapperComponent/WrapperComponent';
 import useToggleVisibility from './hooks/useToggleVisibility';
 import { useAppSelector } from './redux/hooks';
@@ -27,6 +28,9 @@ function App() {
   /** Модалка ввода кода */
   const [isCodeModal, setIsCodeModal, closeIsCodeModal] = useToggleVisibility(false)
 
+  /** Модалка ввода данных полльзователя */
+  const [isUserRegisterModal, setIsUserRegisterModall, closeIsUserRegisterModal] = useToggleVisibility(false)
+
   const listRoutes = getListRoute(routes)
 
   const templateAuthModal = isAuthModal && (
@@ -40,18 +44,26 @@ function App() {
     <RegisterModal
       closeModal={closeIsRegisterModal}
       btnCancelClick={setIsRegisterModal}
-      setIsAuthModal={setIsAuthModal} 
-      setIsCodeModal={setIsCodeModal}/>
+      setIsAuthModal={setIsAuthModal}
+      setIsCodeModal={setIsCodeModal} />
   )
 
   const templateCodeModal = isCodeModal && (
     <ConfirmSmsCodeModal
       closeModal={closeIsCodeModal}
       btnCancelClick={setIsCodeModal}
+      setIsUserRegisterModal={setIsUserRegisterModall}
       setIsAuthModal={setIsAuthModal} />
   )
 
-  
+  const templateUserRegisterModal = isUserRegisterModal && (
+    <UserRegisterModal
+      closeModal={closeIsUserRegisterModal}
+      btnCancelClick={setIsUserRegisterModall}
+      setIsAuthModal={setIsAuthModal} />
+  )
+
+
 
   return (
     <div className="App">
@@ -65,6 +77,7 @@ function App() {
       {templateCodeModal}
       {templateAuthModal}
       {templateRegisterModal}
+      {templateUserRegisterModal}
     </div>
   )
 }

@@ -1,8 +1,9 @@
 .Input {
-  
+
   display: flex;
   width: 100%;
   position: relative;
+
   .labelWrap {
 
     display: flex;
@@ -35,7 +36,7 @@
 
     &:focus {
       outline: none;
-          border: none;
+      border: none;
     }
 
   }
@@ -104,12 +105,13 @@
   position: absolute;
   display: flex;
   cursor: pointer;
-    width: 24px;
-    height: 24px;
-    top: 0;
-    bottom: 0;
- right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: center/cover no-repeat url("../../../../assets/img/hide.svg");
+  width: 24px;
+  height: 24px;
+  top: 0;
+  bottom: 0;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: center/cover no-repeat url("../../../../assets/img/hide.svg");
+
 }

@@ -1,30 +1,19 @@
-import React, { Dispatch, SetStateAction, useEffect, useMemo, useRef, useState } from 'react';
-import ReactInputMask from 'react-input-mask';
+import { useMemo } from 'react';
 import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
 import { useFormik } from "formik";
 import { object, string } from "yup";
 import classes from './ConfirmSmsCodeModal.module.scss';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
-import { LOGIN } from '../../../gql/mutation/auth/Login';
-import { PROFILE } from '../../../gql/query/user/Profile';
-import { checkUserByPhone } from '../../../gql/mutation/auth/CheckUserByPhone';
+import { useMutation } from '@apollo/client';
 import Input from '../../UI/areas/Input/Input';
-import { REGISTER } from '../../../gql/mutation/auth/Register';
 import { VALIDATE_SMS_CODE } from '../../../gql/mutation/auth/ValidateSmsCode';
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { useAppSelector } from '../../../redux/hooks';
 
 
-const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal }: any) => {
-
-    const dispatcher = useAppDispatch()
+const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsUserRegisterModal }: any) => {
 
     const phone = useAppSelector(state => state.user.data?.phone);
 
-    const navigate = useNavigate()
-
     const [sendCode] = useMutation(VALIDATE_SMS_CODE)
-
 
     /** Начальные значения */
     const initialValues = {
@@ -59,9 +48,10 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal }: any
 
     async function handleSubmit() {
         let response;
-        response = await sendCode({ variables: { phone: values.phone } })
-        if (response.data.getSmsCode) {
-
+        response = await sendCode({ variables: { phone: values.phone, code: values.code } })
+        if (response.data) {
+            btnCancelClick()
+            setIsUserRegisterModal(true)
         }
     }
 
@@ -87,7 +77,7 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal }: any
                 </div>
                 <form className={classes.modal_form}>
                     <Input
-                        label={`Код отправлен на номер +7 900 000-00-00`}
+                        label={`Код отправлен на номер ${phone}`}
                         name="code"
                         placeholder=''
                         id="code"

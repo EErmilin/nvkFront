@@ -6,7 +6,7 @@ interface WrapperComponentProps {
 function WrapperComponent ({children}: WrapperComponentProps) {
 
     return (
-            <div className="slim-container style__flexbox style__flexdirection-column">
+            <div className="container style__flexbox style__flexdirection-column">
                 {children}
             </div>
     )

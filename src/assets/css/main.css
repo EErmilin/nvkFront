@@ -87,6 +87,13 @@ header{
     margin-bottom:200px;
     gap:20px;
 }
+.container{
+    width:100%;
+    margin:auto;
+    margin-top:20px;
+    margin-bottom:200px;
+    gap:20px;
+}
 .carousel-block{
     width:100%;
     border-radius: 30px;

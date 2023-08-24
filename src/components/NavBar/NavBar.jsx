@@ -12,10 +12,10 @@ function NavBar() {
         let arrLinks = [
             { link: "profile", title: "Редактировать профиль" },
             { link: "changePassword", title: "Сменить пароль" },
-            { link: "support", title: "Мои хэштеги" },
+            { link: "hashtags", title: "Мои хэштеги" },
             { link: "settings", title: "Настройки" },
             { link: "payment", title: "Платежные данные" },
-            { link: "hashtags", title: "Тех.поддержка" },
+            { link: "support", title: "Тех.поддержка" },
             { link: "favorites", title: "Избранное" },
             { link: "blog", title: "Стать блогером" },
         ]

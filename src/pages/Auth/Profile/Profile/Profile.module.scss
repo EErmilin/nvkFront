@@ -2,9 +2,17 @@
   padding-top: 50px;
 }
 
-.info {
+.user {
   display: flex;
   align-items: center;
   gap: 30px;
   text-align: start;
+  margin-bottom: 50px;
 }
+
+.info {
+  display: grid;
+  grid-gap: 25px;
+  grid-template-columns: repeat(2, 1fr);
+}
+

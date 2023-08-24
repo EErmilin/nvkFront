@@ -1,0 +1,43 @@
+.video-pleer-wraper {
+  position: relative;
+  width: 878px;
+  height: 500px;
+}
+
+.controls {
+  position: absolute;
+  width: calc(878px - 60px);
+  bottom: 0;
+  left: 0;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-pleer-wraper:hover .controls {
+  opacity: 1;
+}
+
+.controls * {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.react-player {
+  height: 500px !important;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: filter 0.3s ease;
+}
+
+.video-pleer-wraper:hover .react-player{
+  filter: brightness(50%);
+}
+
+.reverse {
+  transform: rotate(-90deg);
+}

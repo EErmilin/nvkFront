@@ -40,8 +40,8 @@ function App() {
     <RegisterModal
       closeModal={closeIsRegisterModal}
       btnCancelClick={setIsRegisterModal}
-      setIsAuthModal={setIsAuthModal} 
-      setIsCodeModal={setIsCodeModal}/>
+      setIsAuthModal={setIsAuthModal}
+      setIsCodeModal={setIsCodeModal} />
   )
 
   const templateCodeModal = isCodeModal && (
@@ -51,7 +51,7 @@ function App() {
       setIsAuthModal={setIsAuthModal} />
   )
 
-  
+
 
   return (
     <div className="App">

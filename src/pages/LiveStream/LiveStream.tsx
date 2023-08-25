@@ -1,10 +1,19 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import "./LiveStream.css";
 
-import LiveStreamCard from '../../components/UI/cards/LiveStreamCard';
-import { ILive } from '../../models/LiveStream';
 import VideoPlayer from '../../components/VideoPleer/VideoPlayer';
+
+
+import { ILive } from '../../models/LiveStream';
 import { IProgram } from '../../models/Program';
+
+import LiveStreamCard from '../../components/UI/cards/LiveStreamCard';
+
+import { LIVESTEAMS } from '../../gql/query/livestreams/LiveStreams';
+import { getUpdateClient } from '../../requests/updateHeaders';
+
+
+
 
 
 const TEST_PROGRAMS: IProgram[] = [
@@ -89,6 +98,26 @@ const DAYS = [
 export default function LiveStream() {
 
   const [selectedStreamIndex, setSelectedStreamIndex] = useState(0);
+
+  useEffect(() => {
+
+
+    const fetchStreams = async () => {
+      try {
+        const client = await getUpdateClient();
+
+        const response = await client.query({
+          query: LIVESTEAMS
+        });
+        console.log({ response })
+      } catch (e) {
+        console.log('fetchStreamsError:', e);
+      }
+    }
+
+    fetchStreams();
+  }, []);
+
 
   return (
     <div className='stream'>

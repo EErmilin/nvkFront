@@ -25,6 +25,7 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 140%;
+    cursor: pointer;
     /* 22.4px */
   }
 }
@@ -52,6 +53,6 @@
     font-weight: 600;
     line-height: 140%;
     flex-shrink: 0;
-    filter: drop-shadow(1px 1px 4px #F6A80B);
+    filter: drop-shadow(1px 1px 2px #F6A80B);
   }
 }

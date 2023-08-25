@@ -36,6 +36,7 @@
   box-sizing: border-box;
 
   &_item {
+    
 
     margin: 14px 0;
     position: relative;
@@ -65,14 +66,17 @@
       line-height: 140%;
       &:after {
         position: absolute;
-        content: '';
-        background: center/contain no-repeat url("../../assets/img/active.svg");
-        width: 4px;
-        height: 50px;
         right: 0;
+        content:"";
+        display:block;
+        width:4px;
+        height:50px;
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+        background: var(--yellow, #F6A80B);
+        position:absolute;
 
       }
     }
-
   }
 }

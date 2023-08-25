@@ -1,8 +1,22 @@
 .Input {
-  
-  display: flex;
+
   width: 100%;
   position: relative;
+  background: var(--2-grey, #F8F8F8);
+  border-radius: 15px;
+  padding: 19px 20px;
+  
+  &_withLabel {
+    padding: 10px 20px 15px;
+    height: 70px;
+  }
+  &_label {
+    color: var(--grey-text, #BBB);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 140%; 
+    margin-bottom: 3px;
+  }
   .labelWrap {
 
     display: flex;
@@ -16,11 +30,11 @@
 
 
   .InputWrap {
-    background: var(--2-grey, #F8F8F8) !important;
+    background: var(--2-grey, #F8F8F8);
     display: flex;
     width: 100%;
     border-radius: 15px;
-    padding: 19px 20px;
+
     align-items: flex-start;
     border: none;
     font-size: 16px;
@@ -35,7 +49,7 @@
 
     &:focus {
       outline: none;
-          border: none;
+      border: none;
     }
 
   }
@@ -104,12 +118,13 @@
   position: absolute;
   display: flex;
   cursor: pointer;
-    width: 24px;
-    height: 24px;
-    top: 0;
-    bottom: 0;
- right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: center/cover no-repeat url("../../../../assets/img/hide.svg");
+  width: 24px;
+  height: 24px;
+  top: 0;
+  bottom: 0;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: center/cover no-repeat url("../../../../assets/img/hide.svg");
+
 }

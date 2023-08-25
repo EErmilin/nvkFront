@@ -1,0 +1,20 @@
+.wrp {
+  padding-top: 50px;
+  gap: 25px;
+  display: grid;
+  width: 1000px;
+}
+
+.info {
+  display: flex;
+  gap: 25px;
+}
+
+.title {
+  text-align: start;
+  color: var(--black-text, #2F2F30);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 140%;
+  margin-bottom: 5px;
+}

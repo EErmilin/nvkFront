@@ -6,7 +6,7 @@ import '../../assets/css/main.css';
 function Main() {
 
     return (
-        <div>
+        <div className="slim-container">
             <div >
                 <div className="carousel-block">
                     <div className="carousel-wrapper" id="carousel-wrapper">

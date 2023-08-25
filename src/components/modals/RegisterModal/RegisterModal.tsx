@@ -1,28 +1,27 @@
-import React, { Dispatch, SetStateAction, useEffect, useMemo, useRef, useState } from 'react';
-import ReactInputMask from 'react-input-mask';
+import { useMemo } from 'react';
 import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
 import { useFormik } from "formik";
 import { object, string } from "yup";
 import classes from './RegisterModal.module.scss';
-import { NavLink } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { GET_SMS_CODE } from '../../../gql/mutation/auth/GetSmsCode';
 import { checkUserByPhone } from '../../../gql/mutation/auth/CheckUserByPhone';
 import Input from '../../UI/areas/Input/Input';
-import { useAppDispatch } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { setUser } from '../../../redux/slices/userSlice';
 
 
 const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeModal }: any) => {
 
     const dispatcher = useAppDispatch()
+    const phone = useAppSelector(state => state.user.data?.phone);
 
     const [getSmsCode, error] = useMutation(GET_SMS_CODE)
     const [checkUser] = useMutation(checkUserByPhone)
 
     /** Начальные значения */
     const initialValues = {
-        phone: '',
+        phone: phone ??  "",
     };
 
     /** Схема валидации */
@@ -62,8 +61,8 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
             response = await getSmsCode({ variables: { phone: values.phone } })
             if (response.data.getSmsCode) {
                 dispatcher(setUser({phone: values.phone}))
-              //  btnCancelClick()
-              //  setIsCodeModal(true)
+                btnCancelClick()
+                setIsCodeModal(true)
             }
         }
     }

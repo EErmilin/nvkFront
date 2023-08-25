@@ -1,0 +1,28 @@
+.react-datepicker-wrapper {
+  display: flex;
+  width: 100%;
+  position: relative;
+  
+  & input{
+    position: relative;
+    box-sizing: border-box;
+    background: var(--2-grey, #F8F8F8) !important;
+    display: flex;
+    width: 100%;
+    border-radius: 15px;
+    padding: 19px 20px;
+    align-items: flex-start;
+    border: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+  }
+
+}
+.react-datepicker {
+  display: flex;
+  width: 100%;
+  z-index: 999;
+  
+}

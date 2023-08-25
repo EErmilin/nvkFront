@@ -1,0 +1,27 @@
+.wrap {
+  width: fit-content;
+  margin: auto;
+  background: var(--white, #FFF);
+  border-radius: 20px;
+width: 1264px;
+  min-height: 800px;
+}
+
+.container {
+  display: grid;
+  grid-gap: 50px;
+  grid-template-columns: 267px 1fr;
+  min-height: 800px;
+
+}
+
+.navbar {
+  position: relative;
+  height: 100%;
+  padding:  30px 0;
+  border-right: 1px solid #EFEFF0;
+}
+
+.content {
+  padding: 30px;
+}

@@ -1,13 +1,11 @@
-import React, { Dispatch, SetStateAction, useEffect, useMemo, useRef, useState } from 'react';
-import ReactInputMask from 'react-input-mask';
+import { useMemo } from 'react';
 import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
 import { useFormik } from "formik";
 import { object, string } from "yup";
 import classes from './AuthModal.module.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { LOGIN } from '../../../gql/mutation/auth/Login';
-import { PROFILE } from '../../../gql/query/user/Profile';
 import { checkUserByPhone } from '../../../gql/mutation/auth/CheckUserByPhone';
 import Input from '../../UI/areas/Input/Input';
 import { useAppDispatch } from '../../../redux/hooks';
@@ -18,7 +16,7 @@ import { setLogged, setToken } from '../../../redux/slices/authSlice';
 const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
 
     const navigate = useNavigate()
-    const { loading, error, } = useQuery(PROFILE)
+
     const [checkUser] = useMutation(checkUserByPhone)
     const [login] = useMutation(LOGIN)
     const dispatcher = useAppDispatch()

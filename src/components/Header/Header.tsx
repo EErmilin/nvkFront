@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react'
+import classes from './Header.module.scss';
+import { NavLink, useNavigate } from 'react-router-dom';
 import '../../assets/css/main.css';
 
-
 function Header() {
+    const navigate = useNavigate()
     return (
         <header>
             <div className="header-container style__flexbox style__flex-jc-sb">
                 <div className="left-header style__flexbox style__flex-ai-c">
-                    <a href="/" className="logotype">
-                        <img src="../../assets/img/logotype.svg" alt="logotype" />
-                    </a>
+                    <NavLink to="/" className="logotype">
+                        <div className={classes.header_logo}></div>
+                    </NavLink>
                     <ul className="header-menu style__flexbox style__flex-ai-c">
                         <li className="active"><a href="">Лента</a></li>
                         <li><a href="">Новости</a></li>
@@ -28,7 +29,7 @@ function Header() {
                 </div>
                 <div className="right-header style__flexbox style__flex-ai-c">
                     <div className="header-search"><span>Поиск</span></div>
-                    <div className="header-profile"><span>Профиль</span></div>
+                    <div className="header-profile" onClick={() => navigate("/personal-area")}><span>Профиль</span></div>
                 </div>
             </div>
         </header>

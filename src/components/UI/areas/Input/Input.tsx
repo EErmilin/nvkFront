@@ -29,6 +29,7 @@ function Input({
     classNameWrp,
     onChange,
     label,
+    labelInput,
 }: any) {
     /** Состояние для показа пороля */
     const [passwordShow, setPasswordShow] = useState(true)
@@ -37,6 +38,9 @@ function Input({
 
     /** Формируем css классы */
     const  clsInputWrap= [classes.Input];
+    if(labelInput){
+        clsInputWrap.push(classes.Input_withLabel);
+    }
     if (classNameWrp) {
         clsInputWrap.push(classNameWrp);
     }
@@ -74,6 +78,7 @@ function Input({
         <>
            {labelTemplate}
             <div className={clsInputWrap.join(' ')}>
+            {labelInput && <div className={classes.Input_label}>{labelInput}</div>}
                 {input}
                 {eyeButton}
             </div>

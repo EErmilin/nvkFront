@@ -1,5 +1,7 @@
 .wrp {
   padding-top: 50px;
+  padding-bottom: 20px;
+
 }
 
 .user {
@@ -8,11 +10,48 @@
   gap: 30px;
   text-align: start;
   margin-bottom: 50px;
+
+  &_name {
+    color: var(--black-text, #2F2F30);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    margin-bottom: 6px;
+    /* 30.8px */
+  }
+
+  &_link {
+    color: var(--blue, #397FEF);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+    /* 22.4px */
+  }
 }
 
 .info {
   display: grid;
   grid-gap: 25px;
   grid-template-columns: repeat(2, 1fr);
-}
+  margin-bottom: 230px;
 
+  &_btn {
+    display: inline-flex;
+    cursor: pointer;
+    padding: 19px 45px;
+    justify-content: center;
+    align-items: center;
+    width: 275px;
+    height: 60px;
+    gap: 10px;
+    border-radius: 15px;
+    background: var(--yellow, #F6A80B);
+    border: none;
+    color: var(--white, #FFF);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 140%;
+    flex-shrink: 0;
+    filter: drop-shadow(0px 1px 4px #F6A80B);
+  }
+}

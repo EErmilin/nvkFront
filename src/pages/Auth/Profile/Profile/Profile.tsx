@@ -1,37 +1,80 @@
 
+import { useFormik } from "formik";
+import { useMemo } from "react";
 import Avatar from "../../../../components/Avatar/Avatar";
 import Input from "../../../../components/UI/areas/Input/Input";
+import { useAppSelector } from "../../../../redux/hooks";
 import classes from "./Profile.module.scss";
+import { object, string } from "yup";
+import moment from "moment";
 
 const fakeAvatar = require("../../../../assets/img/3c6646022a18ad8353e3d52fdda6c2da.png")
 
-function Profile ({}){
+function Profile({ }) {
+    const userData = useAppSelector(state => state.user.data);
+    console.log(userData)
 
 
+    const initialValues = {
+        phone: userData?.phone ?? "",
+        firstname: userData?.firstname ?? "",
+        lastname: userData?.lastname ?? "",
+        birthdate: moment(userData?.birthdate).format("DD.MM.YYYY") ?? "",
+        email: userData?.email ?? "",
+    };
+
+    /** Схема валидации */
+    const validationSchema = useMemo(
+        () =>
+            object().shape({
+
+            }),
+        []
+    );
+
+    /** Стейт полей и правила */
+    const {
+        values,
+        handleChange,
+        touched,
+    } = useFormik({
+        initialValues,
+        validateOnMount: true,
+        validationSchema,
+        onSubmit: (values) => {
+            console.log(values)
+        },
+    });
 
     return (
         <div className={classes.wrp}>
-            <div className={classes.user}>
-                <Avatar
-                    width={100}
-                    height={100}
-                    avatar={fakeAvatar}
-                    className={classes.avatar}
-                ></Avatar>
-                <div>
-                    <h3>Катерина Моисеева</h3>
-                    <span>Изменить фото профиля</span>
-                </div>
+            <>
+                <div className={classes.user}>
+                    <Avatar
+                        width={100}
+                        height={100}
+                        avatar={userData?.avatar}
+                        className={classes.avatar}
+                    ></Avatar>
+                    <div>
+                        <h3 className={classes.user_name}>{userData?.firstname} {userData?.lastname}</h3>
+                        <span className={classes.user_link}>Изменить фото профиля</span>
+                    </div>
 
                 </div>
                 <div className={classes.info}>
-                <Input></Input>
-                <Input></Input>
-                <Input></Input>
-                <Input></Input>
-                <Input></Input>
+                    <Input value={values.firstname} labelInput={"Имя"}></Input>
+                    <Input value={values.lastname}  labelInput={"Фамилия"}> </Input>
+                    <Input value={values.birthdate} labelInput={"День рождения"} > </Input>
+                    <Input value={values.phone} mask={"+7 999 999 99-99"}  labelInput={"Номер телефона"}></Input>
+                    <Input value={values.email} labelInput={"Эл.Почта"}></Input>
                 </div>
-               
+            </>
+            <button
+                //onClick={handleSubmit}
+                className={classes.info_btn}
+            >Сохранить изменения</button>
+
         </div>
     )
 }

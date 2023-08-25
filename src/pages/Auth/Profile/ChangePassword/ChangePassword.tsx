@@ -1,4 +1,5 @@
 import Input from "../../../../components/UI/areas/Input/Input";
+import ButtonDefault from "../../../../components/UI/btns/Button/Button";
 import classes from "./ChangePassword.module.scss";
 
 
@@ -30,10 +31,12 @@ function ChangePassword({ }) {
                     mask={''}
                     type={'password'}></Input>
             </div>
-            <button
-                //onClick={handleSubmit}
-                className={classes.btn}
-            >Сохранить изменения</button>
+            <div className={classes.btn_wrp}>
+                <ButtonDefault
+                    //onClick={handleSubmit}
+                    title={"Сменить пароль"}
+                />
+            </div>
         </div>
     )
 }

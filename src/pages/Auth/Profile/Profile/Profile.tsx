@@ -7,6 +7,7 @@ import { useAppSelector } from "../../../../redux/hooks";
 import classes from "./Profile.module.scss";
 import { object, string } from "yup";
 import moment from "moment";
+import ButtonDefault from "../../../../components/UI/btns/Button/Button";
 
 const fakeAvatar = require("../../../../assets/img/3c6646022a18ad8353e3d52fdda6c2da.png")
 
@@ -64,17 +65,18 @@ function Profile({ }) {
                 </div>
                 <div className={classes.info}>
                     <Input value={values.firstname} labelInput={"Имя"}></Input>
-                    <Input value={values.lastname}  labelInput={"Фамилия"}> </Input>
+                    <Input value={values.lastname} labelInput={"Фамилия"}> </Input>
                     <Input value={values.birthdate} labelInput={"День рождения"} > </Input>
-                    <Input value={values.phone} mask={"+7 999 999 99-99"}  labelInput={"Номер телефона"}></Input>
+                    <Input value={values.phone} mask={"+7 999 999 99-99"} labelInput={"Номер телефона"}></Input>
                     <Input value={values.email} labelInput={"Эл.Почта"}></Input>
                 </div>
             </>
-            <button
-                //onClick={handleSubmit}
-                className={classes.info_btn}
-            >Сохранить изменения</button>
-
+            <div className={classes.btn_wrp}>
+                <ButtonDefault
+                    //onClick={handleSubmit}
+                    title={"Сохранить изменения"}
+                />
+            </div>
         </div>
     )
 }

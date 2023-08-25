@@ -1,3 +1,40 @@
 .wrp {
-  padding-top: 50px;
+  padding-top: 20px;
+  position: relative;
+  height: 100%;
+}
+
+.title {
+  text-align: start;
+  color: var(--black-text, #2F2F30);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 140%;
+  /* 30.8px */
+  margin-bottom: 30px;
+}
+
+.link {
+  color: var(--blue, #397FEF);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  /* 19.6px */
+  text-decoration-line: underline;
+  cursor: pointer;
+  margin-left: 12px;
+}
+
+.hashtags{
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.btn_wrp {
+  position: absolute;
+  bottom: 0;
 }

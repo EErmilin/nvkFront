@@ -24,15 +24,16 @@ function NavBar() {
             let activePage = page['*']
             activePage = activePage.split("/")[0]
             let currentRoute = elem.link.split('/')[0]
+            console.log(currentRoute == activePage)
             return (
                 <li
-                    className={[classes.list_item, (currentRoute === activePage ? classes.list_item_active : '')].join(' ')}
+                    className={[classes.list_item].join(' ')}
                     key={id} >
                     <NavLink
-                        className={classes.link}
+                        className={[(currentRoute == activePage ? classes.list_item_active : classes.list_item_noactive)].join(' ')}
                         to={`/personal-area/${elem.link}`}
                     >
-                        <p>{elem.title}</p>
+                        {elem.title}
                     </NavLink>
                 </li>
             )

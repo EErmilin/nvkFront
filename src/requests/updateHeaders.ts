@@ -2,10 +2,11 @@ import {HttpLink} from '@apollo/client';
 import {setContext} from '@apollo/client/link/context';
 import {apolloClient} from '../apolloClient';
 import {GRAPHQL_URL} from '../api/config';
+import localStorage from 'redux-persist/es/storage';
 
 const getToken = async () => {
   try {
-    let data = null//await AsyncStorage.getItem('persist:root');
+    let data = await localStorage.getItem('persist:root');
     if (data !== null) {
       let jsonData = JSON.parse(data);
       return JSON.parse(jsonData.auth).token;
@@ -18,7 +19,8 @@ const getToken = async () => {
 };
 
 export const getUpdateClient = async (inToken?: string | null) => {
-  let token = await getToken();
+
+  let token = await getToken()
 
   const authLink = setContext(async (_, {headers}) => {
     return {

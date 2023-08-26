@@ -16,6 +16,10 @@
   font-weight: 600;
   line-height: 140%;
   color: white;
+  padding: 19px 45px;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(1px 1px 2px #F6A80B);
 
   &_disabled {
     letter-spacing: 1px;
@@ -30,11 +34,9 @@
     border-radius: 15px;
     background: var(--2-grey, #F8F8F8);
     color: var(--grey-text, #BBB);
+    font-size: 16px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
   }
-
-
-  padding: 19px 45px;
-  justify-content: center;
-  align-items: center;
-  filter: drop-shadow(1px 1px 2px #F6A80B);
 }

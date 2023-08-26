@@ -58,8 +58,8 @@ function Profile({ }) {
                         className={classes.avatar}
                     ></Avatar>
                     <div>
-                        <h3 className={classes.user_name}>{userData?.firstname} {userData?.lastname}</h3>
-                        <span className={classes.user_link}>Изменить фото профиля</span>
+                        <div className={classes.user_name}>{userData?.firstname} {userData?.lastname}</div>
+                        <div className={classes.user_link}>Изменить фото профиля</div>
                     </div>
 
                 </div>

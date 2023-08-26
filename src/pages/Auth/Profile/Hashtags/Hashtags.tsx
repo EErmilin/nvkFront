@@ -9,7 +9,7 @@ function Hashtags({ }) {
 
     return (
         <div className={classes.wrp}>
-            <h3 className={classes.title}>Мои хэштеги<span className={classes.link}>Изменить</span></h3>
+            <h2>Мои хэштеги<span className={classes.link}>Изменить</span></h2>
             <span>Хэштеги нужны для отфильтровки новостей. По ней будут что-то показывать </span>
             <div className={classes.hashtags}>
                 <HashtagBtn hashtag={"Якутс"} />

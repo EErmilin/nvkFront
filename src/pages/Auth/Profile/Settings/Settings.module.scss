@@ -1,3 +1,27 @@
-.wrp {
-  padding-top: 50px;
+.settings {
+  padding-top: 20px;
+  display: grid;
+
+  &_field {
+    border-bottom: 1px solid #EFEFF0;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &_email {
+      margin-top: 10px;
+    }
+  }
+
+  &_logout {
+    color: var(--red, #FF1C45);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+    /* 22.4px */
+    text-decoration-line: underline;
+    cursor: pointer;
+  }
 }

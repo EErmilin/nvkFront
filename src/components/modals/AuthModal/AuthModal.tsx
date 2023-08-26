@@ -88,7 +88,7 @@ const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
         >
             <div className={classes.modal}>
                 <div className={classes.modal_header}>
-                    <h3>Вход</h3>
+                    <h2>Вход</h2>
                     <span className={classes.modal_header_btn_return}>Вернуться</span>
                 </div>
                 <form className={classes.modal_form}>

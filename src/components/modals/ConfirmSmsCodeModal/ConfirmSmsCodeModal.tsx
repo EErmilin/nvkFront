@@ -72,12 +72,12 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
         >
             <div className={classes.modal}>
                 <div className={classes.modal_header}>
-                    <h3>Введите SMS код</h3>
+                    <h2>Введите SMS код</h2>
                     <span className={classes.modal_header_btn_return}>Вернуться</span>
                 </div>
                 <form className={classes.modal_form}>
+                <div className={classes.modal_form_text}>Код отправлен на номер<span className={classes.modal_form_text_gray}> {phone}</span></div>
                     <Input
-                        label={`Код отправлен на номер ${phone}`}
                         name="code"
                         placeholder=''
                         id="code"
@@ -102,6 +102,7 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
                 <div className={classes.modal_form_link} onClick={handleLogin}>Я уже зарегистрирован</div>
             </div>
         </ModalWithBackground>
+        
     );
 };
 

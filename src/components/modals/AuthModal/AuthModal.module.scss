@@ -1,11 +1,12 @@
 .modal {
   width: 100%;
-     padding-bottom: 50px;
-    border-bottom: 1px solid #EFEFF0;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #EFEFF0;
+
   &_form {
     display: flex;
     flex-direction: column;
-    gap: 20px 5px;
+    gap: 20px;
     justify-content: left;
     align-items: flex-start;
 
@@ -16,10 +17,9 @@
       font-size: 14px;
       font-style: normal;
       font-weight: 400;
-      margin-bottom: 10px;
       text-decoration: none;
     }
-    
+
     &_btn {
       display: flex;
       width: 100%;
@@ -33,6 +33,7 @@
       color: white;
       font-size: 16px;
       font-weight: 600;
+      margin-top: 30px;
       cursor: pointer;
     }
 
@@ -43,12 +44,14 @@
       font-style: normal;
       font-weight: 600;
       cursor: pointer;
+
       &_gray {
         color: #BBB;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
-        line-height: 140%; /* 22.4px */
+        line-height: 140%;
+        /* 22.4px */
         text-decoration: none;
         cursor: pointer;
       }
@@ -61,9 +64,6 @@
       }
     }
   }
-
-
-
 
   &_header {
     display: flex;
@@ -93,19 +93,4 @@
       }
     }
   }
-
-
-
-}
-
-.closeBtn {
-  z-index: -5;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  outline: none;
-  border: none;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
 }

@@ -7,7 +7,7 @@ function ChangePassword({ }) {
 
     return (
         <div className={classes.wrp}>
-            <h3 className={classes.title}>Сменить пароль</h3>
+            <h2>Сменить пароль</h2>
             <div className={classes.info}>
                 <Input
                     classNameWrp={classes.input}

@@ -11,7 +11,7 @@ function Support({ }) {
 
     return (
         <div className={classes.wrp}>
-            <h3 className={classes.title}>Тех.Поддержка</h3>
+            <h2 className={classes.title}>Тех.Поддержка</h2>
             <div className={classes.info}>
                 <Input></Input>
                 <Input></Input>

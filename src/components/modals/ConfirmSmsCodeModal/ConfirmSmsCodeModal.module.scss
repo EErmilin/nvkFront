@@ -1,6 +1,8 @@
 .modal {
   width: 100%;
 
+  padding-bottom: 50px;
+
   &_input {
     text-align: center;
   }
@@ -11,16 +13,21 @@
     gap: 20px 5px;
     justify-content: left;
     align-items: flex-start;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
     border-bottom: 1px solid #EFEFF0;
 
+    &_text {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      text-decoration: none;
+    }
 
     &_text_gray {
       color: var(--grey-text, #BBB);
       font-size: 14px;
       font-style: normal;
       font-weight: 400;
-      margin-bottom: 10px;
       text-decoration: none;
     }
 
@@ -66,6 +73,7 @@
       }
 
       &_wrp {
+        border-top: 1px solid #EFEFF0;
         display: flex;
         justify-content: center;
         gap: 60px;
@@ -73,10 +81,7 @@
       }
     }
   }
-
-
-
-
+  
   &_header {
     display: flex;
     justify-content: space-between;
@@ -105,19 +110,4 @@
       }
     }
   }
-
-
-
-}
-
-.closeBtn {
-  z-index: -5;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  outline: none;
-  border: none;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
 }

@@ -9,7 +9,7 @@ function PaymentData({ }) {
 
     return (
         <div className={classes.wrp}>
-            <h3 className={classes.title}>Платежные данные</h3>
+            <h2>Платежные данные</h2>
             <div className={classes.wrp_cards}>
                 <CardItem />
                 <CardItem />

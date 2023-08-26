@@ -1,4 +1,3 @@
-import Profile from "../pages/Auth/Profile/Profile";
 import LiveStream from "../pages/LiveStream/LiveStream";
 import Blog from "../pages/Auth/Profile/Blog/Blog";
 import ChangePassword from "../pages/Auth/Profile/ChangePassword/ChangePassword";

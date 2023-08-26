@@ -1,3 +1,9 @@
+.stream-list {
+  display: flex;
+  gap: 10px;
+}
+
+
 .live-stream-card {
   height: 105px;
   width: 212px;  

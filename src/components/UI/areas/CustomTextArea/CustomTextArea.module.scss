@@ -1,53 +1,36 @@
-
-
 .TextArea {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 15px;
+  background: var(--2-grey, #F8F8F8);
+
   label {
-    display: inline-block;
-    margin-bottom: 4px;
-    font-weight: normal;
-    font-size: 12px;
-    color: black;
+    z-index: 1;
+    color: var(--grey-text, #BBB);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 140%;
   }
 
-  
+
 
   &_wrap {
     & textarea {
-      border: 1px solid #DDE7ED;
-      border-radius: 4px;
+      min-height: 106px;
+      display: flex;
+      width: 100%;
+      align-items: flex-start;
+      gap: 10px;
+      border-radius: 15px;
+      background: var(--2-grey, #F8F8F8);
+      border: none;
       resize: none;
-    }
-  }
-  &.invalid {
 
-    textarea {
-      border: 1px solid red;
-      background: white;
-      color: red;
-    }
-    & > span {
-      display: inline-block;
-      margin-top: 8px;
-      color: red;
-      font-size: 12px;
-    }
-    .TextArea {
-      position: relative;
-
-      &::before {
-        position: absolute;
-        content: '';
-        top: 0;
-        bottom: 0;
-        right: 15px;
-        z-index: 1;
-        margin: auto 0;
-
-        width: 10px;
-        height: 10px;
-
-        //background: url('../../../../assets/svg/input/close-invalid.svg') center/contain no-repeat;
+      &:focus {
+        outline: none;
+        border: none;
       }
+
     }
   }
 }

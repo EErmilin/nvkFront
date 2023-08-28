@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { useCallback, useEffect } from 'react';
+import React, {useCallback, useEffect} from 'react'
 import { useDispatch } from 'react-redux';
 import { Routes } from 'react-router-dom';
 import './App.css';

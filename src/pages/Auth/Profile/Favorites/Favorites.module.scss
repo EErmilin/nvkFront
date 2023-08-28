@@ -1,3 +1,6 @@
-.wrp {
-  padding-top: 50px;
+.favorites {
+  padding-top: 20px;
+  &_titles{
+    justify-content:flex-start
+  }
 }

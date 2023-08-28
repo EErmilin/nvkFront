@@ -1,7 +1,10 @@
-.wrp {
+.profile {
   padding-top: 20px;
   position: relative;
+  flex-direction: column;
+  display:flex;
   height: 100%;
+  justify-content: space-between;
 
 }
 
@@ -35,10 +38,8 @@
   display: grid;
   grid-gap: 25px;
   grid-template-columns: repeat(2, 1fr);
-  margin-bottom: 230px;
 }
 
 .btn_wrp {
-  position: absolute;
-  bottom: 0;
+
 }

@@ -1,13 +1,24 @@
-.wrp {
-  padding-top: 50px;
-  gap: 25px;
-  display: grid;
-  width: 1000px;
+.support {
+  padding-top: 20px;
+  position: relative;
+  flex-direction: column;
+  display:flex;
+  height: 100%;
+  justify-content: space-between;
+  &_wrp{
+
+  }
 }
 
 .info {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 25px;
+
+  &_wrp {
+    display: grid;
+    gap: 25px;
+  }
 }
 
 .title {

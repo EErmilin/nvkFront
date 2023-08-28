@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { useFormik } from "formik";
 import { useMemo } from "react";
 import Avatar from "../../../../components/Avatar/Avatar";
@@ -48,8 +49,8 @@ function Profile({ }) {
     });
 
     return (
-        <div className={classes.wrp}>
-            <>
+        <div className={classes.profile}>
+            <div>
                 <div className={classes.user}>
                     <Avatar
                         width={100}
@@ -70,7 +71,7 @@ function Profile({ }) {
                     <Input value={values.phone} mask={"+7 999 999 99-99"} labelInput={"Номер телефона"}></Input>
                     <Input value={values.email} labelInput={"Эл.Почта"}></Input>
                 </div>
-            </>
+            </div>
             <div className={classes.btn_wrp}>
                 <ButtonDefault
                     //onClick={handleSubmit}

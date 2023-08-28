@@ -1,7 +1,17 @@
-.wrp {
+.hashtags {
   padding-top: 20px;
   position: relative;
+  flex-direction: column;
+  display:flex;
   height: 100%;
+  justify-content: space-between;
+  &_wrp{
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
 }
 
 .link {
@@ -16,15 +26,8 @@
   margin-left: 12px;
 }
 
-.hashtags{
-  display: flex;
-  gap: 15px;
-  margin-top: 30px;
-  width: 100%;
-  flex-wrap: wrap;
-}
+
 
 .btn_wrp {
-  position: absolute;
-  bottom: 0;
+
 }

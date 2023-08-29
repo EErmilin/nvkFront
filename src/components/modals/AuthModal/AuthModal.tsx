@@ -123,7 +123,7 @@ const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
             </div>
             <div className={classes.modal_form_link_wrp}>
                 <div className={classes.modal_form_link} onClick={handleRegister}>Регистрация</div>
-                <div className={classes.modal_form_link_gray} onClick={btnCancelClick}>Пропустить</div>
+                <div className={classes.modal_form_link_gray} onClick={() => btnCancelClick()}>Пропустить</div>
             </div>
         </ModalWithBackground>
     );

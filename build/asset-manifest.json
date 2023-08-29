@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5259b348.css",
+    "main.js": "/static/js/main.65c65718.js",
+    "static/js/787.ca5074de.chunk.js": "/static/js/787.ca5074de.chunk.js",
+    "static/media/png": "/static/media/3c6646022a18ad8353e3d52fdda6c2da.3758d6fdabbe1273e350.png",
+    "static/media/visa.svg": "/static/media/visa.eb4ed8187ff21a88c06d.svg",
+    "static/media/mastercard.svg": "/static/media/mastercard.45c5b58b6da147696f21.svg",
+    "static/media/mir.svg": "/static/media/mir.5611c8a7b087e86ad168.svg",
+    "static/media/logotype.svg": "/static/media/logotype.6c22fe2c3ad0d5aa91ef.svg",
+    "static/media/hide.svg": "/static/media/hide.9ed8ffc53345ff686c8c.svg",
+    "index.html": "/index.html",
+    "static/media/search-ico.svg": "/static/media/search-ico.2b0995eba7504605114b.svg",
+    "static/media/Bookmark_filled.svg": "/static/media/Bookmark_filled.457bc33a3d8dc46e80ec.svg",
+    "static/media/btnReturn.svg": "/static/media/btnReturn.1cd8a56573566d72874f.svg",
+    "static/media/profile-ico.svg": "/static/media/profile-ico.1d99b903e05e881afe0c.svg",
+    "static/media/Bookmark.svg": "/static/media/Bookmark.8170b37757d842588972.svg",
+    "static/media/hashtag.svg": "/static/media/hashtag.508f88c3b28935437c45.svg",
+    "static/media/close.svg": "/static/media/close.fb1d458129cd05716403.svg",
+    "static/media/carousel-arrow.svg": "/static/media/carousel-arrow.10b905f94e5010a68895.svg",
+    "static/media/arrow.svg": "/static/media/arrow.c108ab7231f441ad35b7.svg",
+    "main.5259b348.css.map": "/static/css/main.5259b348.css.map",
+    "main.65c65718.js.map": "/static/js/main.65c65718.js.map",
+    "787.ca5074de.chunk.js.map": "/static/js/787.ca5074de.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5259b348.css",
+    "static/js/main.65c65718.js"
+  ]
+}

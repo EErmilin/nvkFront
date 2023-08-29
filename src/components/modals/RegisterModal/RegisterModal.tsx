@@ -9,6 +9,7 @@ import { checkUserByPhone } from '../../../gql/mutation/auth/CheckUserByPhone';
 import Input from '../../UI/areas/Input/Input';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { setUser } from '../../../redux/slices/userSlice';
+import React from 'react';
 
 
 const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeModal }: any) => {

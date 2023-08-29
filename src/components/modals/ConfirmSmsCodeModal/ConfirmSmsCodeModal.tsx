@@ -6,12 +6,15 @@ import classes from './ConfirmSmsCodeModal.module.scss';
 import { useMutation } from '@apollo/client';
 import Input from '../../UI/areas/Input/Input';
 import { VALIDATE_SMS_CODE } from '../../../gql/mutation/auth/ValidateSmsCode';
-import { useAppSelector } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import React from 'react';
+import { setCode } from '../../../redux/slices/userSlice';
 
 
 const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsUserRegisterModal }: any) => {
 
     const phone = useAppSelector(state => state.user.data?.phone);
+    const dispatcher = useAppDispatch()
 
     const [sendCode] = useMutation(VALIDATE_SMS_CODE)
 
@@ -49,6 +52,7 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
     async function handleSubmit() {
         let response;
         response = await sendCode({ variables: { phone: values.phone, code: values.code } })
+        await dispatcher(setCode(values.code))
         if (response.data) {
             btnCancelClick()
             setIsUserRegisterModal(true)
@@ -82,7 +86,7 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
                         placeholder=''
                         id="code"
                         className={classes.modal_input}
-                        mask={"999999"}
+                        mask={"9999"}
                         value={values.code}
                         onChange={(event: any) => onChangeCode(event)}
                         required

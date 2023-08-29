@@ -26,6 +26,9 @@ function App() {
   const state = useAppSelector(state => state);
   const dispatcher = useAppDispatch()
   const token = useAppSelector(state => state.auth.token);
+
+  console.log('state')
+  console.log(state)
   
   const update = useCallback(async () => {
     (async function () {

@@ -48,7 +48,7 @@ const screensSlice = createSlice({
     });
     builder.addCase(logout.rejected, state => {
       state.broadcasts = [];
-      state.musics;
+      state.musics = null;
       state.podcasts = [];
     });
     builder.addCase(logout.fulfilled, state => {

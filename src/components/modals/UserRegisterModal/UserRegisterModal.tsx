@@ -1,29 +1,35 @@
-import { useMemo } from 'react';
+
 import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
 import { useFormik } from "formik";
-import { object, string } from "yup";
 import classes from './UserRegisterModal.module.scss';
-import { useMutation } from '@apollo/client';
 import Input from '../../UI/areas/Input/Input';
 import CustomDatePicker from '../../UI/areas/CustomDatePicker/CustomDatePicker';
 import moment from 'moment';
-import { CREATE_USER } from '../../../gql/mutation/user/CreateUser';
-import { REGISTER } from '../../../gql/mutation/auth/Register';
+import React from 'react';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { createUser } from '../../../redux/thunks/user/CreateUser';
+import { useNavigate } from 'react-router-dom';
+import { PASSWORD_LENGTH } from '../../../api/config';
 
 
 
 const UserRegisterModal = ({ closeModal, btnCancelClick }: any) => {
 
-
-    const [register] = useMutation(REGISTER)
+    const code = useAppSelector(state => state.user.code);
+    const phone = useAppSelector(state => state.user.data?.phone);
+    const navigate = useNavigate()
+    const dispather = useAppDispatch()
 
 
     /** Начальные значения */
     const initialValues = {
+        code: code,
+        phone: phone,
         name: "",
-        password:"",
+        password: "",
         confirmPassword: "",
-        date: moment(new Date(), "YYYY.MM.DD"),
+        firstname: "",
+        birthdate: moment(new Date(), "YYYY.MM.DD"),
     };
 
     /** Стейт полей и правила */
@@ -40,12 +46,30 @@ const UserRegisterModal = ({ closeModal, btnCancelClick }: any) => {
     });
 
     async function handleSubmit() {
-        let response;
-       // response = await register({ variables: {signUpInput:{ phone: values.password, code: values.code }} })
+        if (values.name !== '' &&
+            values.password === values.confirmPassword &&
+            values.password.length >= PASSWORD_LENGTH) {
+            const response: any = await dispather(
+                createUser({
+                    phone: values.phone,
+                    password: values.password,
+                    firstname: values.firstname,
+                    code: values.code!,
+                    birthdate:
+                        values.birthdate?.format("YYYY-MM-DD")
+                }),
+            );
+            if (response?.data) {
+                btnCancelClick()
+                navigate("/personal-area")
+            }
+        } else {
+            console.log("Ошибка валидации")
+        }
     }
 
     const onChangeName = (event: any) => {
-        handleChange({ target: { name: "name", value: event.target.value } })
+        handleChange({ target: { name: "firstname", value: event.target.value } })
     }
 
     const onChangePassword = (event: any) => {
@@ -57,7 +81,7 @@ const UserRegisterModal = ({ closeModal, btnCancelClick }: any) => {
     }
 
     const onChangeDate = (event: any) => {
-        handleChange({ target: { name: "date", value: event.target.value } })
+        handleChange({ target: { name: "birthdate", value: event.target.value } })
     }
 
     return (
@@ -75,19 +99,19 @@ const UserRegisterModal = ({ closeModal, btnCancelClick }: any) => {
                 <form className={classes.modal_form}>
                     <Input
                         label={`Данные`}
-                        name="code"
+                        name="firstname"
                         placeholder='Имя'
-                        id="code"
+                        id="firstname"
                         mask={""}
-                        value={values.name}
+                        value={values.firstname}
                         onChange={(event: any) => onChangeName(event)}
                     />
                     <CustomDatePicker
-                        name={"date"}
-                        value={values.date}
+                        name={"birthdate"}
+                        value={values.birthdate}
                         onChange={(value: any) => {
                             onChangeDate({
-                                target: { name: "date", value: (moment(value).format("yyyy-MM-DD")) }
+                                target: { name: "birthdate", value: (moment(value).format("yyyy-MM-DD")) }
                             })
                         }}
                         mask={[/\d/, /\d/, ".", /\d/, /\d/, ".", /\d/, /\d/, /\d/, /\d/]}

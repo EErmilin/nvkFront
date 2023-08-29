@@ -14,7 +14,6 @@ const fakeAvatar = require("../../../../assets/img/3c6646022a18ad8353e3d52fdda6c
 
 function Profile({ }) {
     const userData = useAppSelector(state => state.user.data);
-    console.log(userData)
 
 
     const initialValues = {

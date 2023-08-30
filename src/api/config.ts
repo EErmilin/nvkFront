@@ -6,7 +6,7 @@ export const YAKUTIA24_URL =
 export const SAHA_URL =
   'http://live-saha.cdnvideo.ru/saha2/saha_live.smil/playlist.m3u8';
 export const TETIM_URL = 'https://icecast-saha.cdnvideo.ru/saha';
-export const API_URL = 'https://back-nvk-test.vercel.app'// 'https://server.nvk-online.ru'; //'https://ddk-prod.ru';
+export const API_URL = 'https://server.nvk-online.ru'// 'https://server.nvk-online.ru'; //'https://ddk-prod.ru';
 export const GRAPHQL_URL = API_URL + '/graphql';
 export const IMAGE_UPLOAD_URL = API_URL + '/upload-images';
 export const PASSWORD_LENGTH = 6;

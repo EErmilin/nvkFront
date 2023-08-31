@@ -1,0 +1,279 @@
+@import "../../../../scss/vars.scss";
+@import "../../../../scss/repeat.scss";
+.info {
+    padding: 15px 40px 15px 0;
+    width: calc(100% + 40px);
+    border-bottom: 1px solid rgba($red, $alpha: 0.17);
+    display: flex;
+    justify-content: space-between;
+
+    &__user {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        &Ava {
+            width: 70px;
+            min-width: 70px;
+            height: 70px;
+            overflow: hidden;
+            margin-right: 15px;
+
+            border: double 2px transparent;
+            border-radius: 23px;
+            background-image: linear-gradient(white, white), linear-gradient(#fb0581, #ffda55);
+            border: double 2px transparent;
+            border-radius: 23px;
+            background-image: linear-gradient(white, white), linear-gradient(#fb0581, #ffda55);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border: 3px solid $white;
+                border-radius: 23px;
+            }
+        }
+        &Name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 6px;
+            svg {
+                margin-left: 5px;
+                path {
+                    fill: #333;
+                }
+            }
+        }
+        &Input {
+            position: relative;
+            span {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                right: 5px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            svg {
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+                font-size: 24px;
+                path {
+                    fill: #313131;
+                }
+            }
+            input {
+                @extend %input;
+                width: 100%;
+                border-radius: 8px;
+                padding: 5px 10px;
+                padding-right: 30px;
+                border: none;
+                background: rgba(242, 90, 123, 0.08);
+
+                font-size: 16px;
+                font-weight: 600;
+                color: #313131;
+            }
+        }
+        & > span {
+            width: 100%;
+        }
+        &Theme {
+            font-size: 16px;
+            font-weight: 600;
+            color: #313131;
+
+            // display: table;
+            // table-layout: fixed;
+            // width: 100%;
+            p {
+                white-space: pre-line;
+                word-break: break-word;
+                // display: table-cell;
+                // white-space: nowrap;
+                // text-overflow: ellipsis;
+                // overflow: hidden;
+            }
+            svg {
+                display: inline;
+                cursor: pointer;
+                margin-left: 9px;
+                margin-bottom: -3px;
+                width: 16px;
+                height: 16px;
+                path {
+                    fill: $red;
+                }
+            }
+        }
+    }
+    &__btns {
+        display: flex;
+        align-items: center;
+        &Item {
+            width: 150px;
+            height: 45px;
+            margin-left: 5px;
+            &.copy {
+                width: 180px;
+                span {
+                    text-transform: initial;
+                    color: $white;
+                }
+            }
+            &.publish {
+                display: none;
+                &.active {
+                    display: block;
+                }
+            }
+        }
+        &More {
+            width: 39px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba($red, $alpha: 0.1);
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+            span {
+                display: block;
+                width: 4px;
+                height: 4px;
+                background: $red;
+                border-radius: 50%;
+                margin: 0 2px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .info {
+        &__userAva {
+            width: 56px;
+            min-width: 56px;
+            height: 56px;
+        }
+        &__btns {
+            &Item {
+                width: 120px;
+                height: 30px;
+            }
+        }
+        &__user {
+            &Name {
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                svg {
+                    height: 14px;
+                    width: 9px;
+                }
+            }
+            &Theme {
+                font-size: 12px;
+                svg {
+                    width: 12px;
+                    height: 12px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .info {
+        &__user {
+            &Name {
+                font-size: 12px;
+                svg {
+                    height: 12px;
+                    width: 9px;
+                }
+            }
+            &Theme {
+                font-size: 8px;
+                svg {
+                    width: 8px;
+                    height: 8px;
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 900px) {
+    .info {
+        padding: 7px 19px 9px 19px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .info {
+        position: relative;
+        border: none;
+        padding: 7px 10px;
+        &__user {
+            &Ava {
+                width: 32px;
+                min-width: 32px;
+                height: 32px;
+                border-radius: 12px;
+                margin-right: 9px;
+                img {
+                    border-radius: 12px;
+                    border-width: 1px;
+                }
+            }
+            &Name {
+                font-size: 12px;
+                margin-bottom: 3px;
+            }
+            &Theme {
+                font-size: 10px;
+                color: #7c7c7c;
+            }
+        }
+        &__btns {
+            &Item {
+                height: 36px;
+                &.copy {
+                    width: 150px;
+                }
+            }
+     
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .info {
+        &__user {
+            &Name {
+                font-size: 10px;
+                margin-bottom: 3px;
+            }
+            &Theme {
+                font-size: 8px;
+            }
+        }
+    }
+}
+
+// For dark mode
+body[class^='dark'] {
+    .info__userName {
+        color: $darkThemeTextColor;
+        svg path {
+            fill: $darkThemeTextColor;
+        }
+    }
+}

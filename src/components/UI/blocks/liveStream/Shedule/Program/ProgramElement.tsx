@@ -1,23 +1,31 @@
-import React, { forwardRef, useImperativeHandle, useState } from 'react'
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 
 import { ILiveProgram } from '../../../../../../models/LiveStream'
 import { IProgram } from '../../../../../../models/Program';
 import { IRadioProgram } from '../../../../../../models/Radio'
 
-import '../style.css'
+import './ProgramElement.css'
 import { formatTimeToHHMM } from '../utils';
 
 type TCardProps = {
-    program: ILiveProgram | IRadioProgram | IProgram;    
+    program: ILiveProgram | IRadioProgram | IProgram;
     live?: boolean;
+    onProgramChanged: (title: string) => void;
 }
 
 const ProgramElement = (
     {
-        program,    
-        live
+        program,
+        live,
+        onProgramChanged
     }: TCardProps
 ) => {
+
+
+    useEffect(() => {
+        if (live)
+            onProgramChanged(program.name)
+    }, [live])
 
     return (
         <div className={live ? "program program-active" : "program"}>

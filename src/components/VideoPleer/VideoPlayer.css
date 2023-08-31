@@ -3,54 +3,9 @@
   width: 878px;
   height: 500px;
 }
-
-.controls {
-  position: absolute;
-  width: 878px;
-  bottom: 0;
-  left: 0;
-  height: 60px;
-  padding-inline: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
 .row {
   display: flex;
   align-items: center; /* Выравнивание по центру по вертикали */
-}
-
-.controls * {
-  border: none;
-  cursor: pointer;
-  background-color: transparent;
-}
-
-.volume-slider {
-  -webkit-appearance: none;
-  width: 50px;
-  height: 4px;
-  background: rgb(255, 255, 255);
-  border-radius: 5px;
-  background-color: rgb(255, 255, 255, 0.5);
-
-  background-image: linear-gradient(#fff, #fff);
-  background-size: 50% 100%;
-  background-repeat: no-repeat;
-}
-
-.volume-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
-  background-color: transparent; /* Белый цвет шарика */
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
 }
 
 .video-pleer-wraper:hover .controls {
@@ -58,9 +13,10 @@
 }
 
 .react-player {
-  height: 500px !important;
+  height: 493px !important;
   border-radius: 20px;
   overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
   transition: filter 0.3s ease;
 }
 

@@ -2,7 +2,7 @@ import { IProgram } from "../../../../../models/Program";
 
 const CURRENT_DATE = new Date();
 const DAYS_OF_WEEK = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
-const DAYS_LENGHT = 4;
+const DAYS_LENGHT = 7;
 
 const format = (day: number) => (day < 10 ? `0${day}` : day);
 

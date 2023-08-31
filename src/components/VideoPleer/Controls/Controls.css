@@ -1,0 +1,47 @@
+.controls {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.controls * {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.gap-25 {
+  gap: 25px;
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  width: 50px;
+  height: 4px;
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255, 0.5);
+  background-image: linear-gradient(#fff, #fff);
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: transparent; /* Белый цвет шарика */
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}

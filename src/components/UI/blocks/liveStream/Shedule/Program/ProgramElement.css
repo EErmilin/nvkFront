@@ -1,40 +1,4 @@
 
-.stream-shedule {
-  width: 622px;
-  height: 760px;
-  margin-bottom: 200px;
-  background-color: white;
-  margin-left: 20px;
-  padding: 20px;
-}
-
-.stream-shedule .nav-bar {
-  display: flex;
-}
-
-.stream-shedule .nav-bar .date-wrapper {
-  width: 150px;
-  height: 36px;
-  cursor: pointer;
-}
-
-.stream-shedule .program-list {
-  margin-top: 30px;
-  height: 656px;
-  width: auto;
-  overflow: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.stream-shedule .program-list::-webkit-scrollbar {
-  width: 8px;
-}
-
-.stream-shedule .program-list::-webkit-scrollbar-thumb {
-  background: var(--grey, #D0D0D0);
-  border-radius: 4px;
-}
 
 .stream-shedule .program {
   display: flex;    

@@ -1,0 +1,45 @@
+.card {
+  width: 493px;
+  padding: 29px;
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+  border-radius: 25px;
+  border: 1px solid var(--border-grey, #EFEFF0);
+  background: var(--bg-grey, #F9F9F9);
+
+  &_number {
+    color: var(--black-text, #2F2F30);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 140%;
+    margin-bottom: 10px;
+
+  }
+
+  &_icon {
+    &_mir {
+      width: 47px;
+      height: 18px;
+      background: center/cover no-repeat url("../../assets/img/mir.svg");
+    }
+    &_visa {
+      width: 47px;
+      height: 18px;
+      background: center/cover no-repeat url("../../assets/img/visa.svg");
+    }
+    &_mastercard {
+      width: 47px;
+      height: 18px;
+      background: center/cover no-repeat url("../../assets/img/mastercard.svg");
+    }
+  }
+
+  &_date {
+    color: var(--grey-text, #BBB);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 140%;
+  }
+}

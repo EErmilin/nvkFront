@@ -12,13 +12,8 @@ function CustomTextArea ({
     classNameInputWrap,
     value,
     placeholder,
-    label,
-    errorMessage,
-    valid,
-    touched,
-    shouldValidate,
     disabled,
-    required
+    label,
 }: any){
     /** Создаем уникальный id */
     const id = `textarea-${Math.random()}`;
@@ -31,28 +26,11 @@ function CustomTextArea ({
     const clsInputWrap = [classes.TextArea_wrap]
     if(classNameInputWrap)clsInputWrap.push(classNameInputWrap)
 
-    /** Отображение label */
-    const labelTemplate = label ? <label htmlFor={id}>{label}{required && `*`}</label> : null;
-    /**
-     * Если поле инвалидно
-     * то добавляем классы для инвалидного поля,
-     * иначе, если поле было тронуто добавляем классы для валидного
-     */
-    if (isInvalid(valid, touched, shouldValidate,errorMessage)) {
-        cls.push(classes.invalid);
-    } else if (touched) {
-        cls.push(classes.valid);
-    }
-
-    /** Видимость сообщения об ошибке */
-    const errMsg = isInvalid(valid, touched, shouldValidate,errorMessage) ? (
-        <span>{errorMessage}</span>
-    ) : null;
-
     return (
         <div className={cls.join(' ')}>
-            {labelTemplate}
+                        <label >{label}</label> 
             <div className={clsInputWrap.join(' ')}>
+
                 <textarea
                     name={name}
                     value={value}
@@ -61,7 +39,6 @@ function CustomTextArea ({
                     disabled={disabled}
                 ></textarea>
             </div>
-            {errMsg}
         </div>
     )
 }

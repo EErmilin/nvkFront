@@ -6,6 +6,7 @@ export interface UserTypes {
   subscribes: number;
   listSearch: string[];
   hashtags: {hashtag: {name: string; id: number}}[];
+  code?: string;
 }
 
 export interface IUserInput {

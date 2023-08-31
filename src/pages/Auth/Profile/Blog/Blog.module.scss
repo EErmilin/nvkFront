@@ -1,3 +1,49 @@
-.wrp {
-  padding-top: 50px;
+.blog {
+  padding-top: 20px;
+  max-width: 446px;
+
+  &_site {
+    margin-top: 30px;
+    &_wrp {
+      margin-top: 30px;
+      display: grid;
+      gap: 10px;
+    }
+
+    &_add {
+      color: var(--blue, #397FEF);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 140%;
+      cursor: pointer;
+    }
+  }
+
+  &_about {
+    display: grid;
+    gap: 20px
+  }
+
+  &_sites {
+    margin-top: 30px;
+
+    &_wrp {
+      margin-top: 30px;
+      display: grid;
+      gap: 25px;
+    }
+
+    &_item {
+      display: flex;
+    }
+
+    &_icon {
+      min-width: 70px;
+      height: 70px;
+      border-radius: 15px;
+      background: var(--2-grey, #F8F8F8);
+      margin-left: 15px;
+
+    }
+  }
 }

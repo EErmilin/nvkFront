@@ -1,3 +1,33 @@
-.wrp {
-  padding-top: 50px;
+.hashtags {
+  padding-top: 20px;
+  position: relative;
+  flex-direction: column;
+  display:flex;
+  height: 100%;
+  justify-content: space-between;
+  &_wrp{
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+
+.link {
+  color: var(--blue, #397FEF);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  /* 19.6px */
+  text-decoration-line: underline;
+  cursor: pointer;
+  margin-left: 12px;
+}
+
+
+
+.btn_wrp {
+
 }

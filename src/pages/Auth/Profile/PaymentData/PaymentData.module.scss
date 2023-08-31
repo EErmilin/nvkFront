@@ -1,3 +1,16 @@
-.wrp {
-  padding-top: 50px;
+.payments {
+  padding-top: 20px;
+  position: relative;
+  flex-direction: column;
+  display:flex;
+  height: 100%;
+  justify-content: space-between;
+
+  &_cards {
+    display: grid;
+    gap: 20px
+  }
+}
+
+.btn_wrp {
 }

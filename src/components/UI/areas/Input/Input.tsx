@@ -31,20 +31,21 @@ function Input({
     label,
     labelInput,
 }: any) {
+    
     /** Состояние для показа пороля */
     const [passwordShow, setPasswordShow] = useState(true)
     /** Устанавливаем тип поля */
     const inputType = type || 'text';
 
     /** Формируем css классы */
-    const  clsInputWrap= [classes.Input];
-    if(labelInput){
+    const clsInputWrap = [classes.Input];
+    if (labelInput) {
         clsInputWrap.push(classes.Input_withLabel);
     }
     if (classNameWrp) {
         clsInputWrap.push(classNameWrp);
     }
-    
+
     const cls = [classes.InputWrap];
     if (className) {
         cls.push(className);
@@ -56,8 +57,8 @@ function Input({
     /** Отображение label */
     const labelTemplate = label ?
 
-            <div className={classes.label}>{label}</div>
-: null;
+        <div className={classes.label}>{label}</div>
+        : null;
 
     const eyeButton = inputType === "password" && <span className={classes.password} onClick={() => setPasswordShow(!passwordShow)}></span>
     const typePassword = inputType === "password" ? (passwordShow ? 'password' : "text") : inputType
@@ -76,9 +77,9 @@ function Input({
 
     return (
         <>
-           {labelTemplate}
+            {labelTemplate}
             <div className={clsInputWrap.join(' ')}>
-            {labelInput && <div className={classes.Input_label}>{labelInput}</div>}
+                {labelInput && <div className={classes.Input_label}>{labelInput}</div>}
                 {input}
                 {eyeButton}
             </div>

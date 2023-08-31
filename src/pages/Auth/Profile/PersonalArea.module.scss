@@ -3,7 +3,7 @@
   margin: auto;
   background: var(--white, #FFF);
   border-radius: 20px;
-width: 1264px;
+  width: 1264px;
   min-height: 800px;
 }
 
@@ -18,10 +18,14 @@ width: 1264px;
 .navbar {
   position: relative;
   height: 100%;
-  padding:  30px 0;
+  padding: 30px 0;
   border-right: 1px solid #EFEFF0;
 }
 
 .content {
-  padding: 30px;
+  padding: 30px 30px 50px 0;
+
+  h2 {
+    margin-bottom: 30px;
+  }
 }

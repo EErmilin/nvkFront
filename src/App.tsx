@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { useCallback, useEffect } from 'react';
+import React, {useCallback, useEffect} from 'react'
 import { useDispatch } from 'react-redux';
 import { Routes } from 'react-router-dom';
 import './App.css';
@@ -27,6 +27,9 @@ function App() {
   const state = useAppSelector(state => state);
   const dispatcher = useAppDispatch()
   const token = useAppSelector(state => state.auth.token);
+
+  console.log('state')
+  console.log(state)
   
   const update = useCallback(async () => {
     (async function () {

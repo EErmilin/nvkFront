@@ -24,7 +24,6 @@ function NavBar() {
             let activePage = page['*']
             activePage = activePage.split("/")[0]
             let currentRoute = elem.link.split('/')[0]
-            console.log(currentRoute == activePage)
             return (
                 <li
                     className={[classes.list_item].join(' ')}

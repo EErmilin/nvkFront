@@ -1,6 +1,10 @@
-.wrp {
-  padding-top: 50px;
-  padding-bottom: 20px;
+.profile {
+  padding-top: 20px;
+  position: relative;
+  flex-direction: column;
+  display:flex;
+  height: 100%;
+  justify-content: space-between;
 
 }
 
@@ -25,6 +29,7 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 140%;
+    cursor: pointer;
     /* 22.4px */
   }
 }
@@ -33,25 +38,8 @@
   display: grid;
   grid-gap: 25px;
   grid-template-columns: repeat(2, 1fr);
-  margin-bottom: 230px;
+}
 
-  &_btn {
-    display: inline-flex;
-    cursor: pointer;
-    padding: 19px 45px;
-    justify-content: center;
-    align-items: center;
-    width: 275px;
-    height: 60px;
-    gap: 10px;
-    border-radius: 15px;
-    background: var(--yellow, #F6A80B);
-    border: none;
-    color: var(--white, #FFF);
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 140%;
-    flex-shrink: 0;
-    filter: drop-shadow(1px 1px 4px #F6A80B);
-  }
+.btn_wrp {
+
 }

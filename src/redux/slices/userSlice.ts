@@ -16,12 +16,17 @@ const initialState: UserTypes = {
   subscribes: 0,
   listSearch: [],
   hashtags: [],
+  code: "",
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    setCode: (state, action) => {
+      state.code = action.payload;
+    },
+    
     setUser: (state, action) => {
       state.data = action.payload;
     },
@@ -137,6 +142,7 @@ const userSlice = createSlice({
 });
 
 export const {
+  setCode,
   setUser,
   clearUser,
   setListSearch,

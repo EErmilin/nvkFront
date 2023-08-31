@@ -4,6 +4,7 @@ import "./CustomDatePicker.scss"
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ru, enGB } from 'date-fns/esm/locale';
+import React from 'react';
 
 registerLocale('ru-RU', ru);
 
@@ -21,8 +22,6 @@ const CustomDatePicker = ({
     }
 
     const pickerRef = useRef(null)
-
-    console.log(value)
 
 
     const calendar = <DatePicker

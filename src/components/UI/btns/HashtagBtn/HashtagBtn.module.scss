@@ -1,0 +1,31 @@
+.btn {
+  &:before {
+    content: '';
+    width: 26px;
+    height: 26px;
+    background: center/cover no-repeat url("../../../../assets/img/hashtag.svg");
+  }
+
+  border-radius: 15px;
+  background: var(--yellow, #F6A80B);
+  display: flex;
+  border: none;
+
+  &:hover {
+    color: white !important;
+  }
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  border-radius: 15px;
+  height: 46px;
+  color: white;
+  padding: 10px 20px 10px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  /* аа */
+  box-shadow: 4px 4px 28px 15px rgba(51, 41, 31, 0.02);
+}

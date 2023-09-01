@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import { object, string } from "yup";
 import classes from './AskQuestionModal.module.scss';
 import Input from '../../UI/areas/Input/Input';
+import CustomTextArea from '../../UI/areas/CustomTextArea/CustomTextArea';
 
 
 const AskQuestionModal = ({ closeModal, btnCancelClick }: any) => {
@@ -70,14 +71,13 @@ const AskQuestionModal = ({ closeModal, btnCancelClick }: any) => {
                     <h3>Задать вопрос</h3>
                 </div>
                 <form className={classes.modal_form}>
-                    <Input
+                    <CustomTextArea
                         name="text"
                         placeholder='Ввести'
                         id="text"
                         className={classes.modal_input}
                         value={values.text}
-                        onChange={(event: any) => onChangeText(event)}
-                        required
+                        onChange={(event: any) => onChangeText(event)}                        
                     />
                 </form>
                 <button

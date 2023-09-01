@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
 import { useFormik } from "formik";
 import { object, string } from "yup";
@@ -16,13 +16,13 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
 
     const dispatcher = useAppDispatch()
     const phone = useAppSelector(state => state.user.data?.phone);
-
-    const [getSmsCode, error] = useMutation(GET_SMS_CODE)
-    const [checkUser] = useMutation(checkUserByPhone)
+    const [error, setErrors] = useState(false)
+    const [getSmsCode, codeData] = useMutation(GET_SMS_CODE)
+    const [checkUser, userData] = useMutation(checkUserByPhone)
 
     /** Начальные значения */
     const initialValues = {
-        phone: phone ??  "",
+        phone: phone ?? "",
     };
 
     /** Схема валидации */
@@ -41,6 +41,7 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
         values,
         handleChange,
         touched,
+        setTouched
     } = useFormik({
         initialValues,
         validateOnMount: true,
@@ -50,22 +51,24 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
         },
     });
 
-    const onChangePhone = (event: any) => {
-        handleChange({ target: { name: "phone", value: event.target.value } })
-    }
-
-
     async function handleSubmit() {
         let response;
-        response = await checkUser({ variables: { phone: values.phone } })
-        if (!response.data.checkUserByPhone) {
-            response = await getSmsCode({ variables: { phone: values.phone } })
-            if (response.data.getSmsCode) {
-                dispatcher(setUser({phone: values.phone}))
-                btnCancelClick()
-                setIsCodeModal(true)
+        try {
+            response = await checkUser({ variables: { phone: values.phone } })
+
+            if (!response.data.checkUserByPhone) {
+                response = await getSmsCode({ variables: { phone: values.phone } })
+                if (response.data.getSmsCode) {
+                    dispatcher(setUser({ phone: values.phone }))
+                    btnCancelClick()
+                    setIsCodeModal(true)
+                }
             }
+        } catch (error) {
+            console.log('error')
+            console.log(error)
         }
+
     }
 
     const handleLogin = () => {
@@ -73,8 +76,21 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
         setIsAuthModal(true)
     }
 
+    useEffect(() => {
+        if (codeData.error) setErrors(true)
+    }, [codeData.error])
+
+
+    /** Очищаем ошибки и изменяем состояние */
+    function ClearErrorAndChange(field: any, value: any) {
+        setErrors(false)
+        handleChange({ target: { name: field, value: value } })
+    }
+
     const isPhoneValid = (values.phone.match(/\d/g)?.join('')[1] === '9' && (values.phone.match(/\d/g)?.join('')?.length == 11)) || !values.phone[4]
 
+    console.log('!!!!!!!!')
+    console.log(codeData)
     return (
         <ModalWithBackground
             closeModal={closeModal}
@@ -94,10 +110,13 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
                         id="phone"
                         mask={"+7 (999) 999-99-99"}
                         value={values.phone}
-                        onChange={(event: any) => onChangePhone(event)}
-                        required
+                        onChange={(e: any) => {
+                            return ClearErrorAndChange("phone", e.target.value)
+                        }}
                     />
+                    {error && <span className={classes.error}>{codeData.error?.message}</span>}
                 </form>
+
                 <button
                     onClick={handleSubmit}
                     className={classes.modal_form_btn}

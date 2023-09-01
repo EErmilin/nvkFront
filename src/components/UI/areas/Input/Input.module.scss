@@ -1,64 +1,92 @@
 .Input {
-
-  width: 100%;
   position: relative;
-  background: var(--2-grey, #F8F8F8);
-  border-radius: 15px;
-  padding: 19px 20px;
-  
-  &_withLabel {
-    padding: 10px 20px 15px;
-    height: 70px;
+  width: 433px;
+
+
+  .InputWrap {
+    position: relative;
+    background: var(--2-Grey, #F8F8F8);
+    border-radius: 15px;
   }
+
   &_label {
     color: var(--grey-text, #BBB);
     font-size: 14px;
     font-weight: 500;
     line-height: 140%; 
-    margin-bottom: 3px;
+    padding: 10px 0 0 20px ;
   }
-  .labelWrap {
 
-    display: flex;
-    width: 100%;
-    color: var(--black, #0F0A07);
+  label {
     font-size: 14px;
-    font-weight: 400;
-    line-height: 140%;
-  }
-
-
-
-  .InputWrap {
-    background: var(--2-grey, #F8F8F8);
-    display: flex;
-    width: 100%;
-    border-radius: 15px;
-
-    align-items: flex-start;
-    border: none;
-    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 140%;
+    color: black;
   }
 
   input {
+    background: var(--2-Grey, #F8F8F8);
+    border-radius: 15px;
+    padding: 19px 20px;
     width: 100%;
-    border: none;
+    border: 1px solid var(--2-grey, #F8F8F8);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+
+    &::placeholder {
+      color: var(--Grey, #D0D0D0);
+    }
 
     &:focus {
       outline: none;
-      border: none;
+      box-shadow: 0 0 6px rgba(71, 164, 227, 0.08);
     }
 
+    &[disabled] {
+      border: 1px solid var(--2-grey, #F8F8F8);
+      background-color: var(--2-grey, #F8F8F8);
+    }
+
+    &[type="number"] {
+      -moz-appearance: textfield;
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    &[type="time"] {
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+      }
+    }
   }
 
+  &.required {
 
+    label {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        content: '*';
+        top: -1px;
+        right: -7px;
+      }
+    }
+  }
 
   &.valid {
     input {
       position: relative;
+
     }
 
     .InputWrap {
@@ -82,6 +110,9 @@
     input {
       border: 1px solid #FF1C45;
       color: #FF1C45;
+      padding: 19px 20px;
+      border-radius: 15px;
+      background: var(--2-Grey, #F8F8F8);
     }
 
     .InputWrap {
@@ -103,7 +134,12 @@
 
   &>span {
     display: inline-block;
-
+    color: red;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 160%;
+    /* 22.4px */
+    margin-top: 20px;
   }
 }
 
@@ -112,6 +148,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 140%;
+  margin-bottom: 20px;
 }
 
 .password {

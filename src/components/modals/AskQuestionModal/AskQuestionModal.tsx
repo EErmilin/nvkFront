@@ -5,20 +5,9 @@ import { object, string } from "yup";
 import classes from './AskQuestionModal.module.scss';
 import Input from '../../UI/areas/Input/Input';
 
-export type AskQuestionModalHandle = {
-    open: () => void;
-}
 
+const AskQuestionModal = ({ closeModal, btnCancelClick }: any) => {
 
-const AskQuestionModal = forwardRef((_, ref) => {
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const tongleModal = () => setIsModalOpen(oldValue => !oldValue)
-
-    useImperativeHandle<unknown, AskQuestionModalHandle>(ref, () => ({
-        open: tongleModal
-    }));
 
 
     /** Начальные значения */
@@ -67,14 +56,12 @@ const AskQuestionModal = forwardRef((_, ref) => {
     };
 
 
-    if (!isModalOpen)
-        return <></>
 
 
     return (
         <ModalWithBackground
-            closeModal={tongleModal}
-            btnCancelClick={tongleModal}
+            closeModal={closeModal}
+            btnCancelClick={btnCancelClick}
             width={750}
             height={453}
         >
@@ -100,7 +87,7 @@ const AskQuestionModal = forwardRef((_, ref) => {
             </div>
         </ModalWithBackground>
     );
-});
+};
 
 export default AskQuestionModal;
 

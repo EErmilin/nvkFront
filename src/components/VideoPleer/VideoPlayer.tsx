@@ -1,17 +1,15 @@
 import React, { forwardRef, MutableRefObject, useCallback, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import screenfull from 'screenfull';
-import { Stream } from 'stream';
 import { ILive } from '../../models/LiveStream';
 import { IRadio } from '../../models/Radio';
-import { AskQuestionModalHandle } from '../modals/AskQuestionModal/AskQuestionModal';
 import Controls from './Controls/Controls';
 import VideoInfo from './Info/VideoInfo';
 import './VideoPlayer.css'; // Создайте файл стилей для вашего видеоплеера
 
 type TProps = {
   steam?: ILive | IRadio;
-  askModal?: React.MutableRefObject<AskQuestionModalHandle | undefined>
+  onAsk?: () => void
 
 }
 
@@ -20,7 +18,7 @@ export type VideoPlayerHandle = {
   setProgramTitle: React.Dispatch<React.SetStateAction<string>>
 }
 
-const VideoPlayer = forwardRef(({ steam: streamInner, askModal }: TProps, ref) => {
+const VideoPlayer = forwardRef(({ steam: streamInner, onAsk }: TProps, ref) => {
 
   const playerRef = useRef<ReactPlayer>(null);
   const videoPleerWraper = useRef<any>();
@@ -58,9 +56,6 @@ const VideoPlayer = forwardRef(({ steam: streamInner, askModal }: TProps, ref) =
     }
   };
 
-  const askButtonClick = () => {
-    askModal?.current?.open()
-  }
 
   return (
     <div className="video-pleer-wraper"
@@ -89,7 +84,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, askModal }: TProps, ref) =
         handleVolumeChange={setVolume}
       />
 
-      <VideoInfo streamTitle={steam?.name} programTitle={programTitle} askButtonClick={askButtonClick} />
+      <VideoInfo streamTitle={steam?.name} programTitle={programTitle} askButtonClick={onAsk} />
     </div>
   );
 });

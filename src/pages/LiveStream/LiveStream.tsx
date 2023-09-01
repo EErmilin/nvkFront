@@ -8,7 +8,8 @@ import LiveStreamSelector, { LiveStreamSelectorHandle } from '../../components/U
 import Shedule, { SheduleHandle } from '../../components/UI/blocks/liveStream/Shedule/Shedule';
 
 import { fetchStreams } from './utils';
-import AskQuestionModal, { AskQuestionModalHandle } from '../../components/modals/AskQuestionModal/AskQuestionModal';
+import AskQuestionModal from '../../components/modals/AskQuestionModal/AskQuestionModal';
+import useToggleVisibility from '../../hooks/useToggleVisibility';
 
 
 export default function LiveStream() {
@@ -17,8 +18,8 @@ export default function LiveStream() {
   const videoPleerRef = useRef<VideoPlayerHandle>();
   const sheduleRef = useRef<SheduleHandle>();
 
-  const askModal = useRef<AskQuestionModalHandle>();
 
+  const [isModalOpen, setIsModalOpen, closeModal] = useToggleVisibility(false)
 
   const onStreamSelect = (stream: ILive | IRadio) => {
     videoPleerRef.current?.setStream(stream);
@@ -29,6 +30,14 @@ export default function LiveStream() {
   const onProgramChanged = (programTitle: string) => {
     videoPleerRef.current?.setProgramTitle(programTitle);
   }
+
+
+  const askModal = isModalOpen && (
+    <AskQuestionModal
+      closeModal={closeModal}
+      btnCancelClick={closeModal}
+    />
+  )
 
 
   useEffect(() => {
@@ -51,14 +60,13 @@ export default function LiveStream() {
         <LiveStreamSelector ref={liveStreamSelectorRef} onSelect={onStreamSelect} />
 
         <div className='stream-pleer'>
-          <VideoPlayer ref={videoPleerRef} askModal={askModal}/>
+          <VideoPlayer ref={videoPleerRef} onAsk={setIsModalOpen} />
         </div>
 
       </div>
 
       <Shedule ref={sheduleRef} onProgramChanged={onProgramChanged} />
-
-      <AskQuestionModal ref={askModal} />
+      {askModal}
     </div>
   )
 }

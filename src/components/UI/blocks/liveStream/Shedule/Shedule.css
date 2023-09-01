@@ -1,0 +1,62 @@
+.stream-shedule {
+  width: 622px;
+  height: 760px;
+  margin-bottom: 200px;
+  background-color: white;
+  border-radius: 30px;
+  margin-left: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stream-shedule .nav-bar {
+  width: calc(100% - 30px);
+  height: 53px;
+  overflow-x: auto;
+  background-color: white;
+  position: relative;
+  
+}
+
+.stream-shedule .nav-bar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.stream-shedule .nav-bar::-webkit-scrollbar-thumb {
+  background: var(--grey, #d0d0d0);
+  border-radius: 4px;
+}
+
+.stream-shedule .nav-bar .dates-container {
+  display: flex;
+  white-space: nowrap;
+}
+
+.stream-shedule .nav-bar .date-wrapper {
+  width: 150px !important;
+  height: 36px;
+  cursor: pointer;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stream-shedule .program-list {
+  position: absolute;
+  height: 720px;
+  width: 582px;
+  overflow: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-top: 53px;
+}
+
+.stream-shedule .program-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.stream-shedule .program-list::-webkit-scrollbar-thumb {
+  background: var(--grey, #d0d0d0);
+  border-radius: 4px;
+}

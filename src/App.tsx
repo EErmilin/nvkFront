@@ -5,6 +5,7 @@ import { Routes } from 'react-router-dom';
 import './App.css';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
+import AskQuestionModal from './components/modals/AskQuestionModal/AskQuestionModal';
 import AuthModal from './components/modals/AuthModal/AuthModal';
 import ConfirmSmsCodeModal from './components/modals/ConfirmSmsCodeModal/ConfirmSmsCodeModal';
 import RegisterModal from './components/modals/RegisterModal/RegisterModal';

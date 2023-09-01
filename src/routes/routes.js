@@ -1,3 +1,4 @@
+import LiveStream from "../pages/LiveStream/LiveStream";
 import Blog from "../pages/Auth/Profile/Blog/Blog";
 import ChangePassword from "../pages/Auth/Profile/ChangePassword/ChangePassword";
 import Favorites from "../pages/Auth/Profile/Favorites/Favorites";
@@ -87,6 +88,11 @@ export const routes = [
         headerType: 2,
         footerType: 2,
     },
-
+    {
+        name: 'live',
+        component: <LiveStream />,
+        path: '/live',
+        exact: true,
+    }
 
 ]

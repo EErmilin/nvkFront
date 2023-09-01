@@ -24,7 +24,7 @@ function Header() {
                         <li><a href="">Афиша</a></li>
                         <li><a href="">Мультики</a></li>
                         <li><a href="">Гороскоп</a></li>
-                        <li className="stream"><a href="">Прямой эфир</a></li>
+                        <li className="stream"><a href="/live">Прямой эфир</a></li>
                     </ul>
                 </div>
                 <div className="right-header style__flexbox style__flex-ai-c">

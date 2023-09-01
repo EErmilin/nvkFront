@@ -1,0 +1,67 @@
+@import "../../../../scss/vars.scss";
+@import "../../../../scss/repeat.scss";
+
+.streamError {
+    &__error {
+        position: absolute;
+        text-align: center;
+        width: 80%;
+        top: 50%;
+        left: 50%;
+        z-index: 3;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 20px;
+        font-weight: 500;
+
+
+        svg {
+            margin-bottom: 16px;
+            path {
+                fill: $white;
+            }
+        }
+    }
+
+    &__wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        opacity: 0;
+        img {
+            @extend %image;
+            filter: brightness(85%);
+            &.offline{
+                filter: blur(5px);
+            }
+        }
+        &.error {
+            background: #f798ac;
+            opacity: 1;
+        }
+        &.brb {
+            background: #ff40ff;
+            opacity: 1;
+        }
+        &.offline {
+            background: #bbbbbb62;
+            opacity: 1;
+            font-size: 32px;
+        }
+    }
+}
+
+@media (max-width:700px) {
+    .streamError{
+        &__wrapper{
+            &.offline{
+                font-size: 24px;
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+.video-pleer-wraper {
+  position: relative;
+  width: 878px;
+  height: 500px;
+}
+.row {
+  display: flex;
+  align-items: center; /* Выравнивание по центру по вертикали */
+}
+
+.video-pleer-wraper:hover .controls {
+  opacity: 1;
+}
+
+.react-player {
+  height: 493px !important;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: filter 0.3s ease;
+}
+
+.video-pleer-wraper:hover .react-player {
+  filter: brightness(50%);
+}
+
+.reverse {
+  transform: rotate(-90deg);
+}

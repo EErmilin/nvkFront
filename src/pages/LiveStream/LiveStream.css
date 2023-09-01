@@ -1,0 +1,17 @@
+.stream {
+  width: 100%;
+  max-width: auto;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+}
+
+@media (min-width: 1601px) {
+  .stream {
+    max-width: 1600px; /* Увеличиваем максимальную ширину для десктопа */
+  }
+}
+
+.stream-pleer {
+  margin-top: 10px;
+}

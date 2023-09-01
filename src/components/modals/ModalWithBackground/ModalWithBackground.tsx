@@ -26,7 +26,8 @@ const ModalWithBackground = ({
 
     return (
         <DarkBackground
-            closeModal={closeModal}>
+            closeModal={closeModal}
+            >
             <div
                 className={cls.join(' ')}
                 style={{

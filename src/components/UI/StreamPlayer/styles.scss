@@ -1,0 +1,168 @@
+@import "../../../scss/vars.scss";
+@import "../../../scss/repeat.scss";
+
+#unmute-playback-video {
+    width: 0;
+    height: 0;
+}
+
+.streamPlayer {
+    &.isFullscreen {
+        video {
+            object-fit: contain;
+        }
+    }
+
+    &__play {
+        cursor: pointer;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 20px 0 20px 20px;
+        border-color: transparent transparent transparent #fff;
+        z-index: 4;
+        transition: all 0.3s;
+
+        &:hover {
+            transform: scale(0.9) translate(-50%, -50%);
+        }
+    }
+
+    &__inner {
+        color: $white;
+        position: relative;
+        flex-grow: 1;
+        border-radius: 26px;
+        overflow: hidden;
+        aspect-ratio: 1.77;
+        &.embedded {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: unset;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0px;
+            border-radius: 0;
+            margin-left: 0;
+        }
+
+        &__playerSide {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30%;
+            height: 30%;
+            border-bottom-right-radius: 26px;
+            object-fit: cover;
+            transition: all 0.3s;
+        }
+
+        video {
+            object-fit: cover;
+            // background: #bbbbbb62;
+            background: #f798ac !important;
+        }
+        & > span {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            backdrop-filter: blur(50px);
+        }
+    }
+
+    &__resolution {
+        margin-right: 18px;
+
+        font-size: 13px;
+        font-weight: 600;
+        text-shadow: 0 0 4px rgba($black, $alpha: 0.13);
+        &-btn {
+            position: relative;
+            cursor: pointer;
+            border-radius: 9px;
+            background: rgba(249, 249, 249, 0.22);
+            backdrop-filter: blur(11px);
+            padding: 7px 10px;
+            width: 78px;
+            height: 30px;
+            svg {
+                margin-left: 5px;
+                transition: all 0.3s;
+                path {
+                    fill: $white;
+                }
+            }
+            &.active {
+                & .streamPlayer__resolution-list {
+                    max-height: 150px;
+                }
+                svg {
+                    transform: rotateZ(180deg);
+                }
+            }
+        }
+        &-list {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(249, 249, 249, 0.28);
+            backdrop-filter: blur(11px);
+            border-radius: 9px;
+
+            transform: translateY(calc(-100% - 2px));
+
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+
+            span {
+                cursor: pointer;
+                padding: 8px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1152px) {
+    .streamPlayer {
+        &__inner {
+            margin-left: 5px;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .streamPlayer {
+        &__inner {
+            border-radius: 0;
+            margin-left: 0;
+            video {
+                border-radius: 0;
+            }
+        }
+    }
+}
+
+@media (orientation: landscape) {
+    .streamPlayer {
+        &.isFullscreen {
+            video {
+                object-fit: cover;
+                border-radius: 0;
+            }
+        }
+    }
+}

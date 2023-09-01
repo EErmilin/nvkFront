@@ -26,6 +26,7 @@ function Input({
     type,
     value,
     className,
+    multiple,
     classNameWrp,
     onChange,
     label,
@@ -84,9 +85,10 @@ function Input({
         mask={mask}
         type={typePassword}
         value={value}
-        className={cls.join(" ")}
-        onChange={onChange}
+        className={cls.join(" ")}        
+        onChange={onChange}        
         required={required}
+        multiple={multiple}        
     />
 
     return (

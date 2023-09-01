@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
 import { useFormik } from "formik";
 import { object, string } from "yup";
@@ -11,14 +11,15 @@ import Input from '../../UI/areas/Input/Input';
 import { useAppDispatch } from '../../../redux/hooks';
 import { setUser } from '../../../redux/slices/userSlice';
 import { setLogged, setToken } from '../../../redux/slices/authSlice';
+import React from "react";
 
 
 const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
 
     const navigate = useNavigate()
-
-    const [checkUser] = useMutation(checkUserByPhone)
-    const [login] = useMutation(LOGIN)
+    const [error, setErrors] = useState(false)
+    const [checkUser, userData] = useMutation(checkUserByPhone)
+    const [login, loginData] = useMutation(LOGIN)
     const dispatcher = useAppDispatch()
 
     /** Начальные значения */
@@ -38,11 +39,14 @@ const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
     );
 
 
+
     /** Стейт полей и правила */
     const {
         values,
         handleChange,
         touched,
+        handleBlur,
+        setTouched,
     } = useFormik({
         initialValues,
         validateOnMount: true,
@@ -54,31 +58,42 @@ const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
 
     async function handleSubmit() {
         let response;
-        response = await checkUser({ variables: { phone: values.phone } })
-        if (response.data.checkUserByPhone) {
-            response = await login({ variables: { loginInput: { phone: values.phone, password: values.password } } })
-            if (response.data) {
-                dispatcher(setUser(response.data.login.user))
-                dispatcher(setToken(response.data.login.accessToken))             
-                dispatcher(setLogged(true));
-                btnCancelClick()
-                navigate('/')
+        try {
+            response = await checkUser({ variables: { phone: values.phone } })
+            if (response.data.checkUserByPhone) {
+                response = await login({ variables: { loginInput: { phone: values.phone, password: values.password } } })
+                if (response.data) {
+                    dispatcher(setUser(response.data.login.user))
+                    dispatcher(setToken(response.data.login.accessToken))
+                    dispatcher(setLogged(true));
+                    btnCancelClick()
+                    navigate('/')
+                }
+            } else {
+                setErrors(true)
             }
+        } catch (error) {
+            console.log('error')
+            console.log(error)
         }
+
     }
+
 
     const handleRegister = () => {
         btnCancelClick()
         setIsRegisterModal(true)
     }
 
-    const onChangePhone = (event: any) => {
-        handleChange({ target: { name: "phone", value: event.target.value } })
+    /** Очищаем ошибки и изменяем состояние */
+    function ClearErrorAndChange(field: any, value: any) {
+        setErrors(false)
+        handleChange({ target: { name: field, value: value } })
     }
 
-    const onChangePassword = (event: any) => {
-        handleChange({ target: { name: "password", value: event.target.value } })
-    }
+    useEffect(() => {
+        if (userData.error || loginData.error) setErrors(true)
+    }, [userData.error, loginData.error])
 
     return (
         <ModalWithBackground
@@ -100,8 +115,9 @@ const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
                         className={classes.modal_input}
                         mask={"+7 (999) 999-99-99"}
                         value={values.phone}
-                        onChange={(event: any) => onChangePhone(event)}
-                        required
+                        onChange={(e: any) => {
+                            return ClearErrorAndChange("phone", e.target.value)
+                        }}
                     />
                     < Input
                         placeholder='Пароль'
@@ -111,10 +127,12 @@ const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
                         type={'password'}
                         value={values.password}
                         className={classes.modal_input}
-                        onChange={(event: any) => onChangePassword(event)}
-                        required
+                        onChange={(e: any) => {
+                            return ClearErrorAndChange("password", e.target.value)
+                        }}
                     />
                     <NavLink to="/" className={classes.modal_form_text_gray}>Забыли пароль?</NavLink>
+                    {error && <span className={classes.error}>Проверьте правильность введенных данных</span>}
                 </form>
                 <button
                     onClick={handleSubmit}

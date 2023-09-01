@@ -8,6 +8,7 @@ import PersonalArea from "../pages/Auth/Profile/PersonalArea";
 import Profile from "../pages/Auth/Profile/Profile/Profile";
 import Settings from "../pages/Auth/Profile/Settings/Settings";
 import Support from "../pages/Auth/Profile/Support/Support";
+import Tape from "../pages/Tape/Tape";
 import Main from "../pages/Main/Main";
 
 
@@ -16,6 +17,12 @@ export const routes = [
         name: 'main',
         component: <Main />,
         path: '',
+        exact: true,
+    },
+    {
+        name: 'tape',
+        component: <Tape />,
+        path: '/tape',
         exact: true,
     },
 

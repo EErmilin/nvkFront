@@ -9,7 +9,9 @@ body {
     font-style: normal;
     cursor: default;
     font-family: 'Noto Sans';
-
+    position: relative;
+    line-height: 1;
+    display: flex;
 }
 
 h3 {
@@ -32,6 +34,7 @@ h2 {
     font-feature-settings: 'clig' off, 'liga' off;
     font-style: normal;
     font-family: 'Noto Sans';
+    outline: none;
 }
 
 .style__flexbox {
@@ -67,13 +70,15 @@ h2 {
 }
 
 header {
+    padding: 0 80px;
     width: 100%;
     border-bottom: 1px solid var(--border-grey, #EFEFF0);
     background: var(--white, #FFF);
 }
 
 .header-container {
-    padding: 0 80px;
+
+    
     box-sizing: border-box;
 }
 

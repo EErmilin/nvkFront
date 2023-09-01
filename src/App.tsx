@@ -1,16 +1,10 @@
-import { useQuery } from '@apollo/client';
-import React, {useCallback, useEffect} from 'react'
-import { useDispatch } from 'react-redux';
+import React, { useCallback, useEffect } from 'react'
 import { Routes } from 'react-router-dom';
 import './App.css';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import AskQuestionModal from './components/modals/AskQuestionModal/AskQuestionModal';
 import AuthModal from './components/modals/AuthModal/AuthModal';
 import ConfirmSmsCodeModal from './components/modals/ConfirmSmsCodeModal/ConfirmSmsCodeModal';
 import RegisterModal from './components/modals/RegisterModal/RegisterModal';
 import UserRegisterModal from './components/modals/UserRegisterModal/UserRegisterModal';
-import WrapperComponent from './components/Wrappers/WrapperComponent/WrapperComponent';
 import { VALIDATE_TOKEN } from './gql/mutation/auth/ValidateToken';
 import useToggleVisibility from './hooks/useToggleVisibility';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
@@ -30,7 +24,7 @@ function App() {
 
   console.log('state')
   console.log(state)
-  
+
   const update = useCallback(async () => {
     (async function () {
       try {
@@ -108,13 +102,9 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <WrapperComponent>
-        <Routes>
-          {listRoutes}
-        </Routes>
-      </WrapperComponent>
-      <Footer />
+      <Routes>
+        {listRoutes}
+      </Routes>
       {templateCodeModal}
       {templateAuthModal}
       {templateRegisterModal}

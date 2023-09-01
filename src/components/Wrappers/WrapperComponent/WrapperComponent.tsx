@@ -1,3 +1,6 @@
+import Footer from "../../Footer/Footer";
+import Header from "../../Header/Header";
+import React from 'react'
 
 interface WrapperComponentProps {
     children: React.ReactNode
@@ -6,10 +9,14 @@ interface WrapperComponentProps {
 function WrapperComponent({ children }: WrapperComponentProps) {
 
     return (
-        <div className="container style__flexbox style__flexdirection-column">
-            {children}
-        </div>
+        <>
+            <Header />
+            <div className="container style__flexbox style__flexdirection-column">
+                {children}
+            </div>
+            <Footer />
+        </>
     )
-}
+} 
 
 export default WrapperComponent;

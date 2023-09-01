@@ -12,7 +12,7 @@ function Header() {
                         <div className={classes.header_logo}></div>
                     </NavLink>
                     <ul className="header-menu style__flexbox style__flex-ai-c">
-                        <li className="active"><a href="">Лента</a></li>
+                        <li className="active"><a href="/tape">Лента</a></li>
                         <li><a href="">Новости</a></li>
                         <li><a href="">Музыка</a></li>
                         <li className="has-child"><a href="">Фильмы</a>

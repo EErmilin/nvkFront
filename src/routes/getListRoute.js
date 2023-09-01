@@ -1,5 +1,6 @@
 import React from "react";
 import {Route} from "react-router-dom";
+import WrapperComponent from "../components/Wrappers/WrapperComponent/WrapperComponent";
 
 
 
@@ -19,7 +20,7 @@ export function getListRoute (routes){
         return <Route
                 path={path}
                 exact={exact}
-                element={component}
+                element={(<WrapperComponent >{component}</WrapperComponent>)}
                 key={key}
             />
     })

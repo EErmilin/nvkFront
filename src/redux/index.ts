@@ -6,8 +6,10 @@ import postSlice from './slices/postSlice';
 import mainSlice from './slices/mainSlice';
 import favoriteSlice from './slices/favoriteSlice';
 import screensSlice from './slices/screensSlice';
+import routerSlice from './slices/routerSlice';
 
 export const reducersObj = {
+  router: routerSlice,
   auth: authSlice,
   user: userSlice,
   post: postSlice,

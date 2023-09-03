@@ -2,8 +2,8 @@
   width: 100%;
   max-width: auto;
   margin: 0 auto;
-  margin-top: 20px;
   display: flex;
+  align-items: flex-start;
 }
 
 @media (min-width: 1601px) {

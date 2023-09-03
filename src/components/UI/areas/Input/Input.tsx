@@ -46,6 +46,9 @@ function Input({
     const cls = [classes.Input];
     const clsInputWrap = [classes.InputWrap];
     if (className) {
+        if(labelInput){
+            cls.push(classes.Input_label_wrp);
+        }
         cls.push(className);
     }
 

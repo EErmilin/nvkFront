@@ -8,6 +8,7 @@ import UserRegisterModal from './components/modals/UserRegisterModal/UserRegiste
 import { VALIDATE_TOKEN } from './gql/mutation/auth/ValidateToken';
 import useToggleVisibility from './hooks/useToggleVisibility';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
+import { setModalVisible } from './redux/slices/routerSlice';
 import { logout } from './redux/thunks/auth/Logout';
 import { getProfile } from './redux/thunks/user/GetProfile';
 import { getUpdateClient } from './requests/updateHeaders';
@@ -17,6 +18,7 @@ import { routes } from './routes/routes';
 function App() {
 
   const isAuth = useAppSelector(state => state.auth.logged);
+  const modalVisible = useAppSelector(state => state.router.modalVisible);
   const userId = useAppSelector(state => state.user.data?.id);
   const state = useAppSelector(state => state);
   const dispatcher = useAppDispatch()
@@ -53,6 +55,14 @@ function App() {
   useEffect(() => {
     update();
   }, [dispatcher, update]);
+
+  useEffect(() => {
+    if(modalVisible){
+      setIsAuthModal(true)
+      dispatcher(setModalVisible(false))
+    }
+  }, [modalVisible]);
+
 
   /** Модалка авторизации */
   const [isAuthModal, setIsAuthModal, closeIsAuthModal] = useToggleVisibility(isAuth ? false : true)

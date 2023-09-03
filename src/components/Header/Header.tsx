@@ -1,9 +1,23 @@
 import classes from './Header.module.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 import '../../assets/css/main.css';
+import React from 'react'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { setModalVisible } from '../../redux/slices/routerSlice';
 
 function Header() {
     const navigate = useNavigate()
+    const isAuth = useAppSelector(state => state.auth.logged);
+    const dispatcher = useAppDispatch()
+
+    const handleProfile = () => {
+        if (isAuth) {
+            navigate("/personal-area")
+        } else {
+            dispatcher(setModalVisible(true))
+        }
+    }
+
     return (
         <header>
             <div className="header-container style__flexbox style__flex-jc-sb">
@@ -29,7 +43,7 @@ function Header() {
                 </div>
                 <div className="right-header style__flexbox style__flex-ai-c">
                     <div className="header-search"><span>Поиск</span></div>
-                    <div className="header-profile" onClick={() => navigate("/personal-area")}><span>Профиль</span></div>
+                    <div className="header-profile" onClick={handleProfile}><span>Профиль</span></div>
                 </div>
             </div>
         </header>

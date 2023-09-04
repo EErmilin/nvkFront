@@ -12,6 +12,7 @@ import { ReactComponent as MusicButton } from '../../assets/img/musicButton.svg'
 import { ReactComponent as ShowsButton } from '../../assets/img/showsButton.svg'
 import { ReactComponent as FilmsButton } from '../../assets/img/filmsButton.svg'
 import { ReactComponent as CartoonsButton } from '../../assets/img/cartoonsButton.svg'
+import NewsItem from "./components/NewsItem/NewsItem";
 
 function Main({ }) {
 
@@ -62,9 +63,13 @@ function Main({ }) {
                     </div>
                 </div>
             </div>
-            <div className={classes.main_videos}>
+            <div className={classes.main_news}>
                 <h1 className={classes.main_title}>Новости</h1>
-                <div className={classes.main_videos_wrp}>
+                <div className={classes.main_news_wrp}>
+                    <NewsItem/>
+                    <NewsItem/>
+                    <NewsItem/>
+                    <NewsItem/>
                 </div>
             </div>
         </div>

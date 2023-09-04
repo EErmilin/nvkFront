@@ -19,7 +19,7 @@
     }
 
     &_item {
-cursor: pointer;
+      cursor: pointer;
     }
 
 
@@ -34,7 +34,18 @@ cursor: pointer;
 
   &_videos {
     &_wrp {
-display: flex;
+      display: flex;
+      gap: 19px
+    }
+
+    &_item {
+      cursor: pointer;
+    }
+  }
+
+  &_news {
+    &_wrp {
+      display: flex;
       gap: 19px
     }
 

@@ -22,7 +22,7 @@ export const routes = [
     {
         name: 'tape',
         component: <Tape />,
-        path: '/tape',
+        path: 'tape',
         exact: true,
     },
 
@@ -91,6 +91,7 @@ export const routes = [
             }
         />,
         path: 'personal-area/*',
+        privateUrl: true,
         exact: false,
         headerType: 2,
         footerType: 2,
@@ -98,7 +99,7 @@ export const routes = [
     {
         name: 'live',
         component: <LiveStream />,
-        path: '/live',
+        path: 'live',
         exact: true,
     }
 

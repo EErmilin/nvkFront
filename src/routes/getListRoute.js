@@ -1,6 +1,7 @@
 import React from "react";
-import {Route} from "react-router-dom";
+import { Route } from "react-router-dom";
 import WrapperComponent from "../components/Wrappers/WrapperComponent/WrapperComponent";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 
 
@@ -15,9 +16,26 @@ import WrapperComponent from "../components/Wrappers/WrapperComponent/WrapperCom
  */
 
 
-export function getListRoute (routes){
-    return routes.map(({path='',component,exact},key)=>{
-        return <Route
+export function getListRoute(routes, url = '', ...rest) {
+    return routes.map(({ path = '', component,privateUrl, exact }, key) => {
+        return privateUrl
+            ?
+            (
+                <Route
+                    path={path}
+                    exact={exact}
+                    element={
+                        <PrivateRoute
+                            exact={exact}
+                            path={path}
+                            key={key}
+                        ><WrapperComponent >{component}</WrapperComponent></PrivateRoute>
+                    }
+                    key={key}
+                />
+            )
+            :
+            <Route
                 path={path}
                 exact={exact}
                 element={(<WrapperComponent >{component}</WrapperComponent>)}

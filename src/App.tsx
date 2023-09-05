@@ -98,14 +98,15 @@ function App() {
       closeModal={closeIsCodeModal}
       btnCancelClick={setIsCodeModal}
       setIsUserRegisterModal={setIsUserRegisterModall}
-      setIsAuthModal={setIsAuthModal} />
+      setIsAuthModal={setIsAuthModal} 
+      setIsRegisterModal={setIsRegisterModal}/>
   )
 
   const templateUserRegisterModal = isUserRegisterModal && (
     <UserRegisterModal
       closeModal={closeIsUserRegisterModal}
       btnCancelClick={setIsUserRegisterModall}
-      setIsAuthModal={setIsAuthModal} />
+      setIsCodeModal={setIsCodeModal}/>
   )
 
 

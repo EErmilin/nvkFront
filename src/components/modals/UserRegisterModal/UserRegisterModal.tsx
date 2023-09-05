@@ -5,7 +5,7 @@ import classes from './UserRegisterModal.module.scss';
 import Input from '../../UI/areas/Input/Input';
 import CustomDatePicker from '../../UI/areas/CustomDatePicker/CustomDatePicker';
 import moment from 'moment';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { createUser } from '../../../redux/thunks/user/CreateUser';
 import { useNavigate } from 'react-router-dom';
@@ -13,11 +13,12 @@ import { PASSWORD_LENGTH } from '../../../api/config';
 
 
 
-const UserRegisterModal = ({ closeModal, btnCancelClick }: any) => {
+const UserRegisterModal = ({ closeModal, btnCancelClick, setIsCodeModal }: any) => {
 
     const code = useAppSelector(state => state.user.code);
     const phone = useAppSelector(state => state.user.data?.phone);
     const navigate = useNavigate()
+    const [error, setErrors] = useState(false)
     const dispather = useAppDispatch()
 
 
@@ -64,25 +65,28 @@ const UserRegisterModal = ({ closeModal, btnCancelClick }: any) => {
                 navigate("/personal-area")
             }
         } else {
-            console.log("Ошибка валидации")
+            setErrors(true)
         }
     }
 
-    const onChangeName = (event: any) => {
-        handleChange({ target: { name: "firstname", value: event.target.value } })
-    }
-
-    const onChangePassword = (event: any) => {
-        handleChange({ target: { name: "password", value: event.target.value } })
-    }
-
-    const onChangeConfirmPassword = (event: any) => {
-        handleChange({ target: { name: "confirmPassword", value: event.target.value } })
-    }
 
     const onChangeDate = (event: any) => {
         handleChange({ target: { name: "birthdate", value: event.target.value } })
     }
+
+
+    /** Очищаем ошибки и изменяем состояние */
+    function ClearErrorAndChange(field: any, value: any) {
+        setErrors(false)
+        handleChange({ target: { name: field, value: value } })
+    }
+
+
+    const handleBack = () => {
+        btnCancelClick()
+        setIsCodeModal(true)
+    }
+
 
     return (
         <ModalWithBackground
@@ -94,7 +98,7 @@ const UserRegisterModal = ({ closeModal, btnCancelClick }: any) => {
             <div className={classes.modal}>
                 <div className={classes.modal_header}>
                     <h2>Регистрация</h2>
-                    <span className={classes.modal_header_btn_return}>Вернуться</span>
+                    <span className={classes.modal_header_btn_return} onClick={handleBack}>Вернуться</span>
                 </div>
                 <form className={classes.modal_form}>
                     <Input
@@ -104,7 +108,9 @@ const UserRegisterModal = ({ closeModal, btnCancelClick }: any) => {
                         id="firstname"
                         mask={""}
                         value={values.firstname}
-                        onChange={(event: any) => onChangeName(event)}
+                        onChange={(e: any) => {
+                            return ClearErrorAndChange("firstname", e.target.value)
+                        }}
                     />
                     <CustomDatePicker
                         name={"birthdate"}
@@ -125,7 +131,9 @@ const UserRegisterModal = ({ closeModal, btnCancelClick }: any) => {
                         mask={''}
                         type={'password'}
                         value={values.password}
-                        onChange={(event: any) => onChangePassword(event)}
+                        onChange={(e: any) => {
+                            return ClearErrorAndChange("password", e.target.value)
+                        }}
                     />
 
                     <Input
@@ -135,10 +143,14 @@ const UserRegisterModal = ({ closeModal, btnCancelClick }: any) => {
                         mask={''}
                         type={'password'}
                         value={values.confirmPassword}
-                        onChange={(event: any) => onChangeConfirmPassword(event)}
+                        onChange={(e: any) => {
+                            return ClearErrorAndChange("confirmPassword", e.target.value)
+                        }}
                     />
+                    {error && <span className={classes.error}>Проверьте правильность введенных данных</span>}
                     <div className={classes.modal_form_link_gray} onClick={btnCancelClick}>Нажимая на кнопку я принимаю условия <span className={classes.modal_form_link_sms}>лицензионного договора</span> и <span className={classes.modal_form_link_sms}>разрешаю обработку персональный данных</span>
                     </div>
+
                 </form>
                 <button
                     onClick={handleSubmit}

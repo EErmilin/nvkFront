@@ -81,6 +81,12 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
     }, [codeData.error])
 
 
+    const handleBack = () => {
+        btnCancelClick()
+        setIsAuthModal(true)
+    }
+
+
     /** Очищаем ошибки и изменяем состояние */
     function ClearErrorAndChange(field: any, value: any) {
         setErrors(false)
@@ -89,8 +95,6 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
 
     const isPhoneValid = (values.phone.match(/\d/g)?.join('')[1] === '9' && (values.phone.match(/\d/g)?.join('')?.length == 11)) || !values.phone[4]
 
-    console.log('!!!!!!!!')
-    console.log(codeData)
     return (
         <ModalWithBackground
             closeModal={closeModal}
@@ -100,7 +104,7 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
             <div className={classes.modal}>
                 <div className={classes.modal_header}>
                     <h2>Регистрация</h2>
-                    <span className={classes.modal_header_btn_return}>Вернуться</span>
+                    <span className={classes.modal_header_btn_return} onClick={handleBack}>Вернуться</span>
                 </div>
                 <form className={classes.modal_form}>
                     <p>С помощью телефона</p>

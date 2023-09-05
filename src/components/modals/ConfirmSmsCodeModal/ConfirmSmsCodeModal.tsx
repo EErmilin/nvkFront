@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
 import { useFormik } from "formik";
 import { object, string } from "yup";
@@ -11,12 +11,12 @@ import React from 'react';
 import { setCode } from '../../../redux/slices/userSlice';
 
 
-const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsUserRegisterModal }: any) => {
+const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsUserRegisterModal, setIsRegisterModal }: any) => {
 
     const phone = useAppSelector(state => state.user.data?.phone);
     const dispatcher = useAppDispatch()
-
-    const [sendCode] = useMutation(VALIDATE_SMS_CODE)
+    const [error, setErrors] = useState(false)
+    const [sendCode, codeData] = useMutation(VALIDATE_SMS_CODE)
 
     /** Начальные значения */
     const initialValues = {
@@ -64,9 +64,21 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
         setIsAuthModal(true)
     }
 
-    const onChangeCode = (event: any) => {
-        handleChange({ target: { name: "code", value: event.target.value } })
+    const handleBack = () => {
+        btnCancelClick()
+        setIsRegisterModal(true)
     }
+
+    /** Очищаем ошибки и изменяем состояние */
+    function ClearErrorAndChange(field: any, value: any) {
+        setErrors(false)
+        handleChange({ target: { name: field, value: value } })
+    }
+
+    useEffect(() => {
+        if (codeData.error) setErrors(true)
+    }, [codeData.error])
+
 
     return (
         <ModalWithBackground
@@ -77,10 +89,10 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
             <div className={classes.modal}>
                 <div className={classes.modal_header}>
                     <h2>Введите SMS код</h2>
-                    <span className={classes.modal_header_btn_return}>Вернуться</span>
+                    <span className={classes.modal_header_btn_return} onClick={handleBack}>Вернуться</span>
                 </div>
                 <form className={classes.modal_form}>
-                <div className={classes.modal_form_text}>Код отправлен на номер<span className={classes.modal_form_text_gray}> {phone}</span></div>
+                    <div className={classes.modal_form_text}>Код отправлен на номер<span className={classes.modal_form_text_gray}> {phone}</span></div>
                     <Input
                         name="code"
                         placeholder=''
@@ -88,7 +100,9 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
                         className={classes.modal_input}
                         mask={"9999"}
                         value={values.code}
-                        onChange={(event: any) => onChangeCode(event)}
+                        onChange={(e: any) => {
+                            return ClearErrorAndChange("code", e.target.value)
+                        }}
                         required
                     />
                     <div className={classes.modal_form_link_gray} onClick={btnCancelClick}>Повторно запросить
@@ -96,6 +110,7 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
                             className={classes.modal_form_link_sms}
                         > SMS код</span>
                     </div>
+                    {error && <span className={classes.error}>{codeData.error?.message}</span>}
                 </form>
                 <button
                     onClick={handleSubmit}
@@ -106,7 +121,7 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
                 <div className={classes.modal_form_link} onClick={handleLogin}>Я уже зарегистрирован</div>
             </div>
         </ModalWithBackground>
-        
+
     );
 };
 

@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import classes from "./CustomDatePicker.module.scss"
 import "./CustomDatePicker.scss"
 import DatePicker, { registerLocale } from "react-datepicker";
@@ -15,6 +15,7 @@ const CustomDatePicker = ({
     onChange,
 }: any) => {
 
+    const [isPlaceHolder, setIsPlaceHolder] = useState(true)
     /** Формируем cтили обертки */
     const cls = [classes.CustomDatePicker];
     if (className) {
@@ -23,14 +24,20 @@ const CustomDatePicker = ({
 
     const pickerRef = useRef(null)
 
+    const setDate = () => {
+        setIsPlaceHolder(false)
+        onChange()
+    }
+
 
     const calendar = <DatePicker
+        placeholderText={"Дата рождения"}
         locale={"ru-RU"}
         dateFormat={['dd.MM.yyyy', 'dd/MM/yyyy', 'ddMMyyyy', 'dd MM yyyy']}
         id={id}
-        selected={new Date(value)}
+        selected={!isPlaceHolder?new Date(value): null}
         ref={pickerRef}
-        onChange={onChange}
+        onChange={setDate}
     />
 
 

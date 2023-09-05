@@ -12,10 +12,7 @@
     grid-template-columns: 1fr 1fr;
 
     &_slider {
-      border-radius: 20px;
-      background: white;
-      height: 472px;
-      width: 750px;
+
     }
 
     &_item {
@@ -51,6 +48,25 @@
 
     &_item {
       cursor: pointer;
+    }
+
+    &_btn {
+      &_wrp {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      border-radius: 14px;
+      background: fixed;
+      border: 1.5px solid var(--Yellow, #F6A80B);
+      color: var(--Black-Text, #2F2F30);
+      font-size: 16px;
+      font-weight: 500;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 30px;
+
     }
   }
 

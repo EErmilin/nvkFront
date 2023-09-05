@@ -1,0 +1,25 @@
+
+
+  .swiper{
+    display: flex;
+    position: relative;
+    border-radius: 20px;
+    height: 472px;
+    width: 750px;
+  
+    &_img{
+        display: flex;
+        width: 750px;
+    }
+    &_navigation{
+        position: absolute;
+        top: 47.5%;
+        left: 12px;
+        right: 12px;
+        display: flex;
+        justify-content: space-between;
+        z-index: 1;
+      }
+  
+  }
+  

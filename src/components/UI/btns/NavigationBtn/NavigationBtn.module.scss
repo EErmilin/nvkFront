@@ -1,0 +1,15 @@
+
+
+.navigation_btn {
+background: none;
+border: none;
+cursor: pointer;
+
+  &:hover {
+
+  }
+}
+
+.left {
+  transform: rotate(180deg);
+}

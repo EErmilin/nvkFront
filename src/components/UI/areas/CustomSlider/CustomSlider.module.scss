@@ -1,0 +1,21 @@
+
+
+  .swiper{
+    display: flex;
+    position: relative;
+    border-radius: 20px;
+    height: 472px;
+    width: 100%;
+  
+  
+    &_navigation{
+      position: absolute;
+      top: 47.5%;
+      left: 15px;
+      right: 15px;
+      display: flex;
+      justify-content: space-between;
+      z-index: 1;
+    }
+  }
+  

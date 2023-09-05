@@ -13,13 +13,18 @@ import { ReactComponent as ShowsButton } from '../../assets/img/showsButton.svg'
 import { ReactComponent as FilmsButton } from '../../assets/img/filmsButton.svg'
 import { ReactComponent as CartoonsButton } from '../../assets/img/cartoonsButton.svg'
 import NewsItem from "./components/NewsItem/NewsItem";
+import MainSlider from "./components/MainSlider/MainSlider";
+
+
 
 function Main({ }) {
 
     return (
         <div className={classes.main}>
             <div className={classes.main_links}>
-                <div className={classes.main_links_slider}></div>
+                <div className={classes.main_links_slider}
+                ><MainSlider
+                    /></div>
                 <div className={classes.main_links_wrp}>
                     <div className={classes.main_links_item}>
                         <NvkLogo />
@@ -45,10 +50,10 @@ function Main({ }) {
                         <FilmsButton />
                     </div>
                     <div className={classes.main_videos_item}>
-                        <ShowsButton  />
+                        <ShowsButton />
                     </div>
                     <div className={classes.main_videos_item}>
-                        <CartoonsButton  />
+                        <CartoonsButton />
                     </div>
                 </div>
             </div>
@@ -66,10 +71,13 @@ function Main({ }) {
             <div className={classes.main_news}>
                 <h1 className={classes.main_title}>Новости</h1>
                 <div className={classes.main_news_wrp}>
-                    <NewsItem/>
-                    <NewsItem/>
-                    <NewsItem/>
-                    <NewsItem/>
+                    <NewsItem />
+                    <NewsItem />
+                    <NewsItem />
+                    <NewsItem />
+                </div>
+                <div className={classes.main_news_btn_wrp}>
+                    <button className={classes.main_news_btn}>Смотреть еще</button>
                 </div>
             </div>
         </div>

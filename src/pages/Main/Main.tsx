@@ -96,10 +96,10 @@ function Main({ }) {
                     <button className={classes.main_news_btn}>Смотреть еще</button>
                 </div>
             </div>
-            {streams.length && <div className={classes.main_live}>
+            {streams && streams.length && <div className={classes.main_live}>
                 <h1 className={classes.main_title}>Прямые эфиры</h1>
                 <div className={classes.main_live_wrp}>
-                   {streams.map((stream: any)=> <LiveItem stream={stream}/>)}
+                    {streams.slice(0, 4).map((stream: any) => <LiveItem stream={stream} />)}
                 </div>
                 <div className={classes.main_news_btn_wrp}>
                     <button className={classes.main_news_btn}>Смотреть еще</button>

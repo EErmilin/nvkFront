@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.a29ca0b7.css",
-    "main.js": "./static/js/main.048a163b.js",
+    "main.css": "./static/css/main.c784f65c.css",
+    "main.js": "./static/js/main.48377886.js",
     "static/js/787.ca5074de.chunk.js": "./static/js/787.ca5074de.chunk.js",
     "static/media/NotoSans-Thin.ttf": "./static/media/NotoSans-Thin.db45faa4d07846225fb9.ttf",
     "static/media/NotoSans-ExtraLight.ttf": "./static/media/NotoSans-ExtraLight.387c9cb8074a7257c4d3.ttf",
@@ -25,6 +25,7 @@
     "static/media/nvk.svg": "./static/media/nvk.f66c403fc37987defcf4f743c91457db.svg",
     "static/media/png": "./static/media/3c6646022a18ad8353e3d52fdda6c2da.3758d6fdabbe1273e350.png",
     "static/media/fakeNews.png": "./static/media/fakeNews.464561fa15950d2490c6.png",
+    "static/media/fakeTop.png": "./static/media/fakeTop.b158cd409fe40abcfa26.png",
     "static/media/visa.svg": "./static/media/visa.eb4ed8187ff21a88c06d.svg",
     "static/media/mastercard.svg": "./static/media/mastercard.45c5b58b6da147696f21.svg",
     "static/media/calendar.svg": "./static/media/calendar.f930411cb4b2f1fa84c6.svg",
@@ -52,12 +53,12 @@
     "static/media/close.svg": "./static/media/close.fb1d458129cd05716403.svg",
     "static/media/arrow.svg": "./static/media/arrow.6c2f81a80d5cb0a0bdd6.svg",
     "static/media/carousel-arrow.svg": "./static/media/carousel-arrow.10b905f94e5010a68895.svg",
-    "main.a29ca0b7.css.map": "./static/css/main.a29ca0b7.css.map",
-    "main.048a163b.js.map": "./static/js/main.048a163b.js.map",
+    "main.c784f65c.css.map": "./static/css/main.c784f65c.css.map",
+    "main.48377886.js.map": "./static/js/main.48377886.js.map",
     "787.ca5074de.chunk.js.map": "./static/js/787.ca5074de.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a29ca0b7.css",
-    "static/js/main.048a163b.js"
+    "static/css/main.c784f65c.css",
+    "static/js/main.48377886.js"
   ]
 }

@@ -3,6 +3,23 @@
   width: 878px;
   height: 500px;
 }
+
+.video-pleer-wraper-main {
+  position: relative;
+  width: 750px;
+  height:  420p
+}
+
+.react-player-main {
+  height: 420px !important;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: filter 0.3s ease;
+}
+
+
+
 .row {
   display: flex;
   align-items: center; /* Выравнивание по центру по вертикали */
@@ -11,6 +28,11 @@
 .video-pleer-wraper:hover .controls {
   opacity: 1;
 }
+
+.video-pleer-wraper-main:hover .controls {
+  opacity: 1;
+}
+
 
 .react-player {
   height: 493px !important;

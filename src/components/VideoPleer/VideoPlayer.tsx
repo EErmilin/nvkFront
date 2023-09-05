@@ -10,7 +10,9 @@ import './VideoPlayer.css'; // Создайте файл стилей для в�
 type TProps = {
   steam?: ILive | IRadio;
   onAsk?: () => void
-
+  play?: boolean
+  isShowBtn? : boolean
+  isMain?: boolean
 }
 
 export type VideoPlayerHandle = {
@@ -18,14 +20,14 @@ export type VideoPlayerHandle = {
   setProgramTitle: React.Dispatch<React.SetStateAction<string>>
 }
 
-const VideoPlayer = forwardRef(({ steam: streamInner, onAsk }: TProps, ref) => {
+const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShowBtn = true, isMain= false}: TProps, ref) => {
 
   const playerRef = useRef<ReactPlayer>(null);
   const videoPleerWraper = useRef<any>();
   const [steam, setStream] = useState(streamInner)
   const [programTitle, setProgramTitle] = useState("")
 
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(play);
   const [volume, setVolume] = useState(1);
   const [mute, setMute] = useState(false)
 
@@ -56,9 +58,8 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk }: TProps, ref) => {
     }
   };
 
-
   return (
-    <div className="video-pleer-wraper"
+    <div className={isMain? "video-pleer-wraper-main": "video-pleer-wraper"}
       ref={videoPleerWraper}>
       <ReactPlayer
         ref={playerRef}
@@ -71,7 +72,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk }: TProps, ref) => {
         muted={mute}
         onPlay={onPlay}
         onPause={onPause}
-        className='react-player'
+        className={isMain? "react-player-main": "react-player"}
       />
 
       <Controls
@@ -84,7 +85,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk }: TProps, ref) => {
         handleVolumeChange={setVolume}
       />
 
-      <VideoInfo streamTitle={steam?.name} programTitle={programTitle} askButtonClick={onAsk} />
+      {isShowBtn && <VideoInfo streamTitle={steam?.name} programTitle={programTitle} askButtonClick={onAsk} />}
     </div>
   );
 });

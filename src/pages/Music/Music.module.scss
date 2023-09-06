@@ -6,42 +6,112 @@
     background: var(--White, #FFF);
     min-height: 370px;
     padding: 30px;
+    
+
+    &_img {
+      height: 180px;
+      width: 180px;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+
+    &_no_img {
+      height: 180px;
+      width: 180px;
+      background-color: #EFEFF0;
+      border-radius: 15px;
+    }
+
+    &_item{
+      &_title {
+        color: var(--Black, #0F0A07);
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 140%;
+        margin-top: 15px;
+
+      }
+
+    }
+
 
     &_music {
-      &_img {
-        max-height: 10px;
-        background-color: #0F0A07;
-        height: 15px;
-        width: 15px;
+      &_item {
+        position: relative;
+        display: flex;
+        gap: 15px;
+        max-height: 70px;
+
+        &_img {
+          height: 70px;
+          width: 70px;
+          background-color: #EFEFF0;
+        }
+
+        &_no_img {
+          height: 70px;
+          min-width: 70px;
+          background-color: #EFEFF0;
+          border-radius: 15px;
+        }
+
+        &_name {
+          color: var(--Grey-Text, #BBB);
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 140%;
+        }
+
+        &_wrp {
+          height: 70px;
+          width: 270px;
+          padding: 10px 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+  
+        }
+
+        &_title {
+          color: var(--Black, #0F0A07);
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 140%;
+          display: table-cell;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          width: 100%;
+        }
+        &_btn {
+          position: absolute;
+          content: '';
+          top: 50%;
+          transform: translateY(-50%);
+          right: 0px;
+          z-index: 1;
+      cursor: pointer;
+          width: 24px;
+          height: 24px;
+          background: center no-repeat url("../../assets/img/points.svg");
+        }
       }
-
-      &_title {
-        color: var(--Black, #0F0A07);
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 140%;
-        margin-top: 15px;
-      }
-
-
+      
     }
 
-    &_item {
-      &_title {
-        color: var(--Black, #0F0A07);
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 140%;
-        margin-top: 15px;
-      }
-
-    }
+    
 
 
     &_wrp {
       gap: 18px;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      &_music {
+        
+        gap: 18px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
     }
 
     &_header {

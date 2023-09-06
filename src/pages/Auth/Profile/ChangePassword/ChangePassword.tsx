@@ -3,7 +3,6 @@ import ButtonDefault from "../../../../components/UI/btns/Button/Button";
 import classes from "./ChangePassword.module.scss";
 import React, { useMemo, useState } from 'react';
 import { useFormik } from "formik";
-import { useAppDispatch } from "../../../../redux/hooks";
 import { object } from "yup";
 import { CHANGE_PASSWORD } from '../../../../gql/mutation/user/ChangePassword';
 import { getUpdateClient } from "../../../../requests/updateHeaders";
@@ -11,9 +10,6 @@ import { PASSWORD_LENGTH } from "../../../../api/config";
 import { ApolloError } from "@apollo/client";
 
 function ChangePassword({ }) {
-
-    const dispatcher = useAppDispatch()
-
     const [errors, setErrors] = useState({
         oldPassword: "",
         newPassword: "",

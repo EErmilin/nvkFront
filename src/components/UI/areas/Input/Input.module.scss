@@ -113,15 +113,21 @@
 
   &.invalid {
     input {
-      border: 1px solid #FF1C45;
+      background: fixed;
+      border-radius: 15px;
+      padding: 3px 0 0 0px ;
+      width: 100%;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 140%;
+      padding: 19px 20px 19px 20px;
       color: #FF1C45;
       border-radius: 15px;
-      background: var(--2-Grey, #F8F8F8);
     }
 
     .InputWrap {
       position: relative;
-
+      border: 1px solid #FF1C45;
       &::before {
         position: absolute;
         content: '';

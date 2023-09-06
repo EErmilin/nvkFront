@@ -1,0 +1,38 @@
+.music {
+  &_field {
+    margin-top: 30px;
+    border-radius: 30px;
+    border: 1px solid var(--Border-Grey, #EFEFF0);
+    background: var(--White, #FFF);
+    min-height: 370px;
+    padding: 30px;
+
+    &_wrp {
+      gap: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    &_header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+
+      &_btn {
+        cursor: pointer;
+        color: var(--Yellow, #F6A80B);
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 140%;
+      }
+    }
+
+    &_title {
+      color: var(--Black, #0F0A07);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 160%;
+    }
+  }
+}

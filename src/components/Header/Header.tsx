@@ -1,7 +1,7 @@
 import classes from './Header.module.scss';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import '../../assets/css/main.css';
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setModalVisible } from '../../redux/slices/routerSlice';
 
@@ -9,6 +9,7 @@ function Header() {
     const navigate = useNavigate()
     const isAuth = useAppSelector(state => state.auth.logged);
     const dispatcher = useAppDispatch()
+    const url = useLocation()
 
     const handleProfile = () => {
         if (isAuth) {
@@ -18,6 +19,34 @@ function Header() {
         }
     }
 
+    /** Масив ссылок */
+    const templateLinks = useMemo(() => {
+        let arrLinks = [
+            { link: "/tape", title: "Лента" },
+            { link: "/news", title: "Новости" },
+            { link: "/music", title: "Музыка" },
+            { link: "/films", title: "Фильмы" },
+            { link: "", title: "Афиша" },
+            { link: "", title: "Мультики" },
+            { link: "", title: "Избранное" },
+            { link: "/live", title: "Прямой эфир" },
+            { link: "", title: "Гороскоп" },
+        ]
+
+        return arrLinks.map((elem, id) => {
+            return (
+                <li
+                    className={elem.link === url.pathname ? "active" : ''}
+                    key={id} >
+                    <NavLink to={elem.link}>
+                        {elem.title}
+                    </NavLink>
+                </li>
+            )
+
+        })
+    }, [url])
+
     return (
         <header>
             <div className="header-container style__flexbox style__flex-jc-sb">
@@ -26,19 +55,7 @@ function Header() {
                         <div className={classes.header_logo}></div>
                     </NavLink>
                     <ul className="header-menu style__flexbox style__flex-ai-c">
-                        <li className="active"><a href="/tape">Лента</a></li>
-                        <li><a href="">Новости</a></li>
-                        <li><a href="">Музыка</a></li>
-                        <li className="has-child"><a href="">Фильмы</a>
-                            <ul>
-                                <li><a href="">Подпункт</a></li>
-                                <li><a href="">Подпункт</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">Афиша</a></li>
-                        <li><a href="">Мультики</a></li>
-                        <li><a href="">Гороскоп</a></li>
-                        <li className="stream"><a href="/live">Прямой эфир</a></li>
+                        {templateLinks}
                     </ul>
                 </div>
                 <div className="right-header style__flexbox style__flex-ai-c">

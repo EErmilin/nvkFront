@@ -10,6 +10,7 @@ import Settings from "../pages/Auth/Profile/Settings/Settings";
 import Support from "../pages/Auth/Profile/Support/Support";
 import Tape from "../pages/Tape/Tape";
 import Main from "../pages/Main/Main";
+import Music from "../pages/Music/Music";
 
 
 export const routes = [
@@ -97,9 +98,15 @@ export const routes = [
         footerType: 2,
     },
     {
-        name: 'live',
+        name: '*/live',
         component: <LiveStream />,
         path: 'live',
+        exact: true,
+    },
+    {
+        name: 'music',
+        component: <Music />,
+        path: 'music',
         exact: true,
     }
 

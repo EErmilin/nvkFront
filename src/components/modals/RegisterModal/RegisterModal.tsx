@@ -3,7 +3,7 @@ import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
 import { useFormik } from "formik";
 import { object, string } from "yup";
 import classes from './RegisterModal.module.scss';
-import { useMutation } from '@apollo/client';
+import { ApolloError, useMutation } from '@apollo/client';
 import { GET_SMS_CODE } from '../../../gql/mutation/auth/GetSmsCode';
 import { checkUserByPhone } from '../../../gql/mutation/auth/CheckUserByPhone';
 import Input from '../../UI/areas/Input/Input';
@@ -16,7 +16,7 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
 
     const dispatcher = useAppDispatch()
     const phone = useAppSelector(state => state.user.data?.phone);
-    const [error, setErrors] = useState(false)
+    const [error, setError] = useState("")
     const [getSmsCode, codeData] = useMutation(GET_SMS_CODE)
     const [checkUser, userData] = useMutation(checkUserByPhone)
 
@@ -64,11 +64,13 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
                     setIsCodeModal(true)
                 }
             } else {
-                setErrors(true)
+                setError("Пользователь не найден")
             }
-        } catch (error) {
-            console.log('error')
-            console.log(error)
+        } catch (e) {
+            if (e instanceof ApolloError) {
+                setError(e.message)
+                console.log('e', e.message);
+            }
         }
 
     }
@@ -78,11 +80,6 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
         setIsAuthModal(true)
     }
 
-    useEffect(() => {
-        if (codeData.error) setErrors(true)
-    }, [codeData.error])
-
-
     const handleBack = () => {
         btnCancelClick()
         setIsAuthModal(true)
@@ -91,7 +88,7 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
 
     /** Очищаем ошибки и изменяем состояние */
     function ClearErrorAndChange(field: any, value: any) {
-        setErrors(false)
+        setError("")
         handleChange({ target: { name: field, value: value } })
     }
 
@@ -116,13 +113,12 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
                         id="phone"
                         mask={"+7 (999) 999-99-99"}
                         value={values.phone}
+                        errorMessage={error}
                         onChange={(e: any) => {
                             return ClearErrorAndChange("phone", e.target.value)
                         }}
                     />
-                    {error && <span className={classes.error}>{codeData.error?.message ?? "Проверьте правильность введенных данных"}</span>}
                 </form>
-
                 <button
                     onClick={handleSubmit}
                     className={classes.modal_form_btn}

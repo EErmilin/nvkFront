@@ -3,7 +3,7 @@ import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
 import { useFormik } from "formik";
 import { object, string } from "yup";
 import classes from './ConfirmSmsCodeModal.module.scss';
-import { useMutation } from '@apollo/client';
+import { ApolloError, useMutation } from '@apollo/client';
 import Input from '../../UI/areas/Input/Input';
 import { VALIDATE_SMS_CODE } from '../../../gql/mutation/auth/ValidateSmsCode';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
@@ -15,7 +15,7 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
 
     const phone = useAppSelector(state => state.user.data?.phone);
     const dispatcher = useAppDispatch()
-    const [error, setErrors] = useState(false)
+    const [error, setError] = useState("")
     const [sendCode, codeData] = useMutation(VALIDATE_SMS_CODE)
 
     /** Начальные значения */
@@ -50,12 +50,19 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
     });
 
     async function handleSubmit() {
-        let response;
-        response = await sendCode({ variables: { phone: values.phone, code: values.code } })
-        await dispatcher(setCode(values.code))
-        if (response.data) {
-            btnCancelClick()
-            setIsUserRegisterModal(true)
+        try {
+            let response;
+            response = await sendCode({ variables: { phone: values.phone, code: values.code } })
+            await dispatcher(setCode(values.code))
+            if (response.data) {
+                btnCancelClick()
+                setIsUserRegisterModal(true)
+            }
+        } catch (e) {
+            if (e instanceof ApolloError) {
+                setError(e.message)
+                console.log('e', e.message);
+            }
         }
     }
 
@@ -71,13 +78,9 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
 
     /** Очищаем ошибки и изменяем состояние */
     function ClearErrorAndChange(field: any, value: any) {
-        setErrors(false)
+        setError("")
         handleChange({ target: { name: field, value: value } })
     }
-
-    useEffect(() => {
-        if (codeData.error) setErrors(true)
-    }, [codeData.error])
 
 
     return (
@@ -99,18 +102,18 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
                         id="code"
                         className={classes.modal_input}
                         mask={"9999"}
+                        errorMessage={error}
                         value={values.code}
                         onChange={(e: any) => {
                             return ClearErrorAndChange("code", e.target.value)
                         }}
                         required
                     />
-                    <div className={classes.modal_form_link_gray} onClick={btnCancelClick}>Повторно запросить
-                        <span
+                    <div className={classes.modal_form_link_gray} >Повторно запросить
+                        <span onClick={handleSubmit}
                             className={classes.modal_form_link_sms}
                         > SMS код</span>
                     </div>
-                    {error && <span className={classes.error}>{codeData.error?.message}</span>}
                 </form>
                 <button
                     onClick={handleSubmit}

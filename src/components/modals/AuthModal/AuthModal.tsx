@@ -9,17 +9,14 @@ import { LOGIN } from '../../../gql/mutation/auth/Login';
 import { checkUserByPhone } from '../../../gql/mutation/auth/CheckUserByPhone';
 import Input from '../../UI/areas/Input/Input';
 import { useAppDispatch } from '../../../redux/hooks';
-import { setUser } from '../../../redux/slices/userSlice';
-import { setLogged, setToken } from '../../../redux/slices/authSlice';
+import { setLogged } from '../../../redux/slices/authSlice';
 import React from "react";
+import { loginUser } from '../../../redux/thunks/auth/Login';
 
 
 const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
 
-    const navigate = useNavigate()
     const [error, setErrors] = useState(false)
-    const [checkUser, userData] = useMutation(checkUserByPhone)
-    const [login, loginData] = useMutation(LOGIN)
     const dispatcher = useAppDispatch()
 
     /** Начальные значения */
@@ -57,20 +54,16 @@ const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
     });
 
     async function handleSubmit() {
-        let response;
         try {
-            response = await checkUser({ variables: { phone: values.phone } })
-            if (response.data.checkUserByPhone) {
-                response = await login({ variables: { loginInput: { phone: values.phone, password: values.password } } })
-                if (response.data) {
-                    dispatcher(setUser(response.data.login.user))
-                    dispatcher(setToken(response.data.login.accessToken))
-                    dispatcher(setLogged(true));
-                    btnCancelClick()
-                    navigate('/')
-                }
+            const response: any = await dispatcher(loginUser({
+                phone: values.phone,
+                password: values.password
+            }))
+            if (response?.error) {
+                response.error && setErrors(true)
             } else {
-                setErrors(true)
+                dispatcher(setLogged(true));
+                btnCancelClick()
             }
         } catch (error) {
             console.log('error')
@@ -91,9 +84,6 @@ const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
         handleChange({ target: { name: field, value: value } })
     }
 
-    useEffect(() => {
-        if (userData.error || loginData.error) setErrors(true)
-    }, [userData.error, loginData.error])
 
     return (
         <ModalWithBackground

@@ -10,6 +10,8 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { createUser } from '../../../redux/thunks/user/CreateUser';
 import { useNavigate } from 'react-router-dom';
 import { PASSWORD_LENGTH } from '../../../api/config';
+import { setLogged } from '../../../redux/slices/authSlice';
+import { loginUser } from '../../../redux/thunks/auth/Login';
 
 
 
@@ -19,13 +21,13 @@ const UserRegisterModal = ({ closeModal, btnCancelClick, setIsCodeModal }: any) 
     const phone = useAppSelector(state => state.user.data?.phone);
     const navigate = useNavigate()
     const [error, setErrors] = useState(false)
-    const dispather = useAppDispatch()
+    const dispatcher = useAppDispatch()
 
 
     /** Начальные значения */
     const initialValues = {
         code: code,
-        phone: phone,
+        phone: phone ?? "",
         password: "",
         confirmPassword: "",
         firstname: "",
@@ -50,7 +52,7 @@ const UserRegisterModal = ({ closeModal, btnCancelClick, setIsCodeModal }: any) 
         if (values.firstname !== '' &&
             values.password === values.confirmPassword &&
             values.password.length >= PASSWORD_LENGTH) {
-            const response: any = await dispather(
+            const response: any = await dispatcher(
                 createUser({
                     phone: values.phone,
                     password: values.password,
@@ -61,8 +63,16 @@ const UserRegisterModal = ({ closeModal, btnCancelClick, setIsCodeModal }: any) 
                 }),
             );
             if (response?.data) {
-                btnCancelClick()
-                navigate("/personal-area")
+                const response: any = await dispatcher(loginUser({
+                    phone: values.phone,
+                    password: values.password
+                }))
+                if (response?.error) {
+                    response.error && setErrors(true)
+                } else {
+                    dispatcher(setLogged(true));
+                    btnCancelClick()
+                }
             }
         } else {
             setErrors(true)

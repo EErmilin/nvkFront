@@ -63,6 +63,8 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
                     btnCancelClick()
                     setIsCodeModal(true)
                 }
+            } else {
+                setErrors(true)
             }
         } catch (error) {
             console.log('error')
@@ -118,7 +120,7 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
                             return ClearErrorAndChange("phone", e.target.value)
                         }}
                     />
-                    {error && <span className={classes.error}>{codeData.error?.message}</span>}
+                    {error && <span className={classes.error}>{codeData.error?.message ?? "Проверьте правильность введенных данных"}</span>}
                 </form>
 
                 <button

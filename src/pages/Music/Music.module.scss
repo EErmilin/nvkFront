@@ -7,6 +7,37 @@
     min-height: 370px;
     padding: 30px;
 
+    &_music {
+      &_img {
+        max-height: 10px;
+        background-color: #0F0A07;
+        height: 15px;
+        width: 15px;
+      }
+
+      &_title {
+        color: var(--Black, #0F0A07);
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 140%;
+        margin-top: 15px;
+      }
+
+
+    }
+
+    &_item {
+      &_title {
+        color: var(--Black, #0F0A07);
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 140%;
+        margin-top: 15px;
+      }
+
+    }
+
+
     &_wrp {
       gap: 18px;
       display: grid;

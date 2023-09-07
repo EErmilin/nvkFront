@@ -1,8 +1,8 @@
 .TextArea {
   position: relative;
-  padding: 10px 20px;
+
   border-radius: 15px;
-  background: var(--2-grey, #F8F8F8);
+
 
   label {
     z-index: 1;
@@ -10,6 +10,10 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 140%;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    pointer-events: none;
   }
 
 
@@ -17,12 +21,14 @@
   &_wrap {
     & textarea {
       min-height: 106px;
+      position: relative;
       display: flex;
       width: 100%;
       align-items: flex-start;
       gap: 10px;
       font-size: 16px;
       border-radius: 15px;
+      padding: 40px 20px 20px 20px;
       background: var(--2-grey, #F8F8F8);
       border: none;
       resize: none;
@@ -32,6 +38,39 @@
         border: none;
       }
 
+    }
+  }
+
+  &.invalid {
+
+    textarea {
+      border: 1px solid red;
+      background: var(--2-grey, #F8F8F8);
+      color: red;
+    }
+
+    &>span {
+      display: inline-block;
+      margin-top: 8px;
+      color: red;
+      font-size: 12px;
+    }
+
+    .TextArea {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        bottom: 0;
+        right: 15px;
+        z-index: 1;
+        margin: auto 0;
+
+        width: 10px;
+        height: 10px;
+      }
     }
   }
 }

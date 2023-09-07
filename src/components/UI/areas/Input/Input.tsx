@@ -45,6 +45,10 @@ function Input({
     /** Формируем css классы */
     const cls = [classes.Input];
     const clsInputWrap = [classes.InputWrap];
+        if(labelInput){
+            clsInputWrap.push(classes.Input_label_wrp);
+        }
+
     if (className) {
         if(labelInput){
             cls.push(classes.Input_label_wrp);

@@ -53,6 +53,10 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
 
     async function handleSubmit() {
         let response;
+        const isPhoneValid = (values.phone.match(/\d/g)?.join('')[1] === '9' && (values.phone.match(/\d/g)?.join('')?.length == 11))
+        if(!isPhoneValid){
+            return setError("Неверный формат номера")
+        }
         try {
             response = await checkUser({ variables: { phone: values.phone } })
 
@@ -91,8 +95,6 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
         setError("")
         handleChange({ target: { name: field, value: value } })
     }
-
-    const isPhoneValid = (values.phone.match(/\d/g)?.join('')[1] === '9' && (values.phone.match(/\d/g)?.join('')?.length == 11)) || !values.phone[4]
 
     return (
         <ModalWithBackground

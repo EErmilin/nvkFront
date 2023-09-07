@@ -1,9 +1,10 @@
 import React from "react";
 import classes from "./CustomTextArea.module.scss";
 
-function isInvalid(valid: any, touched: any, shouldValidate: any,errorMessage: any) {
-    return !valid && shouldValidate && touched && errorMessage;
+function isInvalid( errorMessage: string) {
+    return errorMessage
 }
+
 
 function CustomTextArea ({
     onChange,
@@ -14,6 +15,7 @@ function CustomTextArea ({
     placeholder,
     disabled,
     label,
+    errorMessage,
 }: any){
     /** Создаем уникальный id */
     const id = `textarea-${Math.random()}`;
@@ -25,6 +27,17 @@ function CustomTextArea ({
     }
     const clsInputWrap = [classes.TextArea_wrap]
     if(classNameInputWrap)clsInputWrap.push(classNameInputWrap)
+
+    if (isInvalid(errorMessage)) {
+        cls.push(classes.invalid);
+    } else {
+        cls.push(classes.valid);
+    }
+
+    const errMsg = isInvalid(errorMessage) ? (
+        <span>{errorMessage}</span>
+    ) : null;
+
 
     return (
         <div className={cls.join(' ')}>
@@ -39,6 +52,7 @@ function CustomTextArea ({
                     disabled={disabled}
                 ></textarea>
             </div>
+            {errMsg}
         </div>
     )
 }

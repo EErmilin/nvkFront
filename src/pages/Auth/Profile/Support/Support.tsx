@@ -16,7 +16,7 @@ function Support({ }) {
 
     const [errors, setErrors] = useState({
         name: "",
-        phone: "",
+        email: "",
         message: "",
 
     })
@@ -28,7 +28,6 @@ function Support({ }) {
         name: userData?.firstname ?? "",
         email: userData?.email ?? "",
         message: "",
-        phone: "",
         authorId: userData?.id,
     };
 
@@ -58,37 +57,36 @@ function Support({ }) {
     });
 
     async function handleSubmit() {
-        if (!values.name || !values.phone || !values.message) {
-        try {
-            let client = await getUpdateClient();
-            let response = await client.mutate({
-                mutation: CREATE_SUPPORT,
-                variables: {
-                    createSupportInput: {
-                        name: values.name,
-                        email: values.email.trim(),
-                        message: values.message,
-                        authorId: values.authorId,
-                    },
-                },
-            });
-            
+        if (!values.name || !values.email || !values.message) {
             if (!values.name) {
                 setErrors({ ...errors, name: "Заполните все поля" })
-              }
-              if (!values.phone) {
-                setErrors({ ...errors, phone: "Заполните все поля" })
-              }
-              if (!values.message) {
+            }
+            if (!values.email) {
+                setErrors({ ...errors, email: "Заполните все поля" })
+            }
+            if (!values.message) {
                 setErrors({ ...errors, message: "Заполните все поля" })
-              }
-
-        } catch (e) {
-            if (e instanceof ApolloError) {
-                console.log('e', e.message);
+            } else {
+                try {
+                    let client = await getUpdateClient();
+                    let response = await client.mutate({
+                        mutation: CREATE_SUPPORT,
+                        variables: {
+                            createSupportInput: {
+                                name: values.name,
+                                email: values.email.trim(),
+                                message: values.message,
+                                authorId: values.authorId,
+                            },
+                        },
+                    });
+                } catch (e) {
+                    if (e instanceof ApolloError) {
+                        console.log('e', e.message);
+                    }
+                }
             }
         }
-    }
 
     }
 
@@ -102,6 +100,7 @@ function Support({ }) {
 
 
     console.log('!!!!!!!!!!!')
+    console.log(values)
     console.log(errors)
 
 
@@ -120,15 +119,13 @@ function Support({ }) {
                                 return ClearErrorAndChange("name", e.target.value)
                             }}
                         ></Input>
-                        <Input labelInput={"Номер телефона"}
-                            name="phone"
-                            id="phone"
-                            placeholder='+7'
-                            mask={"+7 (999) 999-99-99"}
-                            value={values.phone}
-                            errorMessage={errors.phone}
+                        <Input labelInput={"Эл. Почта"}
+                            name="email"
+                            id="email"
+                            value={values.email}
+                            errorMessage={errors.email}
                             onChange={(e: any) => {
-                                return ClearErrorAndChange("phone", e.target.value)
+                                return ClearErrorAndChange("email", e.target.value)
                             }}
                         ></Input>
                     </div>
@@ -145,7 +142,7 @@ function Support({ }) {
             </div>
             <div className={classes.btn_wrp}>
                 <ButtonDefault
-                   onClick={handleSubmit}
+                    onClick={handleSubmit}
                     title={"Отправить"}
                 />
             </div>

@@ -120,7 +120,8 @@ const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
                             return ClearErrorAndChange("password", e.target.value)
                         }}
                     />
-                    <NavLink to="/" className={classes.modal_form_text_gray}>Забыли пароль?</NavLink>
+                   { //<NavLink to="/" className={classes.modal_form_text_gray}>Забыли пароль?</NavLink>
+                   }
                     {error && <span className={classes.error}>Проверьте правильность введенных данных</span>}
                 </form>
                 <button

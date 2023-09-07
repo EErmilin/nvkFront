@@ -5,7 +5,7 @@ import classes from './UserRegisterModal.module.scss';
 import Input from '../../UI/areas/Input/Input';
 import CustomDatePicker from '../../UI/areas/CustomDatePicker/CustomDatePicker';
 import moment from 'moment';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { createUser } from '../../../redux/thunks/user/CreateUser';
 import { useNavigate } from 'react-router-dom';
@@ -78,7 +78,13 @@ const UserRegisterModal = ({ closeModal, btnCancelClick, setIsCodeModal }: any) 
             setErrors(true)
         }
     }
-
+    useEffect(() => {
+        document.body.onkeydown = (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault()
+                return handleSubmit()
+            }
+    }})
 
     const onChangeDate = (event: any) => {
         setErrors(false)

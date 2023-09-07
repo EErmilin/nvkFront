@@ -9,7 +9,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.4;
-  padding-bottom: 12px;
+  padding-bottom: 20px;
   white-space: nowrap;
 
   &:not(:last-child) {
@@ -47,7 +47,6 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 

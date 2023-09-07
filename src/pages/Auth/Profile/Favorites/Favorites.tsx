@@ -1,37 +1,27 @@
 import classes from "./Favorites.module.scss";
 import React from 'react';
 import TransitionContainer from "../../../../components/TransitionContainer/TransitionContainer";
+import FavoriteBlock from "./components/FavoriteBlock/FavoriteBlock";
+
 
 function Favorites({ }) {
 
     const blocks = [
         {
             title: "Посты",
-            block: null
-        },
-        {
-            title: "Фильмы",
-            block: null
-        },
-        {
-            title: "Сериалы",
-            block: null
-        },
-        {
-            title: "Мультики",
-            block: null
+            block: <FavoriteBlock/>
         },
         {
             title: "Передачи",
-            block: null
+            block: <FavoriteBlock/>
         },
         {
             title: "Музыка",
-            block: null
+            block: <FavoriteBlock/>
         },
         {
             title: "Подкасты",
-            block: null
+            block: <FavoriteBlock/>
         },
     ]
 
@@ -44,7 +34,6 @@ function Favorites({ }) {
                 withTitleBorder={true}
                 classNameTitlesWrap={classes.favorites_titles}
                 blocks={blocks}>
-
             </TransitionContainer>
         </div>
     )

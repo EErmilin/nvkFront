@@ -99,11 +99,6 @@ function Support({ }) {
     }
 
 
-    console.log('!!!!!!!!!!!')
-    console.log(values)
-    console.log(errors)
-
-
     return (
         <div className={classes.support}>
             <div className={classes.support_wrp}>

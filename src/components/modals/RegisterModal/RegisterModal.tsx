@@ -79,6 +79,14 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
 
     }
 
+    useEffect(() => {
+        document.body.onkeydown = (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault()
+                return handleSubmit()
+            }
+    }})
+
     const handleLogin = () => {
         btnCancelClick()
         setIsAuthModal(true)

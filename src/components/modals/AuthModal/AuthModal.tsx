@@ -84,6 +84,14 @@ const AuthModal = ({ closeModal, btnCancelClick, setIsRegisterModal }: any) => {
         handleChange({ target: { name: field, value: value } })
     }
 
+    useEffect(() => {
+        document.body.onkeydown = (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault()
+                return handleSubmit()
+            }
+    }})
+
 
     return (
         <ModalWithBackground

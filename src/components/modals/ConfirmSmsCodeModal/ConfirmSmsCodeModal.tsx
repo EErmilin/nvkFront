@@ -66,6 +66,15 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
         }
     }
 
+
+    useEffect(() => {
+        document.body.onkeydown = (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault()
+                return handleSubmit()
+            }
+    }})
+    
     const handleLogin = () => {
         btnCancelClick()
         setIsAuthModal(true)

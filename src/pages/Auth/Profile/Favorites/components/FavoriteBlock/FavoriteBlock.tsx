@@ -1,14 +1,20 @@
 import classes from "./FavoriteBlock.module.scss";
-import React from 'react';
+import React, { useMemo } from 'react';
 import FavoriteItem from "../FavoriteItem/FavoriteItem";
+import { useAppSelector } from "../../../../../../redux/hooks";
 
-function FavoriteBlock({ }) {
-
-
+function FavoriteBlock({type}: any) {
+    const favorites = useAppSelector(state => state.favorite.favorites).filter(
+        favorite =>
+          type === 'podcast' || type === 'fairytale' || type === 'olonho'
+            ? favorite.podcastEpisode !== null
+            : favorite.song !== null,
+      );
+      
+    
     return (
         <div className={classes.block}>
-            <FavoriteItem></FavoriteItem>
-            <FavoriteItem></FavoriteItem>
+           {favorites.map((item)=><FavoriteItem item={item.song}></FavoriteItem>)}
         </div>
     )
 }

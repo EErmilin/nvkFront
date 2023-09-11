@@ -1,17 +1,25 @@
-import React, { useEffect, useMemo } from 'react'
-import '../../assets/css/main.css';
+import React, { useEffect, useMemo, useState } from 'react'
+import '../../assets/css/main.scss';
 import classes from "./Music.module.scss";
 import { ReactComponent as FakeCompilation } from '../../assets/img/music.svg'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { getMusics } from '../../redux/thunks/screens/musics/GetMusics';
 import { getPodcasts } from '../../redux/thunks/screens/podcasts/GetPodcasts';
+import useToggleVisibility from '../../hooks/useToggleVisibility';
+import AlbumListModal from '../../components/modals/AlbumListModal/AlbumListModal';
 
 
 const TAKE = 8;
 
 function Music() {
+
+      /** Модалка  плэйлиста*/
+  const [IsShowCurrentModal, setIsShowCurrentModal, closeIsShowCurrentModal] = useToggleVisibility(false)
+  
     const musicsRedux: any = useAppSelector(state => state.screens.musics);
     const podcastsRedux: any = useAppSelector(state => state.screens.podcasts);
+    const [album, setAlbum] = useState();
+    const [type, setType]: any = useState();
     const dispatcher = useAppDispatch()
 
     const update = React.useCallback(async () => {
@@ -23,12 +31,26 @@ function Music() {
         update();
     }, [update]);
 
-    console.log('!!!!!!!')
-    console.log(musicsRedux)
+
+    const templateUserRegisterModal = IsShowCurrentModal && (
+        <AlbumListModal
+          closeModal={closeIsShowCurrentModal}
+          btnCancelClick={setIsShowCurrentModal}
+          album={album}
+          type={type}/>
+      )
+
+    const onClick = (item: any, type?: string) => {
+        setType(type)
+        setAlbum(item)
+        setIsShowCurrentModal(true)
+    }
+    
 
     const templatePlaylists = useMemo(() => {
         return musicsRedux?.playlists.map((elem: any, key: number) => {
-            return <div>
+            let noImg = false
+            return <div onClick={()=>onClick(elem, 'playlist')} className={classes.music_field_item} key={key}>
                 {!elem.cover?.url_256 ? <div className={classes.music_field_no_img} /> : <img src={elem.cover?.url_256} className={classes.music_field_img} alt="Logo" />}
                 <div className={classes.music_field_item_title}>{elem.name}</div>
             </div>
@@ -37,7 +59,7 @@ function Music() {
 
     const templatePopulars = useMemo(() => {
         return musicsRedux?.albums.map((elem: any, key: number) => {
-            return <div>
+            return <div onClick={()=>onClick(elem, 'album')} className={classes.music_field_item} key={key}>
                 {!elem.cover?.url_256 ? <div className={classes.music_field_no_img} /> : <img className={classes.music_field_img} src={elem.cover?.url_256} alt="Logo" />}
                 <div className={classes.music_field_item_title}>{elem.name}</div>
             </div>
@@ -45,35 +67,30 @@ function Music() {
     }, [musicsRedux])
 
     const templatePodcasts = useMemo(() => {
-        if(!podcastsRedux)return
+        if (!podcastsRedux) return
         return podcastsRedux.map((elem: any, key: number) => {
-            return <div>
-                {!elem.cover?.url_256 ? <div className={classes.music_field_no_img} /> : <img className={classes.music_field_img} src={elem.cover?.url_256} alt="Logo" />}
+            return <div onClick={()=>onClick(elem)} className={classes.music_field_item} key={key}>
+                {!elem.cover?.url_256 ? <div className={classes.music_field_no_img}/> : <img className={classes.music_field_img} src={elem.cover?.url_256} alt="Logo" />}
                 <div className={classes.music_field_item_title}>{elem.name}</div>
             </div>
         })
     }, [podcastsRedux])
 
     const templatePodcastsCurrent = useMemo(() => {
-        return podcastsRedux&&podcastsRedux.length&& podcastsRedux[0].podcastAlbums.map((elem: any, key: number) => {
-
-            return <div>
-                {!elem.cover?.url_256 ? <div className={classes.music_field_no_img} /> : <img className={classes.music_field_img} src={elem.cover?.url_256} alt="Logo" />}
+        return podcastsRedux && podcastsRedux.length && podcastsRedux[0].podcastAlbums.map((elem: any, key: number) => {
+            return <div onClick={()=>onClick(elem)} className={classes.music_field_item} key={key}>
+                {!elem.cover?.url_256 ? <div className={classes.music_field_no_img}/> : <img className={classes.music_field_img} src={elem.cover?.url_256} alt="Logo" />}
                 <div className={classes.music_field_item_title}>{elem.name}</div>
             </div>
         })
     }, [podcastsRedux])
 
-    console.log('!!!!!!')
-    console.log(podcastsRedux)
-
 
     const templateMusics = useMemo(() => {
-        if(!musicsRedux)return
+        if (!musicsRedux) return
         return musicsRedux.songs.map((elem: any, key: number) => {
-
-            return <div className={classes.music_field_music_item}>
-                {!elem.cover?.url_256 ? <div className={classes.music_field_music_item_no_img} /> : <img className={classes.music_field_music_item_img} src={elem.cover?.url_256} alt="Logo" />}
+            return <div className={classes.music_field_music_item} key={key}>
+                {!elem.cover?.url_256 ? <div className={classes.music_field_music_item_no_img}/> : <img className={classes.music_field_music_item_img} src={elem.cover?.url_256} alt="Logo" />}
                 <div className={classes.music_field_music_item_wrp}>
                     <div className={classes.music_field_music_item_title}>{elem.title} </div>
                     <div className={classes.music_field_music_item_name}>{elem.artist.name}</div>
@@ -135,6 +152,7 @@ function Music() {
                 </div>
 
             </div>
+            {templateUserRegisterModal}
         </div>
     );
 }

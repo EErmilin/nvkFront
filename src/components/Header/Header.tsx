@@ -1,6 +1,6 @@
 import classes from './Header.module.scss';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import '../../assets/css/main.css';
+import '../../assets/css/main.scss';
 import React, { useMemo } from 'react'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setModalVisible } from '../../redux/slices/routerSlice';

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import '../../assets/css/main.css';
+import '../../assets/css/main.scss';
 
 
 

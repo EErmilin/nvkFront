@@ -23,6 +23,7 @@
     }
 
     &_item {
+      cursor: pointer;
       &_title {
         color: var(--Black, #0F0A07);
         font-size: 18px;

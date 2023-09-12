@@ -18,12 +18,19 @@ import ShowItem from "./components/ShowItem/ShowItem";
 import LiveItem from "./components/LiveItem/LiveItem";
 import { fetchStreams } from "../LiveStream/utils";
 import { useNavigate } from "react-router-dom";
+import { IPost } from "../../models/Post";
+import { ApolloError } from "@apollo/client";
+import { getUpdateClient } from "../../requests/updateHeaders";
+import { POSTS } from "../../gql/query/posts/Post";
+import { useMemo } from "react";
 
 
 
 function Main({ }) {
 
     const [streams, setStreams]: any = useState([])
+    const [takeNews, setTakeNews] = useState(4)
+    const [posts, setPosts] = React.useState<IPost[]>([]);
     const navigate = useNavigate()
     useEffect(() => {
         (async function () {
@@ -36,6 +43,38 @@ function Main({ }) {
         })();
     }, []);
 
+
+    const refresh = React.useCallback(async (takeNews: number) => {
+
+        console.log('!@@@@@@@@@@@@')
+        console.log(takeNews)
+        try {
+            const client = await getUpdateClient();
+            let response = await client.query({
+                query: POSTS,
+                variables:
+                { 
+                    take: takeNews
+                }
+            });
+
+            setPosts(response.data.posts);
+        } catch (e) {
+            if (e instanceof ApolloError) {
+            }
+        }
+    }, []);
+
+    React.useEffect(() => {
+        refresh(takeNews);
+    }, [refresh, takeNews]);
+
+
+
+
+    const templateNews = useMemo(() => {
+        return posts.map((post: any) => <NewsItem post={post} />)
+    }, [posts])
 
     return (
         <div className={classes.main}>
@@ -81,7 +120,7 @@ function Main({ }) {
                     <div className={classes.main_musics_item}>
                         <PodcastsButton style={{ height: 199 }} />
                     </div>
-                    <div className={classes.main_musics_item} onClick={()=>navigate("/music")}>
+                    <div className={classes.main_musics_item} onClick={() => navigate("/music")}>
                         <MusicButton />
                     </div>
                 </div>
@@ -89,13 +128,10 @@ function Main({ }) {
             <div className={classes.main_news}>
                 <h1 className={classes.main_title}>Новости</h1>
                 <div className={classes.main_news_wrp}>
-                    <NewsItem />
-                    <NewsItem />
-                    <NewsItem />
-                    <NewsItem />
+                    {templateNews}
                 </div>
                 <div className={classes.main_news_btn_wrp}>
-                    <button className={classes.main_news_btn}>Смотреть еще</button>
+                    <button className={classes.main_news_btn} onClick={()=>setTakeNews(takeNews + 4)}>Смотреть еще</button>
                 </div>
             </div>
             {streams && streams.length && <div className={classes.main_live}>
@@ -104,7 +140,7 @@ function Main({ }) {
                     {streams.slice(0, 4).map((stream: any) => <LiveItem stream={stream} />)}
                 </div>
                 <div className={classes.main_news_btn_wrp}>
-                    <button className={classes.main_news_btn}>Смотреть еще</button>
+                    <button className={classes.main_news_btn} onClick={()=>{navigate("/live")}}>Смотреть еще</button>
                 </div>
             </div>}
             <div className={classes.main_top}>

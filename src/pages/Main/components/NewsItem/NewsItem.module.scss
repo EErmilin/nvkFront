@@ -19,8 +19,11 @@
 
     }
     &_img {
+        width: 365px;
+        height: 220px;
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
+        object-fit: cover;
     }
     &_date {
         padding: 36px 20px 0 20px ;

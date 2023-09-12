@@ -7,9 +7,6 @@ import classes from './MusicItem.module.scss';
 
 const MusicItem = ({ item }: any) => {
 
-    console.log('@@@@@@@@@@@')
-    console.log(item)
-
     const [isNoImg, setIsNoImg] = useState(false)
     return (
         <div className={classes.music_wrp}>

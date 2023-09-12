@@ -41,6 +41,7 @@
   &_news {
     &_wrp {
       display: flex;
+      flex-wrap: wrap;
       gap: 19px
     }
 

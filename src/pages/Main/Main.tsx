@@ -17,12 +17,14 @@ import MainSlider from "./components/MainSlider/MainSlider";
 import ShowItem from "./components/ShowItem/ShowItem";
 import LiveItem from "./components/LiveItem/LiveItem";
 import { fetchStreams } from "../LiveStream/utils";
+import { useNavigate } from "react-router-dom";
 
 
 
 function Main({ }) {
 
     const [streams, setStreams]: any = useState([])
+    const navigate = useNavigate()
     useEffect(() => {
         (async function () {
             try {
@@ -79,7 +81,7 @@ function Main({ }) {
                     <div className={classes.main_musics_item}>
                         <PodcastsButton style={{ height: 199 }} />
                     </div>
-                    <div className={classes.main_musics_item}>
+                    <div className={classes.main_musics_item} onClick={()=>navigate("/music")}>
                         <MusicButton />
                     </div>
                 </div>

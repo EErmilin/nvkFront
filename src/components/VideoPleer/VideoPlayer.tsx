@@ -11,7 +11,7 @@ type TProps = {
   steam?: ILive | IRadio;
   onAsk?: () => void
   play?: boolean
-  isShowBtn? : boolean
+  isShowBtn?: boolean
   isMain?: boolean
 }
 
@@ -20,7 +20,7 @@ export type VideoPlayerHandle = {
   setProgramTitle: React.Dispatch<React.SetStateAction<string>>
 }
 
-const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShowBtn = true, isMain= false}: TProps, ref) => {
+const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShowBtn = true, isMain = false }: TProps, ref) => {
 
   const playerRef = useRef<ReactPlayer>(null);
   const videoPleerWraper = useRef<any>();
@@ -54,12 +54,15 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
 
   const toggleFullScreen = () => {
     if (videoPleerWraper.current) {
+      if (screenfull.isFullscreen) {
+        return screenfull.exit()
+      }
       screenfull.request(videoPleerWraper.current as Element);
     }
   };
 
   return (
-    <div className={isMain? "video-pleer-wraper-main": "video-pleer-wraper"}
+    <div className={isMain ? "video-pleer-wraper-main" : "video-pleer-wraper"}
       ref={videoPleerWraper}>
       <ReactPlayer
         ref={playerRef}
@@ -72,7 +75,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
         muted={mute}
         onPlay={onPlay}
         onPause={onPause}
-        className={isMain? "react-player-main": "react-player"}
+        className={isMain ? "react-player-main" : "react-player"}
       />
 
       <Controls

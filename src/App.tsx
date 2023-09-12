@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { Routes } from 'react-router-dom';
+import { Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import AuthModal from './components/modals/AuthModal/AuthModal';
 import ConfirmSmsCodeModal from './components/modals/ConfirmSmsCodeModal/ConfirmSmsCodeModal';
@@ -22,6 +22,7 @@ function App() {
   const userId = useAppSelector(state => state.user.data?.id);
   const state = useAppSelector(state => state);
   const dispatcher = useAppDispatch()
+  const url = useLocation()
   const token = useAppSelector(state => state.auth.token);
 
   console.log('state')
@@ -57,7 +58,7 @@ function App() {
   }, [dispatcher, update]);
 
   useEffect(() => {
-    if(modalVisible){
+    if (modalVisible) {
       setIsAuthModal(true)
       dispatcher(setModalVisible(false))
     }
@@ -98,17 +99,22 @@ function App() {
       closeModal={closeIsCodeModal}
       btnCancelClick={setIsCodeModal}
       setIsUserRegisterModal={setIsUserRegisterModall}
-      setIsAuthModal={setIsAuthModal} 
-      setIsRegisterModal={setIsRegisterModal}/>
+      setIsAuthModal={setIsAuthModal}
+      setIsRegisterModal={setIsRegisterModal} />
   )
 
   const templateUserRegisterModal = isUserRegisterModal && (
     <UserRegisterModal
       closeModal={closeIsUserRegisterModal}
       btnCancelClick={setIsUserRegisterModall}
-      setIsCodeModal={setIsCodeModal}/>
+      setIsCodeModal={setIsCodeModal} />
   )
-
+  useEffect(() => {
+    document.body.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }, [url.pathname])
 
 
   return (

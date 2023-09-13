@@ -52,7 +52,6 @@ const dates = [0, 1, 2, 3, 4, 5, 6].map((item) => {
   };
 });
 
-
 const Shedule = forwardRef(
   ({ programs: programsInner = [], onProgramChanged }: TBlockProps, ref) => {
     const [programs, setPograms] = useState(programsInner);
@@ -62,7 +61,7 @@ const Shedule = forwardRef(
       index: 0,
     });
 
-    const groupedPrograms = getProgramsForDate(programs, selectDate.date)
+    const groupedPrograms = getProgramsForDate(programs, selectDate.date);
 
     const currentProgram = getCurrentProgram(groupedPrograms);
 
@@ -76,7 +75,11 @@ const Shedule = forwardRef(
           {groupedPrograms.map((element, index) => (
             <ProgramElement
               program={element}
-              live={element.id === currentProgram?.id}
+              nextProgram={
+                element.id === currentProgram?.id
+                  ? groupedPrograms[index + 1]
+                  : undefined
+              }
               onProgramChanged={onProgramChanged}
             />
           ))}

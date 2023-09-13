@@ -83,16 +83,16 @@ function Main({ }) {
                 ><MainSlider
                     /></div>
                 <div className={classes.main_links_wrp}>
-                    <div className={classes.main_links_item}>
+                    <div className={classes.main_links_item} onClick={() => navigate("/live?type=NVK")}>
                         <NvkLogo />
                     </div>
-                    <div className={classes.main_links_item}>
+                    <div className={classes.main_links_item} onClick={() => navigate("/live?type=Mamont")}>
                         <Mamont />
                     </div>
-                    <div className={classes.main_links_item}>
+                    <div className={classes.main_links_item} onClick={() => navigate("/live?type=Yakutia")}>
                         <Yakutia />
                     </div>
-                    <div className={classes.main_links_item}>
+                    <div className={classes.main_links_item} onClick={() => navigate("/live?type=teteam")}>
                         <Teteam />
                     </div>
                 </div>
@@ -118,7 +118,7 @@ function Main({ }) {
                 <h1 className={classes.main_title}>Музыка</h1>
                 <div className={classes.main_videos_wrp}>
                     <div className={classes.main_musics_item}>
-                        <PodcastsButton style={{ height: 199 }} />
+                        <PodcastsButton style={{ height: 199 }} onClick={() => navigate("/music?scroll=podcasts")}/>
                     </div>
                     <div className={classes.main_musics_item} onClick={() => navigate("/music")}>
                         <MusicButton />

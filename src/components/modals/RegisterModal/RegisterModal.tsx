@@ -68,7 +68,7 @@ const RegisterModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsCodeMo
                     setIsCodeModal(true)
                 }
             } else {
-                setError("Пользователь не найден")
+                setError("Такой пользователь уже зарегистрирован")
             }
         } catch (e) {
             if (e instanceof ApolloError) {

@@ -31,7 +31,7 @@ const UserRegisterModal = ({ closeModal, btnCancelClick, setIsCodeModal }: any) 
         password: "",
         confirmPassword: "",
         firstname: "",
-        birthdate: new Date().toDateString(),
+        birthdate: null,
     };
 
     /** Стейт полей и правила */
@@ -51,7 +51,7 @@ const UserRegisterModal = ({ closeModal, btnCancelClick, setIsCodeModal }: any) 
     async function handleSubmit() {
         if (values.firstname !== '' &&
             values.password === values.confirmPassword &&
-            values.password.length >= PASSWORD_LENGTH) {
+            values.password.length >= PASSWORD_LENGTH && values.birthdate) {
             const response: any = await dispatcher(
                 createUser({
                     phone: values.phone,
@@ -62,7 +62,7 @@ const UserRegisterModal = ({ closeModal, btnCancelClick, setIsCodeModal }: any) 
                         values.birthdate
                 }),
             );
-            if (response?.data) {
+            if (response?.payload) {
                 const response: any = await dispatcher(loginUser({
                     phone: values.phone,
                     password: values.password
@@ -84,7 +84,8 @@ const UserRegisterModal = ({ closeModal, btnCancelClick, setIsCodeModal }: any) 
                 event.preventDefault()
                 return handleSubmit()
             }
-    }})
+        }
+    })
 
     const onChangeDate = (event: any) => {
         setErrors(false)

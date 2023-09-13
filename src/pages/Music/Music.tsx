@@ -1,12 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import '../../assets/css/main.scss';
 import classes from "./Music.module.scss";
-import { ReactComponent as FakeCompilation } from '../../assets/img/music.svg'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { getMusics } from '../../redux/thunks/screens/musics/GetMusics';
 import { getPodcasts } from '../../redux/thunks/screens/podcasts/GetPodcasts';
 import useToggleVisibility from '../../hooks/useToggleVisibility';
 import AlbumListModal from '../../components/modals/AlbumListModal/AlbumListModal';
+import { useSearchParams } from 'react-router-dom';
 
 
 const TAKE = 8;
@@ -21,6 +21,7 @@ function Music() {
     const [album, setAlbum] = useState();
     const [type, setType]: any = useState();
     const dispatcher = useAppDispatch()
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const update = React.useCallback(async () => {
         await dispatcher(getMusics({ take: TAKE }));
@@ -45,6 +46,19 @@ function Music() {
         setAlbum(item)
         setIsShowCurrentModal(true)
     }
+
+        /**Добавляем скролл к нужным полям если он нужен*/
+        useEffect(() => {
+                let isScroll = searchParams.get("scroll")
+    
+                if (isScroll==="podcasts") {
+                    document.getElementById(`#podcasts`)?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    })
+                }
+
+        }, [podcastsRedux])
     
 
     const templatePlaylists = useMemo(() => {
@@ -132,7 +146,7 @@ function Music() {
                 </div>
 
             </div>
-            <div className={classes.music_field}>
+            <div className={classes.music_field} id="#podcasts">
                 <div className={classes.music_field_header}>
                     <h1 className={classes.music_field_title}>Подкасты</h1>
                     <div className={classes.music_field_header_btn}>Все</div>

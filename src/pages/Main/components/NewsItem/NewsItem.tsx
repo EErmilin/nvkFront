@@ -13,7 +13,7 @@ function NewsItem({post}: any) {
     return (
         <div className={classes.news}>
             <div className={classes.news_img}>
-            {isNoImg? <div className={classes.news_img}/>: <img className={classes.news_img} src={post?.images[0]?.url} onError={() => setIsNoImg(true)}/>}
+            {isNoImg? <div className={classes.news_img}></div>: <img className={classes.news_img} src={post?.images[0]?.url} onError={() => setIsNoImg(true)}/>}
             </div>
             <div className={classes.news_title}>{post.title}</div>
             <div className={classes.news_date}>{date}</div>

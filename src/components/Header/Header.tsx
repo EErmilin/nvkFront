@@ -23,13 +23,13 @@ function Header() {
     const templateLinks = useMemo(() => {
         let arrLinks = [
             { link: "/tape", title: "Лента" },
+            { link: "/", title: "Главная" },
             { link: "/news", title: "Новости" },
-            { link: "/music", title: "Музыка" },
-            { link: "/films", title: "Фильмы" },
-            { link: "", title: "Афиша" },
-            { link: "", title: "Мультики" },
-            { link: "", title: "Избранное" },
+            { link: "", title: "Услуги" },
+            { link: "/music", title: "Аудио" },
+            { link: "", title: "Видео" },
             { link: "/live", title: "Прямой эфир" },
+            { link: "", title: "Курсы валют" },
             { link: "", title: "Гороскоп" },
         ]
 

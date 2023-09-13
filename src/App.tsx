@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { Routes, useLocation } from 'react-router-dom';
+import { Routes, useLocation, useSearchParams } from 'react-router-dom';
 import './App.css';
 import AuthModal from './components/modals/AuthModal/AuthModal';
 import ConfirmSmsCodeModal from './components/modals/ConfirmSmsCodeModal/ConfirmSmsCodeModal';
@@ -24,6 +24,7 @@ function App() {
   const dispatcher = useAppDispatch()
   const url = useLocation()
   const token = useAppSelector(state => state.auth.token);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   console.log('state')
   console.log(state)
@@ -110,6 +111,8 @@ function App() {
       setIsCodeModal={setIsCodeModal} />
   )
   useEffect(() => {
+    let isScroll = searchParams.get("scroll")
+    if(isScroll)return
     document.body.scrollIntoView({
       behavior: 'smooth',
       block: 'start'

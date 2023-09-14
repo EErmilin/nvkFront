@@ -7,6 +7,7 @@ import { getPodcasts } from '../../redux/thunks/screens/podcasts/GetPodcasts';
 import useToggleVisibility from '../../hooks/useToggleVisibility';
 import AlbumListModal from '../../components/modals/AlbumListModal/AlbumListModal';
 import { useSearchParams } from 'react-router-dom';
+import PlaylistItem from './components/PlaylistItem/PlaylistItem';
 
 
 const TAKE = 8;
@@ -62,13 +63,7 @@ function Music() {
     
 
     const templatePlaylists = useMemo(() => {
-        return musicsRedux?.playlists.map((elem: any, key: number) => {
-            let noImg = false
-            return <div onClick={()=>onClick(elem, 'playlist')} className={classes.music_field_item} key={key}>
-                {!elem.cover?.url_256 ? <div className={classes.music_field_no_img} /> : <img src={elem.cover?.url_256} className={classes.music_field_img} alt="Logo" />}
-                <div className={classes.music_field_item_title}>{elem.name}</div>
-            </div>
-        })
+        return musicsRedux?.playlists.map((elem: any, key: number) =>{ return <PlaylistItem playlist={elem} onClick={onClick}></PlaylistItem>})
     }, [musicsRedux])
 
     const templatePopulars = useMemo(() => {

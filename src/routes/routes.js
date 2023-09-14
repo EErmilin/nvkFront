@@ -11,6 +11,9 @@ import Support from "../pages/Auth/Profile/Support/Support";
 import Tape from "../pages/Tape/Tape";
 import Main from "../pages/Main/Main";
 import Music from "../pages/Music/Music";
+import CurrentService from "../pages/Services/components/CurrentService/CurrentService";
+import ListServices from "../pages/Services/ListServices";
+import Services from "../pages/Services/Services";
 
 
 export const routes = [
@@ -25,6 +28,32 @@ export const routes = [
         component: <Tape />,
         path: 'tape',
         exact: true,
+    },
+
+    {
+        name: 'services',
+        component: <Services
+            routes={
+                [
+                    {
+                        name: 'ListServices',
+                        privateUrl: false,
+                        component: <ListServices />,
+                        path: '',
+                        exact: false,
+                    },
+                    {
+                        name: 'service',
+                        privateUrl: false,
+                        component: <CurrentService />,
+                        path: '/:id',
+                        exact: false,
+                    },
+                ]
+            } />,
+
+        path: 'services/*',
+        exact: false,
     },
 
     {

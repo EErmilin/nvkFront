@@ -52,14 +52,21 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
     setMute(!mute);
 
 
-  const toggleFullScreen = () => {
-    if (videoPleerWraper.current) {
-      if (screenfull.isFullscreen) {
-        return screenfull.exit()
+    const toggleFullScreen = () => {
+      if (videoPleerWraper.current) {
+        if (screenfull.isEnabled) { // Проверяем поддержку полноэкранного режима
+          if (screenfull.isFullscreen) {
+            screenfull.exit();
+          } else {
+            screenfull.request(videoPleerWraper.current as Element);
+          }
+        } else {
+          // Браузер не поддерживает полноэкранный режим, можно выполнить альтернативное действие
+          console.log('Полноэкранный режим не поддерживается в этом браузере.');
+        }
       }
-      screenfull.request(videoPleerWraper.current as Element);
-    }
-  };
+    };
+    
 
   return (
     <div className={isMain ? "video-pleer-wraper-main" : "video-pleer-wraper"}

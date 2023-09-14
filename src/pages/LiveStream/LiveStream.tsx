@@ -45,6 +45,7 @@ export default function LiveStream() {
       try {
         const streams = await fetchStreams();
         liveStreamSelectorRef.current?.setStreams(streams);
+        console.log({streams})
       } catch (e) {
         console.log('fetchStreamsError:', e);
       }

@@ -1,11 +1,17 @@
 .item {
     width: 493px;
-    height: 387px;
+    height: fit-content;
     padding: 30px;
     gap: 10px;
     border-radius: 30px;
     border: 1px solid var(--Border-Grey, #EFEFF0);
     background: var(--White, #FFF);
+
+    &_img {
+        object-fit: cover;
+        border-radius: 20px;
+        width: 433px;
+    }
 
     &_price {
         border-radius: 26px;
@@ -41,5 +47,9 @@
         margin-top: 20px;
         line-height: 160%;
         margin-bottom: 30px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 }

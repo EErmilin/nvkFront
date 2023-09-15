@@ -46,7 +46,7 @@ export const routes = [
                         name: 'service',
                         privateUrl: false,
                         component: <CurrentService />,
-                        path: '/:id',
+                        path: '/:type/:id',
                         exact: false,
                     },
                 ]

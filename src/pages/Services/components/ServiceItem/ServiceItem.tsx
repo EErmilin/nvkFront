@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 
 
-function ServiceItem({ crildren, service }: any) {
+function ServiceItem({ crildren, service, type }: any) {
 
 
     return (
@@ -14,15 +14,13 @@ function ServiceItem({ crildren, service }: any) {
             <div className={classes.item_price}>
                 {service.price} руб.
             </div>
-            <NavLink className={classes.item_title} to={`/services/${service.id}`}>
-                {service.title}
+            <NavLink className={classes.item_title} to={`/services/${type}/${service.id}`}>
+                {service.name}
             </NavLink>
             <div className={classes.item_text}>
-                {service.text}
+                {service.preview}
             </div>
-            <div className={classes.item_img}>
-                <img src={service.img} />
-            </div>
+                <img src={service.images[0].url_1536} className={classes.item_img}/>
             {crildren}
         </div>
     )

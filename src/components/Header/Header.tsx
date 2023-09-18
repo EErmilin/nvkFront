@@ -25,7 +25,7 @@ function Header() {
             { link: "/tape", title: "Лента" },
             { link: "/", title: "Главная" },
             { link: "/news", title: "Новости" },
-            { link: "", title: "Услуги" },
+            { link: "/services", title: "Услуги" },
             { link: "/music", title: "Аудио" },
             { link: "", title: "Видео" },
             { link: "/live", title: "Прямой эфир" },

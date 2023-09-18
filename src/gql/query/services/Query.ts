@@ -8,6 +8,11 @@ export const QUERY_SERVICES = gql`
       preview
       createdAt
       price
+      images {
+        id
+        url_64
+        url_1536
+      }
     }
     coupons {
       id
@@ -22,6 +27,11 @@ export const QUERY_SERVICES = gql`
       preview
       createdAt
       price
+      images {
+        id
+        url_64
+        url_1536
+      }
     }
   }
 `;

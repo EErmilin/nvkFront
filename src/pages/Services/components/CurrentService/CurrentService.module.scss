@@ -1,0 +1,44 @@
+.service {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: center;
+
+    &_item {
+        border-radius: 30px;
+        border: 1px solid var(--Border-Grey, #EFEFF0);
+        background: var(--White, #FFF);
+        padding: 30px;
+        width: 622px;
+
+
+        &_title {
+            color: var(--Black, #0F0A07);
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 160%;
+        }
+
+        &_text {
+            line-height: 160%;
+        }
+
+        &_img {
+            max-width: 878px;
+            border-radius: 30px;
+            object-fit: cover;
+
+        }
+
+        &_btn {
+            margin-top: 50px;
+        }
+    }
+
+
+
+
+
+}

@@ -13,6 +13,65 @@
   background-color: #00bbff;
   background-size: 100% 100%;
   overflow: hidden;
+}
+
+.live-stream-card .group {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.live-stream-card .LIVE {
+  height: 30px;
+  left: 132px;
+  position: relative;
+  top: 65px;
+  width: 72px;
+}
+
+.live-stream-card .overlap-group {
+  -webkit-backdrop-filter: blur(12px) brightness(100%);
+  backdrop-filter: blur(12px) brightness(100%);
+  background-color: #000000b2;
+  border-radius: 27px;
+  height: 30px;
+  position: relative;
+  width: 70px;
+}
+
+.live-stream-card .ellipse {
+  background-color: #ff1c45;
+  border-radius: 5px;
+  height: 10px;
+  left: 10px;
+  position: absolute;
+  top: 10px;
+  width: 10px;
+}
+
+.live-stream-card .text-wrapper {
+  color: #ffffff;
+  font-family: "Noto Sans-Medium", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 27px;
+  letter-spacing: 0;
+  line-height: 22.4px;
+  position: absolute;
+  top: 4px;
+  white-space: nowrap;
+}
+
+
+
+
+.live-stream-card {
+  height: 105px;
+  width: 212px;  
+  border-radius: 20px;
+  background-color: #00bbff;
+  background-size: 100% 100%;
+  overflow: hidden;
   
 }
 
@@ -74,6 +133,14 @@
     transparent
   );
   animation: placeholderAnimation 2s infinite linear;
+}
+
+
+.live-stream-card .icon {
+  top: 0;
+  left: 0;
+  /* scale: 0.587; */
+  
 }
 
 @keyframes placeholderAnimation {

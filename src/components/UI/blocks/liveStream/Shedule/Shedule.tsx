@@ -11,11 +11,7 @@ import { IProgram } from "../../../../../models/Program";
 import ProgramElement from "./Program/ProgramElement";
 
 import "./Shedule.css";
-import {
-  generateDaysArray,
-  sortAndGroupProgramsByDay,
-  TEST_DATE,
-} from "./utils";
+
 import {
   getCurrentProgram,
   getProgramsForDate,
@@ -30,9 +26,6 @@ type TBlockProps = {
 export type SheduleHandle = {
   setPograms: React.Dispatch<React.SetStateAction<IProgram[]>>;
 };
-
-const TODAY = new Date(TEST_DATE);
-const FORMATED_TODAY = TODAY.toISOString().slice(0, 10);
 
 const getStartDate = () => {
   let now = new Date();
@@ -85,10 +78,13 @@ const Shedule = forwardRef(
           ))}
         </div>
         <div className="nav-bar">
-          <div className="dates-container">
+          <ul className="dates-container">
             {dates.map((item, index) => (
-              <div
-                className="date-wrapper"
+              <li
+                className={
+                  selectDate.index === index ? "active" : ""
+                }
+                style={{ maxWidth: index < 2 ? "131px" : "80px" }}
                 onClick={() =>
                   setSelectDate({
                     date: item.date,
@@ -96,7 +92,7 @@ const Shedule = forwardRef(
                   })
                 }
               >
-                <div style={{ width: "150px" }}>
+                <div className="date-wrapper">
                   {index === 0
                     ? "Сегодня, "
                     : index === 1
@@ -107,11 +103,11 @@ const Shedule = forwardRef(
                     month: "2-digit",
                   })}
                 </div>
-                {index === selectDate.index && (
+                {/* {index === selectDate.index && (
                   <div className="date-wrapper-indicator">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="131"
+                      width={index < 2 ? 131 : 70}
                       height="4"
                       viewBox="0 0 131 4"
                       fill="none"
@@ -122,10 +118,10 @@ const Shedule = forwardRef(
                       />
                     </svg>
                   </div>
-                )}
-              </div>
+                )} */}
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     );

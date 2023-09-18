@@ -99,7 +99,7 @@ const ProgramElement = ({
             </div>
           </>
         ) : (
-          <span className="name">{program.name}</span>
+          <span className="name">{program.name + program.date}</span>
         )}
       </div>
     </div>

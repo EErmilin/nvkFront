@@ -6,8 +6,8 @@
   border-radius: 30px;
   margin-left: 20px;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
 }
 
 .stream-shedule .nav-bar {
@@ -16,7 +16,6 @@
   overflow-x: auto;
   background-color: white;
   position: relative;
-  
 }
 
 .stream-shedule .nav-bar::-webkit-scrollbar {
@@ -31,15 +30,30 @@
 .stream-shedule .nav-bar .dates-container {
   display: flex;
   white-space: nowrap;
+  gap: 25px;
 }
 
 .stream-shedule .nav-bar .date-wrapper {
-  width: 150px !important;
   height: 36px;
   cursor: pointer;
-  margin-right: 10px;
   display: flex;
   flex-direction: column;
+}
+
+.stream-shedule .nav-bar li.active div::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  -webkit-border-top-left-radius: 50px;
+  -webkit-border-top-right-radius: 50px;
+  -moz-border-radius-topleft: 50px;
+  -moz-border-radius-topright: 50px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  background: var(--yellow, #f6a80b);
+  position: relative;
+  bottom: -10px;
 }
 
 .stream-shedule .program-list {

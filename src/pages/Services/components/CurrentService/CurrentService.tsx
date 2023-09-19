@@ -51,8 +51,6 @@ function CurrentService({ }: any) {
     React.useEffect(() => {
         update();
     }, [update]);
-    console.log('!!!!!!!!')
-    console.log(data)
 
 
     return (

@@ -191,7 +191,7 @@ function Footer() {
                 </div>
                 <div className="footer-down style__flexbox style__flex-jc-sb style__flex-ai-c">
                     <div className="copyright">© 2010-2022 ГБУ РС(Я) НВК «Саха». Все права защищены. <a href="">Условия использования</a>, <a href="">Политика конфиденциальности</a></div>
-                    <div className="developer">Made by <a href="https://xn-----6kcaafc7aidqbcofucmwfhehvjco8b5fti3a.xn--p1ai/">Mobility</a></div>
+                    <div className="developer">Made by <a href="https://xn-----6kcaafc7aidqbcofucmwfhehvjco8b5fti3a.xn--p1ai/">Mobility.top</a></div>
                 </div>
             </div>
         </footer>

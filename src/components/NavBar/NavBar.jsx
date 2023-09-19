@@ -17,7 +17,7 @@ function NavBar() {
             { link: "payment", title: "Платежные данные" },
             { link: "support", title: "Тех.поддержка" },
             { link: "favorites", title: "Избранное" },
-            { link: "blog", title: "Стать блогером" },
+           /* { link: "blog", title: "Стать блогером" } */,
         ]
 
         return arrLinks.map((elem, id) => {

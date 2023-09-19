@@ -8,6 +8,7 @@ import useToggleVisibility from '../../hooks/useToggleVisibility';
 import AlbumListModal from '../../components/modals/AlbumListModal/AlbumListModal';
 import { useSearchParams } from 'react-router-dom';
 import PlaylistItem from './components/PlaylistItem/PlaylistItem';
+import MusicItem from './components/MusicItem/MusicItem';
 
 
 const TAKE = 8;
@@ -98,14 +99,7 @@ function Music() {
     const templateMusics = useMemo(() => {
         if (!musicsRedux) return
         return musicsRedux.songs.map((elem: any, key: number) => {
-            return <div className={classes.music_field_music_item} key={key}>
-                {!elem.cover?.url_256 ? <div className={classes.music_field_music_item_no_img}/> : <img className={classes.music_field_music_item_img} src={elem.cover?.url_256} alt="Logo" />}
-                <div className={classes.music_field_music_item_wrp}>
-                    <div className={classes.music_field_music_item_title}>{elem.title} </div>
-                    <div className={classes.music_field_music_item_name}>{elem.artist.name}</div>
-                    <div className={classes.music_field_music_item_btn} />
-                </div>
-            </div>
+            return <MusicItem item={elem} key={key}/>
         })
     }, [musicsRedux])
 

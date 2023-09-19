@@ -30,7 +30,7 @@ function Header() {
             { link: "", title: "Видео" },
             { link: "/live", title: "Прямой эфир" },
             { link: "", title: "Курсы валют" },
-            { link: "", title: "Гороскоп" },
+            { link: "/horoscope", title: "Гороскоп" },
         ]
 
         return arrLinks.map((elem, id) => {

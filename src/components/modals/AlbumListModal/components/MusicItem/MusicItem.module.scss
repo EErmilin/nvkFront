@@ -11,11 +11,12 @@
     display: flex;
     gap: 15px;
     max-height: 70px;
-    cursor: pointer;
+
 
     &_img {
       height: 70px;
       width: 70px;
+      cursor: pointer;
     }
 
     &_no_img {
@@ -26,7 +27,7 @@
       background: var(--Grey-Light, #F4F4F4);
       align-items: center;
       justify-content: center;
-
+      cursor: pointer;
       &:before {
         position: absolute;
         content: '';
@@ -47,9 +48,12 @@
       height: 70px;
       padding: 10px 0;
       display: flex;
+      width: 80%;
       flex-direction: column;
       justify-content: space-between;
-
+      &_active {
+        padding:0;
+      }
     }
 
     &_title {

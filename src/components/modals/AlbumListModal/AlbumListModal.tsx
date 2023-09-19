@@ -117,6 +117,8 @@ const AlbumListModal = ({ closeModal, btnCancelClick, album, type }: any) => {
         })();
     }, [album.id, type]);
 
+console.log('musics')
+    console.log(musics)
 
 
 

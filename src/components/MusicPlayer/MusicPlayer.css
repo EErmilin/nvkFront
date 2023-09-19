@@ -1,0 +1,27 @@
+.rhap_play-pause-button{
+    position: absolute;
+    left: 2%;
+    top: 15%;
+    
+}
+
+.rhap_repeat-button{
+    display: none;
+}
+
+.rhap_volume-controls{
+    display: none !important;
+    
+}
+.rhap_controls-section{
+    margin: 0 !important;
+}
+
+.rhap_progress-indicator{
+    display: none;
+}
+
+.rhap_container{
+    padding: 0;
+    
+}

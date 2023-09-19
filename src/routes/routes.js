@@ -14,6 +14,7 @@ import Music from "../pages/Music/Music";
 import CurrentService from "../pages/Services/components/CurrentService/CurrentService";
 import ListServices from "../pages/Services/ListServices";
 import Services from "../pages/Services/Services";
+import Horoscope from "../pages/Horoscope/Horoscope";
 
 
 export const routes = [
@@ -136,6 +137,12 @@ export const routes = [
         name: 'music',
         component: <Music />,
         path: 'music',
+        exact: true,
+    },
+    {
+        name: 'horoscope',
+        component: <Horoscope />,
+        path: 'horoscope',
         exact: true,
     }
 

@@ -106,7 +106,7 @@ function Main({ }) {
                     <div className={classes.main_videos_item}>
                         <FilmsButton />
                     </div>
-                    <div className={classes.main_videos_item}>
+                    <div className={classes.main_videos_item} onClick={() => navigate("/live")}>
                         <ShowsButton />
                     </div>
                     <div className={classes.main_videos_item}>

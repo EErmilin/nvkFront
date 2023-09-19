@@ -161,6 +161,20 @@ header {
     gap:20px;
 }
 
+.horoscope{
+    background-color: #1F3596;
+    height: 100%;
+    
+    min-width: 100%;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 350px;
+    background-image: url("../../assets/img/horoscope-back.svg");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -100px;
+}
 .carousel-block{
     width:100%;
     border-radius: 30px;

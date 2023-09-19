@@ -18,7 +18,7 @@ const MusicItem = ({ item }: any) => {
         if (play) {
             return (
                 <div className={classes.music_wrp}>
-                    <MusicPlayer music={item} />
+                    <MusicPlayer music={item} player={null}/>
                 </div>
             )
         }

@@ -7,7 +7,14 @@ import { IZodiacPeriod, IHoroscope } from '../../models/Horoscope';
 import { getUpdateClient } from '../../requests/updateHeaders';
 import { zodiacPeriods, zodiacNameFind } from '../../helpers/horoscopeHelpers';
 import dayjs from 'dayjs';
+import isoWeek from 'dayjs/plugin/isoWeek';
 import { useAppSelector } from "../../redux/hooks";
+import moment from "moment";
+import 'moment/locale/ru';
+import { ReactComponent as Leo } from '../../assets/img/zodiacs/leo.svg'
+import { ReactComponent as Aquarius } from '../../assets/img/zodiacs/aquarius.svg'
+moment().locale('ru')
+
 
 function Horoscope({ }) {
 
@@ -16,6 +23,9 @@ function Horoscope({ }) {
     const [today, setToday] = React.useState<IHoroscope>({} as IHoroscope);
     const [week, setWeek] = React.useState<IHoroscope>({} as IHoroscope);
     const [month, setMonth] = React.useState<IHoroscope>({} as IHoroscope);
+    dayjs.extend(isoWeek);
+    dayjs().isoWeekday(1);
+
 
     React.useEffect(() => {
         setZodiac(
@@ -67,8 +77,10 @@ function Horoscope({ }) {
 
     }, [zodiacPeriods, zodiac])
 
+    var date = new Date(), y = date.getFullYear(), m = date.getMonth();
+
     console.log('!@!!!!!!!!!!')
-    console.log(today)
+    console.log(week)
 
 
     return (
@@ -76,7 +88,8 @@ function Horoscope({ }) {
             <div>
                 <div className={classes.horoscope_item}>
                     <div className={classes.horoscope_item_header}>
-                        
+                    <Aquarius/>
+                    <div>
                         <h2 className={classes.horoscope_item_header_title}>
                             Гороскоп: {zodiac.name}
                         </h2>
@@ -88,17 +101,28 @@ function Horoscope({ }) {
                             })}
                             .
                         </div>
+                        </div>
 
                     </div>
 
                     <div className={classes.horoscope_item_content}>{today?.content ?? " Гороскоп на данный день отсутствует"}</div>
                 </div>
                 <div className={classes.horoscope_period_wrp}>
-                    <div className={classes.horoscope_period}>
-                        <h3>Гороскоп на эту неделю</h3>
+                    <div className={classes.horoscope_week}>
+                        <div>
+                            <h3>Гороскоп на эту неделю</h3>
+                            <span className={classes.horoscope_period}> {`${dayjs()?.isoWeekday(1)?.format('DD')} - ${moment(new Date(
+                                dayjs()?.isoWeekday(7)?.toString(),
+                            )).format('D MMMM')}`}</span>
+                        </div>
+                        <div className={classes.horoscope_period_btn}>Смотреть</div>
                     </div>
-                    <div className={classes.horoscope_period}>
-                        <h3>Гороскоп на этот месяц</h3>
+                    <div className={classes.horoscope_mounth}>
+                        <div>
+                            <h3>Гороскоп на этот месяц</h3>
+                            <span className={classes.horoscope_period}> {`01 - ${moment(new Date(y, m + 1, 0)).format('D MMMM')}`}</span>
+                        </div>
+                        <div className={classes.horoscope_period_btn}>Смотреть</div>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
+import { useRef } from 'react';
 import { Routes, useLocation, useSearchParams } from 'react-router-dom';
 import './App.css';
 import AuthModal from './components/modals/AuthModal/AuthModal';
@@ -25,6 +26,7 @@ function App() {
   const url = useLocation()
   const token = useAppSelector(state => state.auth.token);
   const [searchParams, setSearchParams] = useSearchParams();
+
 
   console.log('state')
   console.log(state)

@@ -9,6 +9,7 @@ import AlbumListModal from '../../components/modals/AlbumListModal/AlbumListModa
 import { useSearchParams } from 'react-router-dom';
 import PlaylistItem from './components/PlaylistItem/PlaylistItem';
 import MusicItem from './components/MusicItem/MusicItem';
+import { useRef } from 'react';
 
 
 const TAKE = 8;
@@ -24,6 +25,8 @@ function Music() {
     const [type, setType]: any = useState();
     const dispatcher = useAppDispatch()
     const [searchParams, setSearchParams] = useSearchParams();
+
+    const player = useRef(null)
 
     const update = React.useCallback(async () => {
         await dispatcher(getMusics({ take: TAKE }));
@@ -99,7 +102,7 @@ function Music() {
     const templateMusics = useMemo(() => {
         if (!musicsRedux) return
         return musicsRedux.songs.map((elem: any, key: number) => {
-            return <MusicItem item={elem} key={key}/>
+            return <MusicItem item={elem} key={key} player={player}/>
         })
     }, [musicsRedux])
 

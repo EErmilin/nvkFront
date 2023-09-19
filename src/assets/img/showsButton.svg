@@ -23,11 +23,11 @@
 <stop stop-color="#4E4E4E"/>
 <stop offset="1" stop-color="#4E4E4E"/>
 </linearGradient>
-<clipPath id="clip0_109_13790">
+<clippath id="clip0_109_13790">
 <rect x="0.914062" y="0.166016" width="364.689" height="198.806" rx="25.3256" fill="white"/>
-</clipPath>
-<clipPath id="clip1_109_13790">
+</clippath>
+<clippath id="clip1_109_13790">
 <rect width="160.818" height="160.818" fill="white" transform="translate(238.977 67.2793)"/>
-</clipPath>
+</clippath>
 </defs>
 </svg>

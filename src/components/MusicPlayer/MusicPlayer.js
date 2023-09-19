@@ -6,11 +6,15 @@ import classes from './MusicPlayer.module.scss';
 // import 'react-h5-audio-player/lib/styles.less' Use LESS
 // import 'react-h5-audio-player/src/styles.scss' Use SASS
 
-const MusicPlayer = ({ music }) => {
-  const player = useRef();
+const MusicPlayer = ({ music, player}) => {
+
+  console.log('!!!!!!!!!')
+  console.log(player)
+  console.log(player.current)
+
   return (
     <AudioPlayer
-    ref={player}
+      ref={player}
       play
       autoPlay
       className={classes.player}

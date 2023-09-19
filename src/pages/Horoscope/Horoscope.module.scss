@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 750px 1fr;
   gap: 20px;
-  margin: auto;
+  margin-left: 12%;
 
   &_item {
     width: 750px;
@@ -14,12 +14,19 @@
     border-radius: 30px;
     border: 1px solid var(--Border-Grey, #EFEFF0);
     background: var(--White, #FFF);
+
     &_header {
+      display: flex;
+      align-items: center;
       margin-bottom: 20px;
+      gap: 20px;
+
       &_title {
         line-height: 160%;
+        margin-bottom: 5px;
       }
     }
+
     &_content {
       font-size: 18px;
       font-style: normal;
@@ -77,17 +84,59 @@
   }
 
   &_period {
-    width: 365px;
-    height: 159px;
-    padding: 30px;
 
-    border-radius: 30px;
-    background: var(--White, #FFF);
+    color: var(--Grey-Text, #BBB);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+
+    &_btn {
+      color: var(--Yellow, #F6A80B);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      cursor: pointer;
+    }
 
     &_wrp {
       margin-top: 20px;
       display: flex;
       gap: 20px;
     }
+  }
+
+  &_week {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &>div h3 {
+      margin-bottom: 10px;
+    }
+    width: 365px;
+    height: 159px;
+    padding: 30px;
+    border-radius: 30px;
+    background: var(--White, #FFF);
+    background-image: url("../../assets/img/plane-ticket.svg");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+  }
+
+  &_mounth {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &>div h3 {
+      margin-bottom: 10px;
+    }
+    width: 365px;
+    height: 159px;
+    padding: 30px;
+    border-radius: 30px;
+    background: var(--White, #FFF);
+    background-image: url("../../assets/img/moon.svg");
+    background-repeat: no-repeat;
+    background-position: right bottom;
   }
 }

@@ -1,6 +1,7 @@
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
 import React from 'react'
+import { useLocation } from "react-router-dom";
 
 interface WrapperComponentProps {
     children: React.ReactNode
@@ -8,10 +9,17 @@ interface WrapperComponentProps {
 }
 function WrapperComponent({ children }: WrapperComponentProps) {
 
+  const url = useLocation()
+  console.log('@@@@@@@')
+  console.log(url.pathname === "/horoscope")
+  const cls = ["container style__flexbox style__flexdirection-column"]
+  if(url.pathname === "/horoscope"){
+    cls.push("horoscope")
+  }
     return (
         <>
             <Header />
-            <div className="container style__flexbox style__flexdirection-column">
+            <div className={cls.join(" ")}>
                 {children}
             </div>
             <Footer />

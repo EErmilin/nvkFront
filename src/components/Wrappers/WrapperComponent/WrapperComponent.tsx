@@ -10,8 +10,7 @@ interface WrapperComponentProps {
 function WrapperComponent({ children }: WrapperComponentProps) {
 
   const url = useLocation()
-  console.log('@@@@@@@')
-  console.log(url.pathname === "/horoscope")
+
   const cls = ["container style__flexbox style__flexdirection-column"]
   if(url.pathname === "/horoscope"){
     cls.push("horoscope")

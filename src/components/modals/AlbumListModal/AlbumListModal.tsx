@@ -1,30 +1,23 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
-import { useFormik } from "formik";
-import { object, string } from "yup";
 import classes from './AlbumListModal.module.scss';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { LOGIN } from '../../../gql/mutation/auth/Login';
-import { checkUserByPhone } from '../../../gql/mutation/auth/CheckUserByPhone';
-import Input from '../../UI/areas/Input/Input';
-import { useAppDispatch } from '../../../redux/hooks';
-import { setLogged } from '../../../redux/slices/authSlice';
 import React from "react";
-import { loginUser } from '../../../redux/thunks/auth/Login';
 import TransitionContainer from '../../TransitionContainer/TransitionContainer';
-import { Select, SelectProps } from 'antd';
 import { ISong, ISongPodcast } from '../../../models/Music';
 import { getUpdateClient } from '../../../requests/updateHeaders';
 import { AlBUM_SONGS, ARTIST_SONGS, PLAYLIST_SONGS } from '../../../gql/query/music/Music';
 import { PODCAST_ALBUM } from '../../../gql/query/podcast/Podcast';
 import MusicItem from './components/MusicItem/MusicItem';
 import SearchInput from '../../UI/areas/CustomSelect/SearchInput';
+import { PlayerTinny } from '../../MusicPlayer/PlayerTinny/PlayerTinny';
 
 
-const AlbumListModal = ({ closeModal, btnCancelClick, album, type }: any) => {
+const AlbumListModal = ({ closeModal, btnCancelClick, album, type, currentPlayer, setCurrentPlayer, isTinny, setIsTinny, audioRef }: any) => {
 
     const [musics, setMusics] = React.useState<any>(null);
+
+
+
 
 
     React.useEffect(() => {
@@ -117,8 +110,7 @@ const AlbumListModal = ({ closeModal, btnCancelClick, album, type }: any) => {
         })();
     }, [album.id, type]);
 
-console.log('musics')
-    console.log(musics)
+    console.log('!!!!!!')
 
 
 
@@ -127,10 +119,10 @@ console.log('musics')
         return <>
             <div className={classes.modal_music_title}>Плейлист: {album.name}</div>
             {musics.map((item: any, key: number) => {
-                return <MusicItem item={item}></MusicItem>
+                return <MusicItem item={item} currentPlayer={currentPlayer} setCurrentPlayer={setCurrentPlayer} key={key} audioRef={audioRef}></MusicItem>
             })}
         </>
-    }, [musics])
+    }, [musics, currentPlayer])
 
     const blocks = [
         {
@@ -145,10 +137,25 @@ console.log('musics')
     ]
 
 
+    if (isTinny && audioRef.current && audioRef.current.audio && audioRef.current.audio.current&& audioRef.current.audio.current.currentTime) {
+        return <div className={classes.tinny}><PlayerTinny music={currentPlayer} timeJump={audioRef?.current?.audio.current.currentTime}></PlayerTinny></div>
+
+    }
+
+    const onClose = () => {
+        if (currentPlayer) {
+            return setIsTinny(true)
+        } else {
+            btnCancelClick()
+        }
+    }
+
+
+
     return (
         <ModalWithBackground
-            closeModal={closeModal}
-            btnCancelClick={btnCancelClick}
+            // closeModal={onClose}
+            btnCancelClick={onClose}
             width={750}
         >
             <div className={classes.modal}>

@@ -11,7 +11,6 @@ import PlaylistItem from './components/PlaylistItem/PlaylistItem';
 import MusicItem from './components/MusicItem/MusicItem';
 import { useRef } from 'react';
 
-
 const TAKE = 8;
 
 function Music() {
@@ -25,8 +24,10 @@ function Music() {
     const [type, setType]: any = useState();
     const dispatcher = useAppDispatch()
     const [searchParams, setSearchParams] = useSearchParams();
+    const [isTinny, setIsTinny] = useState(false)
+    const [currentPlayer, setCurrentPlayer] = useState(null)
+    const audioRef = useRef(null);
 
-    const player = useRef(null)
 
     const update = React.useCallback(async () => {
         await dispatcher(getMusics({ take: TAKE }));
@@ -38,17 +39,24 @@ function Music() {
     }, [update]);
 
 
-    const templateUserRegisterModal = IsShowCurrentModal && (
+    const templateAlbumListModal = IsShowCurrentModal && (
         <AlbumListModal
           closeModal={closeIsShowCurrentModal}
           btnCancelClick={setIsShowCurrentModal}
           album={album}
-          type={type}/>
+          type={type}
+          audioRef={audioRef}
+          isTinny={isTinny}
+          setIsTinny={setIsTinny}
+          setCurrentPlayer={setCurrentPlayer}
+          currentPlayer={currentPlayer}/>
       )
 
     const onClick = (item: any, type?: string) => {
         setType(type)
         setAlbum(item)
+        setIsTinny(false)
+        setCurrentPlayer(null)
         setIsShowCurrentModal(true)
     }
 
@@ -102,9 +110,9 @@ function Music() {
     const templateMusics = useMemo(() => {
         if (!musicsRedux) return
         return musicsRedux.songs.map((elem: any, key: number) => {
-            return <MusicItem item={elem} key={key} player={player}/>
+            return <MusicItem item={elem} key={key} onClick={()=>setCurrentPlayer(elem)} audioRef={audioRef} currentPlayer={currentPlayer}/>
         })
-    }, [musicsRedux])
+    }, [musicsRedux,currentPlayer])
 
     return (
         <div className={classes.music}>
@@ -158,7 +166,7 @@ function Music() {
                 </div>
 
             </div>
-            {templateUserRegisterModal}
+            {templateAlbumListModal}
         </div>
     );
 }

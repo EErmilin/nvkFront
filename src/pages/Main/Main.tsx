@@ -46,8 +46,6 @@ function Main({ }) {
 
     const refresh = React.useCallback(async (takeNews: number) => {
 
-        console.log('!@@@@@@@@@@@@')
-        console.log(takeNews)
         try {
             const client = await getUpdateClient();
             let response = await client.query({

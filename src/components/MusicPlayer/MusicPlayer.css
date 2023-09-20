@@ -1,7 +1,10 @@
 .rhap_play-pause-button{
-    position: absolute;
-    left: 2%;
-    top: 15%;
+position: absolute;
+left: 15px;
+top:13px;
+padding: 0 !important;
+margin: 0 !important;
+
     
 }
 

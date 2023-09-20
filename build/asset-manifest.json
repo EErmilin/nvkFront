@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.c09a5c29.css",
-    "main.js": "./static/js/main.4a2fecfc.js",
+    "main.css": "./static/css/main.a8b58016.css",
+    "main.js": "./static/js/main.0ca1e2c5.js",
     "static/js/787.ca5074de.chunk.js": "./static/js/787.ca5074de.chunk.js",
     "static/media/NotoSans-Thin.ttf": "./static/media/NotoSans-Thin.db45faa4d07846225fb9.ttf",
     "static/media/NotoSans-ExtraLight.ttf": "./static/media/NotoSans-ExtraLight.387c9cb8074a7257c4d3.ttf",
@@ -34,9 +34,20 @@
     "static/media/filmsButton.svg": "./static/media/filmsButton.c79e78979cc2e74024fdebd136e138f4.svg",
     "static/media/podcastsButton.svg": "./static/media/podcastsButton.2ff090bc29687d6ab6ca733a421b615a.svg",
     "static/media/cartoonsButton.svg": "./static/media/cartoonsButton.232984b65e0602ec651771a74f3b7944.svg",
+    "static/media/leo.svg": "./static/media/leo.9a0cedbf35980ba36da193ee7d3b79f3.svg",
     "static/media/aquarius.svg": "./static/media/aquarius.9b153018b7e7ad3f7c266aecf7148c29.svg",
     "static/media/mir.svg": "./static/media/mir.e0bba0980f68797965d0.svg",
+    "static/media/scorpio.svg": "./static/media/scorpio.bc9a7a8a9ca0dd571a9b47ef8fd3da08.svg",
+    "static/media/sagittarius.svg": "./static/media/sagittarius.1747a8edc7b5e4937de097576db242c7.svg",
+    "static/media/cancer.svg": "./static/media/cancer.0a378d031d44a7521e10be6b20509cea.svg",
+    "static/media/pisces.svg": "./static/media/pisces.f2ed6daff76108de03fe983344b07a8c.svg",
+    "static/media/gemini.svg": "./static/media/gemini.7ac4f5c232cba29a583e5f3a82dbea8b.svg",
+    "static/media/capricorn.svg": "./static/media/capricorn.21b69c89330bde9ccac6b902803d1641.svg",
+    "static/media/libra.svg": "./static/media/libra.fb48be94e0aa5db36bfe177709fbd1cc.svg",
+    "static/media/taurus.svg": "./static/media/taurus.12979bd9a026bf1cf6690a6f6b4bdbdd.svg",
     "static/media/horoscope-back.svg": "./static/media/horoscope-back.a9a648bf78b46c70cc6c.svg",
+    "static/media/virgo.svg": "./static/media/virgo.0a65b6215f509e1882f9ef5eeba85a10.svg",
+    "static/media/aries.svg": "./static/media/aries.d9960d96ae5f4f5a955f7815d818cdb2.svg",
     "static/media/plane-ticket.svg": "./static/media/plane-ticket.055d7c80389f2b8a2165.svg",
     "static/media/logotype.svg": "./static/media/logotype.6c22fe2c3ad0d5aa91ef.svg",
     "static/media/teteam.svg": "./static/media/teteam.0071c30db6fc0886a34cec90832a8218.svg",
@@ -61,12 +72,12 @@
     "static/media/close.svg": "./static/media/close.fb1d458129cd05716403.svg",
     "static/media/arrow.svg": "./static/media/arrow.6c2f81a80d5cb0a0bdd6.svg",
     "static/media/carousel-arrow.svg": "./static/media/carousel-arrow.10b905f94e5010a68895.svg",
-    "main.c09a5c29.css.map": "./static/css/main.c09a5c29.css.map",
-    "main.4a2fecfc.js.map": "./static/js/main.4a2fecfc.js.map",
+    "main.a8b58016.css.map": "./static/css/main.a8b58016.css.map",
+    "main.0ca1e2c5.js.map": "./static/js/main.0ca1e2c5.js.map",
     "787.ca5074de.chunk.js.map": "./static/js/787.ca5074de.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c09a5c29.css",
-    "static/js/main.4a2fecfc.js"
+    "static/css/main.a8b58016.css",
+    "static/js/main.0ca1e2c5.js"
   ]
 }

@@ -10,6 +10,11 @@ import { useSearchParams } from 'react-router-dom';
 import PlaylistItem from './components/PlaylistItem/PlaylistItem';
 import MusicItem from './components/MusicItem/MusicItem';
 import { useRef } from 'react';
+import PopularItem from './components/PopularItem/PopularItem';
+import { BsCloudSnowFill } from 'react-icons/bs';
+import CurrentPodcastItem from './components/CurrentPodcastItem/CurrentPodcastItem';
+import { IPodcastData } from '../../models/Music';
+import PodcastItem from './components/PodcastsItem/PodcastItem';
 
 const TAKE = 8;
 
@@ -21,6 +26,7 @@ function Music() {
     const musicsRedux: any = useAppSelector(state => state.screens.musics);
     const podcastsRedux: any = useAppSelector(state => state.screens.podcasts);
     const [album, setAlbum] = useState();
+    const [currentPodcast, setCurrentPodcast]= React.useState<IPodcastData | null>(null);
     const [type, setType]: any = useState();
     const dispatcher = useAppDispatch()
     const [searchParams, setSearchParams] = useSearchParams();
@@ -59,9 +65,18 @@ function Music() {
         setCurrentPlayer(null)
         setIsShowCurrentModal(true)
     }
+    const onClickPodcasts = (podcast: IPodcastData) => {
+        setCurrentPodcast(podcast)
+        document.getElementById(`#podcast`)?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        })
+    }
+
 
         /**Добавляем скролл к нужным полям если он нужен*/
         useEffect(() => {
+            setCurrentPodcast(podcastsRedux[0])
                 let isScroll = searchParams.get("scroll")
     
                 if (isScroll==="podcasts") {
@@ -75,36 +90,27 @@ function Music() {
     
 
     const templatePlaylists = useMemo(() => {
-        return musicsRedux?.playlists.map((elem: any, key: number) =>{ return <PlaylistItem playlist={elem} onClick={onClick}></PlaylistItem>})
+        return musicsRedux?.playlists.map((elem: any, key: number) =>{ return <PlaylistItem playlist={elem} onClick={onClick} key={key}/>})
     }, [musicsRedux])
 
     const templatePopulars = useMemo(() => {
-        return musicsRedux?.albums.map((elem: any, key: number) => {
-            return <div onClick={()=>onClick(elem, 'album')} className={classes.music_field_item} key={key}>
-                {!elem.cover?.url_256 ? <div className={classes.music_field_no_img} /> : <img className={classes.music_field_img} src={elem.cover?.url_256} alt="Logo" />}
-                <div className={classes.music_field_item_title}>{elem.name}</div>
-            </div>
+        return musicsRedux?.albums.map((album: any, key: number) => {
+            return <PopularItem album={album} onClick={onClick} key={key}/>
         })
     }, [musicsRedux])
 
     const templatePodcasts = useMemo(() => {
         if (!podcastsRedux) return
-        return podcastsRedux.map((elem: any, key: number) => {
-            return <div onClick={()=>onClick(elem)} className={classes.music_field_item} key={key}>
-                {!elem.cover?.url_256 ? <div className={classes.music_field_no_img}/> : <img className={classes.music_field_img} src={elem.cover?.url_256} alt="Logo" />}
-                <div className={classes.music_field_item_title}>{elem.name}</div>
-            </div>
+        return podcastsRedux.map((podcast: any, key: number) => {
+            return <PodcastItem podcast={podcast} key={key} onClickPodcasts={onClickPodcasts}/>
         })
     }, [podcastsRedux])
 
     const templatePodcastsCurrent = useMemo(() => {
-        return podcastsRedux && podcastsRedux.length && podcastsRedux[0].podcastAlbums.map((elem: any, key: number) => {
-            return <div onClick={()=>onClick(elem)} className={classes.music_field_item} key={key}>
-                {!elem.cover?.url_256 ? <div className={classes.music_field_no_img}/> : <img className={classes.music_field_img} src={elem.cover?.url_256} alt="Logo" />}
-                <div className={classes.music_field_item_title}>{elem.name}</div>
-            </div>
-        })
-    }, [podcastsRedux])
+        return currentPodcast && currentPodcast.podcastAlbums?.length ? currentPodcast.podcastAlbums.map((podcast: any, key: number) => {
+            return <CurrentPodcastItem podcast={podcast} onClick={onClick} key={key}/>
+        }) : null
+    }, [currentPodcast])
 
 
     const templateMusics = useMemo(() => {
@@ -156,15 +162,14 @@ function Music() {
                 </div>
 
             </div>
-            <div className={classes.music_field}>
+            <div className={classes.music_field} id="#podcast">
                 <div className={classes.music_field_header}>
-                    <h1 className={classes.music_field_title}>Подкасты - олонхо</h1>
+                    <h1 className={classes.music_field_title}>Подкасты - {currentPodcast?.name}</h1>
                     <div className={classes.music_field_header_btn}>Все</div>
                 </div>
                 <div className={classes.music_field_wrp}>
                     {templatePodcastsCurrent}
                 </div>
-
             </div>
             {templateAlbumListModal}
         </div>

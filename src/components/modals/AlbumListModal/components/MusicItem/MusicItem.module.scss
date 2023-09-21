@@ -3,10 +3,11 @@
   &_wrp {
     display: flex;
     justify-content: space-between;
+    max-width: 100%;
   }
 
   &_item {
-    width: 100%;
+    width: 580px;
     position: relative;
     display: flex;
     gap: 15px;

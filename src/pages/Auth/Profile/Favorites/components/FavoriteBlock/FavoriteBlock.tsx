@@ -10,11 +10,10 @@ function FavoriteBlock({type}: any) {
             ? favorite.podcastEpisode !== null
             : favorite.song !== null,
       );
-      
     
     return (
         <div className={classes.block}>
-           {favorites.map((item)=><FavoriteItem item={item.song}></FavoriteItem>)}
+           {favorites.map((item)=><FavoriteItem item={type === "podcast" ? item.podcastEpisode : item.song}></FavoriteItem>)}
         </div>
     )
 }

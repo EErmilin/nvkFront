@@ -110,7 +110,6 @@ const AlbumListModal = ({ closeModal, btnCancelClick, album, type, currentPlayer
         })();
     }, [album.id, type]);
 
-    console.log('!!!!!!')
 
 
 
@@ -119,7 +118,7 @@ const AlbumListModal = ({ closeModal, btnCancelClick, album, type, currentPlayer
         return <>
             <div className={classes.modal_music_title}>Плейлист: {album.name}</div>
             {musics.map((item: any, key: number) => {
-                return <MusicItem item={item} currentPlayer={currentPlayer} setCurrentPlayer={setCurrentPlayer} key={key} audioRef={audioRef}></MusicItem>
+                return <MusicItem item={item} currentPlayer={currentPlayer} setCurrentPlayer={setCurrentPlayer} key={key} audioRef={audioRef} type={type}></MusicItem>
             })}
         </>
     }, [musics, currentPlayer])

@@ -26,7 +26,7 @@ function Favorites({ }) {
         },
         {
             title: "Подкасты",
-            block: <FavoriteBlock type="fairytale"/>
+            block: <FavoriteBlock type="podcast"/>
         },
     ]
 

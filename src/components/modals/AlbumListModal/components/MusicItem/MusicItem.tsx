@@ -6,7 +6,7 @@ import FavoriteBtn from '../../../../FavoriteBtn/FavoriteBtn';
 import MusicPlayer from '../../../../MusicPlayer/MusicPlayer';
 
 
-const MusicItem = ({ item, currentPlayer, setCurrentPlayer, audioRef, player }: any) => {
+const MusicItem = ({ item, currentPlayer, setCurrentPlayer, audioRef, player, type = "" }: any) => {
     const [isNoImg, setIsNoImg] = useState(false)
 
     const [isPlay, setIsPlay] = useState(false)
@@ -20,7 +20,6 @@ const MusicItem = ({ item, currentPlayer, setCurrentPlayer, audioRef, player }: 
             setIsPlay(false) 
         }
     }, [currentPlayer])
-
 
 
     const cls = [classes.music_item_wrp]
@@ -51,7 +50,7 @@ const MusicItem = ({ item, currentPlayer, setCurrentPlayer, audioRef, player }: 
 
             </div>
             <div className={classes.music_item_btn_wrp}>
-                <FavoriteBtn id={item.id}></FavoriteBtn>
+                <FavoriteBtn id={item.id} type={type}></FavoriteBtn>
 
                 <div className={classes.music_item_btn} />
             </div>

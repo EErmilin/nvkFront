@@ -26,7 +26,7 @@ function Header() {
             { link: "/", title: "Главная" },
             { link: "/news", title: "Новости" },
             { link: "/services", title: "Услуги" },
-            { link: "/music", title: "Аудио" },
+            { link: "/audio", title: "Аудио" },
             { link: "", title: "Видео" },
             { link: "/live", title: "Прямой эфир" },
             { link: "", title: "Курсы валют" },

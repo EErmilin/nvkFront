@@ -10,11 +10,13 @@ import Settings from "../pages/Auth/Profile/Settings/Settings";
 import Support from "../pages/Auth/Profile/Support/Support";
 import Tape from "../pages/Tape/Tape";
 import Main from "../pages/Main/Main";
-import Music from "../pages/Music/Music";
 import CurrentService from "../pages/Services/components/CurrentService/CurrentService";
 import ListServices from "../pages/Services/ListServices";
 import Services from "../pages/Services/Services";
 import Horoscope from "../pages/Horoscope/Horoscope";
+import AudioMain from "../pages/Music/AudioMain";
+import Audio from "../pages/Music/Audio";
+import AllPage from "../pages/Music/components/AllPage/AllPage";
 
 
 export const routes = [
@@ -135,8 +137,54 @@ export const routes = [
     },
     {
         name: 'music',
-        component: <Music />,
-        path: 'music',
+        component: <Audio
+            routes={
+                [
+                    {
+                        name: 'playlists',
+                        privateUrl: false,
+                        component: <AudioMain />,
+                        path: '',
+                        exact: false,
+                    },
+                    {
+                        name: 'playlists',
+                        privateUrl: false,
+                        component: <AllPage />,
+                        path: 'playlists',
+                        exact: false,
+                    },
+                    {
+                        name: 'albums',
+                        privateUrl: false,
+                        component: <AllPage />,
+                        path: 'albums',
+                        exact: false,
+                    },
+                    {
+                        name: 'tracks',
+                        privateUrl: false,
+                        component: <AllPage />,
+                        path: 'tracks',
+                        exact: false,
+                    },
+                    {
+                        name: 'podcasts',
+                        privateUrl: false,
+                        component: <AllPage />,
+                        path: '/',
+                        exact: false,
+                    },
+                    {
+                        name: 'currentPodcast',
+                        privateUrl: false,
+                        component: <AllPage />,
+                        path: 'currentPodcast',
+                        exact: false,
+                    },
+                ]
+            } />,
+        path: 'audio/*',
         exact: true,
     },
     {

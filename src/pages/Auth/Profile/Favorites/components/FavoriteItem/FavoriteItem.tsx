@@ -13,4 +13,4 @@ function FavoriteItem({ item }: any) {
     )
 }
 
-export default FavoriteItems
+export default FavoriteItem

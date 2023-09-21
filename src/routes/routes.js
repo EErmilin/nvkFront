@@ -141,7 +141,7 @@ export const routes = [
             routes={
                 [
                     {
-                        name: 'playlists',
+                        name: 'main',
                         privateUrl: false,
                         component: <AudioMain />,
                         path: '',
@@ -151,7 +151,7 @@ export const routes = [
                         name: 'playlists',
                         privateUrl: false,
                         component: <AllPage />,
-                        path: 'playlists',
+                        path: '/playlists',
                         exact: false,
                     },
                     {

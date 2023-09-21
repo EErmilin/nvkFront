@@ -1,0 +1,13 @@
+.all{
+  
+  &_wrp{
+    margin-top: 30px;
+    border-radius: 30px;
+    border: 1px solid var(--Border-Grey, #EFEFF0);
+    background: var(--White, #FFF);
+    padding: 30px;
+    gap: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}

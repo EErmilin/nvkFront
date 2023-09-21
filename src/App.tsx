@@ -16,6 +16,7 @@ import { getUpdateClient } from './requests/updateHeaders';
 import { getListRoute } from './routes/getListRoute';
 import { routes } from './routes/routes';
 
+
 function App() {
 
   const isAuth = useAppSelector(state => state.auth.logged);
@@ -124,6 +125,7 @@ function App() {
 
   return (
     <div className="App">
+      
       <Routes>
         {listRoutes}
       </Routes>

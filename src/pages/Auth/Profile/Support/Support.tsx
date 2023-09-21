@@ -11,9 +11,12 @@ import { useAppSelector } from "../../../../redux/hooks";
 import { object } from "yup";
 import { useFormik } from "formik";
 import { ApolloError } from "@apollo/client";
+import { notification } from "antd";
+import { NotificationType } from "../../../../api/types";
 
 function Support({ }) {
-
+    const userData = useAppSelector(state => state.user.data);
+    const [api, contextHolder] = notification.useNotification();
     const [errors, setErrors] = useState({
         name: "",
         email: "",
@@ -21,8 +24,12 @@ function Support({ }) {
 
     })
 
-    const userData = useAppSelector(state => state.user.data);
 
+    const openNotificationWithIcon = (type: NotificationType) => {
+        api[type]({
+          message: 'Сообщение отправлено',
+        });
+      };
 
     const initialValues = {
         name: userData?.firstname ?? "",
@@ -66,10 +73,11 @@ function Support({ }) {
             }
             if (!values.message) {
                 setErrors({ ...errors, message: "Заполните все поля" })
-            } else {
+            }
+         } else {
                 try {
                     let client = await getUpdateClient();
-                    let response = await client.mutate({
+                    const response = await client.mutate({
                         mutation: CREATE_SUPPORT,
                         variables: {
                             createSupportInput: {
@@ -80,6 +88,7 @@ function Support({ }) {
                             },
                         },
                     });
+                    openNotificationWithIcon('success')
                 } catch (e) {
                     if (e instanceof ApolloError) {
                         console.log('e', e.message);
@@ -88,7 +97,6 @@ function Support({ }) {
             }
         }
 
-    }
 
     /** Очищаем ошибки и изменяем состояние */
     function ClearErrorAndChange(field: any, value: any) {
@@ -101,6 +109,7 @@ function Support({ }) {
 
     return (
         <div className={classes.support}>
+            {contextHolder}
             <div className={classes.support_wrp}>
                 <h2 className={classes.title}>Тех.Поддержка</h2>
                 <div className={classes.info_wrp}>

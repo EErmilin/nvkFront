@@ -8,14 +8,23 @@ import { CHANGE_PASSWORD } from '../../../../gql/mutation/user/ChangePassword';
 import { getUpdateClient } from "../../../../requests/updateHeaders";
 import { PASSWORD_LENGTH } from "../../../../api/config";
 import { ApolloError } from "@apollo/client";
+import { NotificationType } from "../../../../api/types";
+import { notification } from "antd";
 
 function ChangePassword({ }) {
+    const [api, contextHolder] = notification.useNotification();
     const [errors, setErrors] = useState({
         oldPassword: "",
         newPassword: "",
         repeatPassword: "",
 
     })
+
+    const openNotificationWithIcon = (type: NotificationType) => {
+        api[type]({
+          message: 'Пароль успешно изменен',
+        });
+      };
 
 
     const initialValues = {
@@ -66,8 +75,7 @@ function ChangePassword({ }) {
                     },
                 });
 
-                console.log('response')
-                console.log(response)
+                openNotificationWithIcon('success')
 
             } catch (e) {
                 if (e instanceof ApolloError) {
@@ -102,6 +110,7 @@ function ChangePassword({ }) {
 
     return (
         <div className={classes.change}>
+            {contextHolder}
             <div className={classes.change_wrp}>
                 <h2>Сменить пароль</h2>
                 <div className={classes.info}>
@@ -112,7 +121,7 @@ function ChangePassword({ }) {
                         name="oldPassword"
                         id="oldPassword"
                         mask={''}
-                        type={'oldPassword'}
+                        type={'password'}
                         errorMessage={errors.oldPassword}
                         onChange={(e: any) => {
                             return ClearErrorAndChange("oldPassword", e.target.value)
@@ -123,7 +132,7 @@ function ChangePassword({ }) {
                         name="newPassword"
                         id="newPassword"
                         mask={''}
-                        type={'newPassword'}
+                        type={'password'}
                         errorMessage={errors.newPassword}
                         onChange={(e: any) => {
                             return ClearErrorAndChange("newPassword", e.target.value)
@@ -134,7 +143,7 @@ function ChangePassword({ }) {
                         name="repeatPassword"
                         id="repeatPassword"
                         mask={''}
-                        type={'repeatPassword'}
+                        type={'password'}
                         errorMessage={errors.repeatPassword}
                         onChange={(e: any) => {
                             return ClearErrorAndChange("repeatPassword", e.target.value)

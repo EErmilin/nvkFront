@@ -10,13 +10,19 @@ import { object, string } from "yup";
 import moment from "moment";
 import ButtonDefault from "../../../../components/UI/btns/Button/Button";
 import { updateUser } from '../../../../redux/thunks/user/UpdateUser';
-
-const fakeAvatar = require("../../../../assets/img/3c6646022a18ad8353e3d52fdda6c2da.png")
+import { notification } from 'antd';
+import { NotificationType } from '../../../../api/types';
 
 function Profile({ }) {
+    const [api, contextHolder] = notification.useNotification();
     const userData = useAppSelector(state => state.user.data);
-
     const dispatcher = useAppDispatch()
+
+    const openNotificationWithIcon = (type: NotificationType) => {
+        api[type]({
+          message: 'Данные профиля обновлены',
+        });
+      };
 
 
     const initialValues = {
@@ -62,6 +68,7 @@ function Profile({ }) {
                     avatar_id: undefined,
                 }),
             );
+            openNotificationWithIcon('success')
         } catch (error) {
             console.log('error')
             console.log(error)
@@ -77,6 +84,7 @@ function Profile({ }) {
 
     return (
         <div className={classes.profile}>
+            {contextHolder}
             <div>
                 <div className={classes.user}>
                     <Avatar

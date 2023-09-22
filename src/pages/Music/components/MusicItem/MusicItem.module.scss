@@ -3,7 +3,6 @@
     position: relative;
     display: flex;
     gap: 15px;
-    max-height: 70px;
     width:450px;
 
     &_img {
@@ -62,12 +61,11 @@
     }
 
     &_wrp {
-      height: 70px;
       width: 270px;
       padding: 10px 0;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-around;
 
       &_active {
         padding: 0;

@@ -9,7 +9,7 @@ import PlaylistItem from "../PlaylistItem/PlaylistItem"
 import classes from "./AllPage.module.scss";
 import useToggleVisibility from "../../../../hooks/useToggleVisibility"
 import AlbumListModal from "../../../../components/modals/AlbumListModal/AlbumListModal"
-import { PODCASTS } from '../../../../gql/query/podcast/Podcast';
+import { PODCASTS, PODCAST_ALL_ALBUMS } from '../../../../gql/query/podcast/Podcast';
 import MusicItem from "../MusicItem/MusicItem"
 
 function AllPage({ routes }) {
@@ -42,16 +42,16 @@ function AllPage({ routes }) {
     async () => {
       try {
         const client = await getUpdateClient();
+        const variables = urlParams.id ? { podcastId: Number(urlParams.id) } : {}
         const response = await client.query({
-          query: urlParams['*'] === "tracks" ? SONG_MUSICS : urlParams['*'] === "podcasts" ? PODCASTS : urlParams['*'] === "playlists" ? SONG_PLAYLISTS : SONG_ALBUMS,
-          variables: {
-          },
+          query: urlParams.id ? PODCAST_ALL_ALBUMS : urlParams['*'] === "tracks" ? SONG_MUSICS : urlParams['*'] === "podcasts" ? PODCASTS : urlParams['*'] === "playlists" ? SONG_PLAYLISTS : SONG_ALBUMS,
+          variables: variables
         });
 
-        console.log('!!!!!!!!!!!!')
-        console.log(response)
 
-        if (urlParams['*'] === "playlists") {
+        if (urlParams.id) {
+          setData(response.data.podcast.podcastAlbums);
+        } else if (urlParams['*'] === "playlists") {
           setData(response.data.musics.playlists);
         } else if (urlParams['*'] === "podcasts") {
           setData(response.data.podcasts);
@@ -65,7 +65,7 @@ function AllPage({ routes }) {
         console.log(e);
       }
     },
-    [],
+    [urlParams],
   );
 
 
@@ -77,22 +77,22 @@ function AllPage({ routes }) {
     setIsShowCurrentModal(true)
   }
 
-
-
   const templatePlaylists = useMemo(() => {
+    if (urlParams.id) {
+      return data?.map((elem: any, key: number) => { return <PlaylistItem playlist={elem} onClick={() => onClick(elem, "podcast")} key={key} /> })
+    }
     if (urlParams['*'] === "playlists") {
       return data?.map((elem: any, key: number) => { return <PlaylistItem playlist={elem} onClick={() => onClick(elem, "playlist")} key={key} /> })
-    } else if (urlParams['*'] === "podcasts") {
-      return data?.map((elem: any, key: number) => { return <PlaylistItem playlist={elem} onClick={() => onClick(elem, "podcast")} key={key} /> })
-    } else if (urlParams['*'] === "tracks"){
-      return data?.map((elem: any, key: number) => { return <MusicItem item={elem} key={key} onClick={()=>setCurrentPlayer(elem)} audioRef={audioRef} currentPlayer={currentPlayer}/>})
-    } else {
-      return data?.map((elem: any, key: number) => { return <PlaylistItem playlist={elem} onClick={() => onClick(elem, "album")} key={key} /> })
     }
+    if (urlParams['*'] === "podcasts") {
+      return data?.map((elem: any, key: number) => { return <PlaylistItem playlist={elem} onClick={() => navigate(`${elem.id}`)} key={key} /> })
+    }
+    if (urlParams['*'] === "tracks") {
+      return data?.map((elem: any, key: number) => { return <MusicItem item={elem} key={key} onClick={() => setCurrentPlayer(elem)} audioRef={audioRef} currentPlayer={currentPlayer} /> })
+    }
+    return data?.map((elem: any, key: number) => { return <PlaylistItem playlist={elem} onClick={() => onClick(elem, "album")} key={key} /> })
   }, [data, currentPlayer])
 
-  console.log('!!!!!!!data')
-  console.log(currentPlayer)
 
   React.useEffect(() => {
     update();

@@ -176,10 +176,10 @@ export const routes = [
                         exact: false,
                     },
                     {
-                        name: 'currentPodcast',
+                        name: 'podcast',
                         privateUrl: false,
                         component: <AllPage />,
-                        path: 'currentPodcast',
+                        path: '/podcasts/:id',
                         exact: false,
                     },
                 ]

@@ -25,7 +25,7 @@ function AudioMain() {
   
     const musicsRedux: any = useAppSelector(state => state.screens.musics);
     const podcastsRedux: any = useAppSelector(state => state.screens.podcasts);
-    const [album, setAlbum] = useState();
+    const [album, setAlbum] = React.useState<any>(null);
     const [currentPodcast, setCurrentPodcast]= React.useState<IPodcastData | null>(null);
     const [type, setType]: any = useState();
     const dispatcher = useAppDispatch()
@@ -120,6 +120,7 @@ function AudioMain() {
         })
     }, [musicsRedux,currentPlayer])
 
+
     return (
         <div className={classes.music}>
             <div className={classes.music_field}>
@@ -165,7 +166,7 @@ function AudioMain() {
             <div className={classes.music_field} id="#podcast">
                 <div className={classes.music_field_header}>
                     <h1 className={classes.music_field_title}>Подкасты - {currentPodcast?.name}</h1>
-                    <NavLink className={classes.music_field_header_btn} to="/audio/podcast">Все</NavLink>
+                    <NavLink className={classes.music_field_header_btn} to={`/audio/podcasts/${currentPodcast?.id}`}>Все</NavLink>
                 </div>
                 <div className={classes.music_field_wrp}>
                     {templatePodcastsCurrent}

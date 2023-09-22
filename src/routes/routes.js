@@ -172,7 +172,7 @@ export const routes = [
                         name: 'podcasts',
                         privateUrl: false,
                         component: <AllPage />,
-                        path: '/',
+                        path: '/podcasts',
                         exact: false,
                     },
                     {

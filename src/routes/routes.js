@@ -17,13 +17,26 @@ import Horoscope from "../pages/Horoscope/Horoscope";
 import AudioMain from "../pages/Music/AudioMain";
 import Audio from "../pages/Music/Audio";
 import AllPage from "../pages/Music/components/AllPage/AllPage";
-
+import Terms from "../pages/Terms/Terms";
+import Сonditions from "../pages/Сonditions/Сonditions";
 
 export const routes = [
     {
         name: 'main',
         component: <Main />,
         path: '',
+        exact: true,
+    },
+    {
+        name: 'terms',
+        component: <Terms />,
+        path: 'terms',
+        exact: true,
+    },
+    {
+        name: 'conditions',
+        component: <Сonditions />,
+        path: 'conditions',
         exact: true,
     },
     {

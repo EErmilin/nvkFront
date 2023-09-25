@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { NavLink } from 'react-router-dom';
 import '../../assets/css/main.scss';
 import classes from './Footer.module.scss';
 
@@ -190,7 +191,7 @@ function Footer() {
                     </div>
                 </div>
                 <div className="footer-down style__flexbox style__flex-jc-sb style__flex-ai-c">
-                    <div className="copyright">© 2010-2022 ГБУ РС(Я) НВК «Саха». Все права защищены. <a href="">Условия использования</a>, <a href="">Политика конфиденциальности</a></div>
+                    <div className="copyright">© 2010-2022 ГБУ РС(Я) НВК «Саха». Все права защищены. <NavLink to={"/conditions"}>Условия использования</NavLink>, <NavLink to={"/Terms"}>Политика конфиденциальности</NavLink></div>
                     <div className="developer">Made by <a href="https://xn-----6kcaafc7aidqbcofucmwfhehvjco8b5fti3a.xn--p1ai/">Mobility.top</a></div>
                 </div>
             </div>

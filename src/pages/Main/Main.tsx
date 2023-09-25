@@ -95,7 +95,7 @@ function Main({ }) {
                     </div>
                 </div>
             </div>
-            <div className={classes.main_videos}>
+{/*            <div className={classes.main_videos}>
                 <h1 className={classes.main_title}>Видео</h1>
                 <div className={classes.main_videos_wrp}>
                     <div className={classes.main_videos_item}>
@@ -111,7 +111,7 @@ function Main({ }) {
                         <CartoonsButton />
                     </div>
                 </div>
-            </div>
+    </div>*/}
             <div className={classes.main_musics}>
                 <h1 className={classes.main_title}>Музыка</h1>
                 <div className={classes.main_videos_wrp}>
@@ -141,7 +141,7 @@ function Main({ }) {
                     <button className={classes.main_news_btn} onClick={()=>{navigate("/live")}}>Смотреть еще</button>
                 </div>
             </div>}
-            <div className={classes.main_top}>
+  {   /**        <div className={classes.main_top}>
                 <div className={classes.main_top_header}>
                     <h1 className={classes.main_top_title}>Топ 5</h1>
                     <div className={classes.main_top_header_btn}>Все</div>
@@ -166,7 +166,7 @@ function Main({ }) {
                     <ShowItem></ShowItem>
                     <ShowItem></ShowItem>
                 </div>
-            </div>
+            </div>*/}
         </div>
     )
 }

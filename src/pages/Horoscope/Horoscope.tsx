@@ -187,7 +187,7 @@ function Horoscope({ }) {
                     month: 'long',
                 })}.`}</span>
             </div>
-            <div className={classes.horoscope_period_btn} onClick={() => setPeriod('month')}>Смотреть</div>
+            <div className={classes.horoscope_period_btn} onClick={() => setPeriod('day')}>Смотреть</div>
         </div>
 
         return <div className={classes.horoscope_period_wrp}>

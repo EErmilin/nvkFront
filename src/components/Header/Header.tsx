@@ -22,14 +22,14 @@ function Header() {
     /** Масив ссылок */
     const templateLinks = useMemo(() => {
         let arrLinks = [
-            { link: "/tape", title: "Лента" },
+          //  { link: "/tape", title: "Лента" },
             { link: "/", title: "Главная" },
-            { link: "/news", title: "Новости" },
+            //{ link: "/news", title: "Новости" },
             { link: "/services", title: "Услуги" },
             { link: "/audio", title: "Аудио" },
-            { link: "", title: "Видео" },
+           // { link: "", title: "Видео" },
             { link: "/live", title: "Прямой эфир" },
-            { link: "", title: "Курсы валют" },
+           // { link: "", title: "Курсы валют" },
             { link: "/horoscope", title: "Гороскоп" },
         ]
 
@@ -59,7 +59,8 @@ function Header() {
                     </ul>
                 </div>
                 <div className="right-header style__flexbox style__flex-ai-c">
-                    <div className="header-search"><span>Поиск</span></div>
+                    {//<div className="header-search"><span>Поиск</span></div>
+                    }
                     <div className="header-profile" onClick={handleProfile}><span>Профиль</span></div>
                 </div>
             </div>

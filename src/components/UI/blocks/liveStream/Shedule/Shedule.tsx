@@ -36,12 +36,15 @@ const getStartDate = () => {
     day: "2-digit",
   });
   let start = new Date(`${date}T21:00:01.000Z`);
+
+  console.log("dates[0].date.toUTCString()");
+  console.log(date)
   return start;
 };
 
-const dates = [0, 1, 2, 3, 4, 5, 6].map((item) => {
+const dates = [1, 2, 3, 4, 5, 6].map((item) => {
   return {
-    date: new Date(getStartDate().getTime() + item * 1000 * 60 * 60 * 24),
+    date: new Date(getStartDate().getTime() + item * 1000 * 60 * 60 * 23.59),
   };
 });
 
@@ -55,6 +58,8 @@ const Shedule = forwardRef(
     });
 
     const groupedPrograms = getProgramsForDate(programs, selectDate.date);
+
+
 
     const currentProgram = getCurrentProgram(groupedPrograms);
 

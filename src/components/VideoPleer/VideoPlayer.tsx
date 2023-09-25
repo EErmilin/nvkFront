@@ -52,6 +52,19 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
     setMute(!mute);
 
 
+  const clsWrapper = [isMain ? "video-pleer-wraper-main" : "video-pleer-wraper"]
+    if(steam?.name === "Тэтим"){
+      clsWrapper.push("teteam")
+    }
+    const cls = [isMain ? "react-player-main" : "react-player"]
+    if(steam?.name === "Тэтим"){
+      cls.push("teteam")
+    }
+
+    console.log(steam)
+
+
+
     const toggleFullScreen = () => {
       if (videoPleerWraper.current) {
         if (screenfull.isEnabled) { // Проверяем поддержку полноэкранного режима
@@ -69,7 +82,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
     
 
   return (
-    <div className={isMain ? "video-pleer-wraper-main" : "video-pleer-wraper"}
+    <div className={clsWrapper.join(" ")}
       ref={videoPleerWraper}>
       <ReactPlayer
         ref={playerRef}
@@ -82,7 +95,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
         muted={mute}
         onPlay={onPlay}
         onPause={onPause}
-        className={isMain ? "react-player-main" : "react-player"}
+        className={cls.join(" ")}
       />
 
       <Controls

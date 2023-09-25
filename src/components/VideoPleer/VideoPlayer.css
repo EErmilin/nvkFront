@@ -1,14 +1,16 @@
 .video-pleer-wraper {
   position: relative;
   width: 878px;
-  height: 500px;
+  height: 494px;
 }
 
 .video-pleer-wraper-main {
   position: relative;
   width: 750px;
-  height:  420p
+  height:  422px;
 }
+
+
 
 .react-player-main {
   min-height: 420px !important;
@@ -17,6 +19,16 @@
   background-color: rgba(0, 0, 0, 0.3);
   transition: filter 0.3s ease;
 }
+
+.teteam{
+  background-image:  url("../../assets/img/teteam.svg");
+  background-repeat: no-repeat;
+  background-size:900px;
+  background-position: -20px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 1) !important;
+}
+
 
 
 
@@ -34,6 +46,7 @@
 }
 
 
+
 .react-player {
   border-radius: 20px;
   overflow: hidden;
@@ -42,6 +55,10 @@
 }
 
 .video-pleer-wraper:hover .react-player {
+  filter: brightness(50%);
+}
+
+.video-pleer-wraper-main:hover .react-player-main {
   filter: brightness(50%);
 }
 

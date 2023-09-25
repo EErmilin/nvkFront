@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from "formik";
 import { useMemo } from "react";
 import Avatar from "../../../../components/Avatar/Avatar";
@@ -12,11 +12,14 @@ import ButtonDefault from "../../../../components/UI/btns/Button/Button";
 import { updateUser } from '../../../../redux/thunks/user/UpdateUser';
 import { notification } from 'antd';
 import { NotificationType } from '../../../../api/types';
+import UploadImg from '../../../../components/UploadImg/UploadImg';
+import {uploadImage} from '../../../../requests/UploadImage';
 
 function Profile({ }) {
     const [api, contextHolder] = notification.useNotification();
     const userData = useAppSelector(state => state.user.data);
     const dispatcher = useAppDispatch()
+    const [avatar, setAvatar] = useState<any>(null)
 
     const openNotificationWithIcon = (type: NotificationType) => {
         api[type]({
@@ -31,6 +34,7 @@ function Profile({ }) {
         lastname: userData?.lastname ?? "",
         birthdate: moment(userData?.birthdate).format("DD.MM.YYYY") ?? "",
         email: userData?.email ?? "",
+        avatar: userData?.avatar ?? null,
     };
 
     /** Схема валидации */
@@ -59,6 +63,7 @@ function Profile({ }) {
 
     async function handleSubmit() {
         try {
+            avatar && await changeAvatar()
             const response: any = await dispatcher(
                 updateUser({
                     firstname: values.firstname,
@@ -82,6 +87,17 @@ function Profile({ }) {
     }
 
 
+    const changeAvatar = async () =>{
+        let data = {
+            type: avatar.type,
+            uri: URL.createObjectURL(avatar.originFileObj),
+            fileName: avatar.name,
+          };
+          console.log(data)
+        let response = await uploadImage(data);
+    }
+
+
     return (
         <div className={classes.profile}>
             {contextHolder}
@@ -90,12 +106,12 @@ function Profile({ }) {
                     <Avatar
                         width={100}
                         height={100}
-                        avatar={userData?.avatar}
+                        avatar={avatar ? URL.createObjectURL(avatar.originFileObj) : userData?.avatar}
                         className={classes.avatar}
                     ></Avatar>
                     <div>
                         <div className={classes.user_name}>{userData?.firstname} {userData?.lastname}</div>
-                        <div className={classes.user_link}>Изменить фото профиля</div>
+                        <UploadImg onChange={setAvatar}> <div className={classes.user_link}>Изменить фото профиля</div></UploadImg>
                     </div>
 
                 </div>

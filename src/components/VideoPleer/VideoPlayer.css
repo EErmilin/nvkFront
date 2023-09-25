@@ -20,16 +20,35 @@
   transition: filter 0.3s ease;
 }
 
+.react-player {
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: filter 0.3s ease;
+}
+
 .teteam{
-  background-image:  url("../../assets/img/teteam.svg");
+  background-image:  url("../../assets/img/teteam.svg") !important;
   background-repeat: no-repeat;
   background-size:900px;
   background-position: -20px;
   border-radius: 20px;
-  background-color: rgba(0, 0, 0, 1) !important;
+  background-color: none !important;
 }
 
+.teteam_main{
+  background-image:  url("../../assets/img/teteam.svg") !important;
+  background-repeat: no-repeat;
+  background-size:800px;
+  background-position: -20px;
+  border-radius: 20px;
+  filter: brightness(150%);
+}
 
+.teteam_main:hover{
+  filter: brightness(100%);
+  transition: filter 0.3s ease;
+}
 
 
 .row {
@@ -46,13 +65,6 @@
 }
 
 
-
-.react-player {
-  border-radius: 20px;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.3);
-  transition: filter 0.3s ease;
-}
 
 .video-pleer-wraper:hover .react-player {
   filter: brightness(50%);

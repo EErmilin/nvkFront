@@ -53,32 +53,30 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
 
 
   const clsWrapper = [isMain ? "video-pleer-wraper-main" : "video-pleer-wraper"]
-    if(steam?.name === "Тэтим" && isMain){
-      clsWrapper.push("teteam_main")
-    }
-    const cls = [isMain ? "react-player-main" : "react-player"]
-    if(steam?.name === "Тэтим"){
-      cls.push("teteam")
-    }
+  if (steam?.name === "Тэтим" && isMain) {
+    clsWrapper.push("teteam_main")
+  }
+  const cls = [isMain ? "react-player-main" : "react-player"]
+  if (steam?.name === "Тэтим") {
+    cls.push("teteam")
+  }
 
-
-
-
-    const toggleFullScreen = () => {
-      if (videoPleerWraper.current) {
-        if (screenfull.isEnabled) { // Проверяем поддержку полноэкранного режима
-          if (screenfull.isFullscreen) {
-            screenfull.exit();
-          } else {
-            screenfull.request(videoPleerWraper.current as Element);
-          }
+  if (!steam) return
+  const toggleFullScreen = () => {
+    if (videoPleerWraper.current) {
+      if (screenfull.isEnabled) { // Проверяем поддержку полноэкранного режима
+        if (screenfull.isFullscreen) {
+          screenfull.exit();
         } else {
-          // Браузер не поддерживает полноэкранный режим, можно выполнить альтернативное действие
-          console.log('Полноэкранный режим не поддерживается в этом браузере.');
+          screenfull.request(videoPleerWraper.current as Element);
         }
+      } else {
+        // Браузер не поддерживает полноэкранный режим, можно выполнить альтернативное действие
+        console.log('Полноэкранный режим не поддерживается в этом браузере.');
       }
-    };
-    
+    }
+  };
+
 
   return (
     <div className={clsWrapper.join(" ")}

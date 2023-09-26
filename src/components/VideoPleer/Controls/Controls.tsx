@@ -38,11 +38,11 @@ export default function Controls({ isPlaying, mute, volume, togglePlay, toggleMu
                         }
                     </svg>
                 </button>
-                <div className="row  ">
+                <div className="row">
                     <button onClick={toggleMute}>
 
                         {mute || volume === 0 ?
-                            <svg width="32" height="25" viewBox="0 0 31 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="32" height="32" viewBox="0 0 31 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5.33331 6.96059C3.49237 6.9606 2 8.45298 2 10.2939V14.6846C2 16.5255 3.49238 18.0179 5.33333 18.0179H7.40773C8.04783 18.0179 8.66657 18.2481 9.15096 18.6666L13.5901 22.5013C15.3178 23.9938 18 22.7664 18 20.4833V4.49508C18 2.21197 15.3178 0.984596 13.5901 2.47709L10 5.57839M28.9902 9.17281L23.3333 14.8297M28.9902 14.8297L23.3333 9.17286" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                             :

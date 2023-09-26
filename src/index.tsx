@@ -9,6 +9,7 @@ import { ApolloProvider } from '@apollo/client';
 import { apolloClient } from './apolloClient';
 import { Provider } from 'react-redux';
 import { store } from './redux/persist';
+import 'normalize.css';
 
 
 const root = ReactDOM.createRoot(

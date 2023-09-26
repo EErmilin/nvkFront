@@ -143,7 +143,7 @@ export const routes = [
         footerType: 2,
     },
     {
-        name: '*/live',
+        name: '/live',
         component: <LiveStream />,
         path: 'live',
         exact: true,

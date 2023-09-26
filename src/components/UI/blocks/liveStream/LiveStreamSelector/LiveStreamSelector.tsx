@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
 } from "react";
-
+import React from 'react';
 import { ILive } from "../../../../../models/LiveStream";
 import { IRadio } from "../../../../../models/Radio";
 import nvkLogo from "../../../../../assets/img/nvk.svg";
@@ -15,18 +15,16 @@ import yakutia from "../../../../../assets/img/yakutia.svg";
 import teteam from "../../../../../assets/img/teteam.svg";
 
 import "./LiveStreamSelector.css";
+import { useSearchParams } from "react-router-dom";
 
 const TMP_IMAGE = (index: number) => {
   switch (index) {
-    case 0:
+    case 5:
       return nvkLogo;
-
-    case 1:
+    case 7:
       return mamont;
-
-    case 2:
+    case 6:
       return yakutia;
-
     default:
       return teteam;
   }
@@ -46,7 +44,6 @@ const LiveStreamCard = ({
   onSelect: onSelectInner,
 }: TLiveStreamCardProps) => {
   const onSelect = useCallback(() => onSelectInner(index), []);
-
   return (
     <div
       className="live-stream-card"
@@ -80,27 +77,42 @@ export type LiveStreamSelectorHandle = {
 };
 
 const LiveStreamSelector = forwardRef(
+
   ({ onSelect }: TLiveStreamBlockProps, ref) => {
-    const [selectedStreamIndex, setSelectedStreamIndex] = useState(0);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [selectedStreamIndex, setSelectedStreamIndex] = useState(Number(searchParams.get("id")));
     const [streams, setStreams] = useState<Array<ILive | IRadio>>([]);
+
 
     useImperativeHandle<unknown, LiveStreamSelectorHandle>(ref, () => ({
       setStreams,
     }));
 
     useEffect(() => {
-      if (streams[selectedStreamIndex]) onSelect(streams[selectedStreamIndex]);
-    }, [streams, selectedStreamIndex]);
+      if (streams && streams.length) {
+        const currentStream = streams.find((stream) => stream.id === selectedStreamIndex)
+        if (currentStream) {
+          let obj = {
+            id: `${selectedStreamIndex}`
+          }
+          setSearchParams(obj, { replace: true })
+          onSelect(currentStream);
+        } else if (streams.length) {
+          setSelectedStreamIndex(streams[0].id)
+          onSelect(streams[0]);
+        }
+      }
+    }, [streams, selectedStreamIndex, searchParams]);
 
     return (
       <div className="stream-list">
         {streams.map((element, index) => (
           <LiveStreamCard
-            key={element.id}
-            index={index}
+            key={index}
+            index={element.id}
             stream={element}
             onSelect={setSelectedStreamIndex}
-            selected={index === selectedStreamIndex}
+            selected={element.id === selectedStreamIndex}
           />
         ))}
       </div>

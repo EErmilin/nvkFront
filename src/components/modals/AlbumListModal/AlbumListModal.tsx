@@ -142,8 +142,8 @@ const AlbumListModal = ({ closeModal, btnCancelClick, album, type, currentPlayer
     }
 
     const onClose = () => {
-        if (currentPlayer) {
-            return setIsTinny(true)
+        if (false) {
+            return setIsTinny(true) // Пока убрал
         } else {
             btnCancelClick()
         }
@@ -153,7 +153,7 @@ const AlbumListModal = ({ closeModal, btnCancelClick, album, type, currentPlayer
 
     return (
         <ModalWithBackground
-            // closeModal={onClose}
+            closeModal={closeModal}
             btnCancelClick={onClose}
             width={750}
         >

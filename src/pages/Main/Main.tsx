@@ -81,16 +81,16 @@ function Main({ }) {
                 ><MainSlider
                     /></div>
                 <div className={classes.main_links_wrp}>
-                    <div className={classes.main_links_item} onClick={() => navigate("/live?type=NVK")}>
+                    <div className={classes.main_links_item} onClick={() => navigate("/live?id=5")}>
                         <NvkLogo />
                     </div>
-                    <div className={classes.main_links_item} onClick={() => navigate("/live?type=Mamont")}>
+                    <div className={classes.main_links_item} onClick={() => navigate("/live?id=7")}>
                         <Mamont />
                     </div>
-                    <div className={classes.main_links_item} onClick={() => navigate("/live?type=Yakutia")}>
+                    <div className={classes.main_links_item} onClick={() => navigate("/live?id=6")}>
                         <Yakutia />
                     </div>
-                    <div className={classes.main_links_item} onClick={() => navigate("/live?type=teteam")}>
+                    <div className={classes.main_links_item} onClick={() => navigate("/live?id=1")}>
                         <Teteam />
                     </div>
                 </div>

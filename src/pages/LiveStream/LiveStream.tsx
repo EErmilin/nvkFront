@@ -19,6 +19,7 @@ export default function LiveStream() {
   const sheduleRef = useRef<SheduleHandle>();
 
 
+
   const [isModalOpen, setIsModalOpen, closeModal] = useToggleVisibility(false)
 
   const onStreamSelect = (stream: ILive | IRadio) => {
@@ -45,12 +46,12 @@ export default function LiveStream() {
       try {
         const streams = await fetchStreams();
         liveStreamSelectorRef.current?.setStreams(streams);
-        console.log({streams})
       } catch (e) {
         console.log('fetchStreamsError:', e);
       }
     })();
   }, []);
+  
 
 
 

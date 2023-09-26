@@ -58,7 +58,12 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
   }
   const cls = [isMain ? "react-player-main" : "react-player"]
   if (steam?.name === "Тэтим") {
-    cls.push("teteam")
+    if(isMain){
+      clsWrapper.push("teteam_main")
+    } else{
+      cls.push("teteam")
+  }
+   
   }
 
   if (!steam) return

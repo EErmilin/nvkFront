@@ -10,11 +10,16 @@ export const getProgramsForDate = (data: IProgram[], date: Date) => {
   return temp2;
 };
 
+export const yakutiaTime = () => {
+  const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Yakutsk' }));
+  return now;
+}
+
 export const getCurrentProgram = (dataP: IProgram[]) => {
   
 
   // Создаем объект Date с часовым поясом Якутии
-  let now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Yakutsk' }));
+  let now = yakutiaTime();
 
    
 

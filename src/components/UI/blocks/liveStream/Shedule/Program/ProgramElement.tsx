@@ -12,6 +12,7 @@ import { IRadioProgram } from "../../../../../../models/Radio";
 
 import "./ProgramElement.css";
 import { formatTimeToHHMM } from "../utils";
+import { yakutiaTime } from "../../../../../../api/helper";
 const timeZone = 'Asia/Yakutsk';
 
 type TCardProps = {
@@ -43,10 +44,12 @@ const ProgramElement = ({
         nextProgram.date + "T" + nextProgram.startTime
       ).getTime();
 
-      let currentTime = new Date(new Date().toLocaleString("en-US", {timeZone: "America/New_York"})).getTime();
+      let currentTime = yakutiaTime().getTime();
       
       let elapsedTime = currentTime - start;
       let totalTime = end - start;
+
+      
 
       // Рассчитываем процент времени, который прошел
       let newPercentageComplete = (elapsedTime / totalTime) * 100;

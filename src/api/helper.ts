@@ -11,17 +11,25 @@ export const getProgramsForDate = (data: IProgram[], date: Date) => {
 };
 
 export const getCurrentProgram = (dataP: IProgram[]) => {
-  let now = new Date();
+  
+
+  // Создаем объект Date с часовым поясом Якутии
+  let now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Yakutsk' }));
+
+   
+
+  // Получаем текущую дату в формате ISO
   const currentDate = now.toISOString().split("T")[0];
 
+  // Ищем программу, учитывая часовой пояс Якутии
   let findProgram = dataP.find((item) => {
-    let start = new Date(item.date + "T" + item.startTime);
+    let start = new Date(item.date + "T" + item.startTime);    
+    // Сравниваем вреия в часовом поясе Якутии
+    return now.getTime() <= start.getTime() && item.date === currentDate;
+  });  
 
-    return now.getTime() >= start.getTime() && item.date === currentDate;
-  });
   return findProgram;
 };
-
 export const getWeekDay = (day: number) => {
   switch (day) {
     case 1:

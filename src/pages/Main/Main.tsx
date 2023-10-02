@@ -118,7 +118,7 @@ function Main({ }) {
                     <div className={classes.main_musics_item}>
                         <PodcastsButton style={{ height: 199 }} onClick={() => navigate("/music?scroll=podcasts")}/>
                     </div>
-                    <div className={classes.main_musics_item} onClick={() => navigate("/music")}>
+                    <div className={classes.main_musics_item} onClick={() => navigate("/audio")}>
                         <MusicButton />
                     </div>
                 </div>

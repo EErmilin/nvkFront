@@ -1,29 +1,35 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 import classes from "./ChangeAvatarModal.module.scss";
-import dataURItoBlob from "../../../helpers/dataUriToBlob";
 import Avatar from "react-avatar-edit"
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import ModalWithBackground from "../ModalWithBackground/ModalWithBackground";
 
 const ChangeAvatarModal = ({
-   avatarImg,
-   onClose,
-   btnClose,
-   setAvatar,
+    avatarImg,
+    onClose,
+    btnClose,
+    setAvatar,
 }) => {
     const dispatcher = useDispatch()
     /** Превью в base64 и ссылка на загруженную картинку */
     const [avatar, toggleAvatar] = useState({
         preview: null,
-        src: avatarImg,
+        src: null,
         name: '',
         crop: true,
     });
 
+    useEffect(()=>{
+        return () => {
+            setAvatar(avatar)
+        }
+    })
 
     useEffect(()=>{
         setAvatar(avatar)
-    }, [avatar])
+    },[avatar])
+
+
 
 
     /** Обрезаем аватар и в preview помещаем base64 полученного объекта */
@@ -40,27 +46,21 @@ const ChangeAvatarModal = ({
     const onCloseCrop = () => {
         const obj = {
             ...avatar,
-            preview: null,
-            src: null,
-            crop: false,
         };
 
         toggleAvatar(obj);
     };
 
     /** Сохраняем изменения */
-    const saveAvatar = async () => {
-        const blob = dataURItoBlob(avatar.preview);
-        const files = new FormData();
-        files.append('avatar', blob, avatar.name);
+    const saveAvatar = () => {
+        setAvatar(avatar)
         btnClose();
     };
 
     return (
         <ModalWithBackground
             closeModal={onClose}
-            btnCancelClick={btnClose}
-            btnNextClick={saveAvatar}
+            btnCancelClick={saveAvatar}
             disabled={!avatar.crop}
             typeModal="withoutBack"
             background="blue"
@@ -68,7 +68,7 @@ const ChangeAvatarModal = ({
         >
             <div className={classes.change_avatar_modal}>
                 <Avatar
-                    src={avatarImg}
+                    src={avatar.preview}
                     width={400}
                     height={300}
                     onCrop={onCrop}
@@ -81,7 +81,7 @@ const ChangeAvatarModal = ({
                         color: '#113656',
                         fontFamily: 'Inter, sans-serif',
                         fontSize: 20,
-                        cursor:"pointer"
+                        cursor: "pointer"
                     }}
                     borderStyle={{
                         backgroundColor: '#c4c4c4',

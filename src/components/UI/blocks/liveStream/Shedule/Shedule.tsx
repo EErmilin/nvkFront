@@ -36,9 +36,6 @@ const getStartDate = () => {
     day: "2-digit",
   });
   let start = new Date(`${date}T21:00:01.000Z`);
-
-  console.log("dates[0].date.toUTCString()");
-  console.log(date)
   return start;
 };
 

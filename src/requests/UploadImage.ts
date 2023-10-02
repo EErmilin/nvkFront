@@ -4,31 +4,22 @@ import type { UploadFile } from 'antd/es/upload/interface';
 
 interface FileType {
   type: string;
-  uri: string;
+  uri: string | Blob;
   fileName: string;
   
 }
 
 export const uploadImage = async (data: FileType) => {
 
-  
-  console.log('uploadImage')
-  console.log(data)
+
   
   const formData = new FormData();
 
-  formData.append('file', {
-    type: "image/png",
-    uri: data.uri,
-    name: data.fileName,
-  });
+  formData.append('file', data.uri, data.fileName);
+
 
   const response = await fetch(IMAGE_UPLOAD_URL, {
     method: 'POST',
-    headers: {
-      accept: 'application/json',
-      'Content-Type': 'multipart/form-data',
-    },
     body: formData,
   });
 

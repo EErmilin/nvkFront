@@ -16,6 +16,7 @@ import UploadImg from '../../../../components/UploadImg/UploadImg';
 import { uploadImage } from '../../../../requests/UploadImage';
 import useToggleVisibility from '../../../../hooks/useToggleVisibility';
 import ChangeAvatarModal from "../../../../components/modals/ChangeAvatarModal/ChangeAvatarModal"
+import dataURItoBlob from '../../../../helpers/dataUriToBlob';
 
 function Profile({ }) {
     const [api, contextHolder] = notification.useNotification();
@@ -69,14 +70,20 @@ function Profile({ }) {
 
     async function handleSubmit() {
         try {
-            avatar && await changeAvatar()
-            const response: any = await dispatcher(
+
+            let response;
+            let avatar_id = userData?.avatar.id ?? undefined
+            if (avatar) {
+                response = await changeAvatar()
+                avatar_id = response.data.id
+            }
+            response = await dispatcher(
                 updateUser({
                     firstname: values.firstname,
                     lastname: values.lastname,
                     email: values.email ?? undefined,
                     birthdate: new Date(values.birthdate) ?? undefined,
-                    avatar_id: undefined,
+                    avatar_id: avatar_id,
                 }),
             );
             openNotificationWithIcon('success')
@@ -105,16 +112,14 @@ function Profile({ }) {
 
 
     const changeAvatar = async () => {
+        const blob = dataURItoBlob(avatar.preview);
         let response = await uploadImage({
-            type: avatar.preview,
-            uri: avatar.preview,
-            name: avatar.name
+            type: blob.type,
+            uri: blob,
+            fileName: avatar.name
         });
-
+        return response
     }
-
-    console.log('@@@@@@@@@')
-    console.log(showModal)
 
 
     return (
@@ -125,7 +130,7 @@ function Profile({ }) {
                     <Avatar
                         width={100}
                         height={100}
-                        avatar={userData?.avatar}
+                        avatar={avatar?.preview ?? userData?.avatar.url_256}
                         className={classes.avatar}
                     ></Avatar>
                     <div>

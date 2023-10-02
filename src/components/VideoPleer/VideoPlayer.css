@@ -7,7 +7,7 @@
 .video-pleer-wraper-main {
   position: relative;
   width: 750px;
-  height:  422px;
+  height: 422px;
 }
 
 
@@ -27,25 +27,25 @@
   transition: filter 0.3s ease;
 }
 
-.teteam{
-  background-image:  url("../../assets/img/teteam.svg") !important;
+.teteam {
+  background-image: url("../../assets/img/teteam.svg") !important;
   background-repeat: no-repeat;
-  background-size:900px;
+  background-size: 900px;
   background-position: -20px;
   border-radius: 20px;
   background-color: none !important;
 }
 
-.teteam_main{
-  background-image:  url("../../assets/img/teteam.svg") !important;
+.teteam_main {
+  background-image: url("../../assets/img/teteam.svg") !important;
   background-repeat: no-repeat;
-  background-size:800px;
+  background-size: 800px;
   background-position: -20px;
   border-radius: 20px;
   filter: brightness(150%);
 }
 
-.teteam_main:hover{
+.teteam_main:hover {
   filter: brightness(100%);
   transition: filter 0.3s ease;
 }
@@ -53,7 +53,8 @@
 
 .row {
   display: flex;
-  align-items: center; /* Выравнивание по центру по вертикали */
+  align-items: center;
+  /* Выравнивание по центру по вертикали */
 }
 
 .video-pleer-wraper:hover .controls {
@@ -76,4 +77,21 @@
 
 .reverse {
   transform: rotate(-90deg);
+}
+
+
+.settings {
+  background-color: black;
+  border-radius: 20px;
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+
+.settings-item {
+  cursor: pointer;
+  padding: 30px;
+  border-bottom: 1px solid white;
+
 }

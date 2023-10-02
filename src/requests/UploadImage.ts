@@ -1,19 +1,24 @@
 import {IMAGE_UPLOAD_URL} from '../api/config';
+import type { RcFile, UploadProps } from 'antd/es/upload';
+import type { UploadFile } from 'antd/es/upload/interface';
 
 interface FileType {
   type: string;
   uri: string;
   fileName: string;
+  
 }
 
 export const uploadImage = async (data: FileType) => {
+
+  
+  console.log('uploadImage')
+  console.log(data)
+  
   const formData = new FormData();
 
-  console.log('$#$234234234')
-  console.log(data)
-
   formData.append('file', {
-    type: data.type,
+    type: "image/png",
     uri: data.uri,
     name: data.fileName,
   });

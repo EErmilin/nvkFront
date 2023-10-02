@@ -13,7 +13,9 @@ import { updateUser } from '../../../../redux/thunks/user/UpdateUser';
 import { notification } from 'antd';
 import { NotificationType } from '../../../../api/types';
 import UploadImg from '../../../../components/UploadImg/UploadImg';
-import {uploadImage} from '../../../../requests/UploadImage';
+import { uploadImage } from '../../../../requests/UploadImage';
+import useToggleVisibility from '../../../../hooks/useToggleVisibility';
+import ChangeAvatarModal from "../../../../components/modals/ChangeAvatarModal/ChangeAvatarModal"
 
 function Profile({ }) {
     const [api, contextHolder] = notification.useNotification();
@@ -21,18 +23,22 @@ function Profile({ }) {
     const dispatcher = useAppDispatch()
     const [avatar, setAvatar] = useState<any>(null)
 
+    /** Управление видимостью модалки и функция закрытия модалки при клике вне */
+    const [showModal, toggleModal, closeModal] = useToggleVisibility(false);
+
+
     const openNotificationWithIcon = (type: NotificationType) => {
         api[type]({
-          message: 'Данные профиля обновлены',
+            message: 'Данные профиля обновлены',
         });
-      };
+    };
 
 
     const initialValues = {
         phone: userData?.phone ?? "",
         firstname: userData?.firstname ?? "",
         lastname: userData?.lastname ?? "",
-        birthdate: moment(userData?.birthdate).format("DD.MM.YYYY") ?? "",
+        birthdate: userData?.birthdate ? moment(userData?.birthdate).format("DD.MM.YYYY") : "",
         email: userData?.email ?? "",
         avatar: userData?.avatar ?? null,
     };
@@ -86,16 +92,29 @@ function Profile({ }) {
         handleChange({ target: { name: field, value: value } })
     }
 
+    /** Отображение модалки с изменением аватара */
+    const modalChangeAvatar = showModal && (
+        <ChangeAvatarModal
+            setAvatar={setAvatar}
+            onClose={closeModal}
+            avatarImg={avatar}
+            btnClose={() => toggleModal(false)}
+        />
+    );
 
-    const changeAvatar = async () =>{
-        let data = {
-            type: avatar.type,
-            uri: URL.createObjectURL(avatar.originFileObj),
-            fileName: avatar.name,
-          };
-          console.log(data)
-        let response = await uploadImage(data);
+
+
+    const changeAvatar = async () => {
+        let response = await uploadImage({
+            type: avatar.preview,
+            uri: avatar.preview,
+            name: avatar.name
+        });
+
     }
+
+    console.log('@@@@@@@@@')
+    console.log(showModal)
 
 
     return (
@@ -106,12 +125,12 @@ function Profile({ }) {
                     <Avatar
                         width={100}
                         height={100}
-                        avatar={avatar ? URL.createObjectURL(avatar.originFileObj) : userData?.avatar}
+                        avatar={userData?.avatar}
                         className={classes.avatar}
                     ></Avatar>
                     <div>
                         <div className={classes.user_name}>{userData?.firstname} {userData?.lastname}</div>
-                        <UploadImg onChange={setAvatar}> <div className={classes.user_link}>Изменить фото профиля</div></UploadImg>
+                        <div onClick={() => toggleModal(true)}> <div className={classes.user_link}>Изменить фото профиля</div></div>
                     </div>
 
                 </div>
@@ -169,6 +188,7 @@ function Profile({ }) {
                     title={"Сохранить изменения"}
                 />
             </div>
+            {modalChangeAvatar}
         </div>
     )
 }

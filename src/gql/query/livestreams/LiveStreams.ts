@@ -13,6 +13,13 @@ export const LIVESTEAMS = gql`
       }
       id
       cover
+      media {
+        hls {
+          id
+          m3u8Url
+          name
+        }
+      }
     }
   }
 `;

@@ -1,4 +1,5 @@
 import React, { forwardRef, MutableRefObject, useCallback, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import screenfull from 'screenfull';
 import { ILive } from '../../models/LiveStream';
@@ -25,6 +26,8 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
   const playerRef = useRef<ReactPlayer>(null);
   const videoPleerWraper = useRef<any>();
   const [steam, setStream] = useState(streamInner)
+  const [video, setVideo] = useState("")
+  const [isOpenSettings, setIsOpenSettings] = useState(false)
   const [programTitle, setProgramTitle] = useState("")
 
   const [isPlaying, setIsPlaying] = useState(play);
@@ -51,6 +54,12 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
   const toggleMute = () =>
     setMute(!mute);
 
+  const toggleSettings = () =>
+    setIsOpenSettings(!isOpenSettings);
+
+  useEffect(() => {
+    setVideo(steam?.url ?? "")
+  }, [steam])
 
   const clsWrapper = [isMain ? "video-pleer-wraper-main" : "video-pleer-wraper"]
   if (steam?.name === "Тэтим" && isMain) {
@@ -58,12 +67,12 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
   }
   const cls = [isMain ? "react-player-main" : "react-player"]
   if (steam?.name === "Тэтим") {
-    if(isMain){
+    if (isMain) {
       clsWrapper.push("teteam_main")
-    } else{
+    } else {
       cls.push("teteam")
-  }
-   
+    }
+
   }
 
   if (!steam) return
@@ -82,25 +91,50 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
     }
   };
 
+  const renderQuality = () => {
+    const arr = steam.media?.hls.sort(function (a, b) {
+      return (
+        parseInt(b.name ?? '0', 10) - parseInt(a.name ?? '0', 10)
+      );
+    })
+      .map(item => {
+        return {
+          name: item.name,
+          url: item.m3u8Url,
+        };
+      })
+
+    const handleChange = (item) => {
+      setVideo(item.url)
+      setIsOpenSettings(false)
+    }
+
+    return arr?.map((item, key) => {
+      return <div key={key} className={"settings-item"} onClick={() => handleChange(item)}>{item.name}</div>
+    })
+
+  }
 
   return (
     <div className={clsWrapper.join(" ")}
       ref={videoPleerWraper}>
-      <ReactPlayer
-        ref={playerRef}
-        url={steam?.url}
-        controls={false}
-        playing={isPlaying}
-        volume={volume}
-        width="100%"
-        height="100%"
-        muted={mute}
-        onPlay={onPlay}
-        onPause={onPause}
-        className={cls.join(" ")}
-      />
-
+      {isOpenSettings ? <div className="settings">{renderQuality()}</div> :
+        <ReactPlayer
+          ref={playerRef}
+          url={video}
+          controls={false}
+          playing={isPlaying}
+          volume={volume}
+          width="100%"
+          height="100%"
+          muted={mute}
+          onPlay={onPlay}
+          onPause={onPause}
+          className={cls.join(" ")}
+        />
+      }
       <Controls
+        steam={steam}
         volume={volume}
         isPlaying={isPlaying}
         mute={mute}
@@ -108,6 +142,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
         toggleMute={toggleMute}
         toggleFullScreen={toggleFullScreen}
         handleVolumeChange={setVolume}
+        toggleSettings={toggleSettings}
       />
 
       {isShowBtn && <VideoInfo streamTitle={steam?.name} programTitle={programTitle} askButtonClick={onAsk} />}

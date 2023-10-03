@@ -26,20 +26,27 @@
   background-color: rgba(0, 0, 0, 0.3);
   transition: filter 0.3s ease;
 }
+.react-player-full {
+  filter: brightness(100%) !important;
+}
+
+.react-player-full:hover .controls {
+  opacity: 1;
+}
 
 .teteam {
   background-image: url("../../assets/img/teteam.svg") !important;
   background-repeat: no-repeat;
-  background-size: 900px;
+  background-size: 110%;
   background-position: -20px;
-  border-radius: 20px;
+    border-radius: 20px;
   background-color: none !important;
 }
 
 .teteam_main {
   background-image: url("../../assets/img/teteam.svg") !important;
   background-repeat: no-repeat;
-  background-size: 800px;
+  background-size: 110%;
   background-position: -20px;
   border-radius: 20px;
   filter: brightness(150%);
@@ -73,10 +80,6 @@
 
 .video-pleer-wraper-main:hover .react-player-main {
   filter: brightness(50%);
-}
-
-.reverse {
-  transform: rotate(-90deg);
 }
 
 

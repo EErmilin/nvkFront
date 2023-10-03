@@ -130,7 +130,7 @@ function Profile({ }) {
                     <Avatar
                         width={100}
                         height={100}
-                        avatar={avatar?.preview ?? userData?.avatar.url_256}
+                        avatar={avatar?.preview ?? userData?.avatar?.url_256}
                         className={classes.avatar}
                     ></Avatar>
                     <div>

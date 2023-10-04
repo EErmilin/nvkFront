@@ -16,24 +16,40 @@ export const yakutiaTime = () => {
 }
 
 export const getCurrentProgram = (dataP: IProgram[]) => {
-  
 
   // Создаем объект Date с часовым поясом Якутии
   let now = yakutiaTime();
 
-   
 
-  // Получаем текущую дату в формате ISO
+  // // Получаем текущую дату в формате ISO
   const currentDate = now.toISOString().split("T")[0];
 
-  // Ищем программу, учитывая часовой пояс Якутии
-  let findProgram = dataP.find((item) => {
-    let start = new Date(item.date + "T" + item.startTime);    
-    // Сравниваем вреия в часовом поясе Якутии
-    return now.getTime() <= start.getTime() && item.date === currentDate;
-  });  
+  // // Ищем программу, учитывая часовой пояс Якутии
+  // let findProgram = dataP.find((item, index) => {
+  //   let start = new Date(item.date + "T" + item.startTime);    
+  //   // Сравниваем вреия в часовом поясе Якутии
+  //   console.log({now, start});
+  //   return now.getTime() <= start.getTime() && item.date === currentDate;
+  // });  
 
-  return findProgram;
+  let findPreviousProgram = null;
+  for (let index = 0; index < dataP.length; index++) {
+    let item = dataP[index];
+
+    let start = new Date(item.date + "T" + item.startTime);
+    
+    // Сравниваем время в часовом поясе Якутии
+    if (now.getTime() <= start.getTime()) {
+  
+      findPreviousProgram = dataP[index - 1];
+      break;
+    }
+  }
+
+  
+
+
+  return findPreviousProgram;
 };
 export const getWeekDay = (day: number) => {
   switch (day) {

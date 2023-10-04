@@ -45,14 +45,16 @@ const ProgramElement = ({
       ).getTime();
 
       let currentTime = yakutiaTime().getTime();
+
       
       let elapsedTime = currentTime - start;
       let totalTime = end - start;
 
       
-
       // Рассчитываем процент времени, который прошел
       let newPercentageComplete = (elapsedTime / totalTime) * 100;
+
+      console.log({newPercentageComplete, end, start})
 
       setPercentageComplete(newPercentageComplete);
     };
@@ -102,7 +104,7 @@ const ProgramElement = ({
             </div>
           </>
         ) : (
-          <span className="name">{program.name + " " +program.date}</span>
+          <span className="name">{program.name}</span>
         )}
       </div>
     </div>

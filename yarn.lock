@@ -3274,6 +3274,11 @@ bluebird@^3.5.5:
   resolved "https://registry.npmjs.org/bluebird/-/bluebird-3.7.2.tgz"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
 
+blueimp-load-image@^5.14.0:
+  version "5.16.0"
+  resolved "https://registry.npmjs.org/blueimp-load-image/-/blueimp-load-image-5.16.0.tgz"
+  integrity sha512-3DUSVdOtlfNRk7moRZuTwDmA3NnG8KIJuLcq3c0J7/BIr6X3Vb/EpX3kUH1joxUhmoVF4uCpDfz7wHkz8pQajA==
+
 body-parser@1.20.1:
   version "1.20.1"
   resolved "https://registry.npmjs.org/body-parser/-/body-parser-1.20.1.tgz"
@@ -4817,6 +4822,11 @@ exenv@^1.2.0:
   version "1.2.2"
   resolved "https://registry.npmjs.org/exenv/-/exenv-1.2.2.tgz"
   integrity sha512-Z+ktTxTwv9ILfgKCk32OX3n/doe+OcLTRtqK9pcL+JsP3J1/VW8Uvl4ZjLlKqeW4rzK4oesDOGMEMRIZqtP4Iw==
+
+exif-js@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npmjs.org/exif-js/-/exif-js-2.3.0.tgz"
+  integrity sha512-1Og9pAzG2FZRVlaavH8bB8BTeHcjMdJhKmeQITkX+uLRCD0xPtKAdZ2clZmQdJ56p9adXtJ8+jwrGp/4505lYg==
 
 exit@^0.1.2:
   version "0.1.2"
@@ -6604,6 +6614,11 @@ klona@^2.0.4, klona@^2.0.5:
   version "2.0.6"
   resolved "https://registry.npmjs.org/klona/-/klona-2.0.6.tgz"
   integrity sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==
+
+konva@^8.3.5:
+  version "8.4.3"
+  resolved "https://registry.npmjs.org/konva/-/konva-8.4.3.tgz"
+  integrity sha512-ARqdgAbdNIougRlOKvkQwHlGhXPRBV4KvhCP+qoPpGoVQwwiJe4Hkdu4HHdRPb9rGUp04jDTAxBzEwBsE272pg==
 
 language-subtag-registry@~0.3.2:
   version "0.3.22"
@@ -8453,6 +8468,15 @@ react-audio-player@^0.17.0:
   dependencies:
     prop-types "^15.7.2"
 
+react-avatar-edit@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/react-avatar-edit/-/react-avatar-edit-1.2.0.tgz"
+  integrity sha512-xTn/hC8KOTFvMagkAiLNq2yWTosCL88ZX34/CTb7dyadGSR27tc56JYBeYcLojTn2y/Hin8azT9aNVvQytAQ/w==
+  dependencies:
+    blueimp-load-image "^5.14.0"
+    exif-js "^2.3.0"
+    konva "^8.3.5"
+
 react-datepicker@^4.16.0:
   version "4.16.0"
   resolved "https://registry.npmjs.org/react-datepicker/-/react-datepicker-4.16.0.tgz"
@@ -8698,7 +8722,7 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react@*, "react@^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18", "react@^15.5.x || ^16.x || ^17.x || ^18.x", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17 || ^18", "react@^16.9.0 || ^17.0.0 || ^18", react@^18.0.0, react@^18.2.0, "react@>= 16", react@>=0.14.0, react@>=16, react@>=16.0.0, react@>=16.11.0, react@>=16.13.1, react@>=16.6.0, react@>=16.8, react@>=16.8.0, react@>=16.9.0:
+react@*, "react@^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18", "react@^15.5.x || ^16.x || ^17.x || ^18.x", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17 || ^18", "react@^16.9.0 || ^17.0.0 || ^18", "react@^16.x || ^17 || ^18", react@^18.0.0, react@^18.2.0, "react@>= 16", react@>=0.14.0, react@>=16, react@>=16.0.0, react@>=16.11.0, react@>=16.13.1, react@>=16.6.0, react@>=16.8, react@>=16.8.0, react@>=16.9.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==

@@ -1,10 +1,14 @@
 import React from 'react'
+import { ILive } from '../../../models/LiveStream';
+import { IRadio } from '../../../models/Radio';
 import './Controls.css'
+
 type TProps = {
+    steam: ILive | IRadio;
     mute: boolean;
     isPlaying: boolean;
     volume: number;
-
+    toggleSettings: () => void;
     togglePlay: () => void;
     toggleMute: () => void;
     toggleFullScreen: () => void;
@@ -12,7 +16,7 @@ type TProps = {
 
 }
 
-export default function Controls({ isPlaying, mute, volume, togglePlay, toggleMute, toggleFullScreen, handleVolumeChange: handleVolumeChangeInner }: TProps) {
+export default function Controls({steam, isPlaying, mute, volume, togglePlay, toggleSettings, toggleMute, toggleFullScreen, handleVolumeChange: handleVolumeChangeInner }: TProps) {
 
     const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newVolume = parseFloat(e.target.value);
@@ -75,13 +79,12 @@ export default function Controls({ isPlaying, mute, volume, togglePlay, toggleMu
                 </div>
             </div>
             <div className="row gap-25">
-                <button >
+             {steam.media?.hls &&  <button onClick={toggleSettings} >
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="3" cy="3" r="3" transform="matrix(-1 0 0 1 15 9)" stroke="white" stroke-width="2" />
                         <path d="M17.7516 5.32987C18.067 5.35581 18.383 5.33129 18.6875 5.2595C19.0155 5.18215 19.3769 5.24076 19.5962 5.49671C20.3974 6.4317 21.0289 7.51632 21.4432 8.70289C21.5684 9.0617 21.3863 9.44185 21.093 9.68352C20.4252 10.2338 19.9995 11.0672 19.9995 12C19.9995 12.9328 20.4252 13.7662 21.093 14.3165C21.3863 14.5581 21.5684 14.9383 21.4432 15.2971C21.029 16.4835 20.3975 17.5681 19.5965 18.503C19.3772 18.759 19.0157 18.8176 18.6876 18.7402C17.9699 18.5709 17.1886 18.6643 16.4995 19.0621C15.7496 19.4951 15.2574 20.2029 15.0765 20.9848C15.0005 21.3136 14.7875 21.6122 14.4603 21.695C13.6731 21.8942 12.8486 22 11.9995 22C11.1503 22 10.3259 21.8942 9.53873 21.695C9.21153 21.6122 8.99855 21.3137 8.9225 20.9848C8.8692 20.7544 8.78886 20.5304 8.68285 20.318M15.3556 3.75789C15.23 3.52319 15.1364 3.27319 15.0766 3.01511C15.0006 2.68633 14.7876 2.38787 14.4604 2.30508C13.6732 2.10585 12.8487 2 11.9995 2C11.1503 2 10.3259 2.10584 9.53865 2.30504C9.21149 2.38783 8.99851 2.6863 8.92244 3.01508C8.74154 3.79691 8.2493 4.5046 7.4995 4.9375C6.81048 5.33531 6.02925 5.42873 5.31152 5.25948C4.98345 5.18212 4.62205 5.24072 4.40272 5.49667C3.60155 6.43167 2.97 7.5163 2.55576 8.70287C2.4305 9.06169 2.61258 9.44184 2.9059 9.68351C3.57371 10.2337 3.99949 11.0671 3.99949 12C3.99949 12.9329 3.57371 13.7663 2.9059 14.3165C2.61258 14.5582 2.4305 14.9383 2.55576 15.2971C2.96995 16.4836 3.60141 17.5681 4.40246 18.503C4.62179 18.759 4.98324 18.8176 5.31134 18.7402C5.65076 18.6601 6.00439 18.6388 6.35576 18.6807" stroke="white" stroke-width="2" stroke-linecap="round" />
                     </svg>
-
-                </button>
+                </button>}
 
                 <button onClick={toggleFullScreen}>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

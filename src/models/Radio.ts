@@ -1,3 +1,4 @@
+import { IHlsBroadcast } from './Broadcast';
 import {IProgram} from './Program';
 
 export interface IRadioProgram {
@@ -14,4 +15,7 @@ export interface IRadio {
   name: string;
   id: number;
   cover?: string;
+  media?: {
+    hls: IHlsBroadcast[];
+  };
 }

@@ -116,9 +116,9 @@ function Main({ }) {
                 <h1 className={classes.main_title}>Музыка</h1>
                 <div className={classes.main_videos_wrp}>
                     <div className={classes.main_musics_item}>
-                        <PodcastsButton style={{ height: 199 }} onClick={() => navigate("/music?scroll=podcasts")}/>
+                        <PodcastsButton style={{ height: 199 }} onClick={() => navigate("/audio?scroll=podcasts")}/>
                     </div>
-                    <div className={classes.main_musics_item} onClick={() => navigate("/music")}>
+                    <div className={classes.main_musics_item} onClick={() => navigate("/audio")}>
                         <MusicButton />
                     </div>
                 </div>

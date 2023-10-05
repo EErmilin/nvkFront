@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
 import { useFormik } from "formik";
 import { object, string } from "yup";
@@ -9,6 +9,7 @@ import { VALIDATE_SMS_CODE } from '../../../gql/mutation/auth/ValidateSmsCode';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import React from 'react';
 import { setCode } from '../../../redux/slices/userSlice';
+import { GET_SMS_CODE } from '../../../gql/mutation/auth/GetSmsCode';
 
 
 const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIsUserRegisterModal, setIsRegisterModal }: any) => {
@@ -17,6 +18,8 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
     const dispatcher = useAppDispatch()
     const [error, setError] = useState("")
     const [sendCode, codeData] = useMutation(VALIDATE_SMS_CODE)
+    const [timerCount, setTimerCount] = useState(60)
+    const [getSmsCode, getCodeData] = useMutation(GET_SMS_CODE)
 
     /** Начальные значения */
     const initialValues = {
@@ -73,8 +76,9 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
                 event.preventDefault()
                 return handleSubmit()
             }
-    }})
-    
+        }
+    })
+
     const handleLogin = () => {
         btnCancelClick()
         setIsAuthModal(true)
@@ -90,6 +94,34 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
         setError("")
         handleChange({ target: { name: field, value: value } })
     }
+
+    async function resend() {
+        const response = await getSmsCode({ variables: { phone: values.phone } })
+        if (response.data.getSmsCode) {
+            setTimerCount(60)
+        }
+
+    }
+
+    const timer: any = useRef();
+
+    useEffect(() => {
+        let i = timerCount > 0 ? -timerCount : timerCount
+        timer.current = setInterval(() => {
+            if (i < 0) {
+                setTimerCount(prevState => {
+                    let number = prevState > 0 ? - prevState : prevState
+                    return number + 1
+                })
+                i++
+            } else {
+                clearInterval(timer.current);
+            }
+        }, 1000)
+        return () => {
+            clearInterval(timer.current);
+        }
+    }, [timerCount]);
 
 
     return (
@@ -118,10 +150,10 @@ const ConfirmSmsCodeModal = ({ closeModal, btnCancelClick, setIsAuthModal, setIs
                         }}
                         required
                     />
-                    <div className={classes.modal_form_link_gray} >Повторно запросить
-                        <span onClick={handleSubmit}
+                    <div className={classes.modal_form_link_gray} >Повторно запросить {timerCount === 0 ? "" : timerCount > 0 ? timerCount : -timerCount}
+                        {timerCount === 0 && <span onClick={resend}
                             className={classes.modal_form_link_sms}
-                        > SMS код</span>
+                        > SMS код </span>}
                     </div>
                 </form>
                 <button

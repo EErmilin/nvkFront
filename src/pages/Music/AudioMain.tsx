@@ -67,10 +67,10 @@ function AudioMain() {
     }
     const onClickPodcasts = (podcast: IPodcastData) => {
         setCurrentPodcast(podcast)
-        document.getElementById(`#podcast`)?.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        })
+        //document.getElementById(`#podcast`)?.scrollIntoView({
+        //    behavior: "smooth",
+        //    block: "start"
+        //})
     }
 
 

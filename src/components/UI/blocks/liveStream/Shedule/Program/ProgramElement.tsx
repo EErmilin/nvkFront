@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useImperativeHandle,
   useMemo,
+  useRef,
   useState,
 } from "react";
 
@@ -39,6 +40,8 @@ const ProgramElement = ({
     const calculatePercentage = () => {
       if (!nextProgram) return null;
 
+
+
       let start = new Date(program.date + "T" + program.startTime).getTime();
       let end = new Date(
         nextProgram.date + "T" + nextProgram.startTime
@@ -46,15 +49,14 @@ const ProgramElement = ({
 
       let currentTime = yakutiaTime().getTime();
 
-      
+
       let elapsedTime = currentTime - start;
       let totalTime = end - start;
 
-      
+
       // Рассчитываем процент времени, который прошел
       let newPercentageComplete = (elapsedTime / totalTime) * 100;
 
-      console.log({newPercentageComplete, end, start})
 
       setPercentageComplete(newPercentageComplete);
     };
@@ -87,9 +89,19 @@ const ProgramElement = ({
 
   //     return percentageComplete;
   //   }, []);
+  const conteiner = document.getElementById("scroll1");
+
+  useEffect(() => {
+    conteiner?.scrollIntoView({
+      block: 'end',
+      behavior: "smooth",
+    })
+    document.body.scrollIntoView(true)
+  }, [conteiner])
+
 
   return (
-    <div className={nextProgram ? "program program-active" : "program"}>
+    <div className={nextProgram ? "program program-active" : "program"} id="#conteiner">
       <span className="time">{formatTimeToHHMM(program.startTime)}</span>
       <div className="info-wrapper">
         {nextProgram ? (
@@ -98,6 +110,7 @@ const ProgramElement = ({
             <span className="now">Сейчас в эфире</span>
             <div className="progress-bar-container">
               <div
+                id="scroll1"
                 className="progress-bar"
                 style={{ width: `${percentageComplete}%` }}
               ></div>

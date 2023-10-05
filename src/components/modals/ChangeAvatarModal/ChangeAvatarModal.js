@@ -76,7 +76,7 @@ const ChangeAvatarModal = ({
                     src={avatar.src}
                     minCropRadius={5}
                     shadingColor="black"
-                    label={'Нажмите или перетащите файл'}
+                    label={'Нажмите для загрузки файла'}
                     labelStyle={{
                         color: '#113656',
                         fontFamily: 'Inter, sans-serif',

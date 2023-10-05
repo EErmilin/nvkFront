@@ -73,8 +73,6 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
 
  
 
-  console.log(isFull)
-
   const cls = [isMain ? "react-player-main" : "react-player"]
   if (steam?.name === "Тэтим") {
     if (isMain) {
@@ -83,8 +81,6 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
       cls.push("teteam")
     }
   }
-
-  console.log(isFull)
 
 
 

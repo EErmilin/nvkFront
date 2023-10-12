@@ -77,7 +77,7 @@ function Profile({ }) {
         try {
 
             let response;
-            let avatar_id = userData?.avatar.id ?? undefined
+            let avatar_id = userData?.avatar ? userData?.avatar.id : undefined
             if (avatar) {
                 response = await changeAvatar()
                 avatar_id = response.data.id

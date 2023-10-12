@@ -10,10 +10,10 @@ import './VideoPlayer.css'; // Создайте файл стилей для в�
 
 type TProps = {
   steam?: ILive | IRadio;
-  onAsk?: () => void
-  play?: boolean
-  isShowBtn?: boolean
-  isMain?: boolean
+  onAsk?: () => void;
+  play?: boolean;
+  isShowBtn?: boolean;
+  isMain?: boolean;
 }
 
 export type VideoPlayerHandle = {
@@ -37,12 +37,16 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
 
 
 
+
   const togglePlay = () => {
     setIsPlaying(!isPlaying);
   };
 
   const onPause = useCallback(() => { setIsPlaying(false) }, [])
 
+  useEffect(() => {
+    setIsPlaying(play)
+  }, [play])
 
   const onPlay = useCallback(() => { setIsPlaying(true) }, [])
 
@@ -71,7 +75,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
     clsWrapper.push("teteam_main")
   }
 
- 
+
 
   const cls = [isMain ? "react-player-main" : "react-player"]
   if (steam?.name === "Тэтим") {
@@ -84,7 +88,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
 
 
 
-  
+
 
 
   if (!steam) return
@@ -128,7 +132,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
     })
 
   }
-  
+
 
   return (
     <div className={clsWrapper.join(" ")}

@@ -58,31 +58,24 @@ function Footer() {
                         </ul>
                     </div>
                     <div className="footer-upper__menu style__flexbox">
-                        <ul className="footer-menu style__flexbox style__flexdirection-column">
+                       {/**  <ul className="footer-menu style__flexbox style__flexdirection-column">
                             <li className="menu-title"><a href="">Новости</a></li>
-                            <li><a href="">Главное</a></li>
-                            <li><a href="">Общество</a></li>
-                            <li><a href="">Политика</a></li>
-                        </ul>
-                        <ul className="footer-menu style__flexbox style__flexdirection-column">
+                        </ul>*/}
+                        {/** <ul className="footer-menu style__flexbox style__flexdirection-column">
                             <li className="menu-title"><a href="">О компании</a></li>
                             <li><a href="">Главное</a></li>
                             <li><a href="">Общество</a></li>
-                            <li><a href="">Политика</a></li>
+                            <li><a href="/Terms">Политика</a></li>
+                    </ul>*/}
+                        <ul className="footer-menu style__flexbox style__flexdirection-column">
+                            <li className="menu-title"><a href="/broadcasts">Смотреть</a></li>
+                            <li><a href="/broadcasts">Передачи</a></li>
                         </ul>
                         <ul className="footer-menu style__flexbox style__flexdirection-column">
-                            <li className="menu-title"><a href="">Смотреть</a></li>
-                            <li><a href="">Главное</a></li>
-                            <li><a href="">Общество</a></li>
-                            <li><a href="">Политика</a></li>
+                            <li className="menu-title"><a href="/services">Услуги</a></li>
+                            <li><a href="/services">Наши услуги</a></li>
                         </ul>
-                        <ul className="footer-menu style__flexbox style__flexdirection-column">
-                            <li className="menu-title"><a href="">Услуги</a></li>
-                            <li><a href="">Главное</a></li>
-                            <li><a href="">Общество</a></li>
-                            <li><a href="">Политика</a></li>
-                        </ul>
-                        <ul className="footer-menu style__flexbox style__flexdirection-column">
+                    {/**     <ul className="footer-menu style__flexbox style__flexdirection-column">
                             <li className="menu-title"><a href="">Сервисы</a></li>
                             <li><a href="">Главное</a></li>
                             <li><a href="">Общество</a></li>
@@ -93,7 +86,7 @@ function Footer() {
                             <li><a href="">Главное</a></li>
                             <li><a href="">Общество</a></li>
                             <li><a href="">Политика</a></li>
-                        </ul>
+                        </ul>*/}
                     </div>
                 </div>
                 <div className="footer-middle style__flexbox">

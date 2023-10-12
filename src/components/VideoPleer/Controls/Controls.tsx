@@ -26,6 +26,10 @@ export default function Controls({steam, isPlaying, mute, volume, togglePlay, to
     const backgroundSize = `${volume * 100}% 100%`;
 
 
+    console.log('!!!!!!!!!!!!!')
+    console.log(steam)
+
+
     return (
         <div className="controls">
             <div className="row gap-25">

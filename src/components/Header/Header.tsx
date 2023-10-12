@@ -27,7 +27,7 @@ function Header() {
             //{ link: "/news", title: "Новости" },
             { link: "/services", title: "Услуги" },
             { link: "/audio", title: "Аудио" },
-           // { link: "", title: "Видео" },
+            { link: "/broadcasts", title: "Передачи" },
             { link: "/live", title: "Прямой эфир" },
            // { link: "", title: "Курсы валют" },
             { link: "/horoscope", title: "Гороскоп" },
@@ -35,9 +35,11 @@ function Header() {
 
         return arrLinks.map((elem, id) => {
             return (
+                
                 <li
-                    className={elem.link === url.pathname ? "active" : ''}
+                    className={elem.link === url.pathname ? elem.link==="/live" ? "active stream": "active" :elem.link==="/live"? 'stream':''}
                     key={id} >
+
                     <NavLink to={elem.link}>
                         {elem.title}
                     </NavLink>

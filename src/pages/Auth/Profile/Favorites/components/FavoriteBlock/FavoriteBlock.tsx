@@ -13,7 +13,7 @@ function FavoriteBlock({type}: any) {
     
     return (
         <div className={classes.block}>
-           {favorites.map((item)=><FavoriteItem item={type === "podcast" ? item.podcastEpisode : item.song}></FavoriteItem>)}
+           {favorites.map((item, key)=><FavoriteItem key={key} item={type === "podcast" ? item.podcastEpisode : item.song}></FavoriteItem>)}
         </div>
     )
 }

@@ -19,6 +19,9 @@ import Audio from "../pages/Music/Audio";
 import AllPage from "../pages/Music/components/AllPage/AllPage";
 import Terms from "../pages/Terms/Terms";
 import Сonditions from "../pages/Сonditions/Сonditions";
+import  ListBroadcasts from "../pages/Broadcasts/ListBroadcasts";
+import Broadcast from "../pages/Broadcasts/components/Broadcast/Broadcast";
+import Broadcasts from "../pages/Broadcasts/Broadcasts";
 
 export const routes = [
     {
@@ -44,6 +47,30 @@ export const routes = [
         component: <Tape />,
         path: 'tape',
         exact: true,
+    },
+    {
+        name: 'broadcasts',
+        component: <Broadcasts  
+         routes={
+            [
+                {
+                    name: 'ListBroadcasts',
+                    privateUrl: false,
+                    component: <ListBroadcasts />,
+                    path: '',
+                    exact: false,
+                },
+                {
+                    name: 'broadcast',
+                    privateUrl: false,
+                    component: <Broadcast />,
+                    path: '/:id',
+                    exact: false,
+                },
+            ]
+        } />,
+        path: 'broadcasts/*',
+        exact: false,
     },
 
     {

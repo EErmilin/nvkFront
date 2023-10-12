@@ -71,7 +71,7 @@ function Main({ }) {
 
 
     const templateNews = useMemo(() => {
-        return posts.map((post: any) => <NewsItem post={post} />)
+        return posts.map((post: any, key) => <NewsItem post={post} key={key}/>)
     }, [posts])
 
     return (
@@ -135,7 +135,7 @@ function Main({ }) {
             {streams && streams.length && <div className={classes.main_live}>
                 <h1 className={classes.main_title}>Прямые эфиры</h1>
                 <div className={classes.main_live_wrp}>
-                    {streams.slice(0, 4).map((stream: any) => <LiveItem stream={stream} />)}
+                    {streams.slice(0, 4).map((stream: any, key) => <LiveItem stream={stream} key={key}/>)}
                 </div>
                 <div className={classes.main_news_btn_wrp}>
                     <button className={classes.main_news_btn} onClick={()=>{navigate("/live")}}>Смотреть еще</button>

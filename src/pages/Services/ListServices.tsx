@@ -20,13 +20,13 @@ function ListServices({ }) {
 
     const templateServices = useMemo(() => {
         return data.services.map((service: IServicePreview, key: number) => {
-            return <ServiceItem service={service} type={"service"}/>
+            return <ServiceItem service={service} key={key} type={"service"}/>
         })
     }, [data.services])
 
     const templateAds = useMemo(() => {
         return data.ads.map((service: IAdsPreview, key: number) => {
-            return <ServiceItem service={service} type={"ads"}/>
+            return <ServiceItem service={service} type={"ads"} key={key}/>
         })
     }, [data.ads])
 

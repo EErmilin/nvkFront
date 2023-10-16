@@ -1,16 +1,17 @@
 .item {
-    width: 493px;
+   max-width: 493px;
     height: fit-content;
     padding: 30px;
     gap: 10px;
     border-radius: 30px;
     border: 1px solid var(--Border-Grey, #EFEFF0);
     background: var(--White, #FFF);
+    cursor: pointer;
 
     &_img {
         object-fit: cover;
         border-radius: 20px;
-        width: 433px;
+        width: 100%;
     }
 
     &_price {

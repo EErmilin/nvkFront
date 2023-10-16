@@ -10,7 +10,7 @@ import { number } from "yup";
 import { IProgram } from "../../../../../models/Program";
 import ProgramElement from "./Program/ProgramElement";
 
-import "./Shedule.css";
+import "./Shedule.scss";
 
 import {
   getCurrentProgram,

@@ -2,21 +2,23 @@
 
 import classes from "./ServiceItem.module.scss";
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 
 
 function ServiceItem({ crildren, service, type }: any) {
 
+    const navigate = useNavigate()
+
 
     return (
-        <div className={classes.item}>
+        <div className={classes.item} onClick={()=>navigate(`/services/${type}/${service.id}`)}>
             <div className={classes.item_price}>
                 {service.price} руб.
             </div>
-            <NavLink className={classes.item_title} to={`/services/${type}/${service.id}`}>
+            <div className={classes.item_title}>
                 {service.name}
-            </NavLink>
+            </div>
             <div className={classes.item_text}>
                 {service.preview}
             </div>

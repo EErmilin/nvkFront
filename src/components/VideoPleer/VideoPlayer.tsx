@@ -6,7 +6,7 @@ import { ILive } from '../../models/LiveStream';
 import { IRadio } from '../../models/Radio';
 import Controls from './Controls/Controls';
 import VideoInfo from './Info/VideoInfo';
-import './VideoPlayer.css'; // Создайте файл стилей для вашего видеоплеера
+import './VideoPlayer.scss'; // Создайте файл стилей для вашего видеоплеера
 
 type TProps = {
   steam?: ILive | IRadio;
@@ -135,6 +135,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
 
 
   return (
+    <>
     <div className={clsWrapper.join(" ")}
       ref={videoPleerWraper}>
       {isOpenSettings ? <div className="settings">{renderQuality()}</div> :
@@ -164,8 +165,10 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
         toggleSettings={toggleSettings}
       />
 
-      {isShowBtn && <VideoInfo streamTitle={steam?.name} programTitle={programTitle} askButtonClick={onAsk} />}
+     
     </div>
+     {isShowBtn && <VideoInfo streamTitle={steam?.name} programTitle={programTitle} askButtonClick={onAsk} />}
+     </>
   );
 });
 

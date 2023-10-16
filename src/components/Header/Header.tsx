@@ -5,6 +5,8 @@ import React, { useMemo } from 'react'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setModalVisible } from '../../redux/slices/routerSlice';
 
+import MobileMenu from "../../components/MobileMenu/MobileMenu";
+
 function Header() {
     const navigate = useNavigate()
     const isAuth = useAppSelector(state => state.auth.logged);
@@ -51,6 +53,7 @@ function Header() {
 
     return (
         <header>
+          
             <div className="header-container style__flexbox style__flex-jc-sb">
                 <div className="left-header style__flexbox style__flex-ai-c">
                     <NavLink to="/" className="logotype">
@@ -59,13 +62,16 @@ function Header() {
                     <ul className="header-menu style__flexbox style__flex-ai-c">
                         {templateLinks}
                     </ul>
+                    <MobileMenu/>
                 </div>
+            
                 <div className="right-header style__flexbox style__flex-ai-c">
                     {//<div className="header-search"><span>Поиск</span></div>
                     }
                     <div className="header-profile" onClick={handleProfile}><span>Профиль</span></div>
                 </div>
             </div>
+            
         </header>
 
     );

@@ -1,6 +1,7 @@
 .all{
   
   &_wrp{
+    margin: auto;
     margin-top: 30px;
     border-radius: 30px;
     border: 1px solid var(--Border-Grey, #EFEFF0);
@@ -9,5 +10,9 @@
     gap: 18px;
     display: flex;
     flex-wrap: wrap;
+    @media(max-width: 451px) {
+      justify-content: center;
+
+    }
   }
 }

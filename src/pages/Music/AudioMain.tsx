@@ -131,7 +131,6 @@ function AudioMain() {
                 <div className={classes.music_field_wrp}>
                     {templatePlaylists}
                 </div>
-
             </div>
             <div className={classes.music_field}>
                 <div className={classes.music_field_header}>
@@ -141,7 +140,6 @@ function AudioMain() {
                 <div className={classes.music_field_wrp}>
                     {templatePopulars}
                 </div>
-
             </div>
             <div className={classes.music_field}>
                 <div className={classes.music_field_header}>

@@ -155,7 +155,7 @@ function Profile({ }) {
                         labelInput={"Имя"}
                         name="firstname"
                         id="firstname"
-                        className={classes.modal_input}
+                        className={classes.input}
                         onChange={(e: any) => {
                             return ClearErrorAndChange("firstname", e.target.value)
                         }}>
@@ -164,7 +164,7 @@ function Profile({ }) {
                         labelInput={"Фамилия"}
                         name="lastname"
                         id="lastname"
-                        className={classes.modal_input}
+                        className={classes.input}
                         onChange={(e: any) => {
                             return ClearErrorAndChange("lastname", e.target.value)
                         }}
@@ -173,7 +173,7 @@ function Profile({ }) {
                         labelInput={"День рождения"}
                         name="birthdate"
                         id="birthdate"
-                        className={classes.modal_input}
+                        className={classes.input}
                         onChange={(e: any) => {
                             return ClearErrorAndChange("birthdate", e.target.value)
                         }}> </Input>
@@ -184,14 +184,14 @@ function Profile({ }) {
                         name="phone"
                         placeholder='+7'
                         id="phone"
-                        className={classes.modal_input}
+                        className={classes.input}
                         onChange={(e: any) => {
                             return ClearErrorAndChange("phone", e.target.value)
                         }}></Input>
                     <Input value={values.email} labelInput={"Эл.Почта"}
                         name="email"
                         id="email"
-                        className={classes.modal_input}
+                        className={classes.input}
                         onChange={(e: any) => {
                             return ClearErrorAndChange("email", e.target.value)
                         }}></Input>

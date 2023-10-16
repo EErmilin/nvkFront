@@ -72,6 +72,8 @@ export const Broadcast = ({ }) => {
     setIsPlay(true)
   }
 
+  console.log(broadcastData)
+
 
   const blocks = broadcastData.seasons && broadcastData.seasons.length && broadcastData.seasons.map((data, key) => {
 
@@ -82,7 +84,7 @@ export const Broadcast = ({ }) => {
       <div className={classes.broadcast}>
         {isPlay ? <VideoPlayer ref={videoPleerRef} play={true} isShowBtn={false} /> : <img className={classes.broadcast_img} src={broadcastData?.image?.url_1536} />}
         <div className={classes.broadcast_info}>
-          <div className={classes.broadcast_info_title}>{current?.name }</div>
+          <div className={classes.broadcast_info_title}>{current?.name ?? broadcastData.name }</div>
           <div>{duration}</div>
           <div className={classes.broadcast_info_block}>
             <h2 className={classes.broadcast_info_content_title}>О передаче</h2>

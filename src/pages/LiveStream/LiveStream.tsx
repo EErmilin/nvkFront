@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import "./LiveStream.css";
+import "./LiveStream.scss";
 import React from 'react';
 import { ILive } from '../../models/LiveStream';
 import { IRadio } from '../../models/Radio';
@@ -66,8 +66,9 @@ export default function LiveStream() {
         </div>
 
       </div>
-
+<div className='wrp'>
       <Shedule ref={sheduleRef} onProgramChanged={onProgramChanged} />
+      </div>
       {askModal}
     </div>
   )

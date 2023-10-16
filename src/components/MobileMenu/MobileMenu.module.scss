@@ -1,0 +1,187 @@
+.burger {
+  width: 23px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: center no-repeat url("../../assets/img/burger.svg");
+
+  @media(min-width: 1025px) {
+    display: none;
+  }
+
+  span {
+    width: 24px;
+    height: 2px;
+    margin: 4px 0;
+    border-radius: 3px;
+
+    display: block;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 2px;
+    border-radius: 3px;
+  }
+}
+
+.wrap {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  animation: revealWrapper 0.3s both;
+  z-index: 100000;
+}
+
+.panel {
+  position: fixed;
+  width: 320px;
+  height: 100%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #ffffff;
+  animation: menuWhoosh 0.3s both;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  min-height: 50px;
+  border-bottom: 1px solid gray;
+  flex-shrink: 0;
+  padding: 20px 0;
+}
+
+.auth_buttons {
+  display: flex;
+
+  button {
+    &:not(:last-child) {
+      margin-right: 12px;
+    }
+  }
+}
+
+.body {
+  flex: 1 1 auto;
+  margin: 10px 0;
+  overflow-y: auto;
+}
+
+.list {
+  padding: 10px 0 0 4px;
+
+  &_item {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+
+
+  &_link {
+    display: inline-block;
+    padding: 10px 0;
+    color: #000000;
+
+    &:hover {}
+
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+
+  &_info {}
+
+  &_keys {
+    font-size: 14px;
+    line-height: 140%;
+    color: gray;
+  }
+
+  &_avatar {
+    width: 50px;
+    height: 50px;
+    margin-right: 14px;
+  }
+
+  &_name {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  &_email {
+    font-size: 14px;
+    line-height: 1.3;
+    color: gray;
+  }
+}
+
+.signup_button {
+  a {
+    color: #ffffff;
+  }
+}
+
+
+.footer {
+  flex-shrink: 0;
+}
+
+@keyframes revealWrapper {
+  from {
+    background: rgba(201, 107, 7, 0);
+  }
+
+  to {
+    background: rgba(201, 107, 7, 0.4);
+  }
+}
+
+@keyframes menuWhoosh {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.link {
+  cursor: pointer;
+  padding: 20px;
+  color: #000000;
+  text-decoration: none !important;
+}

@@ -28,10 +28,6 @@ function App() {
   const token = useAppSelector(state => state.auth.token);
   const [searchParams, setSearchParams] = useSearchParams();
 
-
-  console.log('state')
-  console.log(state)
-
   const update = useCallback(async () => {
     (async function () {
       try {

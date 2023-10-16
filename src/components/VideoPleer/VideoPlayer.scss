@@ -1,0 +1,108 @@
+.video-pleer-wraper {
+  position: relative;
+  max-width: 878px;
+  width: 100%;
+  margin: auto;
+}
+
+.video-pleer-wraper-main {
+  margin: auto;
+  position: relative;
+  max-width: 750px;
+  width: 100%;
+}
+
+
+
+.react-player-main {
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: filter 0.3s ease;
+}
+
+.react-player {
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: filter 0.3s ease;
+}
+.react-player-full {
+  filter: brightness(100%) !important;
+}
+
+.react-player-full:hover .controls {
+  opacity: 1;
+}
+
+.teteam {
+  background-image: url("../../assets/img/teteam.svg") !important;
+  background-repeat: no-repeat;
+  background-size: 110%;
+  background-position: -20px;
+    border-radius: 20px;
+  background-color: none !important;
+  
+
+}
+
+.teteam_main {
+  background-image: url("../../assets/img/teteam.svg") !important;
+  background-repeat: no-repeat;
+  background-size: 110%;
+  background-position: -20px;
+  border-radius: 20px;
+  filter: brightness(150%);
+  min-height: 200px;
+  height: 87% ;
+  @media(max-width: 1024px) {
+    height: 421px;
+  }
+}
+
+.teteam_main:hover {
+  filter: brightness(100%);
+  transition: filter 0.3s ease;
+}
+
+
+.row {
+  display: flex;
+  align-items: center;
+  /* Выравнивание по центру по вертикали */
+}
+
+.video-pleer-wraper:hover .controls {
+  opacity: 1;
+}
+
+.video-pleer-wraper-main:hover .controls {
+  opacity: 1;
+}
+
+
+
+.video-pleer-wraper:hover .react-player {
+  filter: brightness(50%);
+}
+
+.video-pleer-wraper-main:hover .react-player-main {
+  filter: brightness(50%);
+}
+
+
+.settings {
+  background-color: black;
+  border-radius: 20px;
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+
+.settings-item {
+  cursor: pointer;
+  padding: 30px;
+  border-bottom: 1px solid white;
+
+}

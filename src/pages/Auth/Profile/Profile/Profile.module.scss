@@ -2,9 +2,10 @@
   padding-top: 20px;
   position: relative;
   flex-direction: column;
-  display:flex;
+  display: flex;
   height: 100%;
   justify-content: space-between;
+
 
 }
 
@@ -14,6 +15,10 @@
   gap: 30px;
   text-align: start;
   margin-bottom: 50px;
+
+  @media(max-width: 668px) {
+    justify-content: center;
+  }
 
   &_name {
     color: var(--black-text, #2F2F30);
@@ -35,11 +40,15 @@
 }
 
 .info {
-  display: grid;
+  display: flex;
   grid-gap: 25px;
-  grid-template-columns: repeat(2, 1fr);
+  flex-wrap: wrap;
+
+  @media(max-width: 668px) {
+    justify-content: center;
+  }
 }
 
-.btn_wrp {
-
+.input {
+  max-width: 446px;
 }

@@ -1,5 +1,5 @@
 import classes from "./Favorites.module.scss";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import TransitionContainer from "../../../../components/TransitionContainer/TransitionContainer";
 import FavoriteBlock from "./components/FavoriteBlock/FavoriteBlock";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
@@ -43,6 +43,7 @@ function Favorites({ }) {
                 withTitleBorder={true}
                 classNameTitlesWrap={classes.favorites_titles}
                 blocks={blocks}>
+                    
             </TransitionContainer>
         </div>
     )

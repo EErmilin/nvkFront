@@ -6,6 +6,10 @@
   background-size: contain;
   height: 45px;
   width: 165px;
+  @media(max-width: 668px) {
+    height: 35px;
+    width: 155px;
+  }
 }
 
 .live{

@@ -61,6 +61,7 @@
     }
 
     &_item {
+      max-width: 180px;
       cursor: pointer;
       &_title {
         color: var(--Black, #0F0A07);

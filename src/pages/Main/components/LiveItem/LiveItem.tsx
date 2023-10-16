@@ -2,10 +2,7 @@
 
 import classes from "./LiveItem.module.scss";
 import React, { useEffect, useRef } from 'react';
-import fakeNews from '../../../../assets/img/fakeTop.png';
-import { fetchStreams } from "../../../LiveStream/utils";
 import VideoPlayer, { VideoPlayerHandle } from "../../../../components/VideoPleer/VideoPlayer";
-import { ILive } from "../../../../models/LiveStream";
 
 function LiveItem({stream }: any) {
 

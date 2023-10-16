@@ -3,9 +3,15 @@ import classes from "./EpisodeSlider.module.scss"
 import "./EpisodeSlider.scss"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation } from "swiper"
+import useWindowSize from '../../../../hooks/useWindowSize'
 
 function EpisodeSlider({ episodes, setBroadcast }) {
     const cls = [classes.slider, "last-search-slider"]
+
+    const windowSize = useWindowSize()
+
+    console.log('@@@@@@@@@@@@@@@')
+    console.log(windowSize)
 
 
     /**Инстенс свипера*/
@@ -33,7 +39,7 @@ function EpisodeSlider({ episodes, setBroadcast }) {
                 direction={"horizontal"}
                 spaceBetween={20}
                 allowTouchMove={true}
-                slidesPerView={"auto"}
+                slidesPerView={windowSize.width <=523? 1: "auto"}
                 navigation={true}
                 modules={[Navigation]}
                 onBeforeInit={(swiper) => {

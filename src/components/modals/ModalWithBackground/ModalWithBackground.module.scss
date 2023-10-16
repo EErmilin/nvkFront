@@ -28,6 +28,10 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  @media(max-width: 687px) {
+    right:15px;
+    top:15px;
+  }
 
   &:before {
     content: '';

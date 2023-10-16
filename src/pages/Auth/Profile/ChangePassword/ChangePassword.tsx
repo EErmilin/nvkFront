@@ -116,7 +116,7 @@ function ChangePassword({ }) {
                 <div className={classes.info}>
 
                     <Input
-                        classNameWrp={classes.input}
+                        className={classes.input}
                         placeholder='Пароль'
                         name="oldPassword"
                         id="oldPassword"
@@ -127,7 +127,7 @@ function ChangePassword({ }) {
                             return ClearErrorAndChange("oldPassword", e.target.value)
                         }}></Input>
                     <Input
-                        classNameWrp={classes.input}
+                        className={classes.input}
                         placeholder='Новый пароль'
                         name="newPassword"
                         id="newPassword"
@@ -138,7 +138,7 @@ function ChangePassword({ }) {
                             return ClearErrorAndChange("newPassword", e.target.value)
                         }}></Input>
                     <Input
-                        classNameWrp={classes.input}
+                        className={classes.input}
                         placeholder='Повторите пароль'
                         name="repeatPassword"
                         id="repeatPassword"

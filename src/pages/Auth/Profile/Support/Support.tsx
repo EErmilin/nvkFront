@@ -27,9 +27,9 @@ function Support({ }) {
 
     const openNotificationWithIcon = (type: NotificationType) => {
         api[type]({
-          message: 'Сообщение отправлено',
+            message: 'Сообщение отправлено',
         });
-      };
+    };
 
     const initialValues = {
         name: userData?.firstname ?? "",
@@ -74,28 +74,28 @@ function Support({ }) {
             if (!values.message) {
                 setErrors({ ...errors, message: "Заполните все поля" })
             }
-         } else {
-                try {
-                    let client = await getUpdateClient();
-                    const response = await client.mutate({
-                        mutation: CREATE_SUPPORT,
-                        variables: {
-                            createSupportInput: {
-                                name: values.name,
-                                email: values.email.trim(),
-                                message: values.message,
-                                authorId: values.authorId,
-                            },
+        } else {
+            try {
+                let client = await getUpdateClient();
+                const response = await client.mutate({
+                    mutation: CREATE_SUPPORT,
+                    variables: {
+                        createSupportInput: {
+                            name: values.name,
+                            email: values.email.trim(),
+                            message: values.message,
+                            authorId: values.authorId,
                         },
-                    });
-                    openNotificationWithIcon('success')
-                } catch (e) {
-                    if (e instanceof ApolloError) {
-                        console.log('e', e.message);
-                    }
+                    },
+                });
+                openNotificationWithIcon('success')
+            } catch (e) {
+                if (e instanceof ApolloError) {
+                    console.log('e', e.message);
                 }
             }
         }
+    }
 
 
     /** Очищаем ошибки и изменяем состояние */
@@ -114,24 +114,30 @@ function Support({ }) {
                 <h2 className={classes.title}>Тех.Поддержка</h2>
                 <div className={classes.info_wrp}>
                     <div className={classes.info}>
-                        <Input labelInput={"Имя, Фамилия"}
-                            name="name"
-                            id="name"
-                            value={values.name}
-                            errorMessage={errors.name}
-                            onChange={(e: any) => {
-                                return ClearErrorAndChange("name", e.target.value)
-                            }}
-                        ></Input>
-                        <Input labelInput={"Эл. Почта"}
-                            name="email"
-                            id="email"
-                            value={values.email}
-                            errorMessage={errors.email}
-                            onChange={(e: any) => {
-                                return ClearErrorAndChange("email", e.target.value)
-                            }}
-                        ></Input>
+                        <div className={classes.input}>
+                            <Input
+                                labelInput={"Имя, Фамилия"}
+                                name="name"
+                                id="name"
+                                value={values.name}
+                                errorMessage={errors.name}
+                                onChange={(e: any) => {
+                                    return ClearErrorAndChange("name", e.target.value)
+                                }}
+                            ></Input>
+                        </div>
+                        <div className={classes.input}>
+                            <Input
+                                labelInput={"Эл. Почта"}
+                                name="email"
+                                id="email"
+                                value={values.email}
+                                errorMessage={errors.email}
+                                onChange={(e: any) => {
+                                    return ClearErrorAndChange("email", e.target.value)
+                                }}
+                            ></Input>
+                        </div>
                     </div>
                     <CustomTextArea label={"Ваш вопрос"}
                         name="message"

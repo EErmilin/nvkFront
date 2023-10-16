@@ -6,13 +6,13 @@
   height: 100%;
   justify-content: space-between;
   &_wrp{
-
+padding-right: 10px;
   }
 }
 
 .info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+flex-wrap: wrap;
   gap: 25px;
 
   &_wrp {
@@ -28,4 +28,12 @@
   font-weight: 700;
   line-height: 140%;
   margin-bottom: 5px;
+}
+
+.input{
+  width: 48%;
+  max-width: 100%;
+  @media(max-width: 1024px) {
+    width: 100%;
+  }
 }

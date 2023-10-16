@@ -18,7 +18,7 @@ function TransitionContainer({
     classNameTitlesWrap,
     currentBlock = 0,
     withTitleBorder,
-    classNameBody
+    classNameBody,
 }: any) {
     const currentTitle: any = useRef()
     const [searchParams, setSearchParams] = useSearchParams();
@@ -51,6 +51,15 @@ function TransitionContainer({
     const clsTitle = [classes.title]
     if (classNameTitle) clsTitle.push(classNameTitle)
 
+    const slideBlock = (event: any, id: any) => {
+        setActiveBlock(id)
+        currentTitle.current.classList.remove(classes.title_active)
+        setCurrentBody(blocks[id].block)
+        currentTitle.current = event.target
+        currentTitle.current.classList.add(classes.title_active)
+
+    }
+
     const templateBlocksTitle = blocks.map((elem: any, id: any) => {
         const className = [...clsTitle]
 
@@ -62,21 +71,14 @@ function TransitionContainer({
                 className={className.join(' ')}
                 key={id}
                 ref={id == 0 ? currentTitle : null}
-
+                onClick={(event: any) => slideBlock(event, id)}
             >
-                <div onClick={(event: any) => slideBlock(event, id)}>{elem.title}</div>
+                <div >{elem.title}</div>
             </div>
         )
     })
 
-    function slideBlock(event: any, id: any) {
-        setActiveBlock(id)
-        currentTitle.current.classList.remove(classes.title_active)
-        setCurrentBody(blocks[id].block)
-        currentTitle.current = event.target
-        currentTitle.current.classList.add(classes.title_active)
 
-    }
 
     return (
         <div className={cls.join(" ")}>

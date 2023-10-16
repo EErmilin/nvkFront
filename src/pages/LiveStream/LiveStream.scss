@@ -1,0 +1,33 @@
+.stream {
+  width: 100%;
+  max-width: auto;
+  margin: 0 auto;
+  display: flex;
+
+  align-items: flex-start;
+  @media (max-width: 1601px) {
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 1601px) {
+  .stream {
+    max-width: 1600px;
+    /* Увеличиваем максимальную ширину для десктопа */
+  }
+}
+
+.stream-pleer {
+  margin-top: 10px;
+}
+
+.wrp {
+  @media (max-width: 1024px) {
+    margin: auto;
+    margin-top: 150px;
+  }
+}
+
+.stream-block{
+  margin: 0 sauto;
+}

@@ -100,6 +100,7 @@ export default function MobileMenu() {
                     className={classes.wrap}
                     onClick={clickHandler}
                 >
+        
                     <div className={classes.panel}>
                         <div className={classes.close}></div>
                         <div className={classes.container}>

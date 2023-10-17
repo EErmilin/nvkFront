@@ -64,6 +64,12 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  &:before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    background: center/cover no-repeat url("../../assets/img/close-gray.svg");
+  }
 }
 
 .container {

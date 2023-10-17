@@ -19,6 +19,10 @@
 
 .stream-pleer {
   margin-top: 10px;
+  @media (max-width: 1507px) {
+    padding: 12px;
+  }
+ 
 }
 
 .wrp {

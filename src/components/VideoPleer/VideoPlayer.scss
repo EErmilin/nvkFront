@@ -35,7 +35,7 @@
   opacity: 1;
 }
 
-.teteam {
+ .teteam {
   background-image: url("../../assets/img/teteam.svg") !important;
   background-repeat: no-repeat;
   background-size: 110%;
@@ -54,10 +54,7 @@
   border-radius: 20px;
   filter: brightness(150%);
   min-height: 200px;
-  height: 87% ;
-  @media(max-width: 1024px) {
-    height: 421px;
-  }
+  height: 88% ;
 }
 
 .teteam_main:hover {

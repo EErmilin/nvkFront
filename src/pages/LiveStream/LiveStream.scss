@@ -22,9 +22,16 @@
 }
 
 .wrp {
-  @media (max-width: 1024px) {
-    margin: auto;
-    margin-top: 150px;
+  width: 100%;
+  position: relative;
+  @media (min-width: 1508px) {
+    max-width: 622px;
+  }
+  
+  @media (max-width: 1507px) {
+    padding: 0 20px;
+    max-width: 100%;
+    margin-top: 50px;
   }
 }
 

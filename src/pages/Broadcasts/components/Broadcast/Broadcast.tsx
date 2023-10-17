@@ -97,6 +97,7 @@ export const Broadcast = ({ }) => {
         <TransitionContainer
           withTitleBorder={true}
           classNameTitle={classes.broadcast_seasons_titles}
+          classNameTitlesWrap={classes.broadcast_seasons_titles_wrp}
           blocks={blocks}>
         </TransitionContainer>
       </div>}

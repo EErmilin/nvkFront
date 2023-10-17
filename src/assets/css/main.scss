@@ -184,6 +184,9 @@ header {
     margin-top: 20px;
     margin-bottom: 200px;
     gap: 20px;
+    @media(max-width: 10024px) {
+        margin-bottom: 70px;
+    }
 }
 
 .horoscope {

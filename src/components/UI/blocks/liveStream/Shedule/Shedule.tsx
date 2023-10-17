@@ -67,7 +67,7 @@ const Shedule = forwardRef(
     return (
       <div className="stream-shedule">
         <div className="program-list">
-          {groupedPrograms.map((element, index) => (
+        {groupedPrograms.map((element, index) => (
             <ProgramElement
               program={element}
               nextProgram={

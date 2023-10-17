@@ -14,7 +14,7 @@ import mamont from "../../../../../assets/img/mamont.svg";
 import yakutia from "../../../../../assets/img/yakutia.svg";
 import teteam from "../../../../../assets/img/teteam.svg";
 
-import "./LiveStreamSelector.css";
+import "./LiveStreamSelector.scss";
 import { useSearchParams } from "react-router-dom";
 
 const TMP_IMAGE = (index: number) => {

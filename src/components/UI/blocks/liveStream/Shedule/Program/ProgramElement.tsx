@@ -14,6 +14,7 @@ import { IRadioProgram } from "../../../../../../models/Radio";
 import "./ProgramElement.css";
 import { formatTimeToHHMM } from "../utils";
 import { yakutiaTime } from "../../../../../../api/helper";
+import useWindowSize from "../../../../../../hooks/useWindowSize";
 const timeZone = 'Asia/Yakutsk';
 
 type TCardProps = {
@@ -35,6 +36,8 @@ const ProgramElement = ({
   const [percentageComplete, setPercentageComplete] = useState(
     nextProgram ? 0 : null
   );
+
+  const windowsSize = useWindowSize()
 
   useEffect(() => {
     const calculatePercentage = () => {
@@ -91,13 +94,17 @@ const ProgramElement = ({
   //   }, []);
   const conteiner = document.getElementById("scroll1");
 
+
   useEffect(() => {
-    conteiner?.scrollIntoView({
-      block: 'end',
-      behavior: "smooth",
-    })
-    document.body.scrollIntoView(true)
-  }, [conteiner])
+    if(windowsSize.width && windowsSize.width>1242){
+      conteiner?.scrollIntoView({
+        block: 'end',
+        behavior: "smooth",
+      })
+      document.body.scrollIntoView(true)
+    }
+
+  }, [conteiner, windowsSize])
 
 
   return (

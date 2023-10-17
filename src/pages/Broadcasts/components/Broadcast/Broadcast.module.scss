@@ -15,6 +15,7 @@
   }
 
   &_seasons {
+
     margin-top: 139px;
     @media(max-width: 523px) {
       margin-top: 50px;
@@ -23,6 +24,9 @@
       font-size: 18px;
       font-weight: 600;
       line-height: 140%;
+    }
+    &_titles_wrp {
+padding: 0 15px;
     }
   }
 

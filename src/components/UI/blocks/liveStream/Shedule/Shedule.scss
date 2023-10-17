@@ -1,5 +1,5 @@
 .stream-shedule {
-  max-width: 622px;
+  
   width: 100%;
   height: 760px;
   margin-bottom: 200px;
@@ -11,16 +11,14 @@
     margin-bottom: 0px;
     margin-left: 0;
   }
-  @media (max-width: 1600px) {
-   // width: 100%;
+  @media (min-width: 1508px) {
+    max-width: 622px;
   }
-  /* display: flex; */
   /* flex-direction: column; */
 }
 
 .stream-shedule .nav-bar {
   @media (max-width: 1600px) {
-    width: 355px;
   }
   width: 100%;
   
@@ -72,7 +70,8 @@
 .stream-shedule .program-list {
   position: absolute;
   height: 720px;
-  max-width: 610px;
+  width: calc(100% - 65px);
+
   @media (min-width: 1600px) {
     width: 100%;
   }

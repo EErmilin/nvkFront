@@ -51,7 +51,7 @@ export default function LiveStream() {
       }
     })();
   }, []);
-  
+
 
 
 
@@ -66,8 +66,8 @@ export default function LiveStream() {
         </div>
 
       </div>
-<div className='wrp'>
-      <Shedule ref={sheduleRef} onProgramChanged={onProgramChanged} />
+      <div className='wrp'>
+        <Shedule ref={sheduleRef} onProgramChanged={onProgramChanged} />
       </div>
       {askModal}
     </div>

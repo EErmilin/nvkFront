@@ -1,6 +1,6 @@
 .modal {
   height: 453px;
-  width: 750px;
+  width: 100%;
   padding-bottom: 50px;
 
   &_form {
@@ -10,7 +10,6 @@
     justify-content: left;
     align-items: flex-start;
     height: 200px;
-    width: calc(100% - 60px);
 
 
 

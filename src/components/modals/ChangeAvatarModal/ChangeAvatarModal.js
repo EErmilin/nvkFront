@@ -76,15 +76,17 @@ const ChangeAvatarModal = ({
                     src={avatar.src}
                     minCropRadius={5}
                     shadingColor="black"
-                    label={'Нажмите для загрузки файла'}
+                    label={`Нажмите для \n загрузки файла`}
                     labelStyle={{
                         color: '#113656',
                         fontFamily: 'Inter, sans-serif',
                         fontSize: 20,
-                        cursor: "pointer"
+                        cursor: "pointer",
                     }}
                     borderStyle={{
                         backgroundColor: '#c4c4c4',
+                        maxWidth: '100%',
+                       
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',

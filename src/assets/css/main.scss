@@ -460,8 +460,12 @@ footer {
 }
 
 .footer-contacts__data {
+  
     margin: 50px 0 30px;
     gap: 10px;
+    @media(max-width: 1023px) {
+        text-align: center;
+      }
 }
 
 .footer-contacts__data a {
@@ -576,10 +580,12 @@ footer {
     font-style: normal;
     font-weight: 500;
     line-height: 140%;
+    
     /* 22.4px */
 }
 
 .footer-down .copyright a {
+    
     color: var(--blue, #397FEF);
     text-decoration: none;
 }

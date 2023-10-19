@@ -14,11 +14,12 @@
   grid-gap: 50px;
   grid-template-columns: 267px 1fr;
   min-height: 800px;
+
   @media(max-width: 668px) {
-display: flex;
-justify-content: center;
-padding: 10px;
-    }
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
 }
 
 .navbar {
@@ -26,17 +27,19 @@ padding: 10px;
   height: 100%;
   padding: 30px 0;
   border-right: 1px solid #EFEFF0;
+
   @media(max-width: 668px) {
     display: none;
-    }
+  }
 }
 
 .content {
   width: 100%;
   padding: 30px 30px 50px 0;
+
   @media(max-width: 1256px) {
-    padding: 0;
-        }
+    padding: 0 15px 0 15px;
+  }
 
   h2 {
     margin-bottom: 30px;

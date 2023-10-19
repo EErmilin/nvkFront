@@ -13,6 +13,9 @@
   border: 1px solid var(--border-grey, #EFEFF0);
   background: var(--white, #FFF);
   z-index: 100000;
+  @media(max-width: 1024px) {
+    border-radius: 10px;
+  }
 }
 
 .closeBtn {
@@ -31,6 +34,9 @@
   @media(max-width: 687px) {
     right:15px;
     top:15px;
+        width: 11px;
+    height: 11px;
+    background: center/cover no-repeat url("../../../assets/img/close-gray.svg") !important;
   }
 
   &:before {

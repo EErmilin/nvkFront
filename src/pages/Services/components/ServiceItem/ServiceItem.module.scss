@@ -9,7 +9,8 @@
     cursor: pointer;
 
     &_img {
-        object-fit: cover;
+        max-height: 153px;
+        object-fit: contain;
         border-radius: 20px;
         width: 100%;
     }

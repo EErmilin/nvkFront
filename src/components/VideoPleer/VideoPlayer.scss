@@ -27,6 +27,7 @@
   background-color: rgba(0, 0, 0, 0.3);
   transition: filter 0.3s ease;
 }
+
 .react-player-full {
   filter: brightness(100%) !important;
 }
@@ -40,10 +41,10 @@
   background-repeat: no-repeat;
   background-size: 110%;
   background-position: -20px;
-    border-radius: 20px;
+  border-radius: 20px;
   background-color: none !important;
-  min-height: 250px;
-  
+  min-height: 230px;
+
   @media(min-width: 900px) {
     min-height: 421px;
   }
@@ -58,7 +59,8 @@
   border-radius: 20px;
   filter: brightness(150%);
   min-height: 200px;
-  height: 87% ;
+  height: 87%;
+
   @media(max-width: 1024px) {
     height: 421px;
   }

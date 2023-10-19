@@ -1,7 +1,19 @@
 .servises {
-  display: flex;
+  display: grid;
   gap:20px;
   flex-wrap: wrap;
-  max-width: 1600px;
+  margin: 0 auto;
+  
+  grid-template-columns: 1fr 1fr 1fr;
+  @media (max-width: 1025px) {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 5px;
+   }
+   @media (max-width: 500px) {
+    grid-template-columns: 1fr ;
+    padding: 0;
+   }
+}
+.wrp{
   margin: auto;
 }

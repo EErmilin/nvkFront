@@ -6,6 +6,7 @@
   max-width: 1264px;
   width: 100%;
   min-height: 800px;
+
 }
 
 .container {
@@ -37,8 +38,10 @@
   width: 100%;
   padding: 30px 30px 50px 0;
 
+
   @media(max-width: 1256px) {
     padding: 0 15px 0 15px;
+    margin: 0 0 30px 0;
   }
 
   h2 {

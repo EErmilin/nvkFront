@@ -10,8 +10,12 @@
         border: 1px solid var(--Border-Grey, #EFEFF0);
         background: var(--White, #FFF);
         padding: 30px;
-        max-width: 622px;
+        max-width: 878px;
         width: 100%;
+
+        @media(min-width: 1520px) {
+            max-width: 622px;
+        }
 
 
         &_title {

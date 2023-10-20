@@ -16,9 +16,6 @@
   background-size: 100% 100%;
   overflow: hidden;
   background-size: cover !important;
-  @media (max-width: 440px) {
-    max-width: 170px;  
-  }
 }
 
 .live-stream-card .group {
@@ -33,9 +30,9 @@
   position: relative;
   top: 65px;
   width: 72px;
-  @media (max-width: 440px) {
-    left: 10px !important
-  }
+  @media (max-width: 1023px) {
+    left: 15px !important;
+   }
 }
 
 .live-stream-card .overlap-group {
@@ -77,6 +74,9 @@
 .live-stream-card {
   height: 105px;
   width: 212px;  
+  @media (max-width: 1023px) {
+    width: 47%;
+   }
   border-radius: 20px;
   background-color: #00bbff;
   background-size: 100% 100%;

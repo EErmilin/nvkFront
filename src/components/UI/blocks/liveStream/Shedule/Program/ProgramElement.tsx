@@ -96,7 +96,7 @@ const ProgramElement = ({
 
 
   useEffect(() => {
-    if(windowsSize.width && windowsSize.width>1242){
+    if(windowsSize.width && windowsSize.width>1507){
       conteiner?.scrollIntoView({
         block: 'end',
         behavior: "smooth",

@@ -134,6 +134,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
   }
 
 
+
   return (
     <>
     <div className={clsWrapper.join(" ")}
@@ -151,8 +152,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
           onPlay={onPlay}
           onPause={onPause}
           className={cls.join(" ")}
-          playsInline={false}
-          playsinline={false}
+          
         />
       }
       <Controls

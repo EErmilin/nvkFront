@@ -4,26 +4,25 @@
     border-radius: 30px;
     border: 1px solid var(--Border-Grey, #EFEFF0);
     background: var(--White, #FFF);
+
     min-height: 370px;
     padding: 30px;
-    
 
 
     &_img {
-      height: 180px;
-      width: 180px;
+      width: 100%;
       border-radius: 15px;
       object-fit: cover;
+
       @media (max-width: 460px) {
         height: 140px;
         width: 140px;
        }
+    
       &_mask{
         position: relative;
         &_wrp{
           border-radius: 15px;
-          height: 180px;
-          width: 180px;
           @media (max-width: 460px) {
             height: 140px;
             width: 140px;
@@ -62,7 +61,7 @@
 
     &_no_img {
       height: 180px;
-      width: 180px;
+      width: 100%;
       background: var(--Grey-Light, #F4F4F4);
       border-radius: 15px;
       @media (max-width: 460px) {
@@ -72,18 +71,26 @@
     }
 
     &_item {
-      max-width: 180px;
+    display: flex;
+
+
+
+
+    flex-direction: column;
       cursor: pointer;
       &_title {
+        max-width: 180px;
+
         color: var(--Black, #0F0A07);
         font-size: 18px;
         font-weight: 600;
         line-height: 140%;
         margin-top: 15px;
-        @media (max-width: 460px) {
-          max-width: 130px;
-         }
+
       }
+      @media (max-width: 460px) {
+        max-width: 130px;
+       }
 
     }
 
@@ -125,6 +132,7 @@
       font-size: 22px;
       font-weight: 700;
       line-height: 160%;
+
     }
   }
 }

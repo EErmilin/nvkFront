@@ -1,13 +1,16 @@
 import { Switch } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../../redux/hooks";
+import useTheme from "../../../../hooks/useTheme";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
+import { setTheme } from "../../../../redux/slices/userSlice";
 import { logout } from "../../../../redux/thunks/auth/Logout";
 import classes from "./Settings.module.scss";
 import "./Switch.scss"
 
 
 function Settings({ }) {
+    const colorTheme = useAppSelector(state => state.user.colorTheme);
     const dispatcher = useAppDispatch()
     const navigate = useNavigate()
 
@@ -15,6 +18,14 @@ function Settings({ }) {
         dispatcher(logout())
         navigate('/')
     }
+
+    const onChange = (checked) => {
+        if (checked) {
+            dispatcher(setTheme('dark'))
+        } else {
+            dispatcher(setTheme('light'))
+        }
+    };
 
     return (
         <div className={classes.settings}>
@@ -30,7 +41,7 @@ function Settings({ }) {
             </div>
             <div className={classes.settings_field}>
                 <h3>Темная темая</h3>
-                <Switch ></Switch>
+                <Switch onChange={onChange} checked={colorTheme === 'dark'}></Switch>
             </div>
             <div className={classes.settings_field}>
                 <h3>Выйти из аккаунта</h3>

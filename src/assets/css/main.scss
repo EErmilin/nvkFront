@@ -4,7 +4,7 @@
 
 body {
     background: var(--bg-grey, #F9F9F9);
-    color: var(--black-text, #2F2F30);
+    color: var(--black-text);
     font-feature-settings: 'clig' off, 'liga' off;
     font-style: normal;
     cursor: default;
@@ -46,7 +46,7 @@ body {
 
 
 h3 {
-    color: var(--black-text, #2F2F30);
+    color: var(--black-text);
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
@@ -55,7 +55,7 @@ h3 {
 }
 
 h2 {
-    color: var(--black-text, #2F2F30);
+    color: var(--black-text);
     font-size: 22px;
     font-weight: 700;
     line-height: 140%;
@@ -111,7 +111,7 @@ header {
     padding: 0 80px;
     width: 100%;
     border-bottom: 1px solid var(--border-grey, #EFEFF0);
-    background: var(--white, #FFF);
+    background: var(--white);
 
     @media(max-width: 1024px) {
         padding: 0 18px;
@@ -357,7 +357,7 @@ header {
 }
 
 .feed-item .info-author .author-name {
-    color: var(--black-text, #2F2F30);
+    color: var(--black-text);
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
@@ -386,7 +386,7 @@ header {
 }
 
 .feed-item .content-text {
-    color: var(--black-text, #2F2F30);
+    color: var(--black-text);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -477,7 +477,7 @@ footer {
 }
 
 .footer-contacts__data a[href^="mailto:"] {
-    color: var(--black-text, #2F2F30);
+    color: var(--black-text);
 }
 
 .footer-contacts__data a[href^="tel:"] {
@@ -514,7 +514,7 @@ footer {
 }
 
 .footer-menu a {
-    color: var(--black-text, #2F2F30);
+    color: var(--black-text);
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -560,7 +560,7 @@ footer {
 }
 
 .footer-middle__text .text {
-    color: var(--black-text, #2F2F30);
+    color: var(--black-text);
     font-size: 22px;
     font-style: normal;
     font-weight: 800;
@@ -591,6 +591,6 @@ footer {
 }
 
 .footer-down .developer a {
-    color: var(--black-text, #2F2F30);
+    color: var(--black-text);
     text-decoration: none;
 }

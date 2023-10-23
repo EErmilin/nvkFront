@@ -7,6 +7,7 @@ import ConfirmSmsCodeModal from './components/modals/ConfirmSmsCodeModal/Confirm
 import RegisterModal from './components/modals/RegisterModal/RegisterModal';
 import UserRegisterModal from './components/modals/UserRegisterModal/UserRegisterModal';
 import { VALIDATE_TOKEN } from './gql/mutation/auth/ValidateToken';
+import useTheme from './hooks/useTheme';
 import useToggleVisibility from './hooks/useToggleVisibility';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { setModalVisible } from './redux/slices/routerSlice';
@@ -26,7 +27,15 @@ function App() {
   const dispatcher = useAppDispatch()
   const url = useLocation()
   const token = useAppSelector(state => state.auth.token);
+  const colorTheme = useAppSelector(state => state.user.colorTheme);
   const [searchParams, setSearchParams] = useSearchParams();
+  const {theme, setTheme } = useTheme()
+
+
+
+  useEffect(()=>{
+    setTheme(colorTheme)
+  },[colorTheme])
 
   const update = useCallback(async () => {
     (async function () {

@@ -7,6 +7,7 @@ export interface UserTypes {
   listSearch: string[];
   hashtags: {hashtag: {name: string; id: number}}[];
   code?: string;
+  colorTheme: string;
 }
 
 export interface IUserInput {

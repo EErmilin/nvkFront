@@ -17,6 +17,7 @@ const initialState: UserTypes = {
   listSearch: [],
   hashtags: [],
   code: "",
+  colorTheme: localStorage.getItem('app-theme') || 'light',
 };
 
 const userSlice = createSlice({
@@ -25,6 +26,9 @@ const userSlice = createSlice({
   reducers: {
     setCode: (state, action) => {
       state.code = action.payload;
+    },
+    setTheme: (state, action) => {
+      state.colorTheme = action.payload;
     },
     
     setUser: (state, action) => {
@@ -142,6 +146,7 @@ const userSlice = createSlice({
 });
 
 export const {
+  setTheme,
   setCode,
   setUser,
   clearUser,

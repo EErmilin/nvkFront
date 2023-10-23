@@ -7,10 +7,10 @@
   align-items: center;
   border-radius: 25px;
   border: 1px solid var(--border-grey, #EFEFF0);
-  background: var(--bg-grey, #F9F9F9);
+  background: var(--bg-grey);
 
   &_number {
-    color: var(--black-text, #2F2F30);
+    color: var(--black-text);
     font-size: 18px;
     font-weight: 600;
     line-height: 140%;

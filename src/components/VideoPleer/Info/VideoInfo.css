@@ -33,7 +33,7 @@
     align-items: flex-start;
     gap: 10px;
     border-radius: 15px;
-    background: var(--yellow, #f6a80b);
+    background: var(--yellow);
     cursor: pointer;
   }
   

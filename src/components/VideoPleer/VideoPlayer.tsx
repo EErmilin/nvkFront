@@ -151,6 +151,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
           onPlay={onPlay}
           onPause={onPause}
           className={cls.join(" ")}
+          playsinline={true}
         />
       }
       <Controls

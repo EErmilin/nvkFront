@@ -130,8 +130,8 @@ function AudioMain() {
                 </div>
                 <div className={classes.music_field_wrp}>
                     {templatePlaylists}
+                    </div>
                 </div>
-            </div>
             <div className={classes.music_field}>
                 <div className={classes.music_field_header}>
                     <h1 className={classes.music_field_title}>Популярные альбомы</h1>

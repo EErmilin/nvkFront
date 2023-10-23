@@ -7,7 +7,7 @@
   }
 
   &_item {
-    width: 580px;
+
     position: relative;
     display: flex;
     gap: 15px;
@@ -53,6 +53,8 @@
       flex-direction: column;
       justify-content: space-between;
       &_active {
+        width: 100% !important;
+        display: flex;
         padding:0;
       }
     }

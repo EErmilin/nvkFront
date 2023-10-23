@@ -10,8 +10,6 @@ function EpisodeSlider({ episodes, setBroadcast }) {
 
     const windowSize = useWindowSize()
 
-    console.log('@@@@@@@@@@@@@@@')
-    console.log(windowSize)
 
 
     /**Инстенс свипера*/

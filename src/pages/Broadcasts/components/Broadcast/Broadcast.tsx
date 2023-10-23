@@ -49,7 +49,7 @@ export const Broadcast = ({ }) => {
             )[0];
           videoPleerRef.current?.setStream({
             url: startEpisode?.media?.indexM3u8Url ?? '',
-            hls: startEpisode?.media?.hls ?? [],
+            media: { hls: startEpisode?.media?.hls ?? []},
           });
           setDuration(startEpisode?.duration);
         })
@@ -64,15 +64,13 @@ export const Broadcast = ({ }) => {
 
     setCurrent(data)
 
-
     videoPleerRef.current?.setStream({
-      url: data?.media?.indexM3u8Url ?? '',
-      media: {hls: data?.media?.hls ?? []},
+      url: data.media?.indexM3u8Url ?? '',
+      media: {hls: data.media?.hls ?? []},
     });
     setIsPlay(true)
   }
 
-  console.log(broadcastData)
 
 
   const blocks = broadcastData.seasons && broadcastData.seasons.length && broadcastData.seasons.map((data, key) => {

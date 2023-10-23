@@ -123,10 +123,12 @@
 
     &_wrp {
       gap: 30px;
-      display: flex;
+      display: grid;
       flex-wrap: wrap;
+      grid-template-columns: repeat(6, 1fr);
 
       @media(max-width: 451px) {
+        grid-template-columns: repeat(2, 1fr);
         justify-content: center;
 
       }

@@ -19,9 +19,12 @@ type TProps = {
 export type VideoPlayerHandle = {
   setStream: React.Dispatch<React.SetStateAction<ILive | IRadio | undefined>>
   setProgramTitle: React.Dispatch<React.SetStateAction<string>>
-}
 
-const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = false, isShowBtn = true, isMain = false }: TProps, ref) => {
+
+}
+const isMobile = /iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = isMobile ? false : true, isShowBtn = true, isMain = false }: TProps, ref) => {
 
   const playerRef = useRef<ReactPlayer>(null);
   const videoPleerWraper = useRef<any>();
@@ -34,8 +37,6 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = false, isSho
   const [isPlaying, setIsPlaying] = useState(play);
   const [volume, setVolume] = useState(1);
   const [mute, setMute] = useState(false)
-
-
 
 
   const togglePlay = () => {
@@ -87,10 +88,6 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = false, isSho
   }
 
 
-
-
-
-
   if (!steam) return
   const toggleFullScreen = () => {
     setIsFull(!isFull)
@@ -132,58 +129,44 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = false, isSho
     })
 
   }
-  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-  const config = {
-    file: {
-      forceHLS: !isSafari,
-      forceVideo: true,
-      hlsVersion: '0.12.4',
-      attributes: {
-        //poster: feed && feed.actionUrl && feed.actionUrl.image,
-        disablePictureInPicture: true
-      }
-    }
-  }
-
 
 
   return (
     <>
-    <div className={clsWrapper.join(" ")}
-      ref={videoPleerWraper}>
-      {isOpenSettings ? <div className="settings">{renderQuality()}</div> :
-        <ReactPlayer
-          ref={playerRef}
-          url={video}
-          controls={false}
-          playing={isPlaying}
-          volume={volume}
-          width="100%"
-          height="100%"
-          muted={mute}
-          onPlay={onPlay}
-          onPause={onPause}
-          className={cls.join(" ")}
-          config={config}
-          
-        />
-      }
-      <Controls
-        steam={steam}
-        volume={volume}
-        isPlaying={isPlaying}
-        mute={mute}
-        togglePlay={togglePlay}
-        toggleMute={toggleMute}
-        toggleFullScreen={toggleFullScreen}
-        handleVolumeChange={setVolume}
-        toggleSettings={toggleSettings}
-      />
+      <div className={clsWrapper.join(" ")}
+        ref={videoPleerWraper}>
+        {isOpenSettings ? <div className="settings">{renderQuality()}</div> :
+          <ReactPlayer
+            ref={playerRef}
+            url={video}
+            controls={false}
+            playing={isPlaying}
+            volume={volume}
+            width="100%"
+            height="100%"
+            muted={mute}
+            onPlay={onPlay}
+            onPause={onPause}
+            className={cls.join(" ")}
 
-     
-    </div>
-     {isShowBtn && <VideoInfo streamTitle={steam?.name} programTitle={programTitle} askButtonClick={onAsk} />}
-     </>
+          />
+        }
+        <Controls
+          steam={steam}
+          volume={volume}
+          isPlaying={isPlaying}
+          mute={mute}
+          togglePlay={togglePlay}
+          toggleMute={toggleMute}
+          toggleFullScreen={toggleFullScreen}
+          handleVolumeChange={setVolume}
+          toggleSettings={toggleSettings}
+        />
+
+
+      </div>
+      {isShowBtn && <VideoInfo streamTitle={steam?.name} programTitle={programTitle} askButtonClick={onAsk} />}
+    </>
   );
 });
 

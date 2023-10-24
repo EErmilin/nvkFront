@@ -1,3 +1,5 @@
+
+
 .controls {
   position: absolute;
   width: 100%;
@@ -11,7 +13,26 @@
   transition: opacity 0.3s ease;
 }
 
+.controls_mobile {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
 .controls * {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.controls_mobile * {
   border: none;
   cursor: pointer;
   background-color: transparent;

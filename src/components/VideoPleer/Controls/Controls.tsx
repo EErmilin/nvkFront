@@ -13,8 +13,9 @@ type TProps = {
     toggleMute: () => void;
     toggleFullScreen: () => void;
     handleVolumeChange: (value: number) => void;
-
 }
+
+const isMobile = /iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 export default function Controls({steam, isPlaying, mute, volume, togglePlay, toggleSettings, toggleMute, toggleFullScreen, handleVolumeChange: handleVolumeChangeInner }: TProps) {
 
@@ -26,7 +27,7 @@ export default function Controls({steam, isPlaying, mute, volume, togglePlay, to
     const backgroundSize = `${volume * 100}% 100%`;
 
     return (
-        <div className="controls">
+        <div className={isMobile ?"controls_mobile":"controls"}>
             <div className="row gap-25">
                 <button onClick={togglePlay} >
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

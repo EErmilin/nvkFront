@@ -21,7 +21,7 @@ export type VideoPlayerHandle = {
   setProgramTitle: React.Dispatch<React.SetStateAction<string>>
 }
 
-const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShowBtn = true, isMain = false }: TProps, ref) => {
+const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = false, isShowBtn = true, isMain = false }: TProps, ref) => {
 
   const playerRef = useRef<ReactPlayer>(null);
   const videoPleerWraper = useRef<any>();
@@ -132,6 +132,18 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
     })
 
   }
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+  const config = {
+    file: {
+      forceHLS: !isSafari,
+      forceVideo: true,
+      hlsVersion: '0.12.4',
+      attributes: {
+        //poster: feed && feed.actionUrl && feed.actionUrl.image,
+        disablePictureInPicture: true
+      }
+    }
+  }
 
 
 
@@ -152,6 +164,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = true, isShow
           onPlay={onPlay}
           onPause={onPause}
           className={cls.join(" ")}
+          config={config}
           
         />
       }

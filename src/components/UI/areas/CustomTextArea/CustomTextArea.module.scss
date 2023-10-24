@@ -6,7 +6,7 @@
 
   label {
     z-index: 1;
-    color: var(--grey-text, #BBB);
+    color: var(--grey-text);
     font-size: 14px;
     font-weight: 500;
     line-height: 140%;
@@ -29,10 +29,10 @@
       font-size: 16px;
       border-radius: 15px;
       padding: 40px 20px 20px 20px;
-      background: var(--2-grey, #F8F8F8);
+      background: var(--2-grey);
       border: none;
       resize: none;
-
+      color: var( --black-text);
       &:focus {
         outline: none;
         border: none;
@@ -45,7 +45,7 @@
 
     textarea {
       border: 1px solid red;
-      background: var(--2-grey, #F8F8F8);
+      background: var(--2-grey);
       color: red;
     }
 

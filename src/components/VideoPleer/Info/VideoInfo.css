@@ -10,7 +10,7 @@
   }
   
   .stream-info .stream-title {
-    color: var(--black, #0f0a07);
+    color: var(--Black);
     font-family: Noto Sans;
     font-size: 22px;
     font-style: normal;
@@ -19,7 +19,7 @@
   }
   
   .stream-info .program-title {
-    color: var(--black, #0f0a07);
+    color: var(--Black);
     font-family: Noto Sans;
     font-size: 16px;
     font-style: normal;

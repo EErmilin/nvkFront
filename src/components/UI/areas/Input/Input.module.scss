@@ -4,14 +4,14 @@
 
   .InputWrap {
     position: relative;
-    background: var(--2-Grey, #F8F8F8);
+    background: var(--2-grey);
 
     border-radius: 15px;
   }
 
   &_label {
     position: absolute;
-    color: var(--grey-text, #BBB);
+    color: var(--grey-text);
     font-size: 14px;
     font-weight: 500;
     line-height: 140%;
@@ -53,10 +53,11 @@
     font-size: 16px;
     line-height: 140%;
     padding: 19px 20px 19px 20px;
+    color: var( --black-text);
 
 
     &::placeholder {
-      color: var(--Grey, #D0D0D0);
+      color: var(--Grey);
     }
 
     &:focus {
@@ -171,7 +172,7 @@
 }
 
 .label {
-  color: var(--black, #0F0A07);
+  color: var(--Black);
   font-size: 14px;
   font-weight: 400;
   line-height: 140%;

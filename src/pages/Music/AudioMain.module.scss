@@ -3,7 +3,7 @@
     margin-top: 30px;
     border-radius: 30px;
     border: 1px solid var(--Border-Grey, #EFEFF0);
-    background: var(--White, #FFF);
+    background: var(--white);
     min-height: 370px;
     padding: 30px;
 
@@ -31,7 +31,7 @@
       cursor: pointer;
 
       &_title {
-        color: var(--Black, #0F0A07);
+        color: var(--Black);
         font-size: 18px;
         font-weight: 600;
         line-height: 140%;
@@ -73,7 +73,7 @@
         }
 
         &_name {
-          color: var(--Grey-Text, #BBB);
+          color: var(--grey-text);
           font-size: 14px;
           font-weight: 500;
           line-height: 140%;
@@ -90,7 +90,7 @@
         }
 
         &_title {
-          color: var(--Black, #0F0A07);
+          color: var(--Black);
           font-size: 18px;
           font-weight: 600;
           line-height: 140%;
@@ -170,7 +170,7 @@
     }
 
     &_title {
-      color: var(--Black, #0F0A07);
+      color: var(--Black);
       font-size: 22px;
       font-weight: 700;
       line-height: 160%;

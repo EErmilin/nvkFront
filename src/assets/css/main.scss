@@ -208,7 +208,7 @@ header {
     width: 100%;
     border-radius: 30px;
     border: 1px solid var(--border-grey, #EFEFF0);
-    background: var(--white, #FFF);
+    background: var(--white);
     position: relative;
     padding: 30px 0;
 }
@@ -282,7 +282,7 @@ header {
 .feed-item {
     border-radius: 30px;
     border: 1px solid var(--border-grey, #EFEFF0);
-    background: var(--white, #FFF);
+    background: var(--white);
     padding: 30px;
     box-sizing: border-box;
     display: flex;
@@ -394,7 +394,7 @@ header {
 }
 
 .feed-item .content-text a {
-    color: var(--grey-text, #BBB);
+    color: var(--grey-text);
     text-decoration: none;
     font-size: 16px;
     font-style: normal;
@@ -403,7 +403,7 @@ header {
 }
 
 .feed-item .content-viewcomments {
-    color: var(--grey-text, #BBB);
+    color: var(--grey-text);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -413,11 +413,11 @@ header {
 
 .feed-item .content-viewcomments .view-text {
     text-decoration: underline;
-    color: var(--grey-text, #BBB);
+    color: var(--grey-text);
 }
 
 .feed-item .content-date {
-    color: var(--grey-text, #BBB);
+    color: var(--grey-text);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -425,7 +425,7 @@ header {
 }
 
 footer {
-    background: var(--white, #FFF);
+    background: var(--white);
     padding: 50px 0 38px;
     box-sizing: border-box;
 
@@ -548,7 +548,7 @@ footer {
 }
 
 .footer-middle__qr span {
-    color: var(--grey-text, #BBB);
+    color: var(--grey-text);
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -575,7 +575,7 @@ footer {
 .footer-down {
     display: flex;
     flex-wrap: wrap;
-    color: var(--grey-text, #BBB);
+    color: var(--grey-text);
     font-size: 16px;
     font-style: normal;
     font-weight: 500;

@@ -5,7 +5,7 @@
     gap: 10px;
     border-radius: 30px;
     border: 1px solid var(--Border-Grey, #EFEFF0);
-    background: var(--White, #FFF);
+    background: var(--white);
     cursor: pointer;
     &_img {
         max-height: 153px;
@@ -29,7 +29,7 @@
 
     &_title {
 
-        color: var(--Black, #0F0A07);
+        color: var(--Black);
         font-size: 22px;
         font-weight: 700;
         line-height: 140%;

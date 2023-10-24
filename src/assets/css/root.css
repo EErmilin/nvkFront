@@ -10,17 +10,19 @@ html[data-theme='light']{
     --grey-text:#BBB;
     --yellow-light:#FFEAC1;
     --blue:#397FEF;
+    --2-grey:#F8F8F8;
 }
 
  /*Тёмная тема*/
  html[data-theme='dark']{
-    --bg-grey:#1E1C1D;
-    --white:#FCFCFC;
-    --black-text:#0B0B0B;
-    --yellow:#F7A70A;
+    --bg-grey:#0B0B0B;
+    --white:#1E1C1D;
+    --black-text:#FFF;
+    --yellow:#F6A80B;
     --red:#FF1C45;
-    --border-grey:#EFEFF0;
-    --grey-text:#BBB;
+    --border-grey:#323232;
+    --grey-text:#B7B7B7;
     --yellow-light:#FFEAC1;
     --blue:#397FEF;
+    --2-grey:#2B2C2E;
 }

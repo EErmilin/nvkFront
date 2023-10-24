@@ -13,7 +13,7 @@
 
 
     &_text_gray {
-      color: var(--grey-text, #BBB);
+      color: var(--grey-text);
       font-size: 14px;
       font-style: normal;
       font-weight: 400;
@@ -22,7 +22,7 @@
     }
 
     &>p {
-      color: var(--black, #0F0A07);
+      color: var(--Black);
       font-size: 14px;
       font-weight: 400;
       line-height: 140%;

@@ -31,7 +31,7 @@
     gap: 20px;
     border-radius: 30px;
     border: 1px solid var(--Border-Grey, #EFEFF0);
-    background: var(--White, #FFF);
+    background: var(--white);
 
     &_header {
       display: flex;
@@ -63,7 +63,7 @@
     gap: 25px;
     border-radius: 30px;
     border: 1px solid var(--Border-Grey, #EFEFF0);
-    background: var(--White, #FFF);
+    background: var(--white);
     margin: 0 12px;
     width: 100%;
     max-width: 750px;
@@ -96,14 +96,14 @@
       display: flex;
       align-items: center;
 
-      color: var(--Black, #0F0A07);
+      color: var(--Black);
       font-size: 18px;
       font-weight: 500;
       line-height: normal;
     }
 
     &_period {
-      color: var(--Grey-Text, #BBB);
+      color: var(--grey-text);
       font-size: 16px;
       font-weight: 400;
       line-height: normal;
@@ -112,7 +112,7 @@
 
   &_period {
 
-    color: var(--Grey-Text, #BBB);
+    color: var(--grey-text);
     font-size: 16px;
     font-weight: 400;
     line-height: normal;
@@ -158,7 +158,7 @@
     height: 159px;
     padding: 30px;
     border-radius: 30px;
-    background: var(--White, #FFF);
+    background: var(--white);
     background-image: url("../../assets/img/plane-ticket.svg");
     background-repeat: no-repeat;
     background-position: right bottom;
@@ -187,7 +187,7 @@
     height: 159px;
     padding: 30px;
     border-radius: 30px;
-    background: var(--White, #FFF);
+    background: var(--white);
     background-image: url("../../assets/img/moon.svg");
     background-repeat: no-repeat;
     background-position: right bottom;

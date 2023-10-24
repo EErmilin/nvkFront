@@ -31,7 +31,7 @@ function Profile({ }) {
     const openNotificationWithIcon = (type: NotificationType) => {
         if (type === 'error') {
             return api[type]({
-                message: 'Ошибка извините',
+                message: 'Ошибка, проверьте правильность введённых данных',
             });
         }
         api[type]({
@@ -91,15 +91,18 @@ function Profile({ }) {
                     avatar_id: avatar_id,
                 }),
             );
-            if (response.data) {
-                openNotificationWithIcon('success')
-            } else {
+            console.log('error')
+            console.log(response)
+            if (response.error) {
+
                 openNotificationWithIcon('error')
+              
+            } else {
+                openNotificationWithIcon('success')
             }
 
         } catch (error) {
-            console.log('error')
-            console.log(error)
+            openNotificationWithIcon('error')
         }
 
     }

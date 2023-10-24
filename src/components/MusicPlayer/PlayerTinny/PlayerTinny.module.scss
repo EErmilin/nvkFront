@@ -203,7 +203,7 @@ cursor: pointer;
     }
 
     &_name {
-      color: var(--Grey-Text, #BBB);
+      color: var(--grey-text);
       font-size: 14px;
       font-weight: 500;
       line-height: 140%;
@@ -212,7 +212,7 @@ cursor: pointer;
 
 
     &_title {
-      color: var(--Black, #0F0A07);
+      color: var(--Black);
       font-size: 18px;
       font-weight: 600;
       line-height: 140%;

@@ -1,6 +1,7 @@
 .favorite {
   margin-top: 30px;
   max-width: 256px;
+  cursor: pointer;
 
   @media (max-width: 1009px) {
     max-width: 140px;

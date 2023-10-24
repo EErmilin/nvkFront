@@ -5,7 +5,7 @@
     flex-shrink: 0;
     border-radius: 30px;
     border: 1px solid var(--Border-Grey, #EFEFF0);
-    background: var(--White, #FFF);
+    background: var(--white);
     cursor: pointer;
     margin: auto;
     display: flex;
@@ -44,7 +44,7 @@
     }
     &_date {
         padding: 36px 20px 0 20px ;
-        color: var(--Grey-Text, #BBB);
+        color: var(--grey-text);
         font-size: 16px;
         font-style: normal;
         font-weight: 400;

@@ -3,7 +3,7 @@
   &_search {
     width: 100%;
     border-radius: 15px;
-    background: var(--2-Grey, #F8F8F8);
+    background: var(--2-Grey );
     height: 60px;
 
     &_wrp {
@@ -14,7 +14,7 @@
   &_music {
 
     &_title {
-      color: var(--Black, #0F0A07);
+      color: var(--Black);
       font-size: 18px;
       font-style: normal;
       font-weight: 700;

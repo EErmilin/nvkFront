@@ -5,7 +5,7 @@
 
   ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: var(--Grey-Text, #BBB);
+    color: var(--grey-text);
     font-size: 16px;
     font-weight: 400;
     line-height: 140%;
@@ -14,7 +14,7 @@
 
   :-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: var(--Grey-Text, #BBB);
+    color: var(--grey-text);
     font-size: 16px;
     font-weight: 400;
     line-height: 140%;
@@ -23,7 +23,7 @@
 
   ::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: var(--Grey-Text, #BBB);
+    color: var(--grey-text);
     font-size: 16px;
     font-weight: 400;
     line-height: 140%;

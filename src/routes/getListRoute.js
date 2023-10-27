@@ -17,7 +17,15 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 
 export function getListRoute(routes, url = '', ...rest) {
-    return routes.map(({ path = '', component,privateUrl, exact }, key) => {
+    return routes.map(({ path = '', component,privateUrl, exact, isAdmin }, key) => {
+        if(isAdmin){
+            return            <Route
+            path={path}
+            exact={exact}
+            element={component}
+            key={key}
+        />
+        }
         return privateUrl
             ?
             (

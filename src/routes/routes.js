@@ -19,9 +19,12 @@ import Audio from "../pages/Music/Audio";
 import AllPage from "../pages/Music/components/AllPage/AllPage";
 import Terms from "../pages/Terms/Terms";
 import Сonditions from "../pages/Сonditions/Сonditions";
-import  ListBroadcasts from "../pages/Broadcasts/ListBroadcasts";
+import ListBroadcasts from "../pages/Broadcasts/ListBroadcasts";
 import Broadcast from "../pages/Broadcasts/components/Broadcast/Broadcast";
 import Broadcasts from "../pages/Broadcasts/Broadcasts";
+import Admin from "../admin/Admin";
+import AddScreenAdmin from "../admin/components/AddScreenAdmin/AddScreenAdmin";
+import AllScreenAdmin from "../admin/components/AllScreenAdmin/AllScreenAdmin";
 
 export const routes = [
     {
@@ -50,25 +53,25 @@ export const routes = [
     },
     {
         name: 'broadcasts',
-        component: <Broadcasts  
-         routes={
-            [
-                {
-                    name: 'ListBroadcasts',
-                    privateUrl: false,
-                    component: <ListBroadcasts />,
-                    path: '',
-                    exact: false,
-                },
-                {
-                    name: 'broadcast',
-                    privateUrl: false,
-                    component: <Broadcast />,
-                    path: '/:id',
-                    exact: false,
-                },
-            ]
-        } />,
+        component: <Broadcasts
+            routes={
+                [
+                    {
+                        name: 'ListBroadcasts',
+                        privateUrl: false,
+                        component: <ListBroadcasts />,
+                        path: '',
+                        exact: false,
+                    },
+                    {
+                        name: 'broadcast',
+                        privateUrl: false,
+                        component: <Broadcast />,
+                        path: '/:id',
+                        exact: false,
+                    },
+                ]
+            } />,
         path: 'broadcasts/*',
         exact: false,
     },
@@ -232,6 +235,33 @@ export const routes = [
         component: <Horoscope />,
         path: 'horoscope',
         exact: true,
-    }
+    },
+
+    {
+        name: 'admin',
+        component: <Admin routes={
+            [
+                {
+                    name: 'films',
+                    privateUrl: true,
+                    component: <AllScreenAdmin />,
+                    path: '/:type/:subtype',
+                    exact: true,
+                },
+                {
+                    name: 'AddScreenAdmin',
+                    privateUrl: true,
+                    component: <AddScreenAdmin />,
+                    path: '/:type/:subtype/add',
+                    exact: false,
+                },
+            ]}
+        />,
+        privateUrl: false,
+        path: '/admin*',
+        isAdmin: true,
+        exact: true,
+    },
+
 
 ]

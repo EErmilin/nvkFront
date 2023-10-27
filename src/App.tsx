@@ -67,6 +67,7 @@ function App() {
   }, [dispatcher, update]);
 
   useEffect(() => {
+    console.log(url)
     if (modalVisible) {
       setIsAuthModal(true)
       dispatcher(setModalVisible(false))

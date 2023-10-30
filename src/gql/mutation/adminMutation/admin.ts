@@ -32,3 +32,31 @@ export const CREATE_MOVIE = gql`
     }
   }
 `;
+
+export const CREATE_SERIES = gql`
+  mutation CreateSeries($createSeriesInput: CreateSeriesInput!) {
+    createSeries(createSeriesInput: $createSeriesInput) {
+      id
+    }
+  }
+`;
+
+export const CREATE_SEASONS = gql`
+  mutation CreateSeriesSeason(
+    $createSeriesSeasonInput: CreateSeriesSeasonInput!
+  ) {
+    createSeriesSeason(createSeriesSeasonInput: $createSeriesSeasonInput) {
+      id
+    }
+  }
+`;
+
+export const CREATE_EPISODS = gql`
+  mutation CreateSeriesEpisode(
+    $createSeriesEpisodeInput: CreateSeriesEpisodeInput!
+  ) {
+    createSeriesEpisode(createSeriesEpisodeInput: $createSeriesEpisodeInput) {
+      id
+    }
+  }
+`;

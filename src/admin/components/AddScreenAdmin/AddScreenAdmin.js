@@ -12,7 +12,12 @@ import {
   CREATE_IMAGE,
   CREATE_MOVIE,
   CREATE_MEDIA,
+  CREATE_SERIES,
+  CREATE_SEASONS,
+  CREATE_EPISODS,
 } from "../../../gql/mutation/adminMutation/admin";
+import { useQuery } from "@apollo/client";
+import { GET_SERIALS } from "../../../gql/query/adminQuery/admin";
 
 const props = {
   name: "file",
@@ -44,7 +49,7 @@ function AddScreenAdmin({}) {
   const [movieUrl, setMovieUrl] = useState(
     "https://www.youtube.com/watch?v=3ByW1FZAEbw"
   ); //ссылка с админки на фильм
-  const [name, setname] = useState("Terminator"); // название фильма
+  const [name, setname] = useState("сериал"); // название фильма
   const [dateAge, setDateAge] = useState(2023); // тип number это год фильма не полная дата
   const [content, setContent] = useState("jjjjjjjjjjjj"); //описание фильма
   const [client, setClient] = useState(null);
@@ -69,6 +74,7 @@ function AddScreenAdmin({}) {
   // create Image | загрузка картинки нужен imageId
   const customRequest = async ({ file }) => {
     const blobUrl = URL.createObjectURL(file);
+
     try {
       let response = await client.mutate({
         mutation: CREATE_IMAGE,
@@ -121,24 +127,93 @@ function AddScreenAdmin({}) {
     // await createMedia();
 
     //после всего должно запуститься это
+    if (type === "films") {
+      try {
+        let response = await client.mutate({
+          mutation: CREATE_MOVIE,
+          variables: {
+            createMovieInput: {
+              mediaId: 4, //url фильма -- mediaId
+              imageId, //id картинки -- imageId
+              name,
+              date: dateAge,
+              content,
+              genre: "боевик",
+              age: "",
+              language: "якутия",
+              country: "Якутия",
+            },
+          },
+        });
+        console.log("create movie", response);
+      } catch (e) {
+        console.log(e);
+      }
+    } else if (type === "series") {
+      try {
+        let response = await client.mutate({
+          mutation: CREATE_SERIES,
+          variables: {
+            createSeriesInput: {
+              imageId, //id картинки -- imageId
+              name,
+              date: dateAge,
+              content,
+              genre: "боевик",
+              age: "ssss",
+              language: "якутия",
+              country: "Якутия",
+              duration: 2222, // надо создать поле
+            },
+          },
+        });
+        console.log("create series", response);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
+  //SERIES
+  //забираем сериалы отсюда можно получить id для селектов И надр вставить в селекты
+  const { data, loading, error } = useQuery(GET_SERIALS);
+  console.log(data);
+  //создает сезоны
+  const createSeason = async (event) => {
+    event.preventDefault();
     try {
       let response = await client.mutate({
-        mutation: CREATE_MOVIE,
+        mutation: CREATE_SEASONS,
         variables: {
-          createMovieInput: {
-            mediaId: 4, //url фильма -- mediaId
-            imageId, //id картинки -- imageId
-            name,
-            date: dateAge,
-            content,
-            genre: "боевик",
-            age: "",
-            language: "якутия",
-            country: "Якутия",
+          createSeriesSeasonInput: {
+            name, //из инпута
+            number: 2, //из инпута
+            seriesId: 2, //получаем из data
           },
         },
       });
-      console.log("create movie", response);
+      console.log("сезоны", response);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const createEpisode = async (event) => {
+    event.preventDefault();
+    try {
+      let response = await client.mutate({
+        mutation: CREATE_EPISODS,
+        variables: {
+          createSeriesEpisodeInput: {
+            duration: 333, //нужно поле
+            mediaId: 2, //так же работает как с фильмами нужно что бы создавалась medaiId с ссылкой
+            name: "серия 1", //имя серии
+            seriesSeasonId: 2, //id сезона можно взять из data
+            number: 1, //номер серии нужен инпут на фронте не так
+          },
+        },
+      });
+      console.log("сезоны", response);
     } catch (e) {
       console.log(e);
     }
@@ -152,7 +227,7 @@ function AddScreenAdmin({}) {
     })();
   }, []);
 
-  //   console.log(subtype);
+  console.log(subtype, type);
   const renderForm = () => {
     if (subtype === "seasons") {
       return (
@@ -163,6 +238,7 @@ function AddScreenAdmin({}) {
             {" "}
             <Select placeholder="Сериал"></Select>
           </div>
+          <button onClick={(e) => createSeason(e)}>Сохранить</button>
         </form>
       );
     }
@@ -182,14 +258,20 @@ function AddScreenAdmin({}) {
           </Dragger>
           <DatePicker onChange={onChange} placeholder={"Дата"} />
           <TextArea placeholder="Описание"></TextArea>
-          <button onClick={(e) => saveHandle(e)}>Сохранить</button>
+          <button
+            onClick={(e) =>
+              type === "series" ? createEpisode(e) : saveHandle(e)
+            }
+          >
+            Сохранить
+          </button>
         </form>
       );
     }
     return (
       <form className={classes.form}>
         <Input placeholder="Название"></Input>
-        <Dragger {...props}>
+        <Dragger customRequest={customRequest}>
           <p className="ant-upload-drag-icon">
             <InboxOutlined />
           </p>
@@ -200,6 +282,7 @@ function AddScreenAdmin({}) {
         </Dragger>
         <DatePicker onChange={onChange} placeholder={"Дата"} />
         <TextArea placeholder="Описание"></TextArea>
+        <button onClick={(e) => saveHandle(e)}>Сохранить</button>
       </form>
     );
   };

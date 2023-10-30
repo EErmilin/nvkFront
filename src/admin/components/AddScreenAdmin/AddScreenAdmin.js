@@ -11,6 +11,7 @@ import "./AddScreenAdmin.css";
 import {
   CREATE_IMAGE,
   CREATE_MOVIE,
+  CREATE_MEDIA,
 } from "../../../gql/mutation/adminMutation/admin";
 
 const props = {
@@ -39,6 +40,13 @@ const onChange = (date, dateString) => {
 
 function AddScreenAdmin({}) {
   const [imageId, setImageId] = useState(null);
+  const [mediaId, setMediaId] = useState(null);
+  const [movieUrl, setMovieUrl] = useState(
+    "https://www.youtube.com/watch?v=3ByW1FZAEbw"
+  ); //ссылка с админки на фильм
+  const [name, setname] = useState("Terminator"); // название фильма
+  const [dateAge, setDateAge] = useState(2023); // тип number это год фильма не полная дата
+  const [content, setContent] = useState("jjjjjjjjjjjj"); //описание фильма
   const [client, setClient] = useState(null);
   /** Начальные значения */
   const initialValues = {
@@ -56,10 +64,11 @@ function AddScreenAdmin({}) {
       console.log(values);
     },
   });
+  //date
+  const date = new Date().toISOString().split("T");
   // create Image | загрузка картинки нужен imageId
   const customRequest = async ({ file }) => {
     const blobUrl = URL.createObjectURL(file);
-    const date = new Date().toISOString().split("T");
     try {
       let response = await client.mutate({
         mutation: CREATE_IMAGE,
@@ -72,6 +81,7 @@ function AddScreenAdmin({}) {
           },
         },
       });
+      console.log("create imageId", response);
       if (response) {
         setImageId(response.data.createImage.id);
       }
@@ -81,32 +91,60 @@ function AddScreenAdmin({}) {
   };
 
   //todo createMedia
-  const createMedia = () => {
-    //create
-  };
-
-  //отправка на сервер должен запускаться после createImage и createMedia
-  const saveHandle = async (event) => {
-    event.preventDefault();
+  const createMedia = async () => {
     try {
       let response = await client.mutate({
-        mutation: CREATE_MOVIE,
+        mutation: CREATE_MEDIA,
         variables: {
-          createMovieInput: {
-            //mediaId, url фильма -- mediaId
-            imageId, //id картинки -- imageId
-            //name,
-            //date,
-            //content
+          createMediaInput: {
+            date: date[0],
+            indexM3u8Url: movieUrl, //ссылка url на фильм
+            name: "name", // что хочешь передай
           },
         },
       });
+      if (response) {
+        setMediaId(response.data.createMedia.id);
+      }
+      console.log("create mediaId", response);
     } catch (e) {
       console.log(e);
     }
   };
 
-  //get client
+  //отправка на сервер должен запускаться после createImage и createMedia
+  const saveHandle = async (event) => {
+    event.preventDefault();
+    //функция createImage
+    //--
+    //createMedia
+    // await createMedia();
+
+    //после всего должно запуститься это
+    try {
+      let response = await client.mutate({
+        mutation: CREATE_MOVIE,
+        variables: {
+          createMovieInput: {
+            mediaId: 4, //url фильма -- mediaId
+            imageId, //id картинки -- imageId
+            name,
+            date: dateAge,
+            content,
+            genre: "боевик",
+            age: "",
+            language: "якутия",
+            country: "Якутия",
+          },
+        },
+      });
+      console.log("create movie", response);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  //get client обновляем токен | можно передать токен в getUpdate если что
   useEffect(() => {
     (async () => {
       let getClient = await getUpdateClient();

@@ -11,6 +11,14 @@ export const CREATE_IMAGE = gql`
   }
 `;
 
+export const CREATE_MEDIA = gql`
+  mutation CreateMedia($createMediaInput: CreateMediaInput!) {
+    createMedia(createMediaInput: $createMediaInput) {
+      id
+    }
+  }
+`;
+
 export const CREATE_MOVIE = gql`
   mutation CreateMovie($createMovieInput: CreateMovieInput!) {
     createMovie(createMovieInput: $createMovieInput) {

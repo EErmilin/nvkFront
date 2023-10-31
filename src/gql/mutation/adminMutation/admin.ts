@@ -60,3 +60,30 @@ export const CREATE_EPISODS = gql`
     }
   }
 `;
+
+
+
+export const CREATE_ANIMATION = gql`
+mutation CreateAnimation($createAnimationInput: CreateAnimationInput!) {
+  createAnimation(createAnimationInput: $createAnimationInput) {
+    id
+  }
+}
+`;
+
+export const CREATE_ANIMATION_SEASONS = gql`
+mutation CreateAnimationSeason($createAnimationSeasonInput: CreateAnimationSeasonInput!) {
+  createAnimationSeason(createAnimationSeasonInput: $createAnimationSeasonInput) {
+    id
+  }
+}
+`;
+
+export const CREATE_ANIMATION_EPISODS = gql`
+mutation CreateAnimationEpisode($createAnimationEpisodeInput: CreateAnimationEpisodeInput!) {
+  createAnimationEpisode(createAnimationEpisodeInput: $createAnimationEpisodeInput) {
+    id
+  }
+}
+`;
+

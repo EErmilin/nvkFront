@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c6d672b5.css",
-    "main.js": "/static/js/main.54c364b1.js",
+    "main.css": "/static/css/main.664ec2bf.css",
+    "main.js": "/static/js/main.606a53e8.js",
     "static/js/787.ca5074de.chunk.js": "/static/js/787.ca5074de.chunk.js",
     "static/media/NotoSans-Thin.ttf": "/static/media/NotoSans-Thin.db45faa4d07846225fb9.ttf",
     "static/media/NotoSans-ExtraLight.ttf": "/static/media/NotoSans-ExtraLight.387c9cb8074a7257c4d3.ttf",
@@ -22,7 +22,7 @@
     "static/media/NotoSans-ExtraBoldItalic.ttf": "/static/media/NotoSans-ExtraBoldItalic.dedafefd8613953e59af.ttf",
     "static/media/NotoSans-BoldItalic.ttf": "/static/media/NotoSans-BoldItalic.14165947d7485ee3e22f.ttf",
     "static/media/NotoSans-SemiBoldItalic.ttf": "/static/media/NotoSans-SemiBoldItalic.bcde7938e01d834c92b4.ttf",
-    "static/media/nvk.svg": "/static/media/nvk.f66c403fc37987defcf4f743c91457db.svg",
+    "static/media/nvk.svg": "/static/media/nvk.5036cef71dd384c1709165702b997f5d.svg",
     "static/media/visa.svg": "/static/media/visa.eb4ed8187ff21a88c06d.svg",
     "static/media/mastercard.svg": "/static/media/mastercard.d7e3528e0fccaca228d1.svg",
     "static/media/calendar.svg": "/static/media/calendar.f930411cb4b2f1fa84c6.svg",
@@ -66,18 +66,18 @@
     "static/media/close-gray.svg": "/static/media/close-gray.a4d8cd136c00b0158ef3.svg",
     "static/media/points.svg": "/static/media/points.8d649b6e66692c0433ba.svg",
     "static/media/burger.svg": "/static/media/burger.d8fe54bb9626d8f97f81.svg",
-    "static/media/left.svg": "/static/media/left.8d9543671ca7f8513c0a.svg",
-    "static/media/right.svg": "/static/media/right.7afb64c18731ba1ed6a4.svg",
+    "static/media/left.svg": "/static/media/left.49c6754302730866bb50.svg",
+    "static/media/right.svg": "/static/media/right.9409ea85da1b8f82a212.svg",
     "static/media/close.svg": "/static/media/close.fb1d458129cd05716403.svg",
     "static/media/arrow.svg": "/static/media/arrow.6c2f81a80d5cb0a0bdd6.svg",
     "static/media/carousel-arrow.svg": "/static/media/carousel-arrow.10b905f94e5010a68895.svg",
-    "static/media/live.svg": "/static/media/live.f96c84aa6cf6358bc6ed.svg",
-    "main.c6d672b5.css.map": "/static/css/main.c6d672b5.css.map",
-    "main.54c364b1.js.map": "/static/js/main.54c364b1.js.map",
+    "static/media/live.svg": "/static/media/live.7efa9531c1f9a7e5dc32.svg",
+    "main.664ec2bf.css.map": "/static/css/main.664ec2bf.css.map",
+    "main.606a53e8.js.map": "/static/js/main.606a53e8.js.map",
     "787.ca5074de.chunk.js.map": "/static/js/787.ca5074de.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c6d672b5.css",
-    "static/js/main.54c364b1.js"
+    "static/css/main.664ec2bf.css",
+    "static/js/main.606a53e8.js"
   ]
 }

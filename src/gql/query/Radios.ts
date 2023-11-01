@@ -5,6 +5,7 @@ export const RADIOS = gql`
     radios {
       name
       id
+      url
       programs {
         startTime
         radioId

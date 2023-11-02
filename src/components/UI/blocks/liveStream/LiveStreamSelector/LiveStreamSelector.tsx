@@ -19,11 +19,11 @@ import { useSearchParams } from "react-router-dom";
 
 const TMP_IMAGE = (index: number) => {
   switch (index) {
-    case 5:
+    case 1:
       return nvkLogo;
-    case 7:
+    case 2:
       return mamont;
-    case 6:
+    case 3:
       return yakutia;
     default:
       return teteam;

@@ -169,7 +169,7 @@
 
   &_top {
     border-radius: 30px;
-    border: 1px solid var(--Border-Grey, #EFEFF0);
+    border: 1px solid var(--border-grey);
     background: var(--white);
     min-height: 370px;
     padding: 30px;
@@ -225,7 +225,7 @@
   &_forUser {
     margin-top: 30px;
     border-radius: 30px;
-    border: 1px solid var(--Border-Grey, #EFEFF0);
+    border: 1px solid var(--border-grey);
     background: var(--white);
     min-height: 370px;
     padding: 30px;

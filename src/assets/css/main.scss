@@ -110,7 +110,7 @@ h2 {
 header {
     padding: 0 80px;
     width: 100%;
-    border-bottom: 1px solid var(--border-grey, #EFEFF0);
+    border-bottom: 1px solid var(--border-grey);
     background: var(--white);
 
     @media(max-width: 1024px) {
@@ -207,7 +207,7 @@ header {
 .carousel-block {
     width: 100%;
     border-radius: 30px;
-    border: 1px solid var(--border-grey, #EFEFF0);
+    border: 1px solid var(--border-grey);
     background: var(--white);
     position: relative;
     padding: 30px 0;
@@ -281,7 +281,7 @@ header {
 
 .feed-item {
     border-radius: 30px;
-    border: 1px solid var(--border-grey, #EFEFF0);
+    border: 1px solid var(--border-grey);
     background: var(--white);
     padding: 30px;
     box-sizing: border-box;
@@ -524,8 +524,8 @@ footer {
 
 .footer-middle {
     padding: 50px 0;
-    border-top: 1px solid var(--border-grey, #EFEFF0);
-    border-bottom: 1px solid var(--border-grey, #EFEFF0);
+    border-top: 1px solid var(--border-grey);
+    border-bottom: 1px solid var(--border-grey);
     margin: 60px 0 38px;
     gap: 100px;
     display: flex;

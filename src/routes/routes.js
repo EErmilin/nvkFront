@@ -25,6 +25,9 @@ import Broadcasts from "../pages/Broadcasts/Broadcasts";
 import Admin from "../admin/Admin";
 import AddScreenAdmin from "../admin/components/AddScreenAdmin/AddScreenAdmin";
 import AllScreenAdmin from "../admin/components/AllScreenAdmin/AllScreenAdmin";
+import Movies from "../pages/Movie/Movies";
+import ListMovies from "../pages/Movie/ListMovies";
+import Movie from "../pages/Movie/components/Movie/Movie";
 
 export const routes = [
     {
@@ -238,6 +241,31 @@ export const routes = [
     },
 
     {
+        name: 'movies',
+        component: <Movies
+            routes={
+                [
+                    {
+                        name: 'ListMovies',
+                        privateUrl: false,
+                        component: <ListMovies />,
+                        path: '',
+                        exact: false,
+                    },
+                    {
+                        name: 'broadcast',
+                        privateUrl: false,
+                        component: <Movie />,
+                        path: '/:id',
+                        exact: false,
+                    },
+                ]
+            } />,
+        path: 'movies/*',
+        exact: false,
+    },
+
+{/*    {
         name: 'admin',
         component: <Admin routes={
             [
@@ -261,7 +289,6 @@ export const routes = [
         path: '/admin*',
         isAdmin: true,
         exact: true,
-    },
+    },*/
 
-
-]
+}]

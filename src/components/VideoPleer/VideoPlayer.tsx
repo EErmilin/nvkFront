@@ -1,6 +1,6 @@
 import React, { forwardRef, MutableRefObject, useCallback, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { useEffect } from 'react';
-import ReactPlayer from 'react-player';
+import ReactPlayer from 'react-player/lazy';
 import screenfull from 'screenfull';
 import { ILive } from '../../models/LiveStream';
 import { IRadio } from '../../models/Radio';
@@ -129,9 +129,6 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = isMobile ? f
     })
 
   }
-
-  console.log('!!!!!!!!!video')
-  console.log(video)
 
 
   return (

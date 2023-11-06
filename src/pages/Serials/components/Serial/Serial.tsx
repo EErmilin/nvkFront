@@ -55,15 +55,12 @@ export const Serial = ({ }) => {
   }
 
   useEffect(() => {
-    if(current){
       videoPleerRef.current?.setStream({
         url: current.media.indexM3u8Url ?? '',
         media: { hls: current.media?.hls ?? [] },
       });
       setIsPlay(true)
-    }
-
-  }, [isPlay, current, videoPleerRef.current])
+  }, [current])
 
   console.log(videoPleerRef)
 

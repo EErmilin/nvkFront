@@ -28,6 +28,9 @@ import AllScreenAdmin from "../admin/components/AllScreenAdmin/AllScreenAdmin";
 import Movies from "../pages/Movie/Movies";
 import ListMovies from "../pages/Movie/ListMovies";
 import Movie from "../pages/Movie/components/Movie/Movie";
+import ListSerials from "../pages/Serials/ListSerials";
+import Serials from "../pages/Serials/Serials";
+import Serial from "../pages/Serials/components/Serial/Serial";
 
 export const routes = [
     {
@@ -253,7 +256,7 @@ export const routes = [
                         exact: false,
                     },
                     {
-                        name: 'broadcast',
+                        name: 'movie',
                         privateUrl: false,
                         component: <Movie />,
                         path: '/:id',
@@ -262,6 +265,31 @@ export const routes = [
                 ]
             } />,
         path: 'movies/*',
+        exact: false,
+    },
+
+    {
+        name: 'serials',
+        component: <Serials
+            routes={
+                [
+                    {
+                        name: 'ListSerials',
+                        privateUrl: false,
+                        component: <ListSerials />,
+                        path: '',
+                        exact: false,
+                    },
+                    {
+                        name: 'serial',
+                        privateUrl: false,
+                        component: <Serial />,
+                        path: '/:id',
+                        exact: false,
+                    },
+                ]
+            } />,
+        path: 'serials/*',
         exact: false,
     },
 

@@ -130,6 +130,9 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = isMobile ? f
 
   }
 
+  console.log('!!!!!!!!!video')
+  console.log(video)
+
 
   return (
     <>

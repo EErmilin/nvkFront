@@ -1,0 +1,119 @@
+.broadcast {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+
+
+  &_img {
+    width: 100%;
+    max-width: 878px;
+    border-radius: 20px;
+    max-height: 500px;
+    object-fit: cover;
+    margin: auto;
+  }
+
+  &_seasons {
+
+    margin-top: 139px;
+
+    @media(max-width: 523px) {
+      margin-top: 50px;
+    }
+
+    &_titles {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 140%;
+    }
+
+    &_titles_wrp {
+      padding: 0 15px;
+    }
+  }
+
+  &_info {
+    margin: 0 auto;
+
+    &_block {
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-grey);
+    }
+
+    &_content {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 160%;
+    }
+
+    padding: 30px;
+    border-radius: 30px;
+    border: 1px solid var(--border-grey);
+    background: var(--white);
+    width: 100%;
+    max-width: 878px;
+    width: 100%;
+
+    @media(min-width: 1520px) {
+      max-width: 622px;
+    }
+
+
+    &_title {
+      font-size: 28px;
+
+      font-weight: 700;
+      line-height: 160%;
+    }
+  }
+}
+
+.duration {
+  display: flex;
+  color: var(--black-text);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
+  margin-top: 31px;
+
+  &>span {
+    color: var(--yellow);
+    margin: 0 10px;
+  }
+
+  &:before {
+    margin-right: 15px;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: center/cover no-repeat url("../../../../assets/img/duration.svg");
+  }
+}
+
+.language {
+  display: flex;
+  color: var(--black-text);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
+  margin-top: 21px;
+
+  &:before {
+    margin-right: 15px;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: center/cover no-repeat url("../../../../assets/img/volume.svg");
+  }
+}
+
+.age {
+  color: var(--grey-text);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 160%;
+  /* 35.2px */
+}

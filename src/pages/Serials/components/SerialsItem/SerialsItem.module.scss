@@ -1,0 +1,17 @@
+.wrapper {}
+
+.img {
+  width: 365px;
+  height: 220px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.title {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 140%;
+  cursor: pointer;
+}

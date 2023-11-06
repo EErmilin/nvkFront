@@ -21,7 +21,7 @@ function EpisodeSlider({ episodes, setBroadcast }) {
             <SwiperSlide key={id} className={classes.slide} onClick={()=>setBroadcast(elem)}>
                 <div className={classes.mask_wrp}>
                 <div className={classes.mask}>
-                <img className={classes.img} src={elem.media?.covers[0]?.url_256} />
+                <img className={classes.img} src={elem.media?.covers[0]?.url_512} />
                 </div>
                 </div>
                 <div className={classes.slide_name}>{elem.name}</div>

@@ -139,7 +139,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = isMobile ? f
           <ReactPlayer
             ref={playerRef}
             url={video}
-            controls={isMobile ? true : false}
+            controls={false}
             playing={isPlaying}
             volume={volume}
             width="100%"
@@ -151,7 +151,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = isMobile ? f
 
           />
         }
-       {! isMobile&& <Controls
+        <Controls
           steam={steam}
           volume={volume}
           isPlaying={isPlaying}
@@ -161,7 +161,7 @@ const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = isMobile ? f
           toggleFullScreen={toggleFullScreen}
           handleVolumeChange={setVolume}
           toggleSettings={toggleSettings}
-        />}
+        />
 
 
       </div>

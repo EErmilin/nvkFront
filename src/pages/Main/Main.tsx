@@ -77,7 +77,7 @@ function Main({ }) {
     return (
         <div className={classes.main}>
             <div className={classes.main_links}>
-                <div className={classes.main_links_slider}
+            <div className={classes.main_links_slider}
                 ><MainSlider/></div>
                 <div className={classes.main_links_wrp}>
                     <div className={classes.main_links_item} onClick={() => navigate("/live?id=1")}>

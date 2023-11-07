@@ -24,7 +24,7 @@ export type VideoPlayerHandle = {
 }
 const isMobile = /iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = isMobile ? false : true, isShowBtn = true, isMain = false }: TProps, ref) => {
+const VideoPlayer = forwardRef(({ steam: streamInner, onAsk, play = isMobile ? false : false, isShowBtn = true, isMain = false }: TProps, ref) => {
 
   const playerRef = useRef<ReactPlayer>(null);
   const videoPleerWraper = useRef<any>();

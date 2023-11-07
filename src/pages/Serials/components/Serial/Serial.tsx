@@ -79,7 +79,7 @@ export const Serial = ({ }) => {
   return (
     <div>
       <div className={classes.broadcast}>
-        {current ? <VideoPlayer ref={videoPleerRef}  isShowBtn={false} />: <img className={classes.broadcast_img} src={broadcastData?.image?.url_1536} />}
+        {current ? <div className={classes.broadcast_player}><VideoPlayer ref={videoPleerRef}  isShowBtn={false} play={true}/></div>: <img className={classes.broadcast_img} src={broadcastData?.image?.url_1536} />}
         <div className={classes.broadcast_info}>
           <div className={classes.broadcast_info_title}>{current?.name ?? broadcastData.name}</div>
           <span className={classes.duration}>{getTimeFromMins(broadcastData.duration)} <span>/</span> {broadcastData.genre} </span>

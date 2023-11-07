@@ -4,6 +4,12 @@
   gap: 20px;
 
 
+  &_player{
+    width: 100%;
+    max-width: 878px;
+  }
+
+
 
   &_img {
     width: 100%;
@@ -11,7 +17,7 @@
     border-radius: 20px;
     max-height: 500px;
     object-fit: cover;
-    margin: auto;
+    margin: 0 auto;
   }
 
   &_seasons {

@@ -75,6 +75,14 @@ query Series($seriesId: Int!) {
     duration
     language
     content
+    rating {
+      votes {
+        comment
+        user {
+          firstname
+        }
+      }
+    }
     seriesSeasons {
       name
       id

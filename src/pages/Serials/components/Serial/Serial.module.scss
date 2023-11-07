@@ -2,11 +2,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-
-
+  
   &_player{
     width: 100%;
     max-width: 878px;
+    margin: 0 auto;
   }
 
 
@@ -18,6 +18,9 @@
     max-height: 500px;
     object-fit: cover;
     margin: 0 auto;
+    @media(max-width: 888px) {
+      border-radius: 0;
+    }
   }
 
   &_seasons {

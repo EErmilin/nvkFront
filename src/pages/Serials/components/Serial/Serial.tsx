@@ -10,6 +10,8 @@ import TransitionContainer from "../../../../components/TransitionContainer/Tran
 import { useState } from "react";
 import EpisodeSlider from "../../../../components/UI/areas/EpisodeSlider/EpisodeSlider";
 import { CURRENT_SERIAS, SERIALS } from "../../../../gql/query/series/Series";
+import RatingNvk from "../../../../components/ratingNvk/ratingNvk";
+import CommentSlider from "../../../../components/UI/areas/CommentSlider/CommentSlider";
 
 
 export const Serial = ({ }) => {
@@ -24,7 +26,6 @@ export const Serial = ({ }) => {
   const [current, setCurrent]: any = useState(broadcastData.name)
 
   const videoPleerRef = useRef<VideoPlayerHandle>();
-
 
   React.useEffect(() => {
     (async () => {
@@ -88,7 +89,9 @@ export const Serial = ({ }) => {
             <h2 className={classes.broadcast_info_content_title}>О передаче</h2>
             <div className={classes.broadcast_info_content}>{broadcastData.content}</div>
           </div>
-          
+          <div className={classes.broadcast_info_block}>
+           <RatingNvk item={broadcastData}/>
+          </div>
         </div>
 
       </div>
@@ -100,6 +103,8 @@ export const Serial = ({ }) => {
           blocks={blocks}>
         </TransitionContainer>
       </div>}
+     {// <CommentSlider comments={broadcastData.rating}/>
+     }
     </div>
   )
 }

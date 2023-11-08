@@ -1,0 +1,137 @@
+.vote {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media(max-width: 1024px) {
+    margin: 0 10px 20px 10px;
+  }
+
+  &_form {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 750px;
+
+    @media(max-width: 1024px) {
+      margin-left: 0;
+    }
+
+    &_btn {
+      margin-top: 30px;
+      width: 209px;
+    }
+  }
+
+  &_input {
+    display: flex;
+
+    &>textarea {
+      background: var(--white) !important;
+      max-width: 750px;
+      width: 100%;
+      min-height: 219px;
+      padding: 20px;
+      align-items: flex-start;
+      flex-shrink: 0;
+      border-radius: 20px;
+    }
+
+    width: 100%;
+    vertical-align: text-top;
+  }
+
+
+}
+
+.img {
+  border-radius: 20px;
+  max-width: 237px;
+  object-fit: contain;
+
+  @media(max-width: 1024px) {
+    max-width: 100%;
+  }
+
+  &_wrp {
+    display: flex;
+
+    @media(max-width: 1024px) {
+      width: 100%;
+    }
+
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.return {
+  width: 100%;
+  background-color: transparent;
+  border-radius: 15px;
+  border: 1px solid var(--yellow, );
+  color: var(--yellow, );
+  margin-bottom: 20px;
+  filter: none;
+
+  &:hover {
+    background-color: transparent !important;
+    border-radius: 15px;
+    border: 1px solid var(--yellow);
+    color: var(--yellow) !important;
+    filter: none;
+
+  }
+
+  &:before {
+    content: '';
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+    background-image: url("../../../assets/img/btnReturn.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+.rating {
+  width: 100%;
+  max-width: 60px;
+  height: 60px;
+  font-size: 22px;
+  font-style: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  line-height: 140%;
+  border-radius: 12px;
+  background: var(--border-grey);
+  cursor: pointer;
+  transition: 0.3s;
+  &_active {
+    color: var(--white);
+    background: var(--yellow);
+  }
+
+  &:hover {
+    transition: 0.3s;
+    background: var(--yellow);
+    color: var(--white);
+  }
+
+  &_wrp {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 50px;
+  }
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 160%;
+  margin-bottom: 30px;
+}

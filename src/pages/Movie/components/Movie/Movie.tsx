@@ -10,6 +10,8 @@ import TransitionContainer from "../../../../components/TransitionContainer/Tran
 import { useState } from "react";
 import EpisodeSlider from "../../../../components/UI/areas/EpisodeSlider/EpisodeSlider";
 import { GET_MOVIE } from "../../../../gql/query/films/films";
+import RatingNvk from "../../../../components/ratingNvk/ratingNvk";
+import CommentSlider from "../../../../components/UI/areas/CommentSlider/CommentSlider";
 
 
 export const Movie = ({ }) => {
@@ -63,7 +65,6 @@ export const Movie = ({ }) => {
   console.log(movieData)
 
 
-
   return (
     <div>
       <div className={classes.broadcast}>
@@ -76,8 +77,12 @@ export const Movie = ({ }) => {
             <h2 className={classes.broadcast_info_content_title}>О фильме</h2>
             <div className={classes.broadcast_info_content}>{movieData.content}</div>
           </div>
+          <div className={classes.broadcast_info_block}>
+           <RatingNvk item={movieData}/>
+          </div>
         </div>
       </div>
+      {movieData.userVote&& <CommentSlider comments={movieData.userVote}/>}
     </div>
   )
 }

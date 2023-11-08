@@ -63,7 +63,6 @@ export const Serial = ({ }) => {
       setIsPlay(true)
   }, [current])
 
-  console.log(videoPleerRef)
 
 
   function getTimeFromMins(mins) {
@@ -93,7 +92,6 @@ export const Serial = ({ }) => {
            <RatingNvk item={broadcastData}/>
           </div>
         </div>
-
       </div>
       {blocks && <div className={classes.broadcast_seasons}>
         <TransitionContainer
@@ -103,8 +101,8 @@ export const Serial = ({ }) => {
           blocks={blocks}>
         </TransitionContainer>
       </div>}
-     {// <CommentSlider comments={broadcastData.rating}/>
-     }
+      {broadcastData.userVote&&  <CommentSlider comments={broadcastData.userVote}/>}
+     
     </div>
   )
 }

@@ -1,12 +1,14 @@
 .wrap {
-  margin-top: 30px;
+  margin-top: 120px;
   position: relative;
+
   @media(max-width: 523px) {
     margin: auto;
     margin-top: 30px;
     width: 360px;
   }
- // overflow-x: auto !important;
+
+  // overflow-x: auto !important;
 }
 
 .title {
@@ -93,8 +95,9 @@
 .swiper {
   &_navigation {
     @media(max-width: 1668px) {
-      display:none;
+      display: none;
     }
+
     position: absolute;
     top: 30%;
     left: 0px;
@@ -126,3 +129,52 @@
   }
 }
 
+.comment {
+  display: flex;
+  max-width: 365px;
+  position: relative;
+
+  &_info {
+    margin-bottom: 20px;
+  }
+
+  &_date {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: var(--grey-text);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    /* 19.6px */
+  }
+
+  height: 244px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 20px;
+  background: var(--white);
+
+  &_text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-height: 160%;
+    /* 25.6px */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-word;
+  }
+
+  &_avatar {
+
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    background-color: lightgrey;
+  }
+
+  /* аа */
+  box-shadow: 4px 4px 28px 15px rgba(51, 41, 31, 0.02);
+}

@@ -31,6 +31,7 @@ import Movie from "../pages/Movie/components/Movie/Movie";
 import ListSerials from "../pages/Serials/ListSerials";
 import Serials from "../pages/Serials/Serials";
 import Serial from "../pages/Serials/components/Serial/Serial";
+import Vote from "../pages/Auth/Vote/Vote";
 
 export const routes = [
     {
@@ -262,6 +263,13 @@ export const routes = [
                         path: '/:id',
                         exact: false,
                     },
+                    {
+                        name: 'vote',
+                        privateUrl: true,
+                        component: <Vote />,
+                        path: '/:id/vote',
+                        exact: false,
+                    },
                 ]
             } />,
         path: 'movies/*',
@@ -285,6 +293,13 @@ export const routes = [
                         privateUrl: false,
                         component: <Serial />,
                         path: '/:id',
+                        exact: false,
+                    },
+                    {
+                        name: 'vote',
+                        privateUrl: true,
+                        component: <Vote />,
+                        path: '/:id/vote',
                         exact: false,
                     },
                 ]

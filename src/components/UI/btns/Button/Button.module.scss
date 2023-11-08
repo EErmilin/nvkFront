@@ -8,10 +8,12 @@
   letter-spacing: 1px;
 
   &:hover {
-    color: white !important;
+    color: var(--white) !important;
+    background: var(--yellow) !important;
+    border: 1px solid var(--yellow) !important;
   }
 
-  color: var(--white, #FFF);
+  color: var(--white);
   font-size: 16px;
   font-weight: 600;
   line-height: 140%;
@@ -19,7 +21,6 @@
   padding: 19px 45px;
   justify-content: center;
   align-items: center;
-  filter: drop-shadow(1px 1px 2px #F6A80B);
 
   &_disabled {
     letter-spacing: 1px;

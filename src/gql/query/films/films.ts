@@ -25,6 +25,23 @@ query Movies($take: Int) {
 export const GET_MOVIE = gql`
 query Movie($movieId: Int!) {
   movie(id: $movieId) {
+    userVote {
+      comment
+      vote
+      id
+      user {
+        avatar {
+          url
+          url_64
+          url_128
+          url_256
+        }
+        firstname
+        lastname
+      }
+      createdAt
+      updatedAt
+    }
     name
     content
     media {

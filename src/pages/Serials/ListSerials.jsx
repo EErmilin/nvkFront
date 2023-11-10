@@ -3,6 +3,8 @@ import classes from "./ListSerials.module.scss";
 import SerialsItem from "./components/SerialsItem/SerialsItem";
 import { useQuery } from "@apollo/client";
 import { SERIALS } from "../../gql/query/series/Series";
+import Filter from "../../components/Filter/Filter";
+import { Spin } from "antd";
 
 export const ListSerials = () => {
 
@@ -19,9 +21,13 @@ export const ListSerials = () => {
 
 
   return (
-    <div className={classes.wrapper}>
-      {templateMovies}
-    </div>
+    <>
+      <Filter title={"Сериалы смотреть онлайн"} />
+      <div className={classes.wrapper}>
+
+        {!data ? <Spin size="large" /> : templateMovies}
+      </div>
+    </>
   )
 }
 

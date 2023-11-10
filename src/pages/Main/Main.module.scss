@@ -97,7 +97,10 @@
   &_videos {
     &_wrp {
       display: flex;
-    //  flex-wrap: wrap;
+      flex-wrap: wrap;
+
+
+    margin: auto;
     @media(max-width: 767px) {
       padding: 0 10px;
     }

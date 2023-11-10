@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { MovieItem } from "./components/MovieItem/MovieItem";
 import { GET_MOVIES } from "../../gql/query/films/films";
 import { useQuery } from "@apollo/client";
+import Filter from "../../components/Filter/Filter";
+import { Spin } from "antd";
 
 export const ListMovies = () => {
 
@@ -22,10 +24,12 @@ export const ListMovies = () => {
 
 
   return (
-    <div className={classes.wrapper}>
-      {templateMovies}
-
-    </div>
+    <>
+      <Filter title={"Фильмы смотреть онлайн"} />
+      <div className={classes.wrapper}>
+        {!data ? <Spin size="large" /> : templateMovies}
+      </div>
+    </>
   )
 }
 

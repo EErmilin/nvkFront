@@ -94,23 +94,24 @@ function Main({ }) {
                     </div>
                 </div>
             </div>
-{/*            <div className={classes.main_videos}>
+           <div className={classes.main_videos}>
                 <h1 className={classes.main_title}>Видео</h1>
                 <div className={classes.main_videos_wrp}>
-                    <div className={classes.main_videos_item}>
+                    <div className={classes.main_videos_item} onClick={() => navigate("/serials")}>
                         <SeriesButton style={{ height: 199 }} />
                     </div>
-                    <div className={classes.main_videos_item}>
+                    <div className={classes.main_videos_item} onClick={() => navigate("/movies")}>
                         <FilmsButton />
                     </div>
                     <div className={classes.main_videos_item} onClick={() => navigate("/live")}>
                         <ShowsButton />
                     </div>
-                    <div className={classes.main_videos_item}>
-                        <CartoonsButton />
-                    </div>
+                   {// <div className={classes.main_videos_item}>
+                    //    <CartoonsButton />
+                    //</div>
+                }
                 </div>
-    </div>*/}
+    </div>
             <div className={classes.main_musics}>
                 <h1 className={classes.main_title}>Музыка</h1>
                 <div className={classes.main_videos_wrp}>

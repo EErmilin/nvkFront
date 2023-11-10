@@ -101,8 +101,7 @@ export const Serial = ({ }) => {
           blocks={blocks}>
         </TransitionContainer>
       </div>}
-      {broadcastData.userVote&&  <CommentSlider comments={broadcastData.userVote}/>}
-     
+      {broadcastData.userVote&&broadcastData.userVote.length? <CommentSlider comments={broadcastData.userVote}/>: null}     
     </div>
   )
 }

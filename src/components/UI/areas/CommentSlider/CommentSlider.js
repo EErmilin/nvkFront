@@ -12,13 +12,12 @@ function CommentSlider({ comments }) {
     const windowSize = useWindowSize()
 
 
-
+console.log('@@@@@@@@@')
+console.log(comments)
     /**Инстенс свипера*/
     const swiperRef = useRef();
 
     const listComments = comments.map((elem, id) => {
-        console.log('!!!!!!!!!!!')
-        console.log(elem)
         return (
             <SwiperSlide>
                 <div className={classes.comment}>

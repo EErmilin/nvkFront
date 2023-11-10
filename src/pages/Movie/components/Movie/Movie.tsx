@@ -82,7 +82,7 @@ export const Movie = ({ }) => {
           </div>
         </div>
       </div>
-      {movieData.userVote&& <CommentSlider comments={movieData.userVote}/>}
+      {movieData.userVote&&movieData.userVote.length? <CommentSlider comments={movieData.userVote}/>: null}
     </div>
   )
 }

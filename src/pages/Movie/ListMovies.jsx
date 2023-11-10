@@ -25,7 +25,7 @@ export const ListMovies = () => {
 
   return (
     <>
-      <Filter title={"Фильмы смотреть онлайн"} />
+      <Filter title={"Фильмы смотреть онлайн"} type={"MOVIE"}/>
       <div className={classes.wrapper}>
         {!data ? <Spin size="large" /> : templateMovies}
       </div>

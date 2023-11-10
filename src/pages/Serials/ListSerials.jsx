@@ -22,7 +22,7 @@ export const ListSerials = () => {
 
   return (
     <>
-      <Filter title={"Сериалы смотреть онлайн"} />
+      <Filter title={"Сериалы смотреть онлайн"} type={'SERIES'}/>
       <div className={classes.wrapper}>
 
         {!data ? <Spin size="large" /> : templateMovies}

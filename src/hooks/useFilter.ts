@@ -3,7 +3,8 @@ import {FilterType, MainFilter} from '../gql/query/filters/filters';
 import {useAppSelector} from '../redux/hooks';
 
 export function useFilter(filters) {
-
+console.log('@@@@@@@@@@')
+console.log(filters)
   return useMemo<MainFilter | null>(() => {
 
     const mainFilter: MainFilter = {

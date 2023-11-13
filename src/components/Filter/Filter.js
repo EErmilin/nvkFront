@@ -23,11 +23,11 @@ export default function Filter({ title, type, setFilters, setSort }) {
         (_, index) => { return { label: 2010 + index, value: 2010 + index } },
     );
     const ageOptions = [
-        { value: 0, label: "0+" },
-        { value: 6, label: "6+" },
-        { value: 12, label: "12+" },
-        { value: 16, label: "16+" },
-        { value: 19, label: "19+" }
+        { value: "0", label: "0+" },
+        { value: "6", label: "6+" },
+        { value: "12", label: "12+" },
+        { value: "16", label: "16+" },
+        { value: "19", label: "19+" }
     ]
 
     const initialValues = {
@@ -132,7 +132,7 @@ export default function Filter({ title, type, setFilters, setSort }) {
                 <Select className={classes.filter_select}
                     value={values.year}
                     onSelect={(value, e) => {
-                        return ClearErrorAndChange("year", value)
+                        return ClearErrorAndChange("year", [value])
                     }}
                     showSearch placeholder={"Годы"}
                     options={yearsArray} />

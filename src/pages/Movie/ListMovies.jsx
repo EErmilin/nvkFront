@@ -49,7 +49,7 @@ export const ListMovies = () => {
     } finally {
       setIsLoading(false)
     }
-  }, [dispatcher, mainFilter]);
+  }, [dispatcher, mainFilter, orderBy]);
 
   React.useEffect(() => {
     (async () => {

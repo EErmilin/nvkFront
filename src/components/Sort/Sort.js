@@ -5,16 +5,17 @@ import { getUpdateClient } from '../../requests/updateHeaders';
 import classes from './Sort.module.scss'
 
 const options = [
-    { label: "По обновлению", value: 0 },
-    { label: "По новизне", value: 1 },
-    { label: "По просмотрам", value: 2 },
-    { label: "По Кинопоиску", value: 3 },
+    { label: "По обновлению", value: "UPDATES" },
+    { label: "По новизне", value: "NEW" },
+    { label: "По просмотрам", value: "VIEWS" },
+    { label: "По Кинопоиску", value: "KINOPOISK" },
 ]
 
-export default function Sort() {
+export default function Sort({setSort, sort}) {
+    if(!setSort)return
     return (
         <div className={classes.sort}>
-            <Select className={classes.sort_select} showSearch placeholder={"Сортировать"} options={options} />
+            <Select className={classes.sort_select} showSearch placeholder={"Сортировать"} options={options} onChange={(value)=>setSort(value)} value={sort}/>
         </div>
     )
 }

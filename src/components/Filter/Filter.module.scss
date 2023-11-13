@@ -75,3 +75,21 @@
     /* 28.8px */
   }
 }
+
+.clear {
+  margin-top: 25px;
+  color: var(--Grey-Text, #BBB);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  &:before {
+    margin-right: 10px;
+    content: '';
+    width: 32px;
+    height: 32px;
+    background: center/cover no-repeat url("../../assets/img/clear.svg");
+  }
+}

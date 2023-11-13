@@ -1,9 +1,15 @@
 import { gql } from '@apollo/client';
 
 export const SERIALS = gql`
-  query Serials($take: Int, $orderBy: SeriesOrderByWithRelationInput) {
-    serials(take: $take, orderBy: $orderBy) {
+  query Serials(
+    $take: Int
+    $orderBy: SeriesOrderByWithRelationInput
+    $search: String
+    $where: SeriesWhereInput
+  ) {
+    serials(take: $take, orderBy: $orderBy, search: $search, where: $where) {
       age
+      content
       createdAt
       country
       date

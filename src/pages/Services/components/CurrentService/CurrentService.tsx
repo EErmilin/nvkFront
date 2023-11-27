@@ -56,7 +56,7 @@ function CurrentService({ }: any) {
     return (
         <div className={classes.service}>
              <div className={classes.service_item_img}>
-              <img src={data?.images[0].url_1536} className={classes.service_item_img}/>
+              <img src={data?.images[0]?.url_1536} className={classes.service_item_img}/>
               </div>
             <div className={classes.service_item}>
             <div className={classes.service_item_title}>  {data?.name} </div>

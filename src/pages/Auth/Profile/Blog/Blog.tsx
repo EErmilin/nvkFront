@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import { object } from 'yup';
 import CustomTextArea from '../../../../components/UI/areas/CustomTextArea/CustomTextArea';
 import Input from '../../../../components/UI/areas/Input/Input';
+import ButtonDefault from '../../../../components/UI/btns/Button/Button';
 import classes from "./Blog.module.scss";
 
 function Blog({ }) {
@@ -61,6 +62,8 @@ function Blog({ }) {
                     <div className={classes.blog_sites_item}><Input value={values.nik} labelInput={"Ссылка"}></Input> <div className={classes.blog_sites_icon} /></div>
                 </div>
             </div>
+
+            <ButtonDefault title='Отправить заявку' className={classes.btn}/>
         </div>
     )
 }

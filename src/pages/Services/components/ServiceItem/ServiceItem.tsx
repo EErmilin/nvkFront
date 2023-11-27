@@ -22,7 +22,7 @@ function ServiceItem({ crildren, service, type }: any) {
             <div className={classes.item_text}>
                 {service.preview}
             </div>
-                <img src={service.images[0].url_1536} className={classes.item_img}/>
+                <img src={service?.images[0]?.url_1536} className={classes.item_img}/>
             {crildren}
         </div>
     )

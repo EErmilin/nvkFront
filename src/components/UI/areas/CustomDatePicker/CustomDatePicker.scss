@@ -5,7 +5,7 @@
 
   ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: var(--grey-text);
+    color: var(--black-text);
     font-size: 16px;
     font-weight: 400;
     line-height: 140%;
@@ -48,7 +48,13 @@
     line-height: 140%;
     cursor: pointer;
 
-
+    &.invalid {
+      color: #FF1C45;
+      border: 1px solid #FF1C45;
+      &::placeholder {
+        color: #FF1C45;
+      }
+    }
   }
 
   &::before {

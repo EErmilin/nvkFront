@@ -34,6 +34,7 @@ function Input({
     errorMessage,
     touched,
     required,
+    onBlur,
 }: any) {
 
     /** Состояние для показа пороля */
@@ -96,6 +97,7 @@ function Input({
         onChange={onChange}        
         required={required}
         multiple={multiple}        
+        onBlur={onBlur}
     />
 
     return (

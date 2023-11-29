@@ -32,12 +32,19 @@ import ListSerials from "../pages/Serials/ListSerials";
 import Serials from "../pages/Serials/Serials";
 import Serial from "../pages/Serials/components/Serial/Serial";
 import Vote from "../pages/Auth/Vote/Vote";
+import BloggerPage from "../pages/BloggerPage/BloggerPage";
 
 export const routes = [
     {
         name: 'main',
         component: <Main />,
         path: '',
+        exact: true,
+    },
+    {
+        name: 'blog',
+        component: <BloggerPage />,
+        path: '/blog/:id',
         exact: true,
     },
     {

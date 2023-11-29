@@ -9,12 +9,13 @@ interface WrapperComponentProps {
 }
 function WrapperComponent({ children }: WrapperComponentProps) {
 
-  const url = useLocation()
+    const url = useLocation()
 
-  const cls = ["container style__flexbox style__flexdirection-column"]
-  if(url.pathname === "/horoscope"){
-    cls.push("horoscope")
-  }
+    const cls = ["container style__flexbox style__flexdirection-column"]
+    if (url.pathname === "/horoscope") {
+        cls.push("horoscope")
+    }
+    
     return (
         <>
             <Header />
@@ -24,6 +25,6 @@ function WrapperComponent({ children }: WrapperComponentProps) {
             <Footer />
         </>
     )
-} 
+}
 
 export default WrapperComponent;

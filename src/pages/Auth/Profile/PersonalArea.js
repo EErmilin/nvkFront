@@ -8,6 +8,7 @@ function PersonalArea({ routes }) {
     const navigate = useNavigate()
     const urlParams = useParams()
 
+
     useEffect(() => {
         if (!urlParams['*'].length) {
             navigate("profile")

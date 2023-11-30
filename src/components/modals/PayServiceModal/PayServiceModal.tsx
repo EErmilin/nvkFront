@@ -204,6 +204,7 @@ const PayServiceModal = ({
               <FileInput
                 accept=".png, .jpg, .jpeg"
                 multiple
+                defaultFiles={values.files}
                 onChange={(e) =>
                   setFieldValue("files", Array.from(e.target.files || []))
                 }

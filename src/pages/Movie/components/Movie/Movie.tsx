@@ -36,36 +36,13 @@ export const Movie = ({}) => {
         })
         .then((res) => {
           setMovieData(res.data.movie);
+          setAccess(res.data.movieAccess);
         })
         .catch((e) => {
           console.log(JSON.stringify(e, null, 2));
         });
     })();
   }, []);
-
-  const [getMediaAccess] = useLazyQuery<
-    { mediaAccess: boolean },
-    { mediaId: number; userId: number }
-  >(GET_MEDIA_ACCESS);
-
-  useEffect(() => {
-    if (!movieData) return;
-
-    if (!movieData.media?.price) {
-      setAccess(true);
-    } else if (user) {
-      getMediaAccess({
-        variables: {
-          mediaId: movieData.media.id,
-          userId: user.id,
-        },
-      }).then(({ data }) => {
-        if (data?.mediaAccess) {
-          setAccess(true);
-        }
-      });
-    }
-  }, [movieData, user]);
 
   useEffect(() => {
     if (access && movieData && videoPleerRef.current) {
@@ -94,7 +71,7 @@ export const Movie = ({}) => {
       method: "POST",
       body: JSON.stringify({
         userId: user.id,
-        mediaId: movieData.media.id,
+        movieId: movieData.id,
         redirectUrl: window.location.href,
       }),
       headers: {
@@ -126,7 +103,7 @@ export const Movie = ({}) => {
             >
               {!access && (
                 <ButtonDefault
-                  title={`Смотреть за ${movieData.media.price}₽`}
+                  title={`Смотреть за ${movieData.price}₽`}
                   onClick={pay}
                 />
               )}

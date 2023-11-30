@@ -10,7 +10,7 @@ export const GET_MOVIES = gql`
     movies(take: $take, search: $search, where: $where, orderBy: $orderBy) {
       id
       name
-
+      price
       image {
         url
       }
@@ -22,9 +22,6 @@ export const GET_MOVIES = gql`
         animationId
         movieId
         seriesId
-      }
-      media {
-        id
       }
     }
   }
@@ -53,9 +50,9 @@ export const GET_MOVIE = gql`
       }
       name
       content
+      price
       media {
         id
-        price
         indexM3u8Url
         hls {
           m3u8Url
@@ -74,5 +71,6 @@ export const GET_MOVIE = gql`
         url_1536
       }
     }
+    movieAccess(movieId: $movieId)
   }
 `;

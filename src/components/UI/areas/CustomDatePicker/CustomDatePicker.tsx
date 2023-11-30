@@ -17,7 +17,7 @@ const CustomDatePicker = ({
   errorMessage,
   ...props
 }: any) => {
-  const [isPlaceHolder, setIsPlaceHolder] = useState(true);
+  const [isPlaceHolder, setIsPlaceHolder] = useState(!value);
   /** Формируем cтили обертки */
   const cls = [classes.CustomDatePicker];
   if (className) {

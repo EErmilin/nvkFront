@@ -1,4 +1,4 @@
-import {gql} from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const SERVICES = gql`
   query Services {
@@ -8,6 +8,10 @@ export const SERVICES = gql`
       preview
       createdAt
       price
+      freeWords
+      wordPrice
+      freeImages
+      imagePrice
     }
   }
 `;
@@ -21,6 +25,10 @@ export const SERVICE = gql`
       price
       url
       link_text
+      freeWords
+      wordPrice
+      freeImages
+      imagePrice
       images {
         id
         url_64

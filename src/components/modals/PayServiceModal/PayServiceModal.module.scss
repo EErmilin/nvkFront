@@ -79,6 +79,7 @@
     border-bottom: 1px solid #EFEFF0;
     padding-bottom: 20px;
     margin-bottom: 30px;
+    align-items: center;
 
     &_btn_return {
       display: flex;
@@ -87,6 +88,9 @@
       font-size: 16px;
       font-weight: 600;
       line-height: 140%;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
 
       &:before {
         content: '';
@@ -117,4 +121,16 @@
   background-color: #EFEFF0;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.content {
+  width: 100%;
+  &_label {
+    font-size: 14px;
+    margin-bottom: 15px;
+    > span {
+      color: var(--yellow);
+      font-weight: 500;
+      font-size: 16px;
+    }
+  }
 }

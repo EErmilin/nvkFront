@@ -6,6 +6,10 @@ export interface IService {
   url: string;
   link_text: string;
   images: IImage[];
+  freeWords?: number;
+  wordPrice?: number;
+  freeImages?: number;
+  imagePrice?: number;
 }
 
 export interface IServicePreview {

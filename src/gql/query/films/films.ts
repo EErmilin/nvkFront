@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_MOVIES = gql`
   query Movies(
@@ -10,7 +10,7 @@ export const GET_MOVIES = gql`
     movies(take: $take, search: $search, where: $where, orderBy: $orderBy) {
       id
       name
-
+      price
       image {
         url
       }
@@ -28,42 +28,49 @@ export const GET_MOVIES = gql`
 `;
 
 export const GET_MOVIE = gql`
-query Movie($movieId: Int!) {
-  movie(id: $movieId) {
-    userVote {
-      comment
-      vote
+  query Movie($movieId: Int!) {
+    movie(id: $movieId) {
       id
-      user {
-        avatar {
-          url
-          url_64
-          url_128
-          url_256
+      userVote {
+        comment
+        vote
+        id
+        user {
+          avatar {
+            url
+            url_64
+            url_128
+            url_256
+          }
+          firstname
+          lastname
         }
-        firstname
-        lastname
+        createdAt
+        updatedAt
       }
-      createdAt
-      updatedAt
-    }
-    name
-    content
-    media {
-      indexM3u8Url
-      hls {
-        m3u8Url
+      name
+      content
+      price
+      media {
+        id
+        indexM3u8Url
+        hls {
+          m3u8Url
+        }
+      }
+      kinoPoisk_url
+      kinoPoisk
+      age
+      language
+      country
+      date
+      genre
+      duration
+      views
+      image {
+        url_1536
       }
     }
-    kinoPoisk_url
-    kinoPoisk
-    age
-    language
-    country
-    date
-    genre
-    duration
-    views
+    movieAccess(movieId: $movieId)
   }
-}
 `;

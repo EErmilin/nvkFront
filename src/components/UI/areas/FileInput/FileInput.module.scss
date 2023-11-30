@@ -1,0 +1,42 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    position: relative;
+    color: var(--black-text);
+    width: 100%;
+}
+
+.btn {
+    background-color: var(--2-grey);
+    padding: 18px 20px;
+    border-radius: 15px;
+    display: flex;
+    cursor: pointer;
+    border: none;
+    align-items: center;
+    white-space: nowrap;
+    svg {
+        margin-left: 10px;
+    }
+}
+.input {
+    position: absolute;
+    height: 0px;
+    width: 0px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+.file {
+    flex: 1;
+    padding: 0 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &_empty  {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

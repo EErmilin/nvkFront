@@ -6,6 +6,8 @@
   flex-shrink: 0;
   border-radius: 20px;
   cursor: pointer;
+  object-fit: cover;
+  object-position: center;
 }
 
 .title {

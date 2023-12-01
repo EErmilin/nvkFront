@@ -46,7 +46,7 @@ export const Movie = ({}) => {
           console.log(JSON.stringify(e, null, 2));
         });
     })();
-  }, []);
+  }, [, user]);
 
   useEffect(() => {
     if (access && movieData && videoPleerRef.current) {

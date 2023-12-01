@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import { Spin } from "antd";
 import useToggleVisibility from "../../hooks/useToggleVisibility";
 import PostModal from "../../components/modals/PostModal/PostModal";
+import AddPostModal from "../../components/modals/AddPostModal/AddPostModal";
 
 
 
@@ -33,7 +34,7 @@ function BloggerPage({ }) {
   const dispatcher = useAppDispatch()
   const userId = useAppSelector(state => state.user.data?.id);
   const authorData = useAppSelector(state => state.screens.authorData);
-
+  const [postModal, setPostModal, closePostModal] = useToggleVisibility(false);
 
   useEffect(() => {
     dispatcher(getAuthor({ id: Number(id), userId: userId })).then(e => { // переписать на useQwery
@@ -60,17 +61,29 @@ function BloggerPage({ }) {
     //    block: <div></div>
     //  },
   ]
+
+
+  const templatePostModal = postModal &&
+    <AddPostModal
+      closeModal={closePostModal}
+      btnCancelClick={() => setPostModal(false)}
+    />
+
   return (
     <div className={classes.wrp}>
+      {templatePostModal}
       <div className={classes.header}>
         <Avatar
           width={150}
           height={150}
-          avatar={null}
+          avatar={authorData?.author?.user?.avatar?.url}
           className={classes.avatar}
         ></Avatar>
-        <div className={classes.info}>
-          <h1>{authorData.author.nickname}</h1>
+        <div className={classes.header_top_wrp}>
+          <div className={classes.header_top}>
+            <h1>{authorData.author.nickname}</h1>
+            <div><div onClick={()=>setPostModal(true)}>Добавить пост</div></div>
+          </div>
           <div className={classes.counter_wrp}>
             <span className={classes.counter}><span className={classes.counter_value}>{authorData.authorAggregate.postsCount}</span>Публикации</span>
             <span className={classes.counter}><span className={classes.counter_value}>{authorData.authorAggregate.followsCount}</span>Подписчиков</span>

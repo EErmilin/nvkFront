@@ -1,0 +1,15 @@
+.modal {
+  padding: 20px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  border-radius: 30px;
+&_area{
+  height: 300px;
+  textarea{
+    height: 300px;
+  }
+}
+
+}

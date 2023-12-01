@@ -1,4 +1,4 @@
-import {gql} from '@apollo/client';
+import { gql } from '@apollo/client';
 
 export const AUTHOR = gql`
   query GetAuthor($id: Int!, $userId: Int) {
@@ -15,6 +15,11 @@ export const AUTHOR = gql`
       nickname
       avatar {
         url: url_512
+      }
+      user{
+      avatar{
+      url
+      }
       }
       description
       vk

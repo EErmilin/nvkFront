@@ -36,7 +36,11 @@ export const Movie = ({}) => {
         })
         .then((res) => {
           setMovieData(res.data.movie);
-          setAccess(res.data.movieAccess);
+          if (res.data.movie?.price) {
+            setAccess(!!res.data.movieAccess);
+          } else {
+            setAccess(true);
+          }
         })
         .catch((e) => {
           console.log(JSON.stringify(e, null, 2));

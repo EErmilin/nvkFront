@@ -96,7 +96,7 @@ function Profile({ }) {
             if (response.error) {
 
                 openNotificationWithIcon('error')
-              
+
             } else {
                 openNotificationWithIcon('success')
             }
@@ -150,7 +150,6 @@ function Profile({ }) {
                         <div className={classes.user_name}>{userData?.firstname} {userData?.lastname}</div>
                         <div onClick={() => toggleModal(true)}> <div className={classes.user_link}>Изменить фото профиля</div></div>
                     </div>
-
                 </div>
                 <div className={classes.info}>
                     <Input

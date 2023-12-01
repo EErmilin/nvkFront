@@ -19,6 +19,7 @@ function TransitionContainer({
     currentBlock = 0,
     withTitleBorder,
     classNameBody,
+    isTopLine = false,
 }: any) {
     const currentTitle: any = useRef()
     const [searchParams, setSearchParams] = useSearchParams();
@@ -48,23 +49,22 @@ function TransitionContainer({
 
 
     /** Стили заголовков */
-    const clsTitle = [classes.title]
+    const clsTitle = [isTopLine ?classes.titleTop : classes.title]
     if (classNameTitle) clsTitle.push(classNameTitle)
 
     const slideBlock = (event: any, id: any) => {
         setActiveBlock(id)
-        currentTitle.current.classList.remove(classes.title_active)
+        currentTitle.current.classList.remove(isTopLine ?classes.titleTop_active:classes.title_active)
         setCurrentBody(blocks[id].block)
         currentTitle.current = event.target
-        currentTitle.current.classList.add(classes.title_active)
+        currentTitle.current.classList.add(isTopLine ?classes.titleTop_active : classes.title_active)
 
     }
 
     const templateBlocksTitle = blocks.map((elem: any, id: any) => {
         const className = [...clsTitle]
-
         if (activeBlock == id) {
-            className.push(classes.title_active)
+            className.push(isTopLine ?classes.titleTop_active : classes.title_active)
         }
         return (
             <div
@@ -77,7 +77,6 @@ function TransitionContainer({
             </div>
         )
     })
-
 
 
     return (

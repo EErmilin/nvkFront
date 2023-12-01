@@ -1,7 +1,7 @@
 .modal {
   width: 100%;
   padding-bottom: 50px;
-  border-bottom: 1px solid #EFEFF0;
+  border-bottom: 1px solid var(--border-grey);;
 
   &_form {
     display: flex;
@@ -67,7 +67,7 @@
     font-size: 22px;
     font-weight: 700;
     line-height: 160%;
-    border-bottom: 1px solid #EFEFF0;
+    border-bottom: 1px solid var(--border-grey);;
     padding-bottom: 20px;
     margin-bottom: 30px;
 

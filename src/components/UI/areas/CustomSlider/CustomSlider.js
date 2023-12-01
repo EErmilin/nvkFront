@@ -36,13 +36,14 @@ SwiperCore.use([
   Pagination,
 ]);
 
-const Slider = ({ children }) => {
+const Slider = ({ children, className, isShowBtns = true }) => {
 
-      /**Инстенс свипера*/
-      const swiperRef = useRef();
+  /**Инстенс свипера*/
+  const swiperRef = useRef();
 
-      /**Стили*/
-      const cls = [classes.swiper]
+  /**Стили*/
+  const cls = [classes.swiper]
+  if (className) cls.push(className)
   return (
     <div className={classes.swiper}>
       <Swiper
@@ -57,14 +58,14 @@ const Slider = ({ children }) => {
       >
         {children}
       </Swiper>
-      <div className={classes.swiper_navigation}>
-                <div onClick={() => swiperRef.current?.slidePrev()}>
-                    <NavigationBtn type="prev" />
-                </div>
-                <div onClick={() => swiperRef.current?.slideNext()}>
-                    <NavigationBtn type="next" />
-                </div>
-            </div>
+      {isShowBtns && <div className={classes.swiper_navigation}>
+        <div onClick={() => swiperRef.current?.slidePrev()}>
+          <NavigationBtn type="prev" />
+        </div>
+        <div onClick={() => swiperRef.current?.slideNext()}>
+          <NavigationBtn type="next" />
+        </div>
+      </div>}
     </div>
   );
 };

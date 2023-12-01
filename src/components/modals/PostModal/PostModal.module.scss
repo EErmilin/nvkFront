@@ -1,0 +1,37 @@
+.modal {
+  padding: 0;
+  border: none;
+  display: flex;
+  border-radius: 30px;
+
+  &_comments {
+    background: var(--white);
+    padding: 30px 0;
+    width: 514px;
+    border-radius: 30px;
+    &_header{
+      padding-left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid  var(--border-grey);
+    }
+  }
+}
+
+.img {
+  max-width: 750px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider {
+  max-width: 750px;
+
+  &_img {
+    border-radius: 0;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+  }
+}

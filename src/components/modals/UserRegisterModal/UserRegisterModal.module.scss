@@ -16,7 +16,7 @@
     justify-content: left;
     align-items: flex-start;
     padding-bottom: 20px;
-    border-bottom: 1px solid #EFEFF0;
+    border-bottom: 1px solid var(--border-grey);;
 
 
     &_text_gray {
@@ -89,7 +89,7 @@
     font-size: 22px;
     font-weight: 700;
     line-height: 160%;
-    border-bottom: 1px solid #EFEFF0;
+    border-bottom: 1px solid var(--border-grey);;
     padding-bottom: 20px;
     margin-bottom: 30px;
 

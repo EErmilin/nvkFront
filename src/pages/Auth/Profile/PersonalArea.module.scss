@@ -29,7 +29,7 @@
   position: relative;
   height: 100%;
   padding: 30px 0;
-  border-right: 1px solid #EFEFF0;
+  border-right: 1px solid var(--border-grey);;
 
   @media(max-width: 668px) {
     display: none;

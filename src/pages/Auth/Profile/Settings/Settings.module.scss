@@ -3,7 +3,7 @@
   display: grid;
 
   &_field {
-    border-bottom: 1px solid #EFEFF0;
+    border-bottom: 1px solid var(--border-grey);;
     padding-bottom: 30px;
     margin-bottom: 30px;
     display: flex;

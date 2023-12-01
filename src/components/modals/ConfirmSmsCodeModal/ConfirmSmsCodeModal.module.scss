@@ -14,7 +14,7 @@
     justify-content: left;
     align-items: flex-start;
     padding-bottom: 30px;
-    border-bottom: 1px solid #EFEFF0;
+    border-bottom: 1px solid var(--border-grey);;
 
     &_text {
       font-size: 14px;
@@ -73,7 +73,7 @@
       }
 
       &_wrp {
-        border-top: 1px solid #EFEFF0;
+        border-top: 1px solid var(--border-grey);;
         display: flex;
         justify-content: center;
         gap: 60px;
@@ -88,7 +88,7 @@
     font-size: 22px;
     font-weight: 700;
     line-height: 160%;
-    border-bottom: 1px solid #EFEFF0;
+    border-bottom: 1px solid var(--border-grey);;
     padding-bottom: 20px;
     margin-bottom: 30px;
 

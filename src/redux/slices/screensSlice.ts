@@ -12,6 +12,8 @@ import {deleteProfile} from '../thunks/user/DeleteProfile';
 import {updateHashtag, updateUser} from '../thunks/user/UpdateUser';
 import {getSeries} from '../thunks/screens/getSeries/GetSeries';
 import { getFilms } from '../thunks/screens/getFilms/GetFilms';
+import { IAuthorIsSubscribe } from '../../models/Author';
+import { getAuthor } from '../thunks/author/GetAuthor';
 
 const initialState: IScreenState = {
   broadcasts: [],
@@ -46,10 +48,22 @@ const screensSlice = createSlice({
       state.musics = null;
       state.podcasts = [];
     },
+    setIsSubscribe: (state, action: {payload: IAuthorIsSubscribe}) => {
+      if (state.authorData?.authorIsSubscribe) {
+        state.authorData.authorIsSubscribe = action.payload;
+      }
+    },
+    clearAuthorScreen: state => {
+      state.authorData = undefined;
+    },
   },
   extraReducers: builder => {
     builder.addCase(getFilms.fulfilled, (state, action) => {
       state.movies = action.payload;
+    });
+    builder.addCase(getAuthor.fulfilled, (state, action) => {
+      console.log('getAuthor', action.payload);
+      state.authorData = action.payload;
     });
     builder.addCase(getSeries.fulfilled, (state, action) => {
       state.serials = action.payload;

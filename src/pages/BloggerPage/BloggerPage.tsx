@@ -1,47 +1,68 @@
 
 
 import classes from "./BloggerPage.module.scss";
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Avatar from "../../components/Avatar/Avatar";
 import TransitionContainer from "../../components/TransitionContainer/TransitionContainer";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { getAuthor } from "../../redux/thunks/author/GetAuthor";
 import { useParams } from "react-router-dom";
+import { Spin } from "antd";
+import useToggleVisibility from "../../hooks/useToggleVisibility";
+import PostModal from "../../components/modals/PostModal/PostModal";
+
+
+
+const PostItem = ({ item, authorData }) => {
+  const [postModal, setPostModal, closePostModal] = useToggleVisibility(false);
+  const templatePostModal = postModal &&
+    <PostModal
+      post={item}
+      authorData={authorData}
+      closeModal={closePostModal}
+      btnCancelClick={() => setPostModal(false)}
+    />
+  return <div className={classes.post_item} onClick={() => setPostModal(true)}>{item.images.length ?
+    <img src={item.images[0].url} className={classes.post_item}></img> : null}
+    {templatePostModal}</div>
+}
 
 
 function BloggerPage({ }) {
   const { id } = useParams()
   const dispatcher = useAppDispatch()
   const userId = useAppSelector(state => state.user.data?.id);
-  const blocks = [
-    {
-      title: "Посты",
-      block: <div></div>
-    },
-    {
-      title: "Видеоролики",
-      block: <div></div>
-    },
-    {
-      title: "Аудиофайл",
-      block: <div></div>
-    },
-  ]
-console.log('@@@@@@@@@@@@@')
-console.log(userId)
+  const authorData = useAppSelector(state => state.screens.authorData);
+
 
   useEffect(() => {
-    dispatcher(getAuthor({ id: Number(id), userId: userId })).then(e => {
-      // setData(e.payload as IAuthor);
+    dispatcher(getAuthor({ id: Number(id), userId: userId })).then(e => { // переписать на useQwery
       console.log(e);
     });
   }, []);
 
+  if (!authorData) return <Spin size="large" />
 
+
+  const renderPosts = authorData.author.posts.map((post) => <PostItem item={post} authorData={authorData} />)
+
+  const blocks = [
+    {
+      title: <div className={classes.posts}>Посты</div>,
+      block: <div className={classes.post_wrp}>{renderPosts}</div>
+    },
+    //  {
+    //    title: "Видеоролики",
+    //    block: <div></div>
+    //  },
+    //  {
+    //    title: "Аудиофайл",
+    //    block: <div></div>
+    //  },
+  ]
   return (
     <div className={classes.wrp}>
       <div className={classes.header}>
-
         <Avatar
           width={150}
           height={150}
@@ -49,21 +70,21 @@ console.log(userId)
           className={classes.avatar}
         ></Avatar>
         <div className={classes.info}>
-          <h1>Kater_ina</h1>
+          <h1>{authorData.author.nickname}</h1>
           <div className={classes.counter_wrp}>
-            <span className={classes.counter}><span className={classes.counter_value}>19</span>Публикации</span>
-            <span className={classes.counter}><span className={classes.counter_value}>19</span>Подписчиков</span>
-            <span className={classes.counter}><span className={classes.counter_value}>19</span>Подписки</span>
+            <span className={classes.counter}><span className={classes.counter_value}>{authorData.authorAggregate.postsCount}</span>Публикации</span>
+            <span className={classes.counter}><span className={classes.counter_value}>{authorData.authorAggregate.followsCount}</span>Подписчиков</span>
+            <span className={classes.counter}><span className={classes.counter_value}>{authorData.authorAggregate.subsCount}</span>Подписки</span>
           </div>
-          <div className={classes.header_description}>Равным образом дальнейшее развитие различных форм деятельности представляет собой интересный эксперимент проверки соответствующий условий активизации. Развернуть</div>
+          <div className={classes.header_description}>{authorData.author.description}</div>
         </div>
-
       </div>
       <div>
         <TransitionContainer
-          withTitleBorder={true}
-          classNameTitle={classes.broadcast_seasons_titles}
-          classNameTitlesWrap={classes.broadcast_seasons_titles_wrp}
+          isTopLine={true}
+          withTitleBorder={false}
+          classNameTitle={classes.blocks_titles}
+          classNameTitlesWrap={classes.blocks_wrp}
           blocks={blocks}>
         </TransitionContainer>
       </div>

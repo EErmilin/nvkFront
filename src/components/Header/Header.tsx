@@ -6,6 +6,8 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setModalVisible } from '../../redux/slices/routerSlice';
 import MobileMenu from "../../components/MobileMenu/MobileMenu";
 import ButtonDefault from '../UI/btns/Button/Button';
+import useToggleVisibility from '../../hooks/useToggleVisibility';
+import UnlockModal from '../modals/UnlockModal/UnlockModal';
 
 function Header() {
     const navigate = useNavigate()
@@ -13,7 +15,7 @@ function Header() {
     const dispatcher = useAppDispatch()
     const url = useLocation()
     const [isChildren, setIsChildren] = useState(!!localStorage.getItem('children'))
-
+    const [unlockModal, setUnlockModal, closeUnlockModal] = useToggleVisibility(false)
     const handleProfile = () => {
         if (isAuth) {
             navigate("/personal-area")
@@ -21,6 +23,13 @@ function Header() {
             dispatcher(setModalVisible(true))
         }
     }
+
+    const templateUnlockModal = unlockModal && (
+        <UnlockModal
+        setIsChildren={setIsChildren}
+            closeModal={closeUnlockModal}
+            btnCancelClick={setUnlockModal} />
+    )
 
     /** Масив ссылок */
     const templateLinks = useMemo(() => {
@@ -55,9 +64,17 @@ function Header() {
     }, [url])
 
 
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.setItem('children', isChildren ? 'true' : '')
-    },[isChildren])
+    }, [isChildren])
+
+    const onChangeChildrenMode = () => {
+        console.log(isChildren)
+        if (isChildren) {
+            return setUnlockModal(true)
+        }
+        return setIsChildren(!isChildren)
+    }
 
     return (
         <header>
@@ -76,12 +93,12 @@ function Header() {
                 <div className="right-header style__flexbox style__flex-ai-c">
                     {//<div className="header-search"><span>Поиск</span></div>
                     }
-                    <button className={[classes.children, !isChildren? classes.children_active: classes.children_no_active ].join(' ')} onClick={() =>setIsChildren(!isChildren)}>Детский</button>
+                    <button className={[classes.children, isChildren ? classes.children_active : classes.children_no_active].join(' ')} onClick={onChangeChildrenMode}>Детский</button>
 
                     <div className="header-profile" onClick={handleProfile}><span>Профиль</span></div>
                 </div>
             </div>
-
+            {templateUnlockModal}
         </header>
 
     );

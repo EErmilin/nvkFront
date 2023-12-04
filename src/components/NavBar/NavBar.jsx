@@ -8,8 +8,6 @@ function NavBar() {
     const page = useParams();
     const user = useAppSelector(state => state.user.data);
 
-    console.log('@@@@@@@@@@@@@')
-    console.log(user)
 
     /** Масив ссылок */
     const templateLinks = useMemo(() => {

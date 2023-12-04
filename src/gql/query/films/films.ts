@@ -31,6 +31,8 @@ export const GET_MOVIE = gql`
   query Movie($movieId: Int!) {
     movie(id: $movieId) {
       id
+      ratingNvk
+      ratingKinopoisk
       userVote {
         comment
         vote

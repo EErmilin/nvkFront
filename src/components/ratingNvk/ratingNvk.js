@@ -15,7 +15,6 @@ export default function RatingNvk({item }) {
     const [isAuthModal, setIsAuthModal, closeIsAuthModal] = useToggleVisibility(false)
 
 
-
     const templateAuthModal = isAuthModal &&
         <AuthModal
             closeModal={closeIsAuthModal}
@@ -27,7 +26,7 @@ export default function RatingNvk({item }) {
     return (
         <div className={classes.rating}>
             <div className={classes.rating_wrp}>
-                <div className={classes.rating_number}>9.3</div>
+                <div className={classes.rating_number}>{item.ratingNvk}</div>
                 <div>
                     <div className={classes.rating_title}>Рейтинг НВК</div>
                     <div className={classes.rating_gray}>134 отзыва</div>

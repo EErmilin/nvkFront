@@ -12,8 +12,6 @@ function CommentSlider({ comments }) {
     const windowSize = useWindowSize()
 
 
-console.log('@@@@@@@@@')
-console.log(comments)
     /**Инстенс свипера*/
     const swiperRef = useRef();
 

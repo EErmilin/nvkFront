@@ -16,8 +16,10 @@ import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import ButtonDefault from "../../../../components/UI/btns/Button/Button";
 import { API_URL } from "../../../../api/config";
 import { setModalVisible } from "../../../../redux/slices/routerSlice";
+import RatingKinopoisk from "../../../../components/RatingKinopoisk/RatingKinopoisk";
+import { Spin } from "antd";
 
-export const Movie = ({}) => {
+export const Movie = ({ }) => {
   const { id } = useParams();
 
   const [movieData, setMovieData] = React.useState<any>(null);
@@ -89,16 +91,15 @@ export const Movie = ({}) => {
   }, [user]);
 
   if (!movieData) {
-    return <></>;
+    return <div className={classes.spin}><Spin size="large" /></div>
   }
 
   const imageUrl = movieData.image?.url_1536;
-
   return (
     <div>
       <div className={classes.broadcast}>
         <div style={{ flex: 1 }}>
-          <VideoPlayer ref={videoPleerRef} play={false} isShowBtn={false}>
+          {movieData.media && <VideoPlayer ref={videoPleerRef} play={false} isShowBtn={false}>
             <div
               className={classes.image_wrapper}
               style={{
@@ -112,7 +113,7 @@ export const Movie = ({}) => {
                 />
               )}
             </div>
-          </VideoPlayer>
+          </VideoPlayer>}
         </div>
         <div className={classes.broadcast_info}>
           <div className={classes.broadcast_info_title}>{movieData.name}</div>
@@ -126,8 +127,10 @@ export const Movie = ({}) => {
             <div className={classes.broadcast_info_content}>
               {movieData.content}
             </div>
+            <ButtonDefault title={'Я уже видел'} className={classes.viewed} />
           </div>
           <div className={classes.broadcast_info_block}>
+            <RatingKinopoisk item={movieData} />
             <RatingNvk item={movieData} />
           </div>
         </div>

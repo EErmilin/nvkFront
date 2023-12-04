@@ -1,3 +1,18 @@
+type PostAuthor = {
+  firstname: string;
+  lastname: string;
+  avatar?: {
+    url_128: string;
+    id: number;
+  };
+};
+
+export interface IPostComment {
+  content: string;
+  createdAt: string;
+  user: PostAuthor;
+}
+
 export interface IPost {
   id: number;
   authorId: number;
@@ -6,15 +21,7 @@ export interface IPost {
   title: string;
   published: boolean;
   images: IPostImage[];
-  author: {
-    firstname: string;
-    lastname: string;
-    avatar: {
-      url_512: string;
-      url_256: string;
-      id: number;
-    };
-  };
+  author: PostAuthor;
   views: number;
   createdAt: string;
   hashtags?: IHashtagPost[];
@@ -35,6 +42,8 @@ export interface IPost {
       url_1536: string;
     }[];
   };
+  totalComments?: number;
+  postComments?: IPostComment[];
 }
 
 export interface IMediaPost {
@@ -77,4 +86,12 @@ export interface IHashtagPost {
     id: number;
     name: string;
   };
+}
+
+export interface ICreatePostArg {
+  authorId: number;
+  title: string;
+  content?: string;
+  imageIds?: number[];
+  published: boolean;
 }

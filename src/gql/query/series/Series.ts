@@ -72,6 +72,9 @@ export const SEASONS = gql`
 export const CURRENT_SERIAS = gql`
 query Series($seriesId: Int!) {
   series(id: $seriesId) {
+    ratingNvk
+    kinoPoisk_url
+    ratingKinopoisk
     id
     createdAt
     updatedAt

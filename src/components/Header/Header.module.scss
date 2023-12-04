@@ -1,4 +1,3 @@
-
 .header_logo {
   background-image: url("../../assets/img/logotype.svg");
   background-position: center;
@@ -6,17 +5,76 @@
   background-size: contain;
   height: 45px;
   width: 165px;
+
   @media(max-width: 668px) {
     height: 35px;
     width: 155px;
   }
 }
 
-.live{
+.live {
   width: 8px;
   height: 8px;
   background: center no-repeat url("../../assets/img/live.svg");
   position: absolute;
   left: -14px;
-  
+}
+
+.children {
+  border-radius: 27px;
+  background: var(--yellow);
+  backdrop-filter: blur(6px);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  width: 133px;
+  padding: 0;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  -ms-user-select: none; 
+  -moz-user-select: none; 
+  -webkit-user-select: none; 
+  user-select: none; 
+
+  &_no_active {
+    border-radius: 27px;
+    border-radius: 27px;
+    background: var(--yellow);
+    backdrop-filter: blur(6px);
+    gap: 10px;
+    color: var(--white);
+border: none;
+    &:before {
+      gap: 10px;
+      content: '';
+      display: flex;
+      width: 24px;
+      height: 24px;
+      background: center/cover no-repeat url("../../assets/img/Lock-open.svg");
+    }
+  }
+
+  &_active {
+
+    border-radius: 27px;
+    background: var(--border-grey);
+    color: var(--black-text);
+    border: 1px solid var(--border-grey);
+
+    &:hover {
+      background: var(--border-grey);
+      color: var(--black-text);
+    }
+
+    &:before {
+      content: '';
+      display: flex;
+      width: 24px;
+      height: 24px;
+      background: center/cover no-repeat url("../../assets/img/Lock.svg");
+    }
+  }
 }

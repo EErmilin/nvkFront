@@ -129,3 +129,28 @@
   background-size: cover;
   background-position: center;
 }
+
+.viewed{
+  background: var(--white);
+  color: var(--yellow);
+  width: 225px;
+  &:hover{
+    background: var(--white) !important;
+    color: var(--yellow) !important;
+  }
+ 
+  &:before {
+    margin-right: 10px;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: center/cover no-repeat url("../../../../assets/img/bookmark-white.svg");
+  }
+}
+
+.spin{
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

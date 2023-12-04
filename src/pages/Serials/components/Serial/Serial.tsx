@@ -12,6 +12,7 @@ import EpisodeSlider from "../../../../components/UI/areas/EpisodeSlider/Episode
 import { CURRENT_SERIAS, SERIALS } from "../../../../gql/query/series/Series";
 import RatingNvk from "../../../../components/ratingNvk/ratingNvk";
 import CommentSlider from "../../../../components/UI/areas/CommentSlider/CommentSlider";
+import RatingKinopoisk from "../../../../components/RatingKinopoisk/RatingKinopoisk";
 
 
 export const Serial = ({ }) => {
@@ -56,11 +57,11 @@ export const Serial = ({ }) => {
   }
 
   useEffect(() => {
-      videoPleerRef.current?.setStream({
-        url: current.media.indexM3u8Url ?? '',
-        media: { hls: current.media?.hls ?? [] },
-      });
-      setIsPlay(true)
+    videoPleerRef.current?.setStream({
+      url: current.media.indexM3u8Url ?? '',
+      media: { hls: current.media?.hls ?? [] },
+    });
+    setIsPlay(true)
   }, [current])
 
 
@@ -79,7 +80,7 @@ export const Serial = ({ }) => {
   return (
     <div>
       <div className={classes.broadcast}>
-        {current ? <div className={classes.broadcast_player}><VideoPlayer ref={videoPleerRef}  isShowBtn={false} play={true}/></div>: <img className={classes.broadcast_img} src={broadcastData?.image?.url_1536} />}
+        {current ? <div className={classes.broadcast_player}><VideoPlayer ref={videoPleerRef} isShowBtn={false} play={true} /></div> : <img className={classes.broadcast_img} src={broadcastData?.image?.url_1536} />}
         <div className={classes.broadcast_info}>
           <div className={classes.broadcast_info_title}>{current?.name ?? broadcastData.name}</div>
           <span className={classes.duration}>{getTimeFromMins(broadcastData.duration)} <span>/</span> {broadcastData.genre} </span>
@@ -89,7 +90,8 @@ export const Serial = ({ }) => {
             <div className={classes.broadcast_info_content}>{broadcastData.content}</div>
           </div>
           <div className={classes.broadcast_info_block}>
-           <RatingNvk item={broadcastData}/>
+            <RatingKinopoisk item={broadcastData} />
+            <RatingNvk item={broadcastData} />
           </div>
         </div>
       </div>
@@ -101,7 +103,7 @@ export const Serial = ({ }) => {
           blocks={blocks}>
         </TransitionContainer>
       </div>}
-      {broadcastData.userVote&&broadcastData.userVote.length? <CommentSlider comments={broadcastData.userVote}/>: null}     
+      {broadcastData.userVote && broadcastData.userVote.length ? <CommentSlider comments={broadcastData.userVote} /> : null}
     </div>
   )
 }

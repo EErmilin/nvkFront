@@ -72,8 +72,6 @@ function Blog({ }) {
     });
 
     const handleSubmitForm = async (data: any) => {
-        console.log('!!!!!!!!!!!')
-        console.log(user?.author)
         if (user?.author) {
             return openNotificationWithIcon("info")
         }

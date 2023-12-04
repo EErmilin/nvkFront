@@ -9,8 +9,6 @@ export const getSeries = createAsyncThunk<IPodcastData[], IPodcastArg>(
 
   'series/fetch',
   async data => {
-    console.log('!!!!!!!!!!!!!data')
-    console.log(data)
     let client = await getUpdateClient();
     let response = await client.query({
       query: SERIALS,

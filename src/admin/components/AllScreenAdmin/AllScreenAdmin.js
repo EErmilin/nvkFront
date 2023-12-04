@@ -198,8 +198,6 @@ function AllScreenAdmin({ }) {
             season["serialName"] = season.animation?.name
             return season
           })
-          console.log('!!!!!!!!!!!!!')
-          console.log(dataArray)
           setDataArray(dataArray)
         } else {
           return setDataArray(data.animations)

@@ -9,13 +9,15 @@ import Input from '../../UI/areas/Input/Input';
 import CustomTextArea from '../../UI/areas/CustomTextArea/CustomTextArea';
 import { useFormik } from 'formik';
 import ButtonDefault from '../../UI/btns/Button/Button';
+import { useDispatch } from 'react-redux';
+import { publishPost } from '../../../redux/thunks/post/PublishPost';
 
 
 
 
 const AddPostModal = ({ closeModal, btnCancelClick, }: any) => {
 
-
+    const dispatcher = useDispatch()
     /** Начальные значения */
     const initialValues = {
 
@@ -38,6 +40,16 @@ const AddPostModal = ({ closeModal, btnCancelClick, }: any) => {
         handleChange({ target: { name: field, value: value } })
     }
 
+    const onSumbit = async () => {
+        try {
+            const res = await dispatcher(await publishPost());
+            if (res.meta.requestStatus === 'fulfilled') {
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
 
     return (
         <ModalWithBackground
@@ -48,12 +60,12 @@ const AddPostModal = ({ closeModal, btnCancelClick, }: any) => {
             <div className={classes.modal}>
                 <Input placeholder={'Заголовок'}></Input>
                 <CustomTextArea
-                classNameInputWrap={classes.modal_area}
+                    classNameInputWrap={classes.modal_area}
                     placeholder={'Описание'}
                     onChange={(event) => ClearErrorAndChange("comment", event.target.value)}>
 
                 </CustomTextArea>
-                <ButtonDefault title={'Создать пост'}/>
+                <ButtonDefault title={'Создать пост'} />
             </div>
         </ModalWithBackground>
     );

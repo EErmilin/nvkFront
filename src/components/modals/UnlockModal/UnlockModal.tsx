@@ -1,22 +1,24 @@
 
 import ModalWithBackground from '../ModalWithBackground/ModalWithBackground';
 import classes from './UnlockModal.module.scss';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Input from '../../UI/areas/Input/Input';
 import ButtonDefault from '../../UI/btns/Button/Button';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 
 
 
-const UnlockModal = ({ closeModal, btnCancelClick, setIsChildren }: any) => {
+const UnlockModal = ({ closeModal, btnCancelClick, setIsChildren, historyState }: any) => {
 
     const [num1, setNum1] = useState(Math.floor(Math.random() * 10) + 1);
     const [num2, setNum2] = useState(Math.floor(Math.random() * 10) + 1);
     const [operator, setOperator] = useState("*");
+    const navigate = useNavigate()
     const [answer, setAnswer] = useState(num1 * num2);
     const [userAnswer, setUserAnswer] = useState("");
-
+    const url = useLocation()
     const generateCaptcha = () => {
         // Reset user answer and error message
         setUserAnswer("");
@@ -55,12 +57,12 @@ const UnlockModal = ({ closeModal, btnCancelClick, setIsChildren }: any) => {
         if (parseInt(userAnswer) === answer) {
             setIsChildren('')
             btnCancelClick()
+            navigate(url.pathname, { replace: true })
         } else {
             // Incorrect answer, display error message and generate new captcha
             generateCaptcha();
         }
     };
-    console.log("answer", answer)
 
     return (
         <ModalWithBackground

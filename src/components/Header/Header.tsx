@@ -5,15 +5,16 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setModalVisible } from '../../redux/slices/routerSlice';
 import MobileMenu from "../../components/MobileMenu/MobileMenu";
-import ButtonDefault from '../UI/btns/Button/Button';
 import useToggleVisibility from '../../hooks/useToggleVisibility';
 import UnlockModal from '../modals/UnlockModal/UnlockModal';
+
 
 function Header() {
     const navigate = useNavigate()
     const isAuth = useAppSelector(state => state.auth.logged);
     const dispatcher = useAppDispatch()
     const url = useLocation()
+    const [historyState, setHistoryState] = useState()
     const [isChildren, setIsChildren] = useState(!!localStorage.getItem('children'))
     const [unlockModal, setUnlockModal, closeUnlockModal] = useToggleVisibility(false)
     const handleProfile = () => {
@@ -26,7 +27,8 @@ function Header() {
 
     const templateUnlockModal = unlockModal && (
         <UnlockModal
-        setIsChildren={setIsChildren}
+            historyState={historyState}
+            setIsChildren={setIsChildren}
             closeModal={closeUnlockModal}
             btnCancelClick={setUnlockModal} />
     )
@@ -66,7 +68,18 @@ function Header() {
 
     useEffect(() => {
         localStorage.setItem('children', isChildren ? 'true' : '')
-    }, [isChildren])
+        if (isChildren) {
+            window.location.hash = "children";
+
+            // Again because Google Chrome doesn't insert
+            // the first hash into the history
+            window.location.hash = "children";
+
+            window.onhashchange = function () {
+                window.location.hash = "children";
+            }
+        }
+    }, [isChildren, url])
 
     const onChangeChildrenMode = () => {
         console.log(isChildren)
@@ -75,7 +88,6 @@ function Header() {
         }
         return setIsChildren(!isChildren)
     }
-
     return (
         <header>
 
@@ -93,7 +105,7 @@ function Header() {
                 <div className="right-header style__flexbox style__flex-ai-c">
                     {//<div className="header-search"><span>Поиск</span></div>
                     }
-                    <button className={[classes.children, isChildren ? classes.children_active : classes.children_no_active].join(' ')} onClick={onChangeChildrenMode}>Детский</button>
+                    {(url.pathname.includes('movies') || url.pathname.includes('serials')) && <button className={[classes.children, isChildren ? classes.children_active : classes.children_no_active].join(' ')} onClick={onChangeChildrenMode}>Детский</button>}
 
                     <div className="header-profile" onClick={handleProfile}><span>Профиль</span></div>
                 </div>

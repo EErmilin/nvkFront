@@ -76,3 +76,15 @@ export const GET_MOVIE = gql`
     movieAccess(movieId: $movieId)
   }
 `;
+
+export const MARK_MOVIE_VIEWED = gql`
+  mutation MovieViewed($id: Int!) {
+    markMoviesAsViewed(id: $id)
+  }
+`;
+
+export const MOVIE_IS_VIEWED = gql`
+  query MovieIsViewed($id: Int!) {
+    movieIsViewed(id: $id)
+  }
+`;

@@ -18,14 +18,17 @@ import { API_URL } from "../../../../api/config";
 import { setModalVisible } from "../../../../redux/slices/routerSlice";
 import RatingKinopoisk from "../../../../components/RatingKinopoisk/RatingKinopoisk";
 import { Spin } from "antd";
+import useToggleVisibility from "../../../../hooks/useToggleVisibility";
+import AuthModal from "../../../../components/modals/AuthModal/AuthModal";
+import { markMovieViewed } from "../../../../redux/thunks/screens/getFilms/GetFilms";
 
 export const Movie = ({ }) => {
   const { id } = useParams();
-
+  const isAuth = useAppSelector(state => state.auth.logged);
   const [movieData, setMovieData] = React.useState<any>(null);
   const user = useAppSelector((state) => state.user.data);
   const [access, setAccess] = useState(false);
-
+  const [isViewed, setIsViewed] = React.useState(false);
   const videoPleerRef = useRef<VideoPlayerHandle>();
 
   React.useEffect(() => {
@@ -90,6 +93,25 @@ export const Movie = ({ }) => {
     }
   }, [user]);
 
+  const [isAuthModal, setIsAuthModal, closeIsAuthModal] = useToggleVisibility(false)
+
+
+  const templateAuthModal = isAuthModal &&
+      <AuthModal
+          closeModal={closeIsAuthModal}
+          btnCancelClick={setIsAuthModal}
+      />
+
+
+  const markAsView = async () => {
+    if (!isAuth) {
+      return setIsAuthModal(true)
+    }
+    const isViewedRes = await dispatcher(markMovieViewed({id: Number(id)}));
+    setIsViewed(isViewedRes.payload ?? false);
+  };
+
+
   if (!movieData) {
     return <div className={classes.spin}><Spin size="large" /></div>
   }
@@ -127,7 +149,7 @@ export const Movie = ({ }) => {
             <div className={classes.broadcast_info_content}>
               {movieData.content}
             </div>
-            <ButtonDefault title={'Я уже видел'} className={classes.viewed} />
+            <ButtonDefault title={!isViewed ? 'Я уже видел' : 'Просмотрен'} className={!isViewed ? classes.viewed: classes.noviewed} onClick={markAsView}/>
           </div>
           <div className={classes.broadcast_info_block}>
             <RatingKinopoisk item={movieData} />
@@ -138,6 +160,7 @@ export const Movie = ({ }) => {
       {movieData.userVote && movieData.userVote.length ? (
         <CommentSlider comments={movieData.userVote} />
       ) : null}
+      {templateAuthModal}
     </div>
   );
 };

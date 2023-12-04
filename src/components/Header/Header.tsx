@@ -105,7 +105,7 @@ function Header() {
                 <div className="right-header style__flexbox style__flex-ai-c">
                     {//<div className="header-search"><span>Поиск</span></div>
                     }
-                    {(url.pathname.includes('movies') || url.pathname.includes('serials')) && <button className={[classes.children, isChildren ? classes.children_active : classes.children_no_active].join(' ')} onClick={onChangeChildrenMode}>Детский</button>}
+                    {(url.pathname.includes('movies/') || url.pathname.includes('serials/')) && <button className={[classes.children, isChildren ? classes.children_active : classes.children_no_active].join(' ')} onClick={onChangeChildrenMode}>Детский</button>}
 
                     <div className="header-profile" onClick={handleProfile}><span>Профиль</span></div>
                 </div>

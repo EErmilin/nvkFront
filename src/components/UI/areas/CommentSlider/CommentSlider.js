@@ -31,6 +31,9 @@ function CommentSlider({ comments }) {
         )
     })
 
+    console.log('!!!!!!!!!!!')
+    console.log(comments)
+
     return (
         <div className={classes.wrap}>
             <Swiper

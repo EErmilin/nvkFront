@@ -13,6 +13,7 @@ import { CURRENT_SERIAS, SERIALS } from "../../../../gql/query/series/Series";
 import RatingNvk from "../../../../components/ratingNvk/ratingNvk";
 import CommentSlider from "../../../../components/UI/areas/CommentSlider/CommentSlider";
 import RatingKinopoisk from "../../../../components/RatingKinopoisk/RatingKinopoisk";
+import { Spin } from "antd";
 
 
 export const Serial = ({ }) => {
@@ -76,6 +77,14 @@ export const Serial = ({ }) => {
   const blocks = broadcastData.seriesSeasons && broadcastData.seriesSeasons.length && broadcastData.seriesSeasons.map((data, key) => {
     return { title: `${key + 1} сезон`, block: <div><EpisodeSlider episodes={data.seriesEpisodes} setBroadcast={setBroadcast} /></div> }
   })
+
+
+  console.log('@@@@@@@@@@@@@@@@@')
+  console.log(broadcastData)
+
+  if (Object.keys(broadcastData).length === 0) {
+    return <div className={classes.spin}><Spin size="large" /></div>
+  }
 
   return (
     <div>

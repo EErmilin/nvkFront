@@ -82,7 +82,8 @@ function BloggerPage({ }) {
         <div className={classes.header_top_wrp}>
           <div className={classes.header_top}>
             <h1>{authorData.author.nickname}</h1>
-            <div><div onClick={()=>setPostModal(true)}>Добавить пост</div></div>
+           {// <div><div onClick={()=>setPostModal(true)}>Добавить пост</div></div>
+           }
           </div>
           <div className={classes.counter_wrp}>
             <span className={classes.counter}><span className={classes.counter_value}>{authorData.authorAggregate.postsCount}</span>Публикации</span>

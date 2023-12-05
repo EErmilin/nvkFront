@@ -57,6 +57,9 @@ function Input({
         cls.push(className);
     }
 
+    if (classNameWrp) {
+        clsInputWrap.push(classNameWrp);
+    }
     /** Создаем уникальный id */
     const id = `${inputType}-${Math.random()}`;
 

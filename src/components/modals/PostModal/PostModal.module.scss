@@ -3,35 +3,133 @@
   border: none;
   display: flex;
   border-radius: 30px;
+  cursor: default;
+  height: 840px;
 
   &_comments {
     background: var(--white);
     padding: 30px 0;
     width: 514px;
     border-radius: 30px;
-    &_header{
+
+    &_header {
       padding-left: 20px;
       display: flex;
       align-items: center;
       gap: 15px;
       padding-bottom: 20px;
-      border-bottom: 1px solid  var(--border-grey);
+      border-bottom: 1px solid var(--border-grey);
     }
   }
 }
 
 .img {
-  max-width: 750px;
-  height: 100%;
+  width: 750px;
+  height: 840px;
+  // height: 100%;
   object-fit: cover;
 }
 
 .slider {
-  max-width: 750px;
+  width: 750px;
 
   &_img {
     border-radius: 0;
     border-bottom-left-radius: 30px;
     border-top-left-radius: 30px;
   }
+}
+
+.comments {
+  height: 83%;
+  overflow-y: scroll;
+  padding: 20px;
+
+
+
+  &_item {
+
+    &_content {
+      color: var(--Black-Text, #2F2F30);
+      font-feature-settings: 'clig' off, 'liga' off;
+      font-family: Noto Sans;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 160%;
+      /* 22.4px */
+      margin: 10px 0;
+
+    }
+
+    &_date {
+      color: var(--Grey-Text, #BBB);
+      font-feature-settings: 'clig' off, 'liga' off;
+      font-family: Noto Sans;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 160%;
+      /* 22.4px */
+    }
+
+    &_header {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      gap: 15px;
+
+      &_name {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+        /* 22.4px */
+      }
+
+      &_img {
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0;
+        border-radius: 50px;
+      }
+    }
+  }
+}
+
+.send {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  height: 100px;
+
+  &_btn {
+    cursor: pointer;
+    opacity: 0.3;
+    color: var(--Yellow, #F6A80B);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Noto Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    /* 19.6px */
+  }
+
+  &_input {
+    textarea {
+      background: white !important;
+      padding: 10px;
+      height: 50px;
+      min-height: 0;
+    }
+  }
+}
+
+.spin {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

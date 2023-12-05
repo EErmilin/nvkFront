@@ -106,7 +106,7 @@ const PostModal = ({ closeModal, btnCancelClick, post, authorData }: any) => {
     const templateComments = useMemo(() => {
         console.log('@@@@@@@@@@@@@@@')
         console.log(postView)
-        if (postView?.postComments) {
+        if (postView?.postComments?.length) {
             return postView.postComments.map((item) => {
                 return <div className={classes.comments_item}>
                     <div className={classes.comments_item_header}><img className={classes.comments_item_header_img} src={item.user.avatar?.url_128}></img>

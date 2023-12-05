@@ -16,11 +16,13 @@ function CommentSlider({ comments }) {
     const swiperRef = useRef();
 
     const listComments = comments.map((elem, id) => {
+        console.log('!!!!!!!!!')
+        console.log(elem)
         return (
-            <SwiperSlide>
+            <SwiperSlide key={id}>
                 <div className={classes.comment}>
                     <div className={classes.comment_info}>
-                        <div className={classes.comment_avatar}></div>
+                        <img className={classes.comment_avatar} src={elem.user.avatar.url}></img>
                         {elem.user && <div> <span>{elem.user?.firstname}</span> <span>{elem.user?.lastname}</span></div>}
                     </div>
                     <div className={classes.comment_text}>{elem.comment}</div>
@@ -31,8 +33,7 @@ function CommentSlider({ comments }) {
         )
     })
 
-    console.log('!!!!!!!!!')
-    console.log(comments)
+
 
     return (
         <div className={classes.wrap}>

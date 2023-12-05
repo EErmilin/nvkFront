@@ -45,7 +45,7 @@ function BloggerPage({ }) {
   if (!authorData) return <Spin size="large" />
 
 
-  const renderPosts = authorData.author.posts.map((post) => <PostItem item={post} authorData={authorData} />)
+  const renderPosts = authorData.author.posts.map((post, key) => <PostItem item={post} key={key} authorData={authorData} />)
 
   const blocks = [
     {

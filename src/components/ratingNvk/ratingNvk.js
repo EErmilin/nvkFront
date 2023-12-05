@@ -29,7 +29,7 @@ export default function RatingNvk({item }) {
                 <div className={classes.rating_number}>{item.ratingNvk}</div>
                 <div>
                     <div className={classes.rating_title}>Рейтинг НВК</div>
-                    <div className={classes.rating_gray}>134 отзыва</div>
+                    <div className={classes.rating_gray}>{item.userVote.length} отзыва</div>
                 </div>
             </div>
             <ButtonDefault title={"Оценить"} className={classes.rating_btn} onClick={() => !isAuth ? setIsAuthModal(true) : navigate('vote')} />

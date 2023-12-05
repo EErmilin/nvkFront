@@ -69,11 +69,12 @@ function Footer() {
                     </ul>*/}
                         <ul className="footer-menu style__flexbox style__flexdirection-column">
                             <li className="menu-title"><a href="/broadcasts">Смотреть</a></li>
-                            <li><a href="/broadcasts">Передачи</a></li>
+                            <li><NavLink to="/movies">Фильмы</NavLink></li>
+                            <li><NavLink to="/serials">Сериалы</NavLink></li>
                         </ul>
                         <ul className="footer-menu style__flexbox style__flexdirection-column">
-                            <li className="menu-title"><a href="/services">Услуги</a></li>
-                            <li><a href="/services">Наши услуги</a></li>
+                            <li className="menu-title"><NavLink to="/services">Услуги</NavLink></li>
+                            <li><NavLink to="/services">Наши услуги</NavLink></li>
                         </ul>
                     {/**     <ul className="footer-menu style__flexbox style__flexdirection-column">
                             <li className="menu-title"><a href="">Сервисы</a></li>

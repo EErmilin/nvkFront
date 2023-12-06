@@ -22,7 +22,7 @@ function CommentSlider({ comments }) {
             <SwiperSlide key={id}>
                 <div className={classes.comment}>
                     <div className={classes.comment_info}>
-                        <img className={classes.comment_avatar} src={elem.user.avatar.url}></img>
+                        <img className={classes.comment_avatar} src={elem.user.avatar?.url}></img>
                         {elem.user && <div> <span>{elem.user?.firstname}</span> <span>{elem.user?.lastname}</span></div>}
                     </div>
                     <div className={classes.comment_text}>{elem.comment}</div>

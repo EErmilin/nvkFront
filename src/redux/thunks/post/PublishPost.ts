@@ -6,19 +6,13 @@ import {getUpdateClient} from '../../../requests/updateHeaders';
 import {RootInterface} from '../../types';
 import {ApolloError} from '@apollo/client';
 
-export const publishPost = createAsyncThunk<{id: number}, undefined>(
+export const publishPost = createAsyncThunk<any>(
   'createPost/publish',
-  async (_, {getState, rejectWithValue, fulfillWithValue}) => {
+  async data => {
     try {
-      const state = <RootInterface>getState();
-      if (!state.user.author?.author) {
-        throw new Error('Unauthorized');
-      }
-      const data = state.createPost;
 
-      if (!data.title) {
-        throw new Error('Title');
-      }
+      console.log('@@@@@@@@@@@@@@@@@@@@')
+      console.log(data)
 
       let client = await getUpdateClient();
       let response = await client.mutate<
@@ -29,7 +23,7 @@ export const publishPost = createAsyncThunk<{id: number}, undefined>(
         variables: {
           data: {
             published: true,
-            authorId: state.user.author.author.id,
+            authorId: data,
             title: data.title,
             content: data.content,
             imageIds: data.images?.length
@@ -42,14 +36,7 @@ export const publishPost = createAsyncThunk<{id: number}, undefined>(
       if (!response.data) {
         throw new Error('post not created');
       }
-
-      return fulfillWithValue(response.data.createPost);
     } catch (e) {
-      if (e instanceof ApolloError) {
-        return rejectWithValue(e.message);
-      } else {
-        return rejectWithValue('Error');
-      }
     }
   },
 );

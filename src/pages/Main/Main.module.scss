@@ -95,12 +95,16 @@
   }
 
   &_videos {
+    margin: auto;
+    @media(max-width: 1508px) {
+      max-width: 755px;
+    }
     &_wrp {
       display: flex;
       flex-wrap: wrap;
 
+      margin: auto;
 
-    margin: auto;
     @media(max-width: 767px) {
       padding: 0 10px;
     }

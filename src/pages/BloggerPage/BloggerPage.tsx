@@ -11,6 +11,7 @@ import { Spin } from "antd";
 import useToggleVisibility from "../../hooks/useToggleVisibility";
 import PostModal from "../../components/modals/PostModal/PostModal";
 import AddPostModal from "../../components/modals/AddPostModal/AddPostModal";
+import ButtonDefault from "../../components/UI/btns/Button/Button";
 
 
 
@@ -33,6 +34,7 @@ function BloggerPage({ }) {
   const { id } = useParams()
   const dispatcher = useAppDispatch()
   const userId = useAppSelector(state => state.user.data?.id);
+  const authorId = useAppSelector(state => state.user.data?.author?.id);
   const authorData = useAppSelector(state => state.screens.authorData);
   const [postModal, setPostModal, closePostModal] = useToggleVisibility(false);
 
@@ -62,9 +64,9 @@ function BloggerPage({ }) {
     //  },
   ]
 
-
   const templatePostModal = postModal &&
     <AddPostModal
+    authorData={authorData}
       closeModal={closePostModal}
       btnCancelClick={() => setPostModal(false)}
     />
@@ -82,7 +84,7 @@ function BloggerPage({ }) {
         <div className={classes.header_top_wrp}>
           <div className={classes.header_top}>
             <h1>{authorData.author.nickname}</h1>
-           {// <div><div onClick={()=>setPostModal(true)}>Добавить пост</div></div>
+           {authorId === Number(id) && <div><ButtonDefault title={'Добавить пост'} onClick={()=>setPostModal(true)} className={classes.add}></ButtonDefault></div>
            }
           </div>
           <div className={classes.counter_wrp}>

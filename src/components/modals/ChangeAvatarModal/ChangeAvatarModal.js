@@ -30,6 +30,10 @@ const ChangeAvatarModal = ({
     },[avatar])
 
 
+    console.log('@@@@@@@@@@@@@@@')
+    console.log(avatar)
+
+
 
 
     /** Обрезаем аватар и в preview помещаем base64 полученного объекта */

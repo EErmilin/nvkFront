@@ -104,8 +104,6 @@ const PostModal = ({ closeModal, btnCancelClick, post, authorData }: any) => {
     const tempalteImages = post.images?.map((item, key) => <SwiperSlide key={key}><img className={classes.img} src={item.url} /></SwiperSlide>)
 
     const templateComments = useMemo(() => {
-        console.log('@@@@@@@@@@@@@@@')
-        console.log(postView)
         if (postView?.postComments?.length) {
             return postView.postComments.map((item) => {
                 return <div className={classes.comments_item}>

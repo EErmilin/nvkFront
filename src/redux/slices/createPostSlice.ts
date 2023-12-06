@@ -7,6 +7,7 @@ const initialState: CreatePostType = {
   content: '',
   images: [],
   lastId: 0,
+  video: null,
 };
 
 const createPostSlice = createSlice({
@@ -34,6 +35,14 @@ const createPostSlice = createSlice({
     addImage(state, action: {payload: CreatePostImage}) {
       state.images = [...state.images, action.payload];
     },
+
+    setVideo(state, action: {payload:null}) {
+      state.video = action.payload;
+    },
+
+    removeImage(state, action: {payload: number}) {
+      state.images = state.images.filter(i => i.id !== action.payload);
+    },
   },
   extraReducers(builder) {
     builder.addCase(publishPost.fulfilled, (state, action) => {
@@ -41,10 +50,12 @@ const createPostSlice = createSlice({
       state.content = '';
       state.images = [];
       state.lastId = action.payload.id;
+      state.video = null;
     });
   },
 });
 
-export const {setTitle, setContent, addImage} = createPostSlice.actions;
+export const {setTitle, setContent, addImage, setVideo, removeImage} =
+  createPostSlice.actions;
 
 export default createPostSlice.reducer;

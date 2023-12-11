@@ -16,8 +16,6 @@ function CommentSlider({ comments }) {
     const swiperRef = useRef();
 
     const listComments = comments.map((elem, id) => {
-        console.log('!!!!!!!!!')
-        console.log(elem)
         return (
             <SwiperSlide key={id}>
                 <div className={classes.comment}>

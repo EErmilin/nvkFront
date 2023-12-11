@@ -14,6 +14,7 @@ import RatingNvk from "../../../../components/ratingNvk/ratingNvk";
 import CommentSlider from "../../../../components/UI/areas/CommentSlider/CommentSlider";
 import RatingKinopoisk from "../../../../components/RatingKinopoisk/RatingKinopoisk";
 import { Spin } from "antd";
+import FavoriteBtnV2 from "../../../../components/FavoriteBtnV2/FavoriteBtnV2";
 
 
 export const Serial = ({ }) => {
@@ -79,8 +80,6 @@ export const Serial = ({ }) => {
   })
 
 
-  console.log('@@@@@@@@@@@@@@@@@')
-  console.log(broadcastData)
 
   if (Object.keys(broadcastData).length === 0) {
     return <div className={classes.spin}><Spin size="large" /></div>
@@ -91,7 +90,7 @@ export const Serial = ({ }) => {
       <div className={classes.broadcast}>
         {current ? <div className={classes.broadcast_player}><VideoPlayer ref={videoPleerRef} isShowBtn={false} play={true} /></div> : <img className={classes.broadcast_img} src={broadcastData?.image?.url_1536} />}
         <div className={classes.broadcast_info}>
-          <div className={classes.broadcast_info_title}>{current?.name ?? broadcastData.name}</div>
+          <div className={classes.broadcast_info_title}>{current?.name ?? broadcastData.name}   <FavoriteBtnV2 id={broadcastData?.id} type={'seriesId'}></FavoriteBtnV2></div>
           <span className={classes.duration}>{getTimeFromMins(broadcastData.duration)} <span>/</span> {broadcastData.genre} </span>
           <div className={classes.language}>{broadcastData.language}</div>
           <div className={classes.broadcast_info_block}>

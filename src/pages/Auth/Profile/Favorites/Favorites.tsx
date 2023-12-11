@@ -7,32 +7,27 @@ import { fetchFavorite } from "../../../../redux/thunks/favorite/GetFavorites";
 
 
 function Favorites({ }) {
-    const dispatcher = useAppDispatch()
-    const token = useAppSelector(state => state.auth.token);
+
     
 
     const blocks = [
         {
-            title: "Посты",
-            block: <FavoriteBlock type="fairytale"/>
+            title: "Сериалы",
+            block: <FavoriteBlock type="SERIALS"/>
         },
         {
-            title: "Передачи",
-            block: <FavoriteBlock type="fairytale"/>
+            title: "Фильмы",
+            block: <FavoriteBlock type="GET_MOVIES"/>
         },
         {
             title: "Музыка",
-            block: <FavoriteBlock type="music"/>
+            block: <FavoriteBlock type="MUSIC"/>
         },
         {
             title: "Подкасты",
-            block: <FavoriteBlock type="podcast"/>
+            block: <FavoriteBlock type="PODCASTS"/>
         },
     ]
-
-    useEffect(()=>{
-        dispatcher(fetchFavorite(token));
-    },[])
 
 
 

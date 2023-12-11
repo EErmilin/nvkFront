@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import "./LiveStream.scss";
 import React from 'react';
 import { ILive } from '../../models/LiveStream';
@@ -17,12 +17,13 @@ export default function LiveStream() {
   const liveStreamSelectorRef = useRef<LiveStreamSelectorHandle>();
   const videoPleerRef = useRef<VideoPlayerHandle>();
   const sheduleRef = useRef<SheduleHandle>();
-
+  const nameRef = useRef('')
 
 
   const [isModalOpen, setIsModalOpen, closeModal] = useToggleVisibility(false)
 
   const onStreamSelect = (stream: ILive | IRadio) => {
+    nameRef.current = stream.name
     videoPleerRef.current?.setStream(stream);
     sheduleRef.current?.setPograms(stream.programs ?? [])
   }
@@ -35,8 +36,9 @@ export default function LiveStream() {
 
   const askModal = isModalOpen && (
     <AskQuestionModal
+      name={nameRef.current}
       closeModal={closeModal}
-      btnCancelClick={closeModal}
+      btnCancelClick={()=>setIsModalOpen(false)}
     />
   )
 
@@ -51,8 +53,6 @@ export default function LiveStream() {
       }
     })();
   }, []);
-
-
 
 
   return (

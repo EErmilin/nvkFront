@@ -1,30 +1,51 @@
 .favorite {
   margin-top: 30px;
-  max-width: 256px;
+  width: 256px;
   cursor: pointer;
 
   @media (max-width: 1009px) {
     max-width: 140px;
   }
 
-  &_img{
+  &_serials {
+    width: 365px;
+    height: 220px;
+    img {
+      width: 365px;
+      height: 220px;
+    }
+  }
+
+  &_movie {
+    width: 237px;
+    height: 330px;
+    img {
+      width: 237px;
+      height: 330px;
+    }
+  }
+
+  &_img {
     object-fit: cover;
     border-radius: 20px;
+
     @media (max-width: 1009px) {
       height: 140px;
       width: 140px;
-     }
+    }
   }
-  &_title{
+
+  &_title {
     margin-top: 15px;
     font-size: 18px;
     font-weight: 600;
     line-height: 140%;
   }
-  &_noImg{
+
+  &_noImg {
     width: 256px;
     height: 256px;
-    background-color:  #F4F4F4;
+    background-color: #F4F4F4;
     border-radius: 20px;
   }
 }

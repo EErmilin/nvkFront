@@ -21,6 +21,8 @@ import { Spin } from "antd";
 import useToggleVisibility from "../../../../hooks/useToggleVisibility";
 import AuthModal from "../../../../components/modals/AuthModal/AuthModal";
 import { markMovieViewed } from "../../../../redux/thunks/screens/getFilms/GetFilms";
+import FavoriteBtn from "../../../../components/FavoriteBtn/FavoriteBtn";
+import FavoriteBtnV2 from "../../../../components/FavoriteBtnV2/FavoriteBtnV2";
 
 export const Movie = ({ }) => {
   const { id } = useParams();
@@ -97,17 +99,17 @@ export const Movie = ({ }) => {
 
 
   const templateAuthModal = isAuthModal &&
-      <AuthModal
-          closeModal={closeIsAuthModal}
-          btnCancelClick={setIsAuthModal}
-      />
+    <AuthModal
+      closeModal={closeIsAuthModal}
+      btnCancelClick={setIsAuthModal}
+    />
 
 
   const markAsView = async () => {
     if (!isAuth) {
       return setIsAuthModal(true)
     }
-    const isViewedRes = await dispatcher(markMovieViewed({id: Number(id)}));
+    const isViewedRes = await dispatcher(markMovieViewed({ id: Number(id) }));
     setIsViewed(isViewedRes.payload ?? false);
   };
 
@@ -149,7 +151,9 @@ export const Movie = ({ }) => {
             <div className={classes.broadcast_info_content}>
               {movieData.content}
             </div>
-            <ButtonDefault title={!isViewed ? 'Я уже видел' : 'Просмотрен'} className={!isViewed ? classes.viewed: classes.noviewed} onClick={markAsView}/>
+            <div className={classes.favorite}>
+              <ButtonDefault title={!isViewed ? 'Я уже видел' : 'Просмотрен'} className={!isViewed ? classes.viewed : classes.noviewed} onClick={markAsView} />
+              <FavoriteBtnV2 id={movieData?.id} type={'movieId'}></FavoriteBtnV2></div>
           </div>
           <div className={classes.broadcast_info_block}>
             <RatingKinopoisk item={movieData} />

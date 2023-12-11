@@ -5,19 +5,34 @@ import React from "react";
 import TransitionContainer from '../../TransitionContainer/TransitionContainer';
 import { ISong, ISongPodcast } from '../../../models/Music';
 import { getUpdateClient } from '../../../requests/updateHeaders';
-import { AlBUM_SONGS, ARTIST_SONGS, PLAYLIST_SONGS } from '../../../gql/query/music/Music';
+import { AlBUM_SONGS, ARTIST_SONGS, MUSIC, PLAYLIST_SONGS } from '../../../gql/query/music/Music';
 import { PODCAST_ALBUM } from '../../../gql/query/podcast/Podcast';
 import MusicItem from './components/MusicItem/MusicItem';
 import SearchInput from '../../UI/areas/CustomSelect/SearchInput';
 import { PlayerTinny } from '../../MusicPlayer/PlayerTinny/PlayerTinny';
+import { useQuery } from '@apollo/client';
+import { useAppSelector } from '../../../redux/hooks';
+import { Spin } from 'antd';
 
 
 const AlbumListModal = ({ closeModal, btnCancelClick, album, type, currentPlayer, setCurrentPlayer, isTinny, setIsTinny, audioRef }: any) => {
 
     const [musics, setMusics] = React.useState<any>(null);
+    const userId = useAppSelector(state => state.user.data?.id);
 
-
-
+    const { data, loading, refetch } = useQuery(MUSIC, {
+        variables: {
+          skip: 0,
+          take: 10000,
+          where: {
+            favorites: {
+              some: {
+                userId,
+              },
+            },
+          },
+        },
+      });
 
 
     React.useEffect(() => {
@@ -118,7 +133,7 @@ const AlbumListModal = ({ closeModal, btnCancelClick, album, type, currentPlayer
         return <>
             <div className={classes.modal_music_title}>Плейлист: {album.name}</div>
             {musics.map((item: any, key: number) => {
-                return <MusicItem item={item} currentPlayer={currentPlayer} setCurrentPlayer={setCurrentPlayer} key={key} audioRef={audioRef} type={type}></MusicItem>
+                return <MusicItem item={item} currentPlayer={currentPlayer} setCurrentPlayer={setCurrentPlayer} key={key} audioRef={audioRef} type={type} favorites={data}></MusicItem>
             })}
         </>
     }, [musics, currentPlayer])
@@ -126,7 +141,7 @@ const AlbumListModal = ({ closeModal, btnCancelClick, album, type, currentPlayer
     const blocks = [
         {
             title: "Текущий плейлист",
-            block: templateMusics,
+            block: musics ? templateMusics : <Spin/>,
         },
         {
             title: "Мой плейлист",

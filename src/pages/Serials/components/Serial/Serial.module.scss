@@ -72,8 +72,9 @@
 
 
     &_title {
+      display: flex;
+      gap: 15px;
       font-size: 28px;
-
       font-weight: 700;
       line-height: 160%;
     }

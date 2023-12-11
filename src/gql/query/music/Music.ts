@@ -1,8 +1,8 @@
-import {gql} from '@apollo/client';
+import { gql } from '@apollo/client';
 
 export const MUSIC = gql`
-  query Songs($take: Int) {
-    musics(take: $take) {
+  query Songs($where: SongWhereInput, $take: Int) {
+    musics(where: $where, take: $take) {
       albums {
         name
         id

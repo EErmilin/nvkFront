@@ -7,6 +7,7 @@ import ConfirmSmsCodeModal from './components/modals/ConfirmSmsCodeModal/Confirm
 import RegisterModal from './components/modals/RegisterModal/RegisterModal';
 import UserRegisterModal from './components/modals/UserRegisterModal/UserRegisterModal';
 import { VALIDATE_TOKEN } from './gql/mutation/auth/ValidateToken';
+import { fetchFavoriteIds } from './gql/query/favorites/GetFavoriteIds';
 import useTheme from './hooks/useTheme';
 import useToggleVisibility from './hooks/useToggleVisibility';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
@@ -65,6 +66,11 @@ function App() {
   useEffect(() => {
     update();
   }, [dispatcher, update]);
+
+    
+useEffect(()=>{
+  //dispatcher(fetchFavoriteIds(token));
+},[])
 
   useEffect(() => {
     console.log(url)

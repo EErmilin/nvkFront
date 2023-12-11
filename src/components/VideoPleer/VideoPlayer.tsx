@@ -26,6 +26,7 @@ type TProps = {
 };
 
 export type VideoPlayerHandle = {
+  id: any,
   setStream: React.Dispatch<React.SetStateAction<ILive | IRadio | undefined>>;
   setProgramTitle: React.Dispatch<React.SetStateAction<string>>;
 };

@@ -1,7 +1,5 @@
 .modal {
-  height: 453px;
   width: 100%;
-  padding-bottom: 50px;
 
   &_form {
     display: flex;
@@ -9,8 +7,6 @@
     gap: 20px 5px;
     justify-content: left;
     align-items: flex-start;
-    height: 200px;
-
 
 
     &_text_gray {
@@ -87,6 +83,11 @@
     width: 100%;
     vertical-align: text-top;
     text-align: start;
+    &_wrp{
+      display: flex;
+      width: 100%;
+      gap: 25px;
+    }
   }
   
   &_input textarea{

@@ -7,7 +7,6 @@ import { createFavorite } from "../../redux/thunks/favorite/CreateFavorite";
 import { removeFavorite } from "../../redux/thunks/favorite/RemoveFavorite";
 import classes from "./FavoriteBtn.module.scss";
 
-
 const useFavoriteAudio = (type: ISongType) => {
   const favorites = useAppSelector(state => state.favorite.favorites).filter(
     favorite =>
@@ -18,7 +17,6 @@ const useFavoriteAudio = (type: ISongType) => {
 
   return favorites;
 };
-
 
 
 function FavoriteBtn({ id, type, favorites }: any) {

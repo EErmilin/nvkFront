@@ -31,7 +31,6 @@ function FavoriteBtn({ id, type, favorites }: any) {
     cls.push(classes.btn_active)
   }
 
-
   return (
     <div className={cls.join(" ")} onClick={async () => {
       if (token) {

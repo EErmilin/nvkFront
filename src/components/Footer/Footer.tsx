@@ -71,6 +71,7 @@ function Footer() {
                             <li className="menu-title"><a href="/broadcasts">Смотреть</a></li>
                             <li><NavLink to="/movies">Фильмы</NavLink></li>
                             <li><NavLink to="/serials">Сериалы</NavLink></li>
+                            <li><NavLink to="/broadcasts">Передачи</NavLink></li>
                         </ul>
                         <ul className="footer-menu style__flexbox style__flexdirection-column">
                             <li className="menu-title"><NavLink to="/services">Услуги</NavLink></li>

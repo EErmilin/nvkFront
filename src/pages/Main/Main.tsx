@@ -116,7 +116,7 @@ function Main({}) {
           </div>
           <div
             className={classes.main_videos_item}
-            onClick={() => navigate("/live")}
+            onClick={() => navigate("/broadcasts")}
           >
             <ShowsButton />
           </div>

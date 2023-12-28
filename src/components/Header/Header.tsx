@@ -43,7 +43,7 @@ function Header() {
             { link: "/audio", title: "Аудио" },
             { link: "/movies", title: "Фильмы" },
             { link: "/serials", title: "Сериалы" },
-            // { link: "/broadcasts", title: "Передачи" },
+            { link: "/broadcasts", title: "Передачи" },
             { link: "/live", title: "Прямой эфир" },
             // { link: "", title: "Курсы валют" },
             { link: "/horoscope", title: "Гороскоп" },
